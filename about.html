@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakkımda | Emre Bostanoğlu</title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
-    <meta name="description" content="Emre Bostanoğlu hakkında. Veri bilimci, fotoğrafçı, yazar ve yönetmen. Disiplinlerarası çalışmalar.">
+    <meta name="description" content="Emre Bostanoğlu - Veri bilimci, fotoğraf sanatçısı (EFIAP), yazar ve yönetmen. İstanbul doğumlu, 300+ ödüllü fotoğrafçı.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,149 @@
 
     <!-- Components JS -->
     <script src="js/components.js"></script>
+
+    <style>
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg,
+                #3b82f6 0%,
+                #d4af37 25%,
+                #d5d5bc 50%,
+                #e50914 75%,
+                #3b82f6 100%
+            );
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.03);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border: 4px solid #2c3335;
+            border-radius: 50%;
+            top: 0;
+            z-index: 1;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -10px;
+            background: #2c3335;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 2px solid #d4af37;
+        }
+
+        /* Mobile Timeline */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-year {
+                left: 20px;
+            }
+        }
+
+        /* Achievement Cards */
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .achievement-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .achievement-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .achievement-list::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 3px;
+        }
+
+        .achievement-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.8);
+        }
+    </style>
 </head>
 <body class="bg-dark-bg text-gray-300 font-sans antialiased">
 
@@ -35,7 +178,7 @@
             <span class="text-gray-500 tracking-[0.3em] text-xs uppercase font-bold mb-4 block">Biyografi</span>
             <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Emre Bostanoğlu</h1>
             <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                Veri Bilimci • Fotoğrafçı • Yazar • Yönetmen
+                Veri Bilimci • Fotoğraf Sanatçısı • Yazar • Yönetmen
             </p>
         </div>
     </section>
@@ -43,83 +186,322 @@
     <!-- Bio Section -->
     <section class="py-20 bg-dark-bg">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="space-y-8 text-lg leading-relaxed">
-                <p class="text-gray-300">
-                    Objektiften yansıyan ışık ile veriden süzülen bilgi arasında köprü kuruyorum.
-                    <span class="text-art-gold font-semibold">Fotoğraf sanatındaki</span> estetik bakış açımı,
-                    <span class="text-data-blue font-semibold">veri bilimindeki</span> analitik yaklaşımla birleştiriyor;
-                    bunları <span class="text-writer-paper font-semibold">kitaplarımda</span> ve
-                    <span class="text-director-red font-semibold">filmlerimde</span> hikayeleştiriyorum.
+            <div class="space-y-6 text-lg leading-relaxed">
+                <p class="text-gray-300 text-center text-xl mb-8">
+                    <span class="text-art-gold font-bold">02.05.1986</span> tarihinde <span class="text-data-blue font-semibold">İstanbul'da</span> doğdu.
                 </p>
 
                 <p class="text-gray-400">
-                    FOKUS İstatistik'in kurucusu olarak, kurumsal firmalara veri bilimi ve yapay zeka danışmanlığı sunuyorum.
-                    Aynı zamanda EFIAP (Excellence FIAP), CR2 (Turkey Honour) ve SSS/B (Fotoğraf Sanatçısı, Başarı)
-                    unvanlarına sahip bir fotoğraf sanatçısıyım.
+                    Samsun Ondokuz Mayıs Üniversitesi'nde <span class="text-data-blue font-semibold">İstatistik Lisans</span> (2007) ve
+                    <span class="text-data-blue font-semibold">Yüksek Lisans</span> (2012) programlarını tamamladı.
+                    Fotoğraf alanındaki çalışmalarını geliştirmek adına 2015 yılında Anadolu Üniversitesi
+                    <span class="text-art-gold font-semibold">Fotoğrafçılık ve Kameramanlık</span> bölümünden mezun oldu.
                 </p>
 
                 <p class="text-gray-400">
-                    Yazarlık ve yönetmenlik çalışmalarımda, teknoloji ile sanatın kesişim noktasını keşfediyorum.
-                    Her disiplin, diğerini zenginleştiren bir perspektif sunuyor.
+                    2007 yılında Hayat Yayınları'na bağlı Popüler Kitaplar'dan ilk romanı
+                    <span class="text-writer-paper font-semibold">"Büyük Ortadoğu Savaşı (BOS)"</span> yayınlandı.
+                    Kitap 2013 yılına kadar 5 baskı yaparak büyük ilgi gördü. Türkiye'nin çeşitli illerinde
+                    kitap fuarlarında ve yazar-okuyucu buluşmalarında yer aldı.
+                </p>
+
+                <p class="text-gray-400">
+                    2007 yılından sonra <span class="text-art-gold font-semibold">fotoğraf sanatı</span> ile aktif olarak ilgilenmeye başladı.
+                    Ulusal ve uluslararası fotoğraf yarışmalarında <span class="text-art-gold font-bold">300'ü aşkın sergileme ödülü</span>
+                    bulunan Emre Bostanoğlu, dünyanın en önemli fotoğraf organizasyonu olan FIAP'ın 2012 yılında düzenlediği
+                    <span class="text-art-gold font-bold">7. Dünya Kulüpler Kupası'nda Bronz Madalya</span> kazanarak bu ödülü
+                    2. kez Türkiye'ye getirdi.
+                </p>
+
+                <p class="text-gray-400">
+                    2012 yılındaki başarılarından dolayı <span class="text-art-gold font-semibold">Kültür Bakanlığı tarafından Teşekkür Belgesi</span>
+                    ile ödüllendirildi. 2013 yılında <span class="text-art-gold font-bold">Sille'de Yılın Fotoğrafçısı</span> unvanını kazandı.
+                </p>
+
+                <p class="text-gray-400">
+                    <span class="text-data-blue font-semibold">FOKUS (Fotoğraf ve Kültür Sanat Derneği)</span> kurucuları arasında yer aldı.
+                    2 dönem Genel Sekreterlik görevini yürüttükten sonra Ocak 2014'te Yönetim Kurulu Başkanı seçildi.
+                    2009-2014 yılları arasında FOKUS bünyesinde 130 hafta fotoğraf etkinliği organize etti,
+                    2 Uluslararası Fotoğraf Yarışması düzenledi.
+                </p>
+
+                <p class="text-gray-400">
+                    2015 yılından itibaren fotoğraf çalışmalarını Kocaeli ve çevresinde
+                    <span class="text-art-gold font-semibold">"Emre Bostanoğlu Fotoğraf Atölyesi"</span> kapsamında sürdürmektedir.
+                </p>
+
+                <p class="text-gray-400">
+                    <span class="text-director-red font-semibold">FOKUS Kısa Film Atölyesi'ni</span> kurdu ve
+                    "Yanlış İşler" kısa film çalışmasında Sanat Yönetmenliği yaptı.
+                </p>
+
+                <p class="text-gray-300 font-semibold mt-8">
+                    Emre Bostanoğlu, fotoğraf, kısa film, eğitim, belgesel ve kitap çalışmalarını aktif olarak sürdürmektedir.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Expertise Areas -->
+    <!-- Timeline Section -->
     <section class="py-20 bg-[#1a1a1a] border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-serif text-white mb-12 text-center">Uzmanlık Alanları</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif text-white mb-16 text-center">Önemli Anlar</h2>
 
-                <!-- Area 1 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-data-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-line text-data-blue text-2xl"></i>
+            <div class="timeline">
+                <!-- 1986 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">1986</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-white font-bold text-lg mb-2">Doğum</h3>
+                        <p class="text-gray-400 text-sm">İstanbul'da doğdu</p>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Veri Bilimi</h3>
-                    <p class="text-gray-500 text-sm">Yapay Zeka & ML</p>
                 </div>
 
-                <!-- Area 2 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-art-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-camera text-art-gold text-2xl"></i>
+                <!-- 2007 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2007</div>
+                    <div class="timeline-dot" style="background: #3b82f6;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-data-blue font-bold text-lg mb-2">Lisans & İlk Kitap</h3>
+                        <p class="text-gray-400 text-sm">İstatistik Lisans mezuniyeti ve "Büyük Ortadoğu Savaşı" yayınlandı</p>
+                        <p class="text-gray-400 text-sm mt-2">Fotoğraf sanatına başladı</p>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Fotoğraf</h3>
-                    <p class="text-gray-500 text-sm">EFIAP, CR2, SSS/B</p>
                 </div>
 
-                <!-- Area 3 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-writer-paper/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-book text-writer-paper text-2xl"></i>
+                <!-- 2010 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2010</div>
+                    <div class="timeline-dot" style="background: #d4af37;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-art-gold font-bold text-lg mb-2">FOKUS Kurucu Üyesi</h3>
+                        <p class="text-gray-400 text-sm">Fotoğraf ve Kültür Sanat Derneği kurucuları arasında yer aldı</p>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Yazarlık</h3>
-                    <p class="text-gray-500 text-sm">Kitaplar & Makaleler</p>
                 </div>
 
-                <!-- Area 4 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-director-red/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-film text-director-red text-2xl"></i>
+                <!-- 2012 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2012</div>
+                    <div class="timeline-dot" style="background: #d4af37;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-art-gold font-bold text-lg mb-2">FIAP Dünya Kupası Bronz Madalya</h3>
+                        <p class="text-gray-400 text-sm">7. Dünya Kulüpler Kupası'nda Türkiye'ye 2. kez bronz madalya getirdi</p>
+                        <p class="text-gray-400 text-sm mt-2">Yüksek Lisans mezuniyeti & Kültür Bakanlığı Teşekkür Belgesi</p>
                     </div>
-                    <h3 class="text-white font-bold mb-2">Yönetmenlik</h3>
-                    <p class="text-gray-500 text-sm">Sinema & Belgesel</p>
                 </div>
 
+                <!-- 2013 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2013</div>
+                    <div class="timeline-dot" style="background: #d4af37;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-art-gold font-bold text-lg mb-2">Sille'de Yılın Fotoğrafçısı</h3>
+                        <p class="text-gray-400 text-sm">Ulusal Çağrılı Fotoğraf Yarışması'nda büyük ödül</p>
+                        <p class="text-gray-400 text-sm mt-2">CR1 unvanı</p>
+                    </div>
+                </div>
+
+                <!-- 2014 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2014</div>
+                    <div class="timeline-dot" style="background: #d4af37;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-art-gold font-bold text-lg mb-2">FOKUS Yönetim Kurulu Başkanı</h3>
+                        <p class="text-gray-400 text-sm">AFIAP & SSS/B unvanları</p>
+                    </div>
+                </div>
+
+                <!-- 2015 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2015</div>
+                    <div class="timeline-dot" style="background: #d4af37;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-art-gold font-bold text-lg mb-2">Fotoğrafçılık Lisans & Atölye</h3>
+                        <p class="text-gray-400 text-sm">Anadolu Üniversitesi Fotoğrafçılık ve Kameramanlık mezuniyeti</p>
+                        <p class="text-gray-400 text-sm mt-2">Emre Bostanoğlu Fotoğraf Atölyesi kuruldu (Kocaeli)</p>
+                        <p class="text-gray-400 text-sm mt-2">EFIAP & CR2 unvanları</p>
+                    </div>
+                </div>
+
+                <!-- 2021 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2021</div>
+                    <div class="timeline-dot" style="background: #d5d5bc;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-writer-paper font-bold text-lg mb-2">Neden Müslüman Oldum</h3>
+                        <p class="text-gray-400 text-sm">İkinci kitap - Felsefi sorgu ve Kuran ışığında İslam</p>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="timeline-item">
+                    <div class="timeline-year text-white">2022</div>
+                    <div class="timeline-dot" style="background: #d5d5bc;"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-writer-paper font-bold text-lg mb-2">İbrahim'i Duyarken</h3>
+                        <p class="text-gray-400 text-sm">Üçüncü kitap - Şiirsel edebi roman</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Philosophy -->
+    <!-- Achievements Section -->
     <section class="py-20 bg-dark-bg border-t border-gray-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-serif text-white mb-8">Çalışma Felsefem</h2>
-            <blockquote class="text-xl md:text-2xl font-serif italic text-gray-300 leading-relaxed border-l-4 border-art-gold pl-6">
-                "Bilim bize gerçeği gösterir, sanat ise gerçeği hissettirir.
-                İkisini birleştirdiğimizde, anlamlı hikayeler ortaya çıkar."
-            </blockquote>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif text-white mb-16 text-center">Başarılar ve Ödüller</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- Data Science Achievements -->
+                <div class="achievement-card border-l-4 border-data-blue">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-data-blue/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-data-blue text-xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-2xl">Veri Bilimi</h3>
+                    </div>
+                    <div class="achievement-list space-y-3">
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Ondokuz Mayıs Üniversitesi</p>
+                            <p class="text-gray-500 text-sm">İstatistik Lisans (2007) & Yüksek Lisans (2012)</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">ISO 9001:2008</p>
+                            <p class="text-gray-500 text-sm">Dokümantasyon & İç Denetçi Sertifikaları</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">AB Hibe Projeleri</p>
+                            <p class="text-gray-500 text-sm">Proje Yazım Eğitim Sertifikası</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Sempozyum Bildirileri</p>
+                            <p class="text-gray-500 text-sm">Samsun Sempozyumu (2 bildiri), 8. Ulusal İstatistik Sempozyumu (1 bildiri)</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Memnuniyet Araştırmaları</p>
+                            <p class="text-gray-500 text-sm">Samsun İl Özel İdaresi için 6+ araştırma projesi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photography Achievements -->
+                <div class="achievement-card border-l-4 border-art-gold">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-art-gold/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-camera text-art-gold text-xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-2xl">Fotoğraf Sanatı</h3>
+                    </div>
+                    <div class="achievement-list space-y-3">
+                        <div class="p-3 bg-black/20 rounded-lg border-l-2 border-art-gold">
+                            <p class="text-gray-300 font-semibold">🏆 300+ Sergileme Ödülü</p>
+                            <p class="text-gray-500 text-sm">Ulusal ve Uluslararası yarışmalar</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg border-l-2 border-art-gold">
+                            <p class="text-gray-300 font-semibold">🥉 FIAP Dünya Kupası Bronz Madalya (2012)</p>
+                            <p class="text-gray-500 text-sm">7. Dünya Kulüpler Kupası - Türkiye'ye 2. kez</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg border-l-2 border-art-gold">
+                            <p class="text-gray-300 font-semibold">🏅 Sille'de Yılın Fotoğrafçısı (2013)</p>
+                            <p class="text-gray-500 text-sm">Ulusal Çağrılı Fotoğraf Yarışması Büyük Ödülü</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">📜 Kültür Bakanlığı Teşekkür Belgesi (2012)</p>
+                            <p class="text-gray-500 text-sm">FIAP başarısı nedeniyle resmi teşekkür</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">🎖️ Uluslararası Unvanlar</p>
+                            <p class="text-gray-500 text-sm">EFIAP (2015), AFIAP (2014), CR2 (2015), CR1 (2013), SSS/B (2014)</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">40+ Ulusal Ödül</p>
+                            <p class="text-gray-500 text-sm">1.lik, 2.lik, 3.lük ve mansiyon ödülleri</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">20+ Uluslararası Ödül</p>
+                            <p class="text-gray-500 text-sm">FIAP, PSA, UPI, FSM madalya ve mansiyonları</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">FOKUS Kurucu & Başkan</p>
+                            <p class="text-gray-500 text-sm">Yönetim Kurulu Başkanlığı (2014-2015), 130 hafta etkinlik</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Çok Sayıda Jüri Üyeliği</p>
+                            <p class="text-gray-500 text-sm">Ulusal ve uluslararası fotoğraf yarışmaları</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Anadolu Üniversitesi</p>
+                            <p class="text-gray-500 text-sm">Fotoğrafçılık ve Kameramanlık Lisans (2015)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Writing Achievements -->
+                <div class="achievement-card border-l-4 border-writer-paper">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-writer-paper/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-book text-writer-paper text-xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-2xl">Yazarlık</h3>
+                    </div>
+                    <div class="achievement-list space-y-3">
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">📚 Büyük Ortadoğu Savaşı (2006)</p>
+                            <p class="text-gray-500 text-sm">Popüler Kitaplar - 5 baskı, 64+ satış</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">📚 Neden Müslüman Oldum (2021)</p>
+                            <p class="text-gray-500 text-sm">Ozan Yayıncılık - 21+ satış</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">📚 İbrahim'i Duyarken (2022)</p>
+                            <p class="text-gray-500 text-sm">Metinlerarası Kitap - 8+ satış</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Yazar-Okuyucu Buluşmaları</p>
+                            <p class="text-gray-500 text-sm">Türkiye'nin çeşitli illerinde kitap fuarları</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">FOKUS E-Dergisi</p>
+                            <p class="text-gray-500 text-sm">Genel Yayın Yönetmenliği (2013-2014)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Film/Direction Achievements -->
+                <div class="achievement-card border-l-4 border-director-red">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-director-red/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-film text-director-red text-xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-2xl">Yönetmenlik</h3>
+                    </div>
+                    <div class="achievement-list space-y-3">
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">🎬 FOKUS Kısa Film Atölyesi</p>
+                            <p class="text-gray-500 text-sm">Kurucu ve eğitmen</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">🎬 "Yanlış İşler" Kısa Film</p>
+                            <p class="text-gray-500 text-sm">Sanat Yönetmeni</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Anadolu Üniversitesi</p>
+                            <p class="text-gray-500 text-sm">Fotoğrafçılık ve Kameramanlık Lisans (2015)</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">25+ Fotoğraf Sunumu</p>
+                            <p class="text-gray-500 text-sm">TV programları, dernekler ve festivallerde gösterimler</p>
+                        </div>
+                        <div class="p-3 bg-black/20 rounded-lg">
+                            <p class="text-gray-300 font-semibold">Belgesel Çalışmaları</p>
+                            <p class="text-gray-500 text-sm">Aktif olarak devam eden projeler</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
