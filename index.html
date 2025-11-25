@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emre Bostanoğlu - Veri Bilimci, Fotoğrafçı, Yazar ve Yönetmen. Sanat ve bilim arasında disiplinlerarası çalışmalar.">
+    <meta name="keywords" content="veri bilimi, fotoğraf, yazar, yönetmen, data science, photography">
+    <meta name="author" content="Emre Bostanoğlu">
+
+    <title>Emre Bostanoğlu | Veri Bilimci • Fotoğrafçı • Yazar • Yönetmen</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-dark-bg">
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-data-blue rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-art-gold rounded-full filter blur-3xl animate-float" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="animate-fadeInUp">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                    Emre <span class="gradient-text">Bostanoğlu</span>
+                </h1>
+                <div class="text-xl md:text-2xl text-gray-300 mb-8 font-light">
+                    <span id="typing-text" class="typing-cursor"></span>
+                </div>
+                <p class="text-gray-400 max-w-3xl mx-auto text-lg mb-12 leading-relaxed">
+                    Veri ile gerçeği, ışık ile anı, kelimelerle hikayeyi, vizörle dünyayı keşfediyorum.
+                    Disiplinlerarası bir yaklaşımla sanat ve bilimi buluşturuyorum.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#portfolyo" class="btn-primary bg-data-blue hover:bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                        <i class="fas fa-briefcase mr-2"></i> Portfolyomu Keşfet
+                    </a>
+                    <a href="contact.html" class="btn-primary border-2 border-white text-white hover:bg-white hover:text-dark-bg px-8 py-4 rounded-full font-semibold text-lg transition-all">
+                        <i class="fas fa-envelope mr-2"></i> İletişime Geç
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#portfolyo" class="text-white text-3xl">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. VERİ BİLİMİ BÖLÜMÜ -->
+    <section id="portfolyo" class="py-24 bg-gradient-to-br from-[#1a1a1a] to-[#2c3335] relative section-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Image/Visual -->
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-data-blue to-cyan-400 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition duration-300"></div>
+                    <div class="relative bg-gray-900 rounded-2xl p-8 border border-gray-800 overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-data-blue opacity-10 rounded-full filter blur-3xl"></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                             alt="Data Science Visualization"
+                             class="w-full h-auto rounded-lg shadow-2xl relative z-10">
+                        <div class="absolute bottom-4 left-4 bg-dark-bg/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-data-blue/50">
+                            <p class="text-data-blue font-mono text-sm">
+                                <i class="fas fa-code mr-2"></i> Python | R | SQL | ML
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-data-blue tracking-[0.3em] text-sm uppercase font-bold">
+                            <i class="fas fa-chart-line mr-2"></i> Veri Bilimi
+                        </span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">
+                            Veriden İçgörüye
+                        </h2>
+                        <div class="w-24 h-1 bg-data-blue mb-6"></div>
+                    </div>
+
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Karmaşık veri setlerini anlamlı hikayелere dönüştürüyorum. Makine öğrenmesi,
+                        istatistiksel analiz ve veri görselleştirme ile işletmelere stratejik kararlar
+                        alma yolunda rehberlik ediyorum.
+                    </p>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-check-circle text-data-blue mt-1 mr-3"></i>
+                            <span>Makine Öğrenmesi & Derin Öğrenme Modelleri</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-check-circle text-data-blue mt-1 mr-3"></i>
+                            <span>Büyük Veri Analizi & İstatistiksel Modelleme</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-check-circle text-data-blue mt-1 mr-3"></i>
+                            <span>Veri Görselleştirme & Dashboard Tasarımı</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <i class="fas fa-check-circle text-data-blue mt-1 mr-3"></i>
+                            <span>Prediktif Analitik & İş Zekası Çözümleri</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-6">
+                        <a href="datascience.html"
+                           class="inline-flex items-center bg-data-blue hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl">
+                            Projelerimi Gör
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. FOTOĞRAF BÖLÜMÜ -->
+    <section class="py-24 bg-black relative overflow-hidden group">
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-art-gold rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-art-gold tracking-[0.5em] text-sm uppercase font-bold">
+                    <i class="fas fa-camera mr-2"></i> Fotoğraf Sanatı
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mt-3">Işık ile Anlatılan Hikayeler</h2>
+                <div class="w-24 h-1 bg-art-gold mx-auto mt-6"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-6 text-lg">
+                    Her kare bir hikaye, her an bir sanat eseri. Doğa, portre ve sokak fotoğrafçılığı ile
+                    dünyanın güzelliklerini ölümsüzleştiriyorum.
+                </p>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Photo 1 - Large -->
+                <div class="md:col-span-2 md:row-span-2 relative group/photo overflow-hidden rounded-xl aspect-video md:aspect-auto">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                         alt="Landscape Photography"
+                         class="w-full h-full object-cover img-grayscale group-hover/photo:scale-110 transition duration-700">
+                    <div class="absolute inset-0 overlay-dark opacity-0 group-hover/photo:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <h3 class="text-white text-2xl font-serif mb-2">Doğa Fotoğrafçılığı</h3>
+                            <p class="text-gray-300 text-sm">Anadolu'nun Renkleri</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="relative group/photo overflow-hidden rounded-xl aspect-square">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                         alt="Portrait Photography"
+                         class="w-full h-full object-cover img-grayscale group-hover/photo:scale-110 transition duration-700">
+                    <div class="absolute inset-0 overlay-dark opacity-0 group-hover/photo:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <h3 class="text-white text-xl font-serif mb-2">Portre</h3>
+                            <p class="text-gray-300 text-sm">İnsan Yüzleri</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="relative group/photo overflow-hidden rounded-xl aspect-square">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                         alt="Street Photography"
+                         class="w-full h-full object-cover img-grayscale group-hover/photo:scale-110 transition duration-700">
+                    <div class="absolute inset-0 overlay-dark opacity-0 group-hover/photo:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <h3 class="text-white text-xl font-serif mb-2">Sokak</h3>
+                            <p class="text-gray-300 text-sm">Şehir Hikayeleri</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="photography.html"
+                   class="inline-block border-2 border-art-gold text-art-gold px-8 py-3 hover:bg-art-gold hover:text-black transition-all uppercase tracking-widest text-sm font-bold rounded-full">
+                    Galeriyi İncele
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. YAZAR BÖLÜMÜ (SLIDER) -->
+    <section id="writer-section" class="py-24 bg-[#1a1a1a] relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-writer-paper tracking-[0.5em] text-sm uppercase font-bold">
+                    <i class="fas fa-book mr-2"></i> Yazın Dünyası
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mt-3">Kitaplar & Yayınlar</h2>
+                <div class="w-24 h-1 bg-writer-paper mx-auto mt-6"></div>
+            </div>
+
+            <div class="relative px-8">
+                <button onclick="scrollContainer('book-scroll', -300)"
+                    class="slider-btn absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-gray-800/50 hover:bg-writer-paper hover:text-black text-white p-3 rounded-full backdrop-blur-sm h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div id="book-scroll" class="flex overflow-x-auto gap-12 md:gap-20 scroll-smooth scrollbar-hide py-10 items-center snap-x snap-mandatory">
+                    <!-- Kitap 1 -->
+                    <div class="min-w-[250px] snap-center flex flex-col items-center">
+                        <div class="w-48 h-72 bg-gray-800 rounded-r-lg book-card relative group/item cursor-pointer border-l-4 border-gray-600">
+                            <div class="absolute inset-0 bg-cover bg-center rounded-r-lg opacity-80 group-hover/item:opacity-100 transition"
+                                style="background-image: url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
+                                    <h4 class="text-white font-serif text-xl text-center border-2 border-white p-2">Fotoğrafın Dili</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-white mt-6 text-xl font-serif">Fotoğrafın Dili</h3>
+                        <p class="text-gray-500 text-sm">Teknik ve Kompozisyon</p>
+                    </div>
+
+                    <!-- Kitap 2 -->
+                    <div class="min-w-[250px] snap-center flex flex-col items-center">
+                        <div class="w-48 h-72 bg-gray-800 rounded-r-lg book-card relative group/item cursor-pointer border-l-4 border-gray-600">
+                            <div class="absolute inset-0 bg-cover bg-center rounded-r-lg opacity-80 group-hover/item:opacity-100 transition"
+                                style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
+                                    <h4 class="text-white font-serif text-xl text-center border-2 border-white p-2">Veri İle Düşünmek</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-white mt-6 text-xl font-serif">Veri İle Düşünmek</h3>
+                        <p class="text-gray-500 text-sm">Analitik Dünyaya Giriş</p>
+                    </div>
+
+                    <!-- Kitap 3 -->
+                    <div class="min-w-[250px] snap-center flex flex-col items-center">
+                        <div class="w-48 h-72 bg-gray-800 rounded-r-lg book-card relative group/item cursor-pointer border-l-4 border-gray-600">
+                            <div class="absolute inset-0 bg-cover bg-center rounded-r-lg opacity-80 group-hover/item:opacity-100 transition"
+                                style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80');">
+                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
+                                    <h4 class="text-white font-serif text-xl text-center border-2 border-white p-2">Yapay Ufuklar</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-white mt-6 text-xl font-serif">Yapay Ufuklar</h3>
+                        <p class="text-gray-500 text-sm">AI ve Sanatın Geleceği</p>
+                    </div>
+                </div>
+
+                <button onclick="scrollContainer('book-scroll', 300)"
+                    class="slider-btn absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-gray-800/50 hover:bg-writer-paper hover:text-black text-white p-3 rounded-full backdrop-blur-sm h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="writer.html" class="inline-block border border-writer-paper text-writer-paper px-8 py-3 hover:bg-writer-paper hover:text-black transition-all uppercase tracking-widest text-sm font-bold rounded-full">
+                    Tüm Yayınlar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. YÖNETMEN BÖLÜMÜ (SLIDER) -->
+    <section id="director-section" class="py-24 bg-black relative border-t border-gray-900 group">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-6">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-cinzel text-white mb-2">Filmografi</h2>
+                    <p class="text-director-red uppercase tracking-widest text-sm font-bold">
+                        <i class="fas fa-film mr-2"></i> Yönetmen & Senarist
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Film_reel.svg/1200px-Film_reel.svg.png"
+                        class="w-12 h-12 opacity-20 filter invert" alt="Film Icon">
+                </div>
+            </div>
+
+            <div class="relative">
+                <button onclick="scrollContainer('film-scroll', -500)"
+                    class="slider-btn absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-red-900/50 hover:bg-director-red text-white p-3 rounded-r-lg backdrop-blur-sm h-16 w-10 flex items-center justify-center">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div id="film-scroll" class="flex overflow-x-auto gap-8 scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
+                    <!-- Film 1 -->
+                    <div class="min-w-[85vw] md:min-w-[600px] snap-center relative group/item overflow-hidden rounded-xl aspect-video bg-gray-900">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                            class="w-full h-full object-cover opacity-60 group-hover/item:opacity-40 transition duration-500">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <button class="w-16 h-16 rounded-full bg-director-red/80 hover:bg-director-red text-white flex items-center justify-center mb-4 transform scale-90 group-hover/item:scale-110 transition duration-300">
+                                <i class="fas fa-play ml-1"></i>
+                            </button>
+                            <h3 class="text-2xl font-cinzel text-white tracking-wider">Kayıp Zaman</h3>
+                            <p class="text-gray-400 text-xs mt-2 uppercase">Kısa Film | 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Film 2 -->
+                    <div class="min-w-[85vw] md:min-w-[600px] snap-center relative group/item overflow-hidden rounded-xl aspect-video bg-gray-900">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                            class="w-full h-full object-cover opacity-60 group-hover/item:opacity-40 transition duration-500">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <button class="w-16 h-16 rounded-full bg-white/20 hover:bg-director-red text-white flex items-center justify-center mb-4 transform scale-90 group-hover/item:scale-110 transition duration-300 border border-white">
+                                <i class="fas fa-play ml-1"></i>
+                            </button>
+                            <h3 class="text-2xl font-cinzel text-white tracking-wider">Anadolu'nun Sesleri</h3>
+                            <p class="text-gray-400 text-xs mt-2 uppercase">Belgesel | 2022</p>
+                        </div>
+                    </div>
+
+                    <!-- Film 3 -->
+                    <div class="min-w-[85vw] md:min-w-[600px] snap-center relative group/item overflow-hidden rounded-xl aspect-video bg-gray-900">
+                        <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                            class="w-full h-full object-cover opacity-60 group-hover/item:opacity-40 transition duration-500">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <button class="w-16 h-16 rounded-full bg-white/20 hover:bg-director-red text-white flex items-center justify-center mb-4 transform scale-90 group-hover/item:scale-110 transition duration-300 border border-white">
+                                <i class="fas fa-play ml-1"></i>
+                            </button>
+                            <h3 class="text-2xl font-cinzel text-white tracking-wider">Şehrin Işıkları</h3>
+                            <p class="text-gray-400 text-xs mt-2 uppercase">Deneysel | 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="scrollContainer('film-scroll', 500)"
+                    class="slider-btn absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-red-900/50 hover:bg-director-red text-white p-3 rounded-l-lg backdrop-blur-sm h-16 w-10 flex items-center justify-center">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="director.html" class="inline-block border border-director-red text-director-red px-8 py-3 hover:bg-director-red hover:text-white transition-all uppercase tracking-widest text-sm font-bold rounded-full">
+                    Tüm Filmografi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
