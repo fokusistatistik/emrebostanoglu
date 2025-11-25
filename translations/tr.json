@@ -126,6 +126,22 @@
     "close": "Kapat",
     "loading": "Yükleniyor...",
     "error": "Hata",
-    "success": "Başarılı"
+    "success": "Başarılı",
+    "contact": "İletişim"
+  },
+  "chatbot": {
+    "online": "Çevrimiçi",
+    "input_placeholder": "Mesajınızı yazın..."
+  },
+  "exitIntent": {
+    "title": "Ayrılmadan Önce...",
+    "description": "En son projeler, fotoğraf sergiler, yeni kitaplar ve veri bilimi içerikleri hakkında bilgi almak ister misiniz?",
+    "name": "Adınız",
+    "email": "E-posta adresiniz",
+    "consent": "KVKK kapsamında bilgilerimin işlenmesini kabul ediyorum",
+    "subscribe": "Abone Ol",
+    "note": "Spam göndermiyoruz. İstediğiniz zaman abonelikten çıkabilirsiniz.",
+    "success_title": "Teşekkürler!",
+    "success_message": "Başarıyla abone oldunuz. E-postanızı kontrol edin."
   }
 }

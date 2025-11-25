@@ -562,3 +562,117 @@ function loadShareButtons(containerId, options = {}) {
         container.innerHTML = getShareButtonsHTML(options);
     }
 }
+
+/**
+ * Sticky Contact Button
+ * Floating contact button that appears on scroll
+ */
+function initStickyContactButton() {
+    // Create sticky button HTML
+    const stickyButton = document.createElement('a');
+    stickyButton.href = 'contact.html';
+    stickyButton.id = 'sticky-contact-btn';
+    stickyButton.className = 'sticky-contact-btn hidden';
+    stickyButton.setAttribute('aria-label', 'Contact');
+    stickyButton.innerHTML = `
+        <i class="fas fa-envelope"></i>
+        <span class="sticky-contact-text" data-i18n="common.contact">İletişim</span>
+    `;
+    document.body.appendChild(stickyButton);
+
+    // Show/hide on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 300) {
+            stickyButton.classList.remove('hidden');
+            stickyButton.classList.add('sticky-contact-show');
+        } else {
+            stickyButton.classList.add('hidden');
+            stickyButton.classList.remove('sticky-contact-show');
+        }
+
+        lastScroll = currentScroll;
+    });
+
+    // Inject styles
+    const styles = `
+        <style>
+            .sticky-contact-btn {
+                position: fixed;
+                bottom: 2rem;
+                left: 2rem;
+                background: linear-gradient(135deg, #d4af37 0%, #f0c84b 100%);
+                color: #000;
+                padding: 1rem 1.5rem;
+                border-radius: 50px;
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+                z-index: 9997;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                animation: slideInLeft 0.5s ease;
+            }
+
+            .sticky-contact-btn.hidden {
+                display: none;
+            }
+
+            .sticky-contact-btn:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+            }
+
+            .sticky-contact-btn i {
+                font-size: 18px;
+            }
+
+            .sticky-contact-text {
+                font-size: 14px;
+            }
+
+            @keyframes slideInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-100px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .sticky-contact-btn {
+                    bottom: 5.5rem;
+                    left: 1rem;
+                    padding: 0.75rem 1.25rem;
+                }
+
+                .sticky-contact-text {
+                    font-size: 12px;
+                }
+
+                .sticky-contact-btn i {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    `;
+
+    if (!document.getElementById('sticky-contact-styles')) {
+        const styleElement = document.createElement('div');
+        styleElement.id = 'sticky-contact-styles';
+        styleElement.innerHTML = styles;
+        document.head.appendChild(styleElement);
+    }
+}
+
+// Initialize sticky contact button when components load
+window.addEventListener('DOMContentLoaded', () => {
+    initStickyContactButton();
+});

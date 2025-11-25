@@ -126,6 +126,22 @@
     "close": "Close",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "contact": "Contact"
+  },
+  "chatbot": {
+    "online": "Online",
+    "input_placeholder": "Type your message..."
+  },
+  "exitIntent": {
+    "title": "Before You Go...",
+    "description": "Would you like to receive updates about the latest projects, photo exhibitions, new books and data science content?",
+    "name": "Your Name",
+    "email": "Your Email",
+    "consent": "I agree to the processing of my information under GDPR",
+    "subscribe": "Subscribe",
+    "note": "We don't send spam. You can unsubscribe at any time.",
+    "success_title": "Thank You!",
+    "success_message": "Successfully subscribed. Check your email."
   }
 }
