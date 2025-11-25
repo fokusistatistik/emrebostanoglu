@@ -1,0 +1,105 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "type": "article",
+      "category": "datascience",
+      "title": {
+        "tr": "Yapay Zeka ve Veri Biliminin Geleceği",
+        "en": "The Future of AI and Data Science"
+      },
+      "excerpt": {
+        "tr": "Yapay zeka ve makine öğrenmesi teknolojilerinin iş dünyasını nasıl dönüştürdüğünü ve gelecekte neler bekleyebileceğimizi inceliyoruz.",
+        "en": "Exploring how AI and machine learning technologies are transforming the business world and what we can expect in the future."
+      },
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      "date": "2024-01-15",
+      "author": "Emre Bostanoğlu",
+      "readTime": "5 dk",
+      "tags": ["AI", "Machine Learning", "Data Science"]
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "category": "photography",
+      "title": {
+        "tr": "Sokak Fotoğrafçılığı: İpuçları ve Teknikler",
+        "en": "Street Photography: Tips and Techniques"
+      },
+      "excerpt": {
+        "tr": "Sokak fotoğrafçılığında kompozisyon, ışık ve anı yakalamak için pratik ipuçları.",
+        "en": "Practical tips for composition, lighting, and capturing the moment in street photography."
+      },
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "thumbnail": "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&q=80",
+      "date": "2024-01-10",
+      "author": "Emre Bostanoğlu",
+      "duration": "12:30",
+      "tags": ["Photography", "Street", "Tutorial"]
+    },
+    {
+      "id": 3,
+      "type": "article",
+      "category": "writer",
+      "title": {
+        "tr": "Edebiyatta Metafor Kullanımı",
+        "en": "The Use of Metaphor in Literature"
+      },
+      "excerpt": {
+        "tr": "Yazınsal metaforların gücü ve etkili kullanımı üzerine düşünceler.",
+        "en": "Thoughts on the power and effective use of literary metaphors."
+      },
+      "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80",
+      "date": "2024-01-05",
+      "author": "Emre Bostanoğlu",
+      "readTime": "8 dk",
+      "tags": ["Literature", "Writing", "Metaphor"]
+    },
+    {
+      "id": 4,
+      "type": "news",
+      "category": "general",
+      "title": {
+        "tr": "Yeni Fotoğraf Sergisi: 'Anadolu'nun Renkleri'",
+        "en": "New Photo Exhibition: 'Colors of Anatolia'"
+      },
+      "excerpt": {
+        "tr": "15 Şubat'ta açılacak sergide Anadolu'nun farklı bölgelerinden 50 fotoğraf sergilenecek.",
+        "en": "The exhibition opening on February 15 will showcase 50 photographs from different regions of Anatolia."
+      },
+      "image": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80",
+      "date": "2024-02-01",
+      "author": "Emre Bostanoğlu",
+      "location": "Istanbul Photography Museum",
+      "tags": ["Exhibition", "Photography", "Anatolia"]
+    }
+  ],
+  "featured": [1, 2],
+  "categories": {
+    "datascience": {
+      "tr": "Veri Bilimi",
+      "en": "Data Science",
+      "color": "#3b82f6"
+    },
+    "photography": {
+      "tr": "Fotoğraf",
+      "en": "Photography",
+      "color": "#d4af37"
+    },
+    "writer": {
+      "tr": "Yazarlık",
+      "en": "Writing",
+      "color": "#f5f5dc"
+    },
+    "director": {
+      "tr": "Yönetmenlik",
+      "en": "Directing",
+      "color": "#e50914"
+    },
+    "general": {
+      "tr": "Genel",
+      "en": "General",
+      "color": "#9ca3af"
+    }
+  }
+}

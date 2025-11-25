@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medya & Basın | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <meta name="description" content="Medya yansımaları, basın haberleri ve röportajlar.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- i18n System -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        .press-item {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3335 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .press-item:hover {
+            transform: translateX(8px);
+            border-left-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .press-logo {
+            width: 120px;
+            height: 60px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .press-item:hover .press-logo {
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .media-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #2c3335 0%, #1a1a1a 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-data-blue font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Medya</span>
+            <h1 class="text-4xl md:text-6xl font-cinzel text-white font-bold mb-6">Basında Biz</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Medya yansımaları, basın haberleri, röportajlar ve etkinlikler.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="media-stats">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <p class="text-gray-400 mt-2 text-lg">Basın Haberi</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <p class="text-gray-400 mt-2 text-lg">Röportaj</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <p class="text-gray-400 mt-2 text-lg">Sergi & Etkinlik</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <p class="text-gray-400 mt-2 text-lg">TV/Radyo Konuk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Coverage -->
+    <section class="py-20 bg-[#1a1a1a] border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-cinzel text-white mb-12 text-center">Son Basın Haberleri</h2>
+
+            <div class="space-y-6">
+                <!-- Press Item 1 -->
+                <div class="press-item">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-newspaper text-3xl text-data-blue"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-sm text-gray-500">15 Ocak 2024</span>
+                                <span class="px-3 py-1 bg-data-blue/20 text-data-blue rounded-full text-xs">Fotoğraf</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">FIAP Dünya Kupası'nda Türkiye'ye Bronz Madalya</h3>
+                            <p class="text-gray-400 mb-4">Dünya Kulüpler Kupası yarışmasında Türkiye takımı ile bronz madalya kazandı...</p>
+                            <a href="#" class="text-data-blue hover:text-white transition inline-flex items-center gap-2">
+                                Haberi Oku <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Press Item 2 -->
+                <div class="press-item">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-microphone text-3xl text-art-gold"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-sm text-gray-500">10 Ocak 2024</span>
+                                <span class="px-3 py-1 bg-writer-paper/20 text-writer-paper rounded-full text-xs">Röportaj</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Yazarlık Serüveni ve Yeni Kitap Üzerine</h3>
+                            <p class="text-gray-400 mb-4">Edebiyat dergisi ile yapılan söyleşide yazarlık süreci ve gelecek projeler...</p>
+                            <a href="#" class="text-art-gold hover:text-white transition inline-flex items-center gap-2">
+                                Röportajı Oku <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Press Item 3 -->
+                <div class="press-item">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-tv text-3xl text-director-red"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-sm text-gray-500">5 Ocak 2024</span>
+                                <span class="px-3 py-1 bg-director-red/20 text-director-red rounded-full text-xs">TV Programı</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Sabah Programında Veri Bilimi ve Yapay Zeka</h3>
+                            <p class="text-gray-400 mb-4">Ulusal kanalda yapay zekanın geleceği üzerine konuk olarak katılım...</p>
+                            <a href="#" class="text-director-red hover:text-white transition inline-flex items-center gap-2">
+                                Programı İzle <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Press Item 4 -->
+                <div class="press-item">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-award text-3xl text-data-blue"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-4 mb-2">
+                                <span class="text-sm text-gray-500">1 Ocak 2024</span>
+                                <span class="px-3 py-1 bg-art-gold/20 text-art-gold rounded-full text-xs">Ödül</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Sille Yılın Fotoğrafçısı Ödülü</h3>
+                            <p class="text-gray-400 mb-4">2024 yılında Sille Fotoğraf Derneği tarafından verilen prestijli ödül...</p>
+                            <a href="#" class="text-art-gold hover:text-white transition inline-flex items-center gap-2">
+                                Detaylar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Kit -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-cinzel text-white mb-6">Medya Kiti</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Basın mensupları için hazırlanmış fotoğraflar, biyografi ve iletişim bilgileri.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="p-6 bg-card-bg rounded-lg border border-gray-700 hover:border-data-blue transition group">
+                    <i class="fas fa-camera text-4xl text-data-blue mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">Yüksek Çözünürlük Fotoğraflar</h3>
+                    <p class="text-gray-400 text-sm">Basın için profesyonel fotoğraflar</p>
+                </a>
+
+                <a href="#" class="p-6 bg-card-bg rounded-lg border border-gray-700 hover:border-art-gold transition group">
+                    <i class="fas fa-file-alt text-4xl text-art-gold mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">Biyografi & CV</h3>
+                    <p class="text-gray-400 text-sm">Detaylı özgeçmiş ve başarılar</p>
+                </a>
+
+                <a href="contact.html" class="p-6 bg-card-bg rounded-lg border border-gray-700 hover:border-director-red transition group">
+                    <i class="fas fa-envelope text-4xl text-director-red mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">İletişim</h3>
+                    <p class="text-gray-400 text-sm">Basın ve medya sorguları için</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('press');
+    </script>
+
+    <!-- Interactive Features -->
+    <script src="js/chatbot.js"></script>
+    <script src="js/exit-intent.js"></script>
+
+</body>
+</html>

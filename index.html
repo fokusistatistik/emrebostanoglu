@@ -385,10 +385,36 @@
         </div>
     </section>
 
+    <!-- Announcements / Featured Content -->
+    <section class="py-20 bg-[#1a1a1a] border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-cinzel text-white mb-2">Son Güncellemeler</h2>
+                    <p class="text-gray-400">Makaleler, videolar ve duyurular</p>
+                </div>
+                <a href="blog.html" class="border border-data-blue text-data-blue px-6 py-3 rounded-full hover:bg-data-blue hover:text-white transition-all uppercase tracking-widest text-sm font-bold">
+                    Tümünü Gör
+                </a>
+            </div>
+
+            <div id="featured-content" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Featured content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
     <!-- Scripts -->
+    <script src="js/content-manager.js"></script>
+    <script>
+        // Initialize homepage announcements
+        ContentManager.init().then(() => {
+            ContentManager.initHomepageAnnouncements();
+        });
+    </script>
     <script src="js/app.js"></script>
     <!-- Interactive Features -->
     <script src="js/chatbot.js"></script>
