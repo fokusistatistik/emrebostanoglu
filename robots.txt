@@ -1,0 +1,20 @@
+# robots.txt for emrebostanoglu.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://emrebostanoglu.com/sitemap.xml
+
+# Disallow specific paths
+Disallow: /js/
+Disallow: /css/
+Disallow: /content/
+Disallow: /translations/
+
+# Allow search engines to index main content
+Allow: /*.html
+Allow: /*.json
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 10

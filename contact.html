@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim | Emre Bostanoğlu</title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
     <meta name="description" content="Emre Bostanoğlu ile iletişime geçin. Proje işbirlikleri, danışmanlık talepleri ve diğer konular için iletişim formu.">
 
     <!-- Google Fonts -->
@@ -334,6 +337,15 @@
     <!-- Interactive Features -->
     <script src="js/chatbot.js"></script>
     <script src="js/exit-intent.js"></script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((reg) => console.log('SW registered', reg.scope)).catch((err) => console.log('SW failed', err));
+            });
+        }
+    </script>
 
 </body>
 </html>

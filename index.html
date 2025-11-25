@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emre Bostanoğlu | Fotoğraf, Veri, Sanat</title>
     <meta name="description" content="Emre Bostanoğlu kişisel web sitesi. Fotoğraf Atölyesi, Fokus Veri Bilimi, Kitaplar ve Filmler.">
+    <meta name="keywords" content="Emre Bostanoğlu, fotoğraf, veri bilimi, yazar, yönetmen, EFIAP, data science, photography">
+    <meta name="author" content="Emre Bostanoğlu">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,6 +95,95 @@
             </div>
         </div>
     </section>
+
+    <!-- Stats Counter -->
+    <section class="py-16 bg-black/50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="text-center">
+                    <div class="stat-number text-4xl md:text-5xl font-bold mb-2" data-target="300" data-suffix="+">0+</div>
+                    <p class="text-gray-400 text-sm md:text-base">Fotoğraf Ödülü</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center">
+                    <div class="stat-number text-4xl md:text-5xl font-bold mb-2" data-target="3" data-suffix=" Kitap">0 Kitap</div>
+                    <p class="text-gray-400 text-sm md:text-base">Yayınlanmış Eser</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center">
+                    <div class="stat-number text-4xl md:text-5xl font-bold mb-2" data-target="15" data-suffix="+ Yıl">0+ Yıl</div>
+                    <p class="text-gray-400 text-sm md:text-base">Profesyonel Deneyim</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center">
+                    <div class="stat-number text-4xl md:text-5xl font-bold mb-2" data-target="50" data-suffix="+">0+</div>
+                    <p class="text-gray-400 text-sm md:text-base">Proje & İşbirliği</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .stat-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #d4af37 50%, #e50914 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+
+    <script>
+        // Animated Counter
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const suffix = element.dataset.suffix || '';
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + suffix;
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => animateCounter(counter));
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section
+        window.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('.grid.grid-cols-2.md\\:grid-cols-4');
+            if (statsSection) {
+                observer.observe(statsSection.parentElement);
+            }
+        });
+    </script>
 
     <!-- HAKKIMDA -->
     <section id="about" class="py-20 lg:py-28 px-4 bg-dark-bg border-b border-gray-800 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
@@ -419,6 +515,21 @@
     <!-- Interactive Features -->
     <script src="js/chatbot.js"></script>
     <script src="js/exit-intent.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sayfa Bulunamadı | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- i18n System -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+
+        .glitch {
+            position: relative;
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            letter-spacing: 0.1em;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #3b82f6;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #d4af37, 2px 2px #3b82f6;
+            animation: glitch-anim2 1s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 31px, 0); transform: skew(0.5deg); }
+            5% { clip: rect(70px, 9999px, 71px, 0); transform: skew(0.2deg); }
+            10% { clip: rect(30px, 9999px, 91px, 0); transform: skew(0.8deg); }
+            15% { clip: rect(60px, 9999px, 31px, 0); transform: skew(0.3deg); }
+            20% { clip: rect(10px, 9999px, 85px, 0); transform: skew(0.6deg); }
+            25% { clip: rect(40px, 9999px, 61px, 0); transform: skew(0.4deg); }
+            30% { clip: rect(80px, 9999px, 21px, 0); transform: skew(0.7deg); }
+            35% { clip: rect(20px, 9999px, 95px, 0); transform: skew(0.2deg); }
+            40% { clip: rect(50px, 9999px, 51px, 0); transform: skew(0.9deg); }
+            100% { clip: rect(70px, 9999px, 11px, 0); transform: skew(0.1deg); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); transform: skew(0.7deg); }
+            5% { clip: rect(25px, 9999px, 99px, 0); transform: skew(0.4deg); }
+            10% { clip: rect(50px, 9999px, 102px, 0); transform: skew(0.5deg); }
+            15% { clip: rect(5px, 9999px, 38px, 0); transform: skew(0.3deg); }
+            20% { clip: rect(75px, 9999px, 130px, 0); transform: skew(0.8deg); }
+            100% { clip: rect(30px, 9999px, 73px, 0); transform: skew(0.2deg); }
+        }
+
+        @keyframes glitch-skew {
+            0% { transform: skew(1deg); }
+            10% { transform: skew(-2deg); }
+            20% { transform: skew(0deg); }
+            30% { transform: skew(3deg); }
+            40% { transform: skew(-1deg); }
+            50% { transform: skew(2deg); }
+            60% { transform: skew(-3deg); }
+            70% { transform: skew(0deg); }
+            80% { transform: skew(1deg); }
+            90% { transform: skew(-1deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center text-white font-sans antialiased">
+
+    <div class="text-center px-4 py-20">
+        <!-- Floating Icons -->
+        <div class="mb-8 relative">
+            <div class="floating inline-block">
+                <i class="fas fa-ghost text-6xl text-gray-500 opacity-50"></i>
+            </div>
+        </div>
+
+        <!-- 404 Glitch Effect -->
+        <h1 class="glitch mb-8" data-text="404">404</h1>
+
+        <!-- Messages -->
+        <h2 class="text-3xl md:text-4xl font-cinzel mb-4" data-i18n="error404.title">
+            Sayfa Bulunamadı
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto" data-i18n="error404.description">
+            Aradığınız sayfa mevcut değil veya taşınmış olabilir. Ana sayfaya dönebilir veya arama yapabilirsiniz.
+        </p>
+
+        <!-- Quick Links -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+            <a href="index.html" class="p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-data-blue hover:bg-white/10 transition group">
+                <i class="fas fa-home text-3xl text-data-blue mb-2 group-hover:scale-110 transition"></i>
+                <p class="text-sm" data-i18n="nav.home">Ana Sayfa</p>
+            </a>
+
+            <a href="photography.html" class="p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-art-gold hover:bg-white/10 transition group">
+                <i class="fas fa-camera text-3xl text-art-gold mb-2 group-hover:scale-110 transition"></i>
+                <p class="text-sm" data-i18n="nav.photography">Fotoğraf</p>
+            </a>
+
+            <a href="blog.html" class="p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-writer-paper hover:bg-white/10 transition group">
+                <i class="fas fa-newspaper text-3xl text-writer-paper mb-2 group-hover:scale-110 transition"></i>
+                <p class="text-sm">Blog</p>
+            </a>
+
+            <a href="contact.html" class="p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-director-red hover:bg-white/10 transition group">
+                <i class="fas fa-envelope text-3xl text-director-red mb-2 group-hover:scale-110 transition"></i>
+                <p class="text-sm" data-i18n="nav.contact">İletişim</p>
+            </a>
+        </div>
+
+        <!-- Back Button -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button onclick="history.back()" class="px-8 py-4 bg-gradient-to-r from-data-blue to-art-gold text-white rounded-full font-bold hover:scale-105 transition pulse-glow flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i>
+                <span data-i18n="common.back">Geri Dön</span>
+            </button>
+
+            <a href="index.html" class="px-8 py-4 border-2 border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition flex items-center gap-2">
+                <i class="fas fa-home"></i>
+                <span data-i18n="nav.home">Ana Sayfa</span>
+            </a>
+        </div>
+
+        <!-- Fun Fact -->
+        <div class="mt-16 p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 max-w-md mx-auto">
+            <p class="text-sm text-gray-400 italic">
+                <i class="fas fa-lightbulb text-art-gold mr-2"></i>
+                <span data-i18n="error404.fun_fact">
+                    İlginç Bilgi: HTTP 404 hata kodu, 1992 yılından beri kullanılmaktadır.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Initialize Components -->
+    <script>
+        // Language detection
+        if (typeof I18N !== 'undefined') {
+            I18N.init();
+        }
+    </script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((reg) => console.log('SW registered', reg.scope)).catch((err) => console.log('SW failed', err));
+            });
+        }
+    </script>
+
+</body>
+</html>

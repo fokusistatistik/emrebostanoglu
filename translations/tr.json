@@ -143,5 +143,10 @@
     "note": "Spam göndermiyoruz. İstediğiniz zaman abonelikten çıkabilirsiniz.",
     "success_title": "Teşekkürler!",
     "success_message": "Başarıyla abone oldunuz. E-postanızı kontrol edin."
+  },
+  "error404": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir. Ana sayfaya dönebilir veya arama yapabilirsiniz.",
+    "fun_fact": "İlginç Bilgi: HTTP 404 hata kodu, 1992 yılından beri kullanılmaktadır."
   }
 }

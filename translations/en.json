@@ -143,5 +143,10 @@
     "note": "We don't send spam. You can unsubscribe at any time.",
     "success_title": "Thank You!",
     "success_message": "Successfully subscribed. Check your email."
+  },
+  "error404": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or may have been moved. You can return to the homepage or search.",
+    "fun_fact": "Fun Fact: The HTTP 404 error code has been used since 1992."
   }
 }

@@ -1,0 +1,81 @@
+{
+  "name": "Emre Bostanoğlu - Fotoğraf, Veri, Sanat",
+  "short_name": "EB Portfolio",
+  "description": "Emre Bostanoğlu'nun kişisel web sitesi. Fotoğraf sanatçısı, veri bilimci, yazar ve yönetmen.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#2c3335",
+  "theme_color": "#2c3335",
+  "orientation": "portrait-primary",
+  "lang": "tr",
+  "dir": "ltr",
+  "categories": [
+    "photography",
+    "art",
+    "portfolio",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "https://static.fokusistatistik.com/resimler/ebfavicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://static.fokusistatistik.com/resimler/ebfavicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Fotoğraf Galerisi",
+      "short_name": "Fotoğraf",
+      "description": "Fotoğraf portfolyomu görüntüle",
+      "url": "/photography.html",
+      "icons": [
+        {
+          "src": "https://static.fokusistatistik.com/resimler/ebfavicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Blog & Makaleler",
+      "short_name": "Blog",
+      "description": "Yazılarımı oku",
+      "url": "/blog.html",
+      "icons": [
+        {
+          "src": "https://static.fokusistatistik.com/resimler/ebfavicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "İletişim",
+      "short_name": "İletişim",
+      "description": "Benimle iletişime geç",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "https://static.fokusistatistik.com/resimler/ebfavicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/contact.html",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}
