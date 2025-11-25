@@ -71,9 +71,12 @@
                     </p>
                     <a href="https://www.kitapyurdu.com/kitap/bos-buyuk-ortadogu-savasi/125887.html"
                        target="_blank"
-                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">
+                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm mb-4 inline-block">
                        İncele & Satın Al
                     </a>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <div id="share-book-1"></div>
+                    </div>
                 </div>
 
                 <!-- Book 2: Neden Müslüman Oldum -->
@@ -91,9 +94,12 @@
                     </p>
                     <a href="https://www.kitapyurdu.com/kitap/neden-musluman-oldum/568775.html"
                        target="_blank"
-                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">
+                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm mb-4 inline-block">
                        İncele & Satın Al
                     </a>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <div id="share-book-2"></div>
+                    </div>
                 </div>
 
                 <!-- Book 3: İbrahim'i Duyarken -->
@@ -111,13 +117,49 @@
                     </p>
                     <a href="https://www.kitapyurdu.com/kitap/ibrahimi-duyarken/609309.html"
                        target="_blank"
-                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">
+                       class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm mb-4 inline-block">
                        İncele & Satın Al
                     </a>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <div id="share-book-3"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Initialize Share Buttons -->
+    <script>
+        // Wait for page load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Book 1: Büyük Ortadoğu Savaşı
+            loadShareButtons('share-book-1', {
+                url: 'https://www.kitapyurdu.com/kitap/bos-buyuk-ortadogu-savasi/125887.html',
+                title: 'B.O.S - Büyük Ortadoğu Savaşı - Emre Bostanoğlu',
+                description: 'Amerika\'nın Büyük Ortadoğu Projesi ve TUGT ajanlarının operasyonlarını konu alan siyasi kurgu.',
+                layout: 'horizontal',
+                showLabels: false
+            });
+
+            // Book 2: Neden Müslüman Oldum
+            loadShareButtons('share-book-2', {
+                url: 'https://www.kitapyurdu.com/kitap/neden-musluman-oldum/568775.html',
+                title: 'Neden Müslüman Oldum - Emre Bostanoğlu',
+                description: 'Kuran ışığında İslam\'ı sorgulayan, mezhepleri ve hadisleri inceleyen felsefi bir yolculuk.',
+                layout: 'horizontal',
+                showLabels: false
+            });
+
+            // Book 3: İbrahim'i Duyarken
+            loadShareButtons('share-book-3', {
+                url: 'https://www.kitapyurdu.com/kitap/ibrahimi-duyarken/609309.html',
+                title: 'İbrahim\'i Duyarken - Emre Bostanoğlu',
+                description: 'Şiirsel bir dille yazılmış, İbrahim karakteri üzerinden yeniden doğuşu anlatan edebi roman.',
+                layout: 'horizontal',
+                showLabels: false
+            });
+        });
+    </script>
 
     <!-- Articles List -->
     <section class="py-20 bg-[#2b3035] border-t border-gray-800">

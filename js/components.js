@@ -20,6 +20,7 @@ const SITE_CONFIG = {
         px500: 'https://500px.com/p/myth1453',
         twitter: 'https://twitter.com/emrebostanoglu',
         facebook: 'https://www.facebook.com/emrebostanoglufotografatolyesi',
+        spotify: null, // Will be provided by user
         linkedin: null,
         github: null,
         telegram: null,
@@ -119,6 +120,7 @@ function getFooterHTML() {
         { url: social.facebook, icon: 'fab fa-facebook', color: 'hover:text-blue-600', name: 'Facebook' },
         { url: social.vimeo, icon: 'fab fa-vimeo', color: 'hover:text-blue-500', name: 'Vimeo' },
         { url: social.px500, icon: 'fas fa-camera', color: 'hover:text-art-gold', name: '500px' },
+        { url: social.spotify, icon: 'fab fa-spotify', color: 'hover:text-green-500', name: 'Spotify' },
         { url: social.linkedin, icon: 'fab fa-linkedin', color: 'hover:text-blue-700', name: 'LinkedIn' },
         { url: social.youtube, icon: 'fab fa-youtube', color: 'hover:text-red-600', name: 'YouTube' },
         { url: social.github, icon: 'fab fa-github', color: 'hover:text-white', name: 'GitHub' },
@@ -414,5 +416,106 @@ function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) {
         mobileMenu.classList.toggle('hidden');
+    }
+}
+
+/**
+ * Share Buttons Component
+ * Generates social media share buttons for content
+ * @param {Object} options - Share options
+ * @param {string} options.url - URL to share (defaults to current page)
+ * @param {string} options.title - Title to share (defaults to page title)
+ * @param {string} options.description - Description for sharing
+ * @param {string} options.layout - Layout style: 'horizontal' or 'vertical' (default: 'horizontal')
+ * @param {boolean} options.showLabels - Show button labels (default: false)
+ * @returns {string} HTML string for share buttons
+ */
+function getShareButtonsHTML(options = {}) {
+    const {
+        url = window.location.href,
+        title = document.title,
+        description = '',
+        layout = 'horizontal',
+        showLabels = false
+    } = options;
+
+    const encodedUrl = encodeURIComponent(url);
+    const encodedTitle = encodeURIComponent(title);
+    const encodedDescription = encodeURIComponent(description);
+
+    const shareButtons = [
+        {
+            name: 'Facebook',
+            icon: 'fab fa-facebook-f',
+            color: 'bg-blue-600 hover:bg-blue-700',
+            url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+        },
+        {
+            name: 'Twitter',
+            icon: 'fab fa-twitter',
+            color: 'bg-blue-400 hover:bg-blue-500',
+            url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+        },
+        {
+            name: 'LinkedIn',
+            icon: 'fab fa-linkedin-in',
+            color: 'bg-blue-700 hover:bg-blue-800',
+            url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+        },
+        {
+            name: 'WhatsApp',
+            icon: 'fab fa-whatsapp',
+            color: 'bg-green-500 hover:bg-green-600',
+            url: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`
+        },
+        {
+            name: 'Telegram',
+            icon: 'fab fa-telegram-plane',
+            color: 'bg-blue-500 hover:bg-blue-600',
+            url: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`
+        },
+        {
+            name: 'Email',
+            icon: 'fas fa-envelope',
+            color: 'bg-gray-600 hover:bg-gray-700',
+            url: `mailto:?subject=${encodedTitle}&body=${encodedDescription}%0A%0A${encodedUrl}`
+        }
+    ];
+
+    const flexDirection = layout === 'vertical' ? 'flex-col' : 'flex-row flex-wrap';
+    const buttonSize = showLabels ? 'px-4 py-2' : 'w-10 h-10';
+    const gapSize = layout === 'vertical' ? 'gap-2' : 'gap-3';
+
+    const buttonsHTML = shareButtons.map(button => `
+        <a href="${button.url}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="${button.color} ${buttonSize} rounded-lg text-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-md hover:shadow-lg"
+           aria-label="${button.name} ile paylaş"
+           title="${button.name} ile paylaş">
+            <i class="${button.icon}"></i>
+            ${showLabels ? `<span class="ml-2 text-sm font-semibold">${button.name}</span>` : ''}
+        </a>
+    `).join('');
+
+    return `
+        <div class="share-buttons-container">
+            <div class="flex ${flexDirection} ${gapSize} items-center">
+                ${showLabels ? '<span class="text-gray-400 text-sm font-semibold mr-2">Paylaş:</span>' : ''}
+                ${buttonsHTML}
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load share buttons into a container
+ * @param {string} containerId - ID of the container element
+ * @param {Object} options - Share options (same as getShareButtonsHTML)
+ */
+function loadShareButtons(containerId, options = {}) {
+    const container = document.getElementById(containerId);
+    if (container) {
+        container.innerHTML = getShareButtonsHTML(options);
     }
 }
