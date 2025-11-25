@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fotoğraf | Emre Bostanoğlu</title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
-    <meta name="description" content="Emre Bostanoğlu fotoğraf portfolyosu. Doğa, portre, sokak ve siyah beyaz fotoğraf çalışmaları.">
+    <meta name="description" content="Emre Bostanoğlu fotoğraf portfolyosu. 300+ ödüllü fotoğraf sanatçısı, EFIAP, CR2 unvanlı.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,26 +25,241 @@
     <script src="js/components.js"></script>
 
     <style>
-        .masonry-grid {
-            column-count: 1;
-            column-gap: 1.5rem;
+        /* Main Photo Showcase */
+        .photo-showcase {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        @media (min-width: 640px) {
-            .masonry-grid {
-                column-count: 2;
+        .main-photo-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3335;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .main-photo {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                0 10px 30px rgba(0, 0, 0, 0.6),
+                0 5px 15px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-photo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: #000;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(212, 175, 55, 1);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-arrow.prev {
+            left: 20px;
+        }
+
+        .nav-arrow.next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .nav-arrow.prev {
+                left: 10px;
+            }
+
+            .nav-arrow.next {
+                right: 10px;
             }
         }
 
-        @media (min-width: 1024px) {
-            .masonry-grid {
-                column-count: 3;
+        /* Photo Info */
+        .photo-info {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Film Strip */
+        .film-strip-container {
+            position: relative;
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .film-strip {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 0 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #2c3335;
+        }
+
+        .film-strip::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .film-strip::-webkit-scrollbar-track {
+            background: #2c3335;
+            border-radius: 4px;
+        }
+
+        .film-strip::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        .film-strip::-webkit-scrollbar-thumb:hover {
+            background: #e5c158;
+        }
+
+        .film-thumbnail {
+            flex: 0 0 120px;
+            height: 80px;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .film-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .film-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .film-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        .film-thumbnail.active {
+            border-color: #d4af37;
+            box-shadow:
+                0 0 20px rgba(212, 175, 55, 0.6),
+                0 8px 16px rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .film-thumbnail.active::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .film-thumbnail {
+                flex: 0 0 100px;
+                height: 65px;
+            }
+
+            .main-photo-container {
+                height: 50vh;
+                min-height: 400px;
             }
         }
 
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
+        /* Loading Animation */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Fade Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Photo Counter */
+        .photo-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .photo-counter {
+                top: 10px;
+                right: 10px;
+                padding: 0.3rem 0.7rem;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -58,81 +273,66 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <span class="text-art-gold font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Portfolyo</span>
             <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Işık ve Gölge</h1>
-            <p class="text-gray-400 max-w-2xl mx-auto">
+            <p class="text-gray-400 max-w-2xl mx-auto mb-2">
                 Anı dondurmak, zamanı mühürlemektir. Her kare, anlatılmayı bekleyen sessiz bir hikayedir.
             </p>
-
-            <!-- Categories -->
-            <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <button class="px-6 py-2 rounded-full border border-art-gold bg-art-gold text-black font-bold text-sm transition hover:bg-white hover:border-white">Tümü</button>
-                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Portre</button>
-                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Doğa</button>
-                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Sokak</button>
-                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Siyah Beyaz</button>
-            </div>
+            <p class="text-art-gold text-sm font-semibold">
+                300+ Ödül • EFIAP • CR2 • FIAP Dünya Kupası Bronz Madalya
+            </p>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-16 bg-dark-bg min-h-screen">
+    <section class="py-20 bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="masonry-grid">
 
-                <!-- Item 1 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1542038784456-1ea0e93ca64b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Portre</span>
-                        <h3 class="text-white font-serif text-xl">Anadolu İnsanı</h3>
+            <!-- Photo Showcase -->
+            <div class="photo-showcase">
+                <div class="main-photo-container">
+                    <!-- Photo Counter -->
+                    <div class="photo-counter">
+                        <span id="current-index">1</span> / <span id="total-photos">50</span>
                     </div>
+
+                    <!-- Previous Arrow -->
+                    <button class="nav-arrow prev" id="prev-btn" aria-label="Önceki Fotoğraf">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <!-- Main Photo -->
+                    <img id="main-photo" class="main-photo fade-in" src="" alt="Portfolio Photo">
+
+                    <!-- Next Arrow -->
+                    <button class="nav-arrow next" id="next-btn" aria-label="Sonraki Fotoğraf">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Doğa</span>
-                        <h3 class="text-white font-serif text-xl">Yayla Işığı</h3>
-                    </div>
+                <!-- Photo Info -->
+                <div class="photo-info">
+                    <p class="text-white font-semibold text-lg">
+                        <i class="fas fa-map-marker-alt text-art-gold mr-2"></i>
+                        <span id="photo-location">Türkiye</span>
+                        <span class="text-gray-500 mx-3">•</span>
+                        <i class="fas fa-calendar text-art-gold mr-2"></i>
+                        <span id="photo-year">2025</span>
+                    </p>
                 </div>
-
-                <!-- Item 3 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700 grayscale hover:grayscale-0">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Siyah Beyaz</span>
-                        <h3 class="text-white font-serif text-xl">Gölge Oyunları</h3>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Kurgusal</span>
-                        <h3 class="text-white font-serif text-xl">Zamanın Ruhu</h3>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Sokak</span>
-                        <h3 class="text-white font-serif text-xl">Şehrin Ritmi</h3>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="masonry-item relative group overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
-                        <span class="text-art-gold text-xs font-bold uppercase">Portre</span>
-                        <h3 class="text-white font-serif text-xl">Bakışlar</h3>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Film Strip -->
+            <div class="film-strip-container">
+                <div class="text-center mb-4">
+                    <span class="text-gray-500 text-sm uppercase tracking-widest">
+                        <i class="fas fa-film text-art-gold mr-2"></i>
+                        Film Şeridi
+                    </span>
+                </div>
+                <div class="film-strip" id="film-strip">
+                    <!-- Thumbnails will be generated by JavaScript -->
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -142,6 +342,186 @@
     <!-- Initialize Components -->
     <script>
         loadComponents('photography');
+    </script>
+
+    <!-- Gallery Script -->
+    <script>
+        // Photo data (50 photos)
+        const photos = [];
+        const BASE_URL = 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/';
+
+        // Generate 50 photo objects
+        for (let i = 1; i <= 50; i++) {
+            photos.push({
+                id: i,
+                url: `${BASE_URL}foto${i}.jpg`,
+                location: 'Türkiye',
+                year: '2025'
+            });
+        }
+
+        // State
+        let currentIndex = 0;
+
+        // Elements
+        const mainPhoto = document.getElementById('main-photo');
+        const currentIndexEl = document.getElementById('current-index');
+        const totalPhotosEl = document.getElementById('total-photos');
+        const photoLocation = document.getElementById('photo-location');
+        const photoYear = document.getElementById('photo-year');
+        const filmStrip = document.getElementById('film-strip');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Set total photos
+        totalPhotosEl.textContent = photos.length;
+
+        // Generate film strip thumbnails
+        function generateFilmStrip() {
+            filmStrip.innerHTML = '';
+            photos.forEach((photo, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'film-thumbnail';
+                thumbnail.setAttribute('data-index', index);
+                if (index === 0) thumbnail.classList.add('active');
+
+                const img = document.createElement('img');
+                img.src = photo.url;
+                img.alt = `Photo ${index + 1}`;
+                img.loading = 'lazy';
+
+                thumbnail.appendChild(img);
+                filmStrip.appendChild(thumbnail);
+
+                // Click handler
+                thumbnail.addEventListener('click', () => {
+                    goToPhoto(index);
+                });
+            });
+        }
+
+        // Update main photo
+        function updatePhoto(index) {
+            const photo = photos[index];
+
+            // Add fade effect
+            mainPhoto.classList.remove('fade-in');
+            mainPhoto.classList.add('loading');
+
+            setTimeout(() => {
+                mainPhoto.src = photo.url;
+                mainPhoto.alt = `${photo.location} - ${photo.year}`;
+                currentIndexEl.textContent = index + 1;
+                photoLocation.textContent = photo.location;
+                photoYear.textContent = photo.year;
+
+                mainPhoto.classList.remove('loading');
+                mainPhoto.classList.add('fade-in');
+
+                // Update active thumbnail
+                updateActiveThumbnail(index);
+
+                // Scroll thumbnail into view
+                scrollToThumbnail(index);
+            }, 150);
+        }
+
+        // Update active thumbnail
+        function updateActiveThumbnail(index) {
+            const thumbnails = document.querySelectorAll('.film-thumbnail');
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // Scroll to thumbnail
+        function scrollToThumbnail(index) {
+            const thumbnail = filmStrip.querySelector(`[data-index="${index}"]`);
+            if (thumbnail) {
+                thumbnail.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+
+        // Navigation functions
+        function goToPhoto(index) {
+            if (index >= 0 && index < photos.length) {
+                currentIndex = index;
+                updatePhoto(currentIndex);
+            }
+        }
+
+        function nextPhoto() {
+            currentIndex = (currentIndex + 1) % photos.length;
+            updatePhoto(currentIndex);
+        }
+
+        function prevPhoto() {
+            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+            updatePhoto(currentIndex);
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevPhoto);
+        nextBtn.addEventListener('click', nextPhoto);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevPhoto();
+            } else if (e.key === 'ArrowRight') {
+                nextPhoto();
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        mainPhoto.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        mainPhoto.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next photo
+                    nextPhoto();
+                } else {
+                    // Swipe right - prev photo
+                    prevPhoto();
+                }
+            }
+        }
+
+        // Initialize
+        generateFilmStrip();
+        updatePhoto(0);
+
+        // Preload next few images
+        function preloadImages() {
+            for (let i = 1; i <= 5; i++) {
+                const img = new Image();
+                img.src = photos[i % photos.length].url;
+            }
+        }
+
+        preloadImages();
     </script>
 
 </body>
