@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotoğraf | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <meta name="description" content="Emre Bostanoğlu fotoğraf portfolyosu. Doğa, portre, sokak ve siyah beyaz fotoğraf çalışmaları.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-art-gold selection:text-black">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-art-gold font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Portfolyo</span>
+            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Işık ve Gölge</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Anı dondurmak, zamanı mühürlemektir. Her kare, anlatılmayı bekleyen sessiz bir hikayedir.
+            </p>
+
+            <!-- Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <button class="px-6 py-2 rounded-full border border-art-gold bg-art-gold text-black font-bold text-sm transition hover:bg-white hover:border-white">Tümü</button>
+                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Portre</button>
+                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Doğa</button>
+                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Sokak</button>
+                <button class="px-6 py-2 rounded-full border border-gray-700 text-gray-300 font-bold text-sm transition hover:border-art-gold hover:text-art-gold">Siyah Beyaz</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-dark-bg min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="masonry-grid">
+
+                <!-- Item 1 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1542038784456-1ea0e93ca64b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Portre</span>
+                        <h3 class="text-white font-serif text-xl">Anadolu İnsanı</h3>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Doğa</span>
+                        <h3 class="text-white font-serif text-xl">Yayla Işığı</h3>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700 grayscale hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Siyah Beyaz</span>
+                        <h3 class="text-white font-serif text-xl">Gölge Oyunları</h3>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Kurgusal</span>
+                        <h3 class="text-white font-serif text-xl">Zamanın Ruhu</h3>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1554048612-387768052bf7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Sokak</span>
+                        <h3 class="text-white font-serif text-xl">Şehrin Ritmi</h3>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-auto transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                        <span class="text-art-gold text-xs font-bold uppercase">Portre</span>
+                        <h3 class="text-white font-serif text-xl">Bakışlar</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('photography');
+    </script>
+
+</body>
+</html>

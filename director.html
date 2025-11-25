@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetmen | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <meta name="description" content="Emre Bostanoğlu film projeleri ve senaryoları. Kısa filmler, belgeseller ve video art çalışmaları.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        .film-poster {
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .film-card:hover .film-poster {
+            transform: scale(1.05);
+            filter: brightness(0.4);
+        }
+
+        .play-button {
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .film-card:hover .play-button {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-director-red selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-director-red font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Sinematografi</span>
+            <h1 class="text-4xl md:text-6xl font-cinzel text-white font-bold mb-6">Vizörün Arkası</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Hareketli görüntülerle anlatılan hikayeler. Kurgu, belgesel ve deneysel sinema çalışmaları.
+            </p>
+        </div>
+    </section>
+
+    <!-- Films Grid -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <!-- Film 1 -->
+                <div class="film-card relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" class="w-full h-80 object-cover film-poster">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 play-button">
+                        <i class="fas fa-play-circle text-7xl text-white drop-shadow-lg"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                        <span class="text-director-red text-xs font-bold uppercase tracking-wider">Kısa Film</span>
+                        <h3 class="text-white font-cinzel text-2xl mt-1">Sessiz Yankı</h3>
+                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-300">
+                            Şehrin gürültüsünde kaybolan bir müzisyenin içsel yolculuğu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 2 -->
+                <div class="film-card relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" class="w-full h-80 object-cover film-poster">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 play-button">
+                        <i class="fas fa-play-circle text-7xl text-white drop-shadow-lg"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                        <span class="text-director-red text-xs font-bold uppercase tracking-wider">Belgesel</span>
+                        <h3 class="text-white font-cinzel text-2xl mt-1">Anadolu'nun Renkleri</h3>
+                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-300">
+                            Unutulmaya yüz tutmuş geleneksel el sanatlarının son temsilcileri.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 3 -->
+                <div class="film-card relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" class="w-full h-80 object-cover film-poster">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 play-button">
+                        <i class="fas fa-play-circle text-7xl text-white drop-shadow-lg"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                        <span class="text-director-red text-xs font-bold uppercase tracking-wider">Video Art</span>
+                        <h3 class="text-white font-cinzel text-2xl mt-1">Dijital Kaos</h3>
+                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-300">
+                            Veri akışının görselleştirildiği deneysel bir çalışma.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Film 4 -->
+                <div class="film-card relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" class="w-full h-80 object-cover film-poster">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 play-button">
+                        <i class="fas fa-play-circle text-7xl text-white drop-shadow-lg"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                        <span class="text-director-red text-xs font-bold uppercase tracking-wider">Kısa Film</span>
+                        <h3 class="text-white font-cinzel text-2xl mt-1">Son Tren</h3>
+                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition duration-300">
+                            İstasyonda bekleyen iki yabancının kesişen hayatları.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('director');
+    </script>
+
+</body>
+</html>

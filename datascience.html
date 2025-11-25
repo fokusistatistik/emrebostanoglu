@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Bilimi | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <meta name="description" content="FOKUS İstatistik ve Veri Bilimi Danışmanlığı. Yapay Zeka, Büyük Veri ve İstatistiksel Analiz hizmetleri.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-data-blue font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Analitik Çözümler</span>
+            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Veri Bilimi & Yapay Zeka</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Karmaşık verilerden anlamlı içgörüler elde etmek için istatistiksel modelleme ve yapay zeka teknolojilerini kullanıyoruz.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-data-blue transition group">
+                    <div class="w-14 h-14 bg-blue-900/30 rounded-lg flex items-center justify-center text-data-blue mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Yapay Zeka Çözümleri</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Derin öğrenme ve makine öğrenmesi algoritmaları ile iş süreçlerinizi optimize eden akıllı sistemler geliştiriyoruz.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Görüntü İşleme</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Doğal Dil İşleme (NLP)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Tahminleyici Analitik</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-green-500 transition group">
+                    <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center text-green-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">İstatistiksel Analiz</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Akademik ve kurumsal araştırmalarınız için güvenilir istatistiksel testler, hipotez kontrolleri ve raporlama.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> SPSS / R Analizleri</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Pazar Araştırmaları</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> A/B Testleri</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-purple-500 transition group">
+                    <div class="w-14 h-14 bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-database text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Big Data & BI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Büyük veri setlerinin yönetimi ve interaktif dashboardlar ile veriye dayalı karar alma süreçlerinin inşası.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> PowerBI / Tableau</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> SQL Veritabanı Yönetimi</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> ETL Süreçleri</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-gray-500 uppercase tracking-widest text-sm font-bold mb-10">Kullandığımız Teknolojiler</h3>
+            <div class="flex justify-center flex-wrap gap-8 md:gap-16 text-4xl text-gray-600">
+                <i class="fab fa-python tech-icon" title="Python"></i>
+                <i class="fab fa-r-project tech-icon" title="R Project"></i>
+                <i class="fas fa-database tech-icon" title="SQL"></i>
+                <i class="fab fa-aws tech-icon" title="AWS"></i>
+                <i class="fab fa-docker tech-icon" title="Docker"></i>
+                <i class="fas fa-chart-bar tech-icon" title="Tableau"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('datascience');
+    </script>
+
+</body>
+</html>

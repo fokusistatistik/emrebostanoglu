@@ -7,7 +7,7 @@ const SITE_CONFIG = {
     logoUrl: 'https://static.fokusistatistik.com/resimler/eblogonavbar.png',
     favicon: 'https://static.fokusistatistik.com/resimler/ebfavicon.png',
     colors: {
-        primary: '#2c3335', // New Corporate Color
+        primary: '#2c3335', // Corporate Color
         gold: '#d4af37',
         blue: '#3b82f6',
         paper: '#f5f5dc',
@@ -99,46 +99,24 @@ function getNavbarHTML(activePage) {
 function getFooterHTML() {
     const year = new Date().getFullYear();
     return `
-    <footer class="bg-dark-bg border-t border-gray-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="flex items-center mb-4">
-                        <img src="${SITE_CONFIG.logoUrl}" alt="Emre Bostanoğlu Logo" class="h-8 w-auto">
-                    </a>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">
-                        Veri ile gerçeği, ışık ile anı, kelimelerle hikayeyi, vizörle dünyayı keşfediyorum.
-                        Disiplinlerarası bir yaklaşımla sanat ve bilimi buluşturuyorum.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Hızlı Erişim</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="about.html" class="hover:text-white transition">Hakkımda</a></li>
-                        <li><a href="datascience.html" class="hover:text-data-blue transition">Veri Bilimi</a></li>
-                        <li><a href="photography.html" class="hover:text-art-gold transition">Fotoğraf</a></li>
-                        <li><a href="writer.html" class="hover:text-writer-paper transition">Kitaplar</a></li>
-                        <li><a href="director.html" class="hover:text-director-red transition">Filmler</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">İletişim</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="mailto:info@emrebostanoglu.com" class="hover:text-white transition">info@emrebostanoglu.com</a></li>
-                        <li>İstanbul, Türkiye</li>
-                        <li class="flex space-x-4 mt-4">
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-lg"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-lg"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin text-lg"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-lg"></i></a>
-                        </li>
-                    </ul>
-                </div>
+    <footer id="contact" class="bg-black py-16 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-serif text-white mb-8">İletişime Geçin</h2>
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <a href="mailto:info@emrebostanoglu.com" class="text-lg text-gray-400 hover:text-white transition">info@emrebostanoglu.com</a>
             </div>
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-xs">© ${year} Emre Bostanoğlu. Tüm hakları saklıdır.</p>
-                <p class="text-gray-600 text-xs mt-2 md:mt-0">Designed by <span class="text-gray-500">EB.com AI</span></p>
+
+            <div class="flex justify-center space-x-6 mb-12">
+                <a href="#" class="text-2xl text-gray-500 hover:text-art-gold transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-2xl text-gray-500 hover:text-data-blue transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-2xl text-gray-500 hover:text-white transition"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-2xl text-gray-500 hover:text-director-red transition"><i class="fab fa-youtube"></i></a>
             </div>
+
+            <p class="text-gray-600 text-sm">
+                © ${year} Emre Bostanoğlu. <br>
+                <span class="text-xs">Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema</span>
+            </p>
         </div>
     </footer>
     `;

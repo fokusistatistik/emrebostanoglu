@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazar | Emre Bostanoğlu</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <meta name="description" content="Emre Bostanoğlu kitapları ve makaleleri. Fotoğrafın Dili, Veri İle Düşünmek ve Yapay Ufuklar.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        .book-3d {
+            transition: transform 0.5s ease;
+            transform-style: preserve-3d;
+            box-shadow: -15px 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .book-3d:hover {
+            transform: rotateY(-10deg) scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-writer-paper selection:text-black">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-writer-paper font-bold tracking-[0.3em] text-sm uppercase mb-4 block font-sans">Kelimelerin Gücü</span>
+            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Yazarın Masası</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto italic text-lg">
+                "Sözcükler, düşüncenin mimarisidir. Her kitap, zihinde inşa edilen yeni bir evrendir."
+            </p>
+        </div>
+    </section>
+
+    <!-- Books Showcase -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <!-- Book 1 -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-64 h-96 bg-gray-800 rounded-r-lg book-3d relative mb-8 border-l-4 border-gray-600">
+                        <div class="absolute inset-0 bg-cover bg-center rounded-r-lg" style="background-image: url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
+                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+                                <h3 class="text-white font-serif text-2xl border-2 border-white p-4">Fotoğrafın Dili</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-white mb-2">Fotoğrafın Dili</h3>
+                    <p class="text-gray-500 font-sans text-sm mb-4">Teknik ve Kompozisyon</p>
+                    <a href="#" class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">İncele & Satın Al</a>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-64 h-96 bg-gray-800 rounded-r-lg book-3d relative mb-8 border-l-4 border-gray-600">
+                        <div class="absolute inset-0 bg-cover bg-center rounded-r-lg" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
+                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+                                <h3 class="text-white font-serif text-2xl border-2 border-white p-4">Veri İle Düşünmek</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-white mb-2">Veri İle Düşünmek</h3>
+                    <p class="text-gray-500 font-sans text-sm mb-4">Analitik Dünyaya Giriş</p>
+                    <a href="#" class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">İncele & Satın Al</a>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="flex flex-col items-center group">
+                    <div class="w-64 h-96 bg-gray-800 rounded-r-lg book-3d relative mb-8 border-l-4 border-gray-600">
+                        <div class="absolute inset-0 bg-cover bg-center rounded-r-lg" style="background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');">
+                            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+                                <h3 class="text-white font-serif text-2xl border-2 border-white p-4">Yapay Ufuklar</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-white mb-2">Yapay Ufuklar</h3>
+                    <p class="text-gray-500 font-sans text-sm mb-4">AI ve Sanatın Geleceği</p>
+                    <a href="#" class="text-writer-paper border-b border-writer-paper pb-1 hover:text-white hover:border-white transition font-sans text-sm">İncele & Satın Al</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles List -->
+    <section class="py-20 bg-[#2b3035] border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-white mb-12 text-center">Son Makaleler</h2>
+            <div class="space-y-8">
+                <!-- Article 1 -->
+                <article class="border-b border-gray-700 pb-8 group cursor-pointer">
+                    <span class="text-writer-paper font-sans text-xs font-bold tracking-widest">12 KASIM 2023</span>
+                    <h3 class="text-2xl font-serif text-white mt-2 mb-3 group-hover:text-writer-paper transition">Yapay Zeka Sanatı Öldürüyor mu?</h3>
+                    <p class="text-gray-400 font-sans leading-relaxed">
+                        Generative AI araçlarının yükselişiyle birlikte sanatın tanımı yeniden yapılıyor. Yaratıcılık artık teknik beceriden çok, doğru soruyu sorabilme yeteneğine dönüşüyor...
+                    </p>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="border-b border-gray-700 pb-8 group cursor-pointer">
+                    <span class="text-writer-paper font-sans text-xs font-bold tracking-widest">05 EKİM 2023</span>
+                    <h3 class="text-2xl font-serif text-white mt-2 mb-3 group-hover:text-writer-paper transition">Siyah Beyaz Fotoğrafta Kompozisyon</h3>
+                    <p class="text-gray-400 font-sans leading-relaxed">
+                        Renklerin yokluğunda form, doku ve ışık ön plana çıkar. İyi bir siyah beyaz fotoğraf, izleyiciye rengi aratmayacak kadar güçlü bir hikaye anlatmalıdır...
+                    </p>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="border-b border-gray-700 pb-8 group cursor-pointer">
+                    <span class="text-writer-paper font-sans text-xs font-bold tracking-widest">28 EYLÜL 2023</span>
+                    <h3 class="text-2xl font-serif text-white mt-2 mb-3 group-hover:text-writer-paper transition">Büyük Veri ve Etik</h3>
+                    <p class="text-gray-400 font-sans leading-relaxed">
+                        Veri madenciliği algoritmaları hayatımızı kolaylaştırırken, mahremiyet sınırlarımızı ne kadar zorluyor? Dijital ayak izlerimiz kime ait?
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('writer');
+    </script>
+
+</body>
+</html>
