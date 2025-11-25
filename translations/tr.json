@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "datascience": "Veri Bilimi",
+    "photography": "Fotoğraf",
+    "writer": "Yazar",
+    "director": "Yönetmen",
+    "contact": "İletişim"
+  },
+  "home": {
+    "hero": {
+      "datascience": "Veri Bilimi",
+      "datascience_desc": "Veriden içgörü, sayılardan hikaye",
+      "photography": "Fotoğraf",
+      "photography_desc": "Işığın dilini konuşmak",
+      "writer": "Yazar",
+      "writer_desc": "Kelimelerle örülü dünyalar",
+      "director": "Yönetmen",
+      "director_desc": "Hareketli görüntülerle anlatılar"
+    },
+    "cta": "Keşfet"
+  },
+  "about": {
+    "title": "Hakkımda",
+    "subtitle": "Veri, Sanat ve Anlatı",
+    "description": "Veri bilimci, fotoğraf sanatçısı, yazar ve yönetmen. Sayılarla, görüntülerle ve kelimelerle hikayeler anlatan bir yaratıcı.",
+    "timeline": "Zaman Çizelgesi",
+    "achievements": "Başarılar"
+  },
+  "datascience": {
+    "title": "Veri Bilimi",
+    "subtitle": "Analitik & Danışmanlık",
+    "description": "Veriden içgörü çıkarma, iş zekası ve makine öğrenimi çözümleri.",
+    "services": "Hizmetler",
+    "projects": "Projeler"
+  },
+  "photography": {
+    "title": "Fotoğraf",
+    "subtitle": "Işık ve Gölge",
+    "description": "Anı dondurmak, zamanı mühürlemektir. Her kare, anlatılmayı bekleyen sessiz bir hikayedir.",
+    "awards": "300+ Ödül • EFIAP • CR2 • FIAP Dünya Kupası Bronz Madalya",
+    "location": "Konum",
+    "year": "Yıl",
+    "film_strip": "Film Şeridi"
+  },
+  "writer": {
+    "title": "Yazar",
+    "subtitle": "Yazarın Masası",
+    "description": "Sözcükler, düşüncenin mimarisidir. Her kitap, zihinde inşa edilen yeni bir evrendir.",
+    "books": "Kitaplar",
+    "articles": "Son Makaleler",
+    "view_buy": "İncele & Satın Al",
+    "pages": "sayfa"
+  },
+  "director": {
+    "title": "Yönetmen",
+    "subtitle": "Vizörün Arkası",
+    "description": "Hareketli görüntülerle anlatılan hikayeler. Kurgu, belgesel ve deneysel sinema çalışmaları.",
+    "categories": {
+      "short_film": "Kısa Film",
+      "documentary": "Belgesel",
+      "video_art": "Video Art",
+      "experimental": "Deneysel"
+    }
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Bağlantı Kur",
+    "description": "Projeleriniz, sorularınız veya sadece merhaba demek için aşağıdaki formu kullanabilirsiniz.",
+    "info_title": "İletişim Bilgileri",
+    "info_desc": "Veri bilimi danışmanlığı, fotoğraf çekimleri veya diğer işbirlikleri için bana ulaşabilirsiniz. En kısa sürede dönüş yapacağım.",
+    "email": "E-posta",
+    "location": "Konum",
+    "location_value": "İstanbul, Türkiye",
+    "social_media": "Sosyal Medya",
+    "form": {
+      "name": "Adınız Soyadınız",
+      "email": "E-posta Adresiniz",
+      "subject": "Konu",
+      "message": "Mesajınız",
+      "send": "Gönder",
+      "success": "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.",
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+      "subjects": {
+        "general": "Genel İletişim",
+        "datascience": "Veri Bilimi Danışmanlığı",
+        "photography": "Fotoğraf Çekimi",
+        "books": "Kitaplar Hakkında",
+        "films": "Film Projeleri"
+      }
+    }
+  },
+  "footer": {
+    "contact_title": "İletişime Geçin",
+    "rights": "Tüm hakları saklıdır",
+    "cookie_settings": "Çerez Ayarları",
+    "privacy": "Gizlilik Politikası",
+    "kvkk": "KVKK",
+    "tagline": "Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema"
+  },
+  "cookie": {
+    "title": "🍪 Çerez Kullanımı",
+    "description": "Bu web sitesi, kullanıcı deneyimini iyileştirmek ve site trafiğini analiz etmek için çerezler kullanmaktadır. 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında verileriniz güvende tutulmaktadır. Siteyi kullanmaya devam ederek çerez kullanımını kabul etmiş olursunuz.",
+    "kvkk_link": "KVKK Aydınlatma Metni",
+    "privacy_link": "Gizlilik Politikası",
+    "accept": "Kabul Et",
+    "reject": "Reddet"
+  },
+  "share": {
+    "title": "Paylaş",
+    "facebook": "Facebook ile paylaş",
+    "twitter": "Twitter ile paylaş",
+    "linkedin": "LinkedIn ile paylaş",
+    "whatsapp": "WhatsApp ile paylaş",
+    "telegram": "Telegram ile paylaş",
+    "email": "Email ile paylaş"
+  },
+  "common": {
+    "read_more": "Devamını Oku",
+    "learn_more": "Daha Fazla Bilgi",
+    "view_all": "Tümünü Gör",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "close": "Kapat",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı"
+  }
+}

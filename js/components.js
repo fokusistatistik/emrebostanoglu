@@ -50,30 +50,61 @@ tailwind.config = {
 };
 
 function getNavbarHTML(activePage) {
+    const currentLang = typeof I18N !== 'undefined' ? I18N.getCurrentLanguage() : 'tr';
+
     const links = [
-        { id: 'home', href: 'index.html', text: 'Ana Sayfa', colorClass: 'hover:text-data-blue' },
-        { id: 'about', href: 'about.html', text: 'Hakkımda', colorClass: 'hover:text-white' },
-        { id: 'datascience', href: 'datascience.html', text: 'Veri Bilimi', colorClass: 'hover:text-data-blue' },
-        { id: 'photography', href: 'photography.html', text: 'Fotoğraf', colorClass: 'hover:text-art-gold' },
-        { id: 'writer', href: 'writer.html', text: 'Yazar', colorClass: 'hover:text-writer-paper' },
-        { id: 'director', href: 'director.html', text: 'Yönetmen', colorClass: 'hover:text-director-red' }
+        { id: 'home', href: 'index.html', i18nKey: 'nav.home', colorClass: 'hover:text-data-blue' },
+        { id: 'about', href: 'about.html', i18nKey: 'nav.about', colorClass: 'hover:text-white' },
+        { id: 'datascience', href: 'datascience.html', i18nKey: 'nav.datascience', colorClass: 'hover:text-data-blue' },
+        { id: 'photography', href: 'photography.html', i18nKey: 'nav.photography', colorClass: 'hover:text-art-gold' },
+        { id: 'writer', href: 'writer.html', i18nKey: 'nav.writer', colorClass: 'hover:text-writer-paper' },
+        { id: 'director', href: 'director.html', i18nKey: 'nav.director', colorClass: 'hover:text-director-red' }
     ];
 
     let desktopLinksHTML = links.map(link => {
         const isActive = link.id === activePage;
         const activeClass = isActive ? `text-white border-b-2 border-${link.colorClass.split('-')[2] || 'white'}` : 'text-gray-300';
-        return `<a href="${link.href}" class="${activeClass} ${link.colorClass} px-3 py-2 rounded-md text-sm font-medium transition-colors">${link.text}</a>`;
+        return `<a href="${link.href}" class="${activeClass} ${link.colorClass} px-3 py-2 rounded-md text-sm font-medium transition-colors" data-i18n="${link.i18nKey}"></a>`;
     }).join('');
 
     // Add Contact Button
-    desktopLinksHTML += `<a href="contact.html" class="bg-white text-dark-bg hover:bg-data-blue hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all">İletişim</a>`;
+    desktopLinksHTML += `<a href="contact.html" class="bg-white text-dark-bg hover:bg-data-blue hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all" data-i18n="nav.contact"></a>`;
+
+    // Add Language Switcher
+    const otherLang = currentLang === 'tr' ? 'en' : 'tr';
+    const langFlag = currentLang === 'tr' ? '🇬🇧' : '🇹🇷';
+    const langText = currentLang === 'tr' ? 'EN' : 'TR';
+    desktopLinksHTML += `
+        <button onclick="switchLanguage('${otherLang}')"
+                class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition-colors border border-gray-700 hover:border-gray-500"
+                title="Switch to ${otherLang.toUpperCase()}">
+            <span>${langFlag}</span>
+            <span>${langText}</span>
+        </button>
+    `;
 
     let mobileLinksHTML = links.map(link => {
         const isActive = link.id === activePage;
         const activeClass = isActive ? 'text-white border-b border-gray-800' : 'text-gray-300';
-        return `<a href="${link.href}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium">${link.text}</a>`;
+        return `<a href="${link.href}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium" data-i18n="${link.i18nKey}"></a>`;
     }).join('');
-    mobileLinksHTML += `<a href="contact.html" class="text-data-blue block px-3 py-2 rounded-md text-base font-medium">İletişim</a>`;
+    mobileLinksHTML += `<a href="contact.html" class="text-data-blue block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav.contact"></a>`;
+
+    // Add Language Switcher for Mobile
+    mobileLinksHTML += `
+        <div class="flex justify-center gap-4 mt-4 pt-4 border-t border-gray-800">
+            <button onclick="switchLanguage('tr')"
+                    class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium ${currentLang === 'tr' ? 'bg-data-blue text-white' : 'text-gray-300 border border-gray-700'} transition-all">
+                <span>🇹🇷</span>
+                <span>TR</span>
+            </button>
+            <button onclick="switchLanguage('en')"
+                    class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium ${currentLang === 'en' ? 'bg-data-blue text-white' : 'text-gray-300 border border-gray-700'} transition-all">
+                <span>🇬🇧</span>
+                <span>EN</span>
+            </button>
+        </div>
+    `;
 
     return `
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
@@ -141,7 +172,7 @@ function getFooterHTML() {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Contact Section -->
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif text-white mb-6">İletişime Geçin</h2>
+                <h2 class="text-3xl font-serif text-white mb-6" data-i18n="footer.contact_title">İletişime Geçin</h2>
                 <a href="mailto:${social.email}"
                    class="inline-flex items-center text-lg text-gray-400 hover:text-white transition">
                     <i class="fas fa-envelope mr-2"></i>
@@ -158,20 +189,20 @@ function getFooterHTML() {
             <div class="border-t border-gray-800 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
                     <p class="mb-4 md:mb-0">
-                        © ${year} Emre Bostanoğlu. Tüm hakları saklıdır.
+                        © ${year} Emre Bostanoğlu. <span data-i18n="footer.rights">Tüm hakları saklıdır</span>.
                     </p>
                     <div class="flex flex-wrap justify-center gap-4">
                         <button onclick="showCookieConsent()" class="hover:text-white transition">
                             <i class="fas fa-cookie-bite mr-1"></i>
-                            Çerez Ayarları
+                            <span data-i18n="footer.cookie_settings">Çerez Ayarları</span>
                         </button>
                         <span class="text-gray-700">•</span>
-                        <a href="#" class="hover:text-white transition">KVKK</a>
+                        <a href="#" class="hover:text-white transition" data-i18n="footer.kvkk">KVKK</a>
                         <span class="text-gray-700">•</span>
-                        <a href="#" class="hover:text-white transition">Gizlilik Politikası</a>
+                        <a href="#" class="hover:text-white transition" data-i18n="footer.privacy">Gizlilik Politikası</a>
                     </div>
                 </div>
-                <p class="text-center text-xs text-gray-700 mt-4">
+                <p class="text-center text-xs text-gray-700 mt-4" data-i18n="footer.tagline">
                     Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema
                 </p>
             </div>
@@ -185,27 +216,27 @@ function getFooterHTML() {
                 <i class="fas fa-cookie-bite"></i>
             </div>
             <div class="cookie-text">
-                <h3 class="cookie-title">🍪 Çerez Kullanımı</h3>
-                <p class="cookie-description">
+                <h3 class="cookie-title" data-i18n="cookie.title">🍪 Çerez Kullanımı</h3>
+                <p class="cookie-description" data-i18n="cookie.description">
                     Bu web sitesi, kullanıcı deneyimini iyileştirmek ve site trafiğini analiz etmek için çerezler kullanmaktadır.
                     6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında verileriniz güvende tutulmaktadır.
                     Siteyi kullanmaya devam ederek çerez kullanımını kabul etmiş olursunuz.
                 </p>
                 <div class="cookie-links">
                     <a href="#" class="text-sm text-blue-400 hover:underline mr-4">
-                        <i class="fas fa-shield-alt mr-1"></i>KVKK Aydınlatma Metni
+                        <i class="fas fa-shield-alt mr-1"></i><span data-i18n="cookie.kvkk_link">KVKK Aydınlatma Metni</span>
                     </a>
                     <a href="#" class="text-sm text-blue-400 hover:underline">
-                        <i class="fas fa-lock mr-1"></i>Gizlilik Politikası
+                        <i class="fas fa-lock mr-1"></i><span data-i18n="cookie.privacy_link">Gizlilik Politikası</span>
                     </a>
                 </div>
             </div>
             <div class="cookie-buttons">
                 <button onclick="acceptCookies()" class="cookie-btn cookie-accept">
-                    <i class="fas fa-check mr-2"></i>Kabul Et
+                    <i class="fas fa-check mr-2"></i><span data-i18n="cookie.accept">Kabul Et</span>
                 </button>
                 <button onclick="rejectCookies()" class="cookie-btn cookie-reject">
-                    <i class="fas fa-times mr-2"></i>Reddet
+                    <i class="fas fa-times mr-2"></i><span data-i18n="cookie.reject">Reddet</span>
                 </button>
             </div>
         </div>
@@ -408,6 +439,18 @@ function loadComponents(activePage) {
     const footerContainer = document.getElementById('footer-container');
     if (footerContainer) {
         footerContainer.innerHTML = getFooterHTML();
+    }
+
+    // Listen for language changes and reload components
+    window.addEventListener('languageChanged', function() {
+        loadComponents(activePage);
+    });
+}
+
+// Language switcher function
+function switchLanguage(lang) {
+    if (typeof I18N !== 'undefined') {
+        I18N.changeLanguage(lang);
     }
 }
 

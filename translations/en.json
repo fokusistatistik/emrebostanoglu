@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "datascience": "Data Science",
+    "photography": "Photography",
+    "writer": "Writer",
+    "director": "Director",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "datascience": "Data Science",
+      "datascience_desc": "Insights from data, stories from numbers",
+      "photography": "Photography",
+      "photography_desc": "Speaking the language of light",
+      "writer": "Writer",
+      "writer_desc": "Worlds woven with words",
+      "director": "Director",
+      "director_desc": "Narratives through moving images"
+    },
+    "cta": "Explore"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Data, Art and Narrative",
+    "description": "Data scientist, photographer, writer and director. A creative who tells stories through numbers, images and words.",
+    "timeline": "Timeline",
+    "achievements": "Achievements"
+  },
+  "datascience": {
+    "title": "Data Science",
+    "subtitle": "Analytics & Consulting",
+    "description": "Extracting insights from data, business intelligence and machine learning solutions.",
+    "services": "Services",
+    "projects": "Projects"
+  },
+  "photography": {
+    "title": "Photography",
+    "subtitle": "Light and Shadow",
+    "description": "Freezing moments, sealing time. Every frame is a silent story waiting to be told.",
+    "awards": "300+ Awards • EFIAP • CR2 • FIAP World Cup Bronze Medal",
+    "location": "Location",
+    "year": "Year",
+    "film_strip": "Film Strip"
+  },
+  "writer": {
+    "title": "Writer",
+    "subtitle": "Writer's Desk",
+    "description": "Words are the architecture of thought. Each book is a new universe built in the mind.",
+    "books": "Books",
+    "articles": "Recent Articles",
+    "view_buy": "View & Purchase",
+    "pages": "pages"
+  },
+  "director": {
+    "title": "Director",
+    "subtitle": "Behind the Viewfinder",
+    "description": "Stories told through moving images. Fiction, documentary and experimental cinema works.",
+    "categories": {
+      "short_film": "Short Film",
+      "documentary": "Documentary",
+      "video_art": "Video Art",
+      "experimental": "Experimental"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in Touch",
+    "description": "Feel free to use the form below for your projects, questions, or just to say hello.",
+    "info_title": "Contact Information",
+    "info_desc": "You can reach me for data science consulting, photography shoots or other collaborations. I will get back to you as soon as possible.",
+    "email": "Email",
+    "location": "Location",
+    "location_value": "Istanbul, Turkey",
+    "social_media": "Social Media",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send",
+      "success": "Your message has been sent successfully! I will get back to you as soon as possible.",
+      "error": "An error occurred. Please try again.",
+      "subjects": {
+        "general": "General Contact",
+        "datascience": "Data Science Consulting",
+        "photography": "Photography Session",
+        "books": "About Books",
+        "films": "Film Projects"
+      }
+    }
+  },
+  "footer": {
+    "contact_title": "Get in Touch",
+    "rights": "All rights reserved",
+    "cookie_settings": "Cookie Settings",
+    "privacy": "Privacy Policy",
+    "kvkk": "GDPR",
+    "tagline": "Photography • Data Science • Literature • Cinema"
+  },
+  "cookie": {
+    "title": "🍪 Cookie Usage",
+    "description": "This website uses cookies to improve user experience and analyze site traffic. Your data is kept secure under the Personal Data Protection Law No. 6698. By continuing to use the site, you accept the use of cookies.",
+    "kvkk_link": "GDPR Disclosure",
+    "privacy_link": "Privacy Policy",
+    "accept": "Accept",
+    "reject": "Reject"
+  },
+  "share": {
+    "title": "Share",
+    "facebook": "Share on Facebook",
+    "twitter": "Share on Twitter",
+    "linkedin": "Share on LinkedIn",
+    "whatsapp": "Share on WhatsApp",
+    "telegram": "Share on Telegram",
+    "email": "Share via Email"
+  },
+  "common": {
+    "read_more": "Read More",
+    "learn_more": "Learn More",
+    "view_all": "View All",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}
