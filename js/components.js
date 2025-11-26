@@ -122,61 +122,153 @@ function getFooterHTML() {
         { url: social.twitter, icon: 'fab fa-twitter', color: 'hover:text-blue-400', name: 'Twitter' },
         { url: social.facebook, icon: 'fab fa-facebook', color: 'hover:text-blue-600', name: 'Facebook' },
         { url: social.vimeo, icon: 'fab fa-vimeo', color: 'hover:text-blue-500', name: 'Vimeo' },
-        { url: social.px500, icon: 'fas fa-camera', color: 'hover:text-art-gold', name: '500px' },
-        { url: social.spotify, icon: 'fab fa-spotify', color: 'hover:text-green-500', name: 'Spotify' },
-        { url: social.linkedin, icon: 'fab fa-linkedin', color: 'hover:text-blue-700', name: 'LinkedIn' },
-        { url: social.youtube, icon: 'fab fa-youtube', color: 'hover:text-red-600', name: 'YouTube' },
-        { url: social.github, icon: 'fab fa-github', color: 'hover:text-white', name: 'GitHub' },
-        { url: social.telegram, icon: 'fab fa-telegram', color: 'hover:text-blue-400', name: 'Telegram' }
+        { url: social.px500, icon: 'fas fa-camera', color: 'hover:text-art-gold', name: '500px' }
     ].filter(link => link.url !== null)
      .map(link => `
         <a href="${link.url}"
            target="_blank"
            rel="noopener noreferrer"
-           class="text-2xl text-gray-500 ${link.color} transition transform hover:scale-110"
+           class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 ${link.color} transition-all transform hover:scale-110 hover:bg-gray-700"
            aria-label="${link.name}">
-            <i class="${link.icon}"></i>
+            <i class="${link.icon} text-xl"></i>
         </a>
      `).join('');
 
     return `
-    <footer id="contact" class="bg-black py-16 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Contact Section -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif text-white mb-6" data-i18n="footer.contact_title">İletişime Geçin</h2>
-                <a href="mailto:${social.email}"
-                   class="inline-flex items-center text-lg text-gray-400 hover:text-white transition">
-                    <i class="fas fa-envelope mr-2"></i>
-                    ${social.email}
-                </a>
-            </div>
+    <footer id="contact" class="relative bg-gradient-to-b from-black via-[#0a0a0a] to-[#0f0f0f] border-t border-gray-800">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
 
-            <!-- Social Media Icons -->
-            <div class="flex flex-wrap justify-center gap-6 mb-12">
-                ${socialLinks}
-            </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-gray-800">
 
-            <!-- Footer Links & Legal -->
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-                    <p class="mb-4 md:mb-0">
-                        © ${year} Emre Bostanoğlu. <span data-i18n="footer.rights">Tüm hakları saklıdır</span>.
-                    </p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="showCookieConsent()" class="hover:text-white transition">
-                            <i class="fas fa-cookie-bite mr-1"></i>
-                            <span data-i18n="footer.cookie_settings">Çerez Ayarları</span>
-                        </button>
-                        <span class="text-gray-700">•</span>
-                        <a href="#" class="hover:text-white transition" data-i18n="footer.kvkk">KVKK</a>
-                        <span class="text-gray-700">•</span>
-                        <a href="#" class="hover:text-white transition" data-i18n="footer.privacy">Gizlilik Politikası</a>
+                <!-- Column 1: About -->
+                <div class="space-y-4">
+                    <div class="mb-6">
+                        <img src="${SITE_CONFIG.logoUrl}" alt="Emre Bostanoğlu" class="h-14 w-auto mb-4">
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Fotoğraf sanatı, veri bilimi, edebiyat ve sinema alanlarında çalışmalar yürüten çok yönlü bir sanatçı ve danışman.
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2 text-art-gold">
+                        <i class="fas fa-award"></i>
+                        <span class="text-xs font-semibold">EFIAP • CR2 • SSS/B</span>
                     </div>
                 </div>
-                <p class="text-center text-xs text-gray-700 mt-4" data-i18n="footer.tagline">
-                    Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema
-                </p>
+
+                <!-- Column 2: Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
+                        Hızlı Erişim
+                    </h3>
+                    <nav class="flex flex-col space-y-3">
+                        <a href="index.html" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Ana Sayfa
+                        </a>
+                        <a href="photography.html" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Fotoğraf Portfolyosu
+                        </a>
+                        <a href="datascience.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Veri Bilimi Projeleri
+                        </a>
+                        <a href="writer.html" class="text-gray-400 hover:text-writer-paper transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Yayınlar & Kitaplar
+                        </a>
+                        <a href="director.html" class="text-gray-400 hover:text-director-red transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Filmografi
+                        </a>
+                        <a href="blog.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
+                            Blog
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
+                        İletişim
+                    </h3>
+                    <div class="space-y-4">
+                        <a href="mailto:${social.email}" class="flex items-start space-x-3 text-gray-400 hover:text-art-gold transition-colors group">
+                            <i class="fas fa-envelope text-art-gold mt-1 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Email</p>
+                                <p class="text-sm">${social.email}</p>
+                            </div>
+                        </a>
+                        <div class="flex items-start space-x-3 text-gray-400">
+                            <i class="fas fa-map-marker-alt text-art-gold mt-1"></i>
+                            <div>
+                                <p class="text-xs text-gray-500 mb-1">Konum</p>
+                                <p class="text-sm">Türkiye</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-art-gold to-[#f0c84b] text-black font-semibold text-sm rounded-full hover:shadow-lg hover:shadow-art-gold/50 transition-all transform hover:scale-105">
+                            İletişime Geç
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 4: Social Media -->
+                <div class="space-y-4">
+                    <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
+                        Sosyal Medya
+                    </h3>
+                    <div class="flex flex-wrap gap-3">
+                        ${socialLinks}
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-gray-800">
+                        <p class="text-gray-500 text-xs mb-3">Projelerimi Takip Edin</p>
+                        <div class="flex space-x-2">
+                            <a href="https://github.com/emrebostanoglu" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-all">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="py-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <!-- Copyright -->
+                    <div class="text-center md:text-left">
+                        <p class="text-gray-500 text-sm">
+                            © ${year} <span class="text-art-gold font-semibold">Emre Bostanoğlu</span>. Tüm hakları saklıdır.
+                        </p>
+                        <p class="text-gray-600 text-xs mt-1">
+                            Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema
+                        </p>
+                    </div>
+
+                    <!-- Legal Links -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
+                        <button onclick="showCookieConsent()" class="text-gray-500 hover:text-art-gold transition-colors flex items-center">
+                            <i class="fas fa-cookie-bite mr-1"></i>
+                            Çerez Ayarları
+                        </button>
+                        <span class="text-gray-700">•</span>
+                        <a href="#" class="text-gray-500 hover:text-art-gold transition-colors">KVKK</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#" class="text-gray-500 hover:text-art-gold transition-colors">Gizlilik</a>
+                    </div>
+                </div>
+
+                <!-- Made with Love -->
+                <div class="text-center mt-6 pt-6 border-t border-gray-900">
+                    <p class="text-gray-600 text-xs flex items-center justify-center space-x-2">
+                        <span>Tasarım & Geliştirme:</span>
+                        <span class="text-art-gold font-semibold">FOKUS İstatistik</span>
+                        <i class="fas fa-heart text-red-500 animate-pulse"></i>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
