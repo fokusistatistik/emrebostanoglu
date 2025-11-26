@@ -1,653 +1,539 @@
 /**
- * Chatbot Widget
- * AI-powered chat assistant integrated with n8n webhook
+ * FOKUS216 Modern Chatbot Widget with Anti-Spam Protection
+ * Kurumsal Renk: #2c3335
  */
 
-const Chatbot = {
-    // Configuration
-    config: {
-        webhookUrl: 'https://n8n.fokusistatistik.com/webhook/emrebostanogluchatbot', // Will be provided by user
-        botName: 'EB Assistant',
-        welcomeMessage: {
-            tr: 'Merhaba! Ben Emre Bostanoğlu\'nun asistanıyım. Size nasıl yardımcı olabilirim?',
-            en: 'Hello! I\'m Emre Bostanoğlu\'s assistant. How can I help you?'
-        },
-        quickReplies: {
-            tr: [
-                'Veri bilimi hizmetleri',
-                'Fotoğraf çekimi',
-                'Kitaplar hakkında',
-                'İletişim bilgileri'
-            ],
-            en: [
-                'Data science services',
-                'Photography session',
-                'About books',
-                'Contact information'
-            ]
-        }
-    },
-
-    // State
-    state: {
-        isOpen: false,
-        messages: [],
-        sessionId: null,
-        isTyping: false
-    },
-
-    /**
-     * Initialize chatbot
-     */
-    init() {
-        this.createChatbotHTML();
-        this.attachEventListeners();
-        this.state.sessionId = this.generateSessionId();
-
-        // Add welcome message
-        this.addMessage(this.getWelcomeMessage(), 'bot');
-
-        console.log('Chatbot initialized');
-    },
-
-    /**
-     * Get current language
-     */
-    getCurrentLang() {
-        return typeof I18N !== 'undefined' ? I18N.getCurrentLanguage() : 'tr';
-    },
-
-    /**
-     * Get welcome message based on language
-     */
-    getWelcomeMessage() {
-        const lang = this.getCurrentLang();
-        return this.config.welcomeMessage[lang];
-    },
-
-    /**
-     * Get quick replies based on language
-     */
-    getQuickReplies() {
-        const lang = this.getCurrentLang();
-        return this.config.quickReplies[lang];
-    },
-
-    /**
-     * Generate unique session ID
-     */
-    generateSessionId() {
-        return 'chat_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    },
-
-    /**
-     * Create chatbot HTML structure
-     */
-    createChatbotHTML() {
-        const chatbotHTML = `
-            <!-- Chatbot Toggle Button -->
-            <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat">
-                <i class="fas fa-comments"></i>
-                <span class="chatbot-badge">1</span>
-            </button>
-
-            <!-- Chatbot Window -->
-            <div id="chatbot-window" class="chatbot-window hidden">
-                <!-- Header -->
-                <div class="chatbot-header">
-                    <div class="flex items-center gap-3">
-                        <div class="chatbot-avatar">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div>
-                            <h3 class="chatbot-title">${this.config.botName}</h3>
-                            <span class="chatbot-status">
-                                <span class="status-dot"></span>
-                                <span data-i18n="chatbot.online">Online</span>
-                            </span>
-                        </div>
-                    </div>
-                    <button id="chatbot-close" class="chatbot-close" aria-label="Close chat">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <!-- Messages Container -->
-                <div id="chatbot-messages" class="chatbot-messages">
-                    <!-- Messages will be inserted here -->
-                </div>
-
-                <!-- Quick Replies -->
-                <div id="chatbot-quick-replies" class="chatbot-quick-replies">
-                    ${this.getQuickReplies().map(reply => `
-                        <button class="quick-reply-btn" data-message="${reply}">
-                            ${reply}
-                        </button>
-                    `).join('')}
-                </div>
-
-                <!-- Input Area -->
-                <div class="chatbot-input-area">
-                    <input
-                        type="text"
-                        id="chatbot-input"
-                        class="chatbot-input"
-                        placeholder="Mesajınızı yazın..."
-                        data-i18n-placeholder="chatbot.input_placeholder"
-                    />
-                    <button id="chatbot-send" class="chatbot-send-btn" aria-label="Send message">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-
-                <!-- Typing Indicator -->
-                <div id="chatbot-typing" class="chatbot-typing hidden">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                </div>
-            </div>
-        `;
-
-        // Inject chatbot HTML
-        const chatbotContainer = document.createElement('div');
-        chatbotContainer.id = 'chatbot-container';
-        chatbotContainer.innerHTML = chatbotHTML;
-        document.body.appendChild(chatbotContainer);
-
-        // Inject chatbot styles
-        this.injectStyles();
-    },
-
-    /**
-     * Attach event listeners
-     */
-    attachEventListeners() {
-        const toggle = document.getElementById('chatbot-toggle');
-        const close = document.getElementById('chatbot-close');
-        const sendBtn = document.getElementById('chatbot-send');
-        const input = document.getElementById('chatbot-input');
-
-        toggle.addEventListener('click', () => this.toggleChat());
-        close.addEventListener('click', () => this.toggleChat());
-        sendBtn.addEventListener('click', () => this.sendMessage());
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
-        });
-
-        // Quick reply buttons
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('quick-reply-btn')) {
-                const message = e.target.dataset.message;
-                this.sendMessage(message);
-            }
-        });
-
-        // Listen for language changes
-        window.addEventListener('languageChanged', () => {
-            this.updateLanguage();
-        });
-    },
-
-    /**
-     * Toggle chat window
-     */
-    toggleChat() {
-        this.state.isOpen = !this.state.isOpen;
-        const window = document.getElementById('chatbot-window');
-        const badge = document.querySelector('.chatbot-badge');
-
-        if (this.state.isOpen) {
-            window.classList.remove('hidden');
-            window.classList.add('chatbot-window-open');
-            badge.style.display = 'none';
-
-            // Focus input
-            setTimeout(() => {
-                document.getElementById('chatbot-input').focus();
-            }, 300);
-        } else {
-            window.classList.add('hidden');
-            window.classList.remove('chatbot-window-open');
-        }
-    },
-
-    /**
-     * Add message to chat
-     */
-    addMessage(text, type = 'user') {
-        const messagesContainer = document.getElementById('chatbot-messages');
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `chatbot-message chatbot-message-${type}`;
-
-        const timestamp = new Date().toLocaleTimeString('tr-TR', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-
-        messageDiv.innerHTML = `
-            <div class="message-bubble">
-                ${type === 'bot' ? '<i class="fas fa-robot message-icon"></i>' : ''}
-                <div class="message-text">${text}</div>
-            </div>
-            <div class="message-time">${timestamp}</div>
-        `;
-
-        messagesContainer.appendChild(messageDiv);
-
-        // Scroll to bottom
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-        // Store message
-        this.state.messages.push({ text, type, timestamp });
-    },
-
-    /**
-     * Show typing indicator
-     */
-    showTyping() {
-        this.state.isTyping = true;
-        document.getElementById('chatbot-typing').classList.remove('hidden');
-    },
-
-    /**
-     * Hide typing indicator
-     */
-    hideTyping() {
-        this.state.isTyping = false;
-        document.getElementById('chatbot-typing').classList.add('hidden');
-    },
-
-    /**
-     * Send message
-     */
-    async sendMessage(text = null) {
-        const input = document.getElementById('chatbot-input');
-        const message = text || input.value.trim();
-
-        if (!message) return;
-
-        // Add user message
-        this.addMessage(message, 'user');
-        input.value = '';
-
-        // Show typing indicator
-        this.showTyping();
-
-        try {
-            // Send to webhook
-            const response = await fetch(this.config.webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    message: message,
-                    sessionId: this.state.sessionId,
-                    timestamp: new Date().toISOString(),
-                    language: this.getCurrentLang(),
-                    source: 'website_chatbot'
-                })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-
-                // Simulate typing delay
-                await new Promise(resolve => setTimeout(resolve, 1000));
-
-                this.hideTyping();
-
-                // Add bot response
-                const botMessage = data.response || data.message || 'Teşekkürler! Mesajınızı aldım.';
-                this.addMessage(botMessage, 'bot');
-            } else {
-                throw new Error('Webhook request failed');
-            }
-        } catch (error) {
-            console.error('Chatbot error:', error);
-            this.hideTyping();
-
-            // Fallback response
-            const lang = this.getCurrentLang();
-            const fallbackMessage = lang === 'tr'
-                ? 'Üzgünüm, şu anda bir sorun yaşıyorum. Lütfen iletişim formunu kullanın.'
-                : 'Sorry, I\'m experiencing an issue. Please use the contact form.';
-
-            this.addMessage(fallbackMessage, 'bot');
-        }
-    },
-
-    /**
-     * Update language-dependent content
-     */
-    updateLanguage() {
-        // Update quick replies
-        const quickRepliesContainer = document.getElementById('chatbot-quick-replies');
-        quickRepliesContainer.innerHTML = this.getQuickReplies().map(reply => `
-            <button class="quick-reply-btn" data-message="${reply}">
-                ${reply}
-            </button>
-        `).join('');
-    },
-
-    /**
-     * Inject chatbot styles
-     */
-    injectStyles() {
-        const styles = `
-            <style>
-                .chatbot-toggle {
-                    position: fixed;
-                    bottom: 2rem;
-                    right: 2rem;
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-                    color: white;
-                    border: none;
-                    cursor: pointer;
-                    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-                    z-index: 9998;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 24px;
-                    transition: all 0.3s ease;
-                }
-
-                .chatbot-toggle:hover {
-                    transform: scale(1.1);
-                    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6);
-                }
-
-                .chatbot-badge {
-                    position: absolute;
-                    top: -5px;
-                    right: -5px;
-                    background: #e50914;
-                    color: white;
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 12px;
-                    font-weight: bold;
-                }
-
-                .chatbot-window {
-                    position: fixed;
-                    bottom: 6rem;
-                    right: 2rem;
-                    width: 380px;
-                    height: 600px;
-                    background: #1a1a1a;
-                    border-radius: 16px;
-                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-                    z-index: 9999;
-                    display: flex;
-                    flex-direction: column;
-                    overflow: hidden;
-                    border: 1px solid #333;
-                    animation: slideUp 0.3s ease;
-                }
-
-                .chatbot-window.hidden {
-                    display: none;
-                }
-
-                @keyframes slideUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                .chatbot-header {
-                    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-                    padding: 1rem;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    color: white;
-                }
-
-                .chatbot-avatar {
-                    width: 40px;
-                    height: 40px;
-                    background: rgba(255, 255, 255, 0.2);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 20px;
-                }
-
-                .chatbot-title {
-                    font-size: 16px;
-                    font-weight: 600;
-                    margin: 0;
-                }
-
-                .chatbot-status {
-                    font-size: 12px;
-                    opacity: 0.9;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-
-                .status-dot {
-                    width: 8px;
-                    height: 8px;
-                    background: #4ade80;
-                    border-radius: 50%;
-                    animation: pulse 2s infinite;
-                }
-
-                @keyframes pulse {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.5; }
-                }
-
-                .chatbot-close {
-                    background: transparent;
-                    border: none;
-                    color: white;
-                    font-size: 20px;
-                    cursor: pointer;
-                    padding: 0.5rem;
-                    opacity: 0.8;
-                    transition: opacity 0.3s;
-                }
-
-                .chatbot-close:hover {
-                    opacity: 1;
-                }
-
-                .chatbot-messages {
-                    flex: 1;
-                    overflow-y: auto;
-                    padding: 1rem;
-                    background: #0f0f0f;
-                }
-
-                .chatbot-message {
-                    margin-bottom: 1rem;
-                    animation: fadeIn 0.3s ease;
-                }
-
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-
-                .chatbot-message-user {
-                    text-align: right;
-                }
-
-                .message-bubble {
-                    display: inline-flex;
-                    align-items: flex-start;
-                    gap: 0.5rem;
-                    max-width: 80%;
-                    padding: 0.75rem 1rem;
-                    border-radius: 12px;
-                    font-size: 14px;
-                    line-height: 1.5;
-                }
-
-                .chatbot-message-bot .message-bubble {
-                    background: #2c3335;
-                    color: #e5e7eb;
-                    border-bottom-left-radius: 4px;
-                }
-
-                .chatbot-message-user .message-bubble {
-                    background: #3b82f6;
-                    color: white;
-                    border-bottom-right-radius: 4px;
-                    flex-direction: row-reverse;
-                }
-
-                .message-icon {
-                    font-size: 16px;
-                    color: #3b82f6;
-                }
-
-                .message-time {
-                    font-size: 10px;
-                    color: #6b7280;
-                    margin-top: 0.25rem;
-                }
-
-                .chatbot-quick-replies {
-                    padding: 0.5rem 1rem;
-                    background: #1a1a1a;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-                    border-top: 1px solid #333;
-                }
-
-                .quick-reply-btn {
-                    background: transparent;
-                    border: 1px solid #3b82f6;
-                    color: #3b82f6;
-                    padding: 0.5rem 1rem;
-                    border-radius: 20px;
-                    font-size: 12px;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .quick-reply-btn:hover {
-                    background: #3b82f6;
-                    color: white;
-                }
-
-                .chatbot-input-area {
-                    padding: 1rem;
-                    background: #1a1a1a;
-                    display: flex;
-                    gap: 0.5rem;
-                    border-top: 1px solid #333;
-                }
-
-                .chatbot-input {
-                    flex: 1;
-                    background: #2c3335;
-                    border: 1px solid #444;
-                    color: white;
-                    padding: 0.75rem;
-                    border-radius: 8px;
-                    font-size: 14px;
-                }
-
-                .chatbot-input:focus {
-                    outline: none;
-                    border-color: #3b82f6;
-                }
-
-                .chatbot-send-btn {
-                    background: #3b82f6;
-                    border: none;
-                    color: white;
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .chatbot-send-btn:hover {
-                    background: #1d4ed8;
-                    transform: scale(1.05);
-                }
-
-                .chatbot-typing {
-                    padding: 0.5rem 1rem;
-                    background: #1a1a1a;
-                    display: flex;
-                    gap: 0.5rem;
-                    align-items: center;
-                }
-
-                .chatbot-typing.hidden {
-                    display: none;
-                }
-
-                .typing-dot {
-                    width: 8px;
-                    height: 8px;
-                    background: #3b82f6;
-                    border-radius: 50%;
-                    animation: typing 1.4s infinite;
-                }
-
-                .typing-dot:nth-child(2) {
-                    animation-delay: 0.2s;
-                }
-
-                .typing-dot:nth-child(3) {
-                    animation-delay: 0.4s;
-                }
-
-                @keyframes typing {
-                    0%, 60%, 100% { transform: translateY(0); }
-                    30% { transform: translateY(-10px); }
-                }
-
-                @media (max-width: 768px) {
-                    .chatbot-window {
-                        width: calc(100vw - 2rem);
-                        height: calc(100vh - 10rem);
-                        right: 1rem;
-                        bottom: 5rem;
-                    }
-
-                    .chatbot-toggle {
-                        bottom: 1rem;
-                        right: 1rem;
-                    }
-                }
-            </style>
-        `;
-
-        document.head.insertAdjacentHTML('beforeend', styles);
+(function () {
+  'use strict';
+
+  // ============================================
+  // CONFIGURATION
+  // ============================================
+  const CONFIG = {
+    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/fokus216clasic250001',
+    botName: 'FOKUS216',
+    botLogo: 'https://static.fokusistatistik.com/resimler/fokus216k.png',
+    FOKUS_ID: 250001,
+    colors: {
+      primary: '#2c3335',      // Kurumsal renk
+      primaryDark: '#1a1a1a',  // Koyu ton
+      primaryLight: '#3a4042', // Açık ton
+      accent: '#d4af37',       // Altın (vurgu)
+      text: '#ffffff',
+      textSecondary: '#adb5bd',
+      border: '#444'
     }
-};
+  };
 
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => Chatbot.init());
-} else {
-    Chatbot.init();
-}
+  // ============================================
+  // SPAM PREVENTION SYSTEM
+  // ============================================
+  const RATE_LIMITS = {
+    MINUTE: { max: 3, window: 60000 },
+    HOUR: { max: 30, window: 3600000 }
+  };
+
+  const SPAM_DETECTION = {
+    minMessageLength: 2,
+    maxSimilarity: 0.85,
+    recentMessages: [],
+    maxRecentMessages: 5
+  };
+
+  const BAN_DURATION = 5 * 60 * 1000;
+  const CAPTCHA_THRESHOLD = 15;
+
+  let messageTimestamps = { minute: [], hour: [] };
+  let lastMessage = '';
+  let banUntil = 0;
+  let captchaRequired = false;
+  let captchaSolved = false;
+  let captchaAnswer = 0;
+  let pendingMessage = null;
+
+  // Generate fingerprint
+  function generateFingerprint() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.textBaseline = 'top';
+    ctx.font = '14px Arial';
+    ctx.fillText('fingerprint', 2, 2);
+
+    return canvas.toDataURL() +
+           navigator.userAgent +
+           navigator.language +
+           screen.colorDepth +
+           screen.width + 'x' + screen.height;
+  }
+
+  const fingerprint = btoa(generateFingerprint()).slice(0, 32);
+  const STORAGE_KEYS = {
+    timestamps: `fokus216_timestamps_${fingerprint}`,
+    ban: `fokus216_ban_${fingerprint}`,
+    messages: `fokus216_recent_${fingerprint}`,
+    userId: `fokus216_user_id_${fingerprint}`
+  };
+
+  let userId = localStorage.getItem(STORAGE_KEYS.userId);
+  if (!userId) {
+    userId = 'user_216' + Math.random().toString(36).slice(2);
+    localStorage.setItem(STORAGE_KEYS.userId, userId);
+  }
+
+  // Load from storage
+  function loadFromStorage() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEYS.timestamps);
+      if (stored) {
+        const data = JSON.parse(stored);
+        messageTimestamps.minute = data.minute || [];
+        messageTimestamps.hour = data.hour || [];
+      }
+
+      const banData = localStorage.getItem(STORAGE_KEYS.ban);
+      if (banData) banUntil = parseInt(banData);
+
+      const recentData = localStorage.getItem(STORAGE_KEYS.messages);
+      if (recentData) SPAM_DETECTION.recentMessages = JSON.parse(recentData);
+    } catch (e) {
+      console.error('Storage yükleme hatası:', e);
+    }
+  }
+
+  // Save to storage
+  function saveToStorage() {
+    try {
+      localStorage.setItem(STORAGE_KEYS.timestamps, JSON.stringify(messageTimestamps));
+      localStorage.setItem(STORAGE_KEYS.ban, banUntil.toString());
+      localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(SPAM_DETECTION.recentMessages));
+    } catch (e) {
+      console.error('Storage kaydetme hatası:', e);
+    }
+  }
+
+  // Clean old timestamps
+  function cleanOldTimestamps() {
+    const now = Date.now();
+    messageTimestamps.minute = messageTimestamps.minute.filter(t => now - t < RATE_LIMITS.MINUTE.window);
+    messageTimestamps.hour = messageTimestamps.hour.filter(t => now - t < RATE_LIMITS.HOUR.window);
+  }
+
+  // Check rate limit
+  function checkRateLimit() {
+    cleanOldTimestamps();
+
+    if (messageTimestamps.minute.length >= RATE_LIMITS.MINUTE.max) {
+      return {
+        allowed: false,
+        reason: 'minute',
+        remaining: Math.ceil((RATE_LIMITS.MINUTE.window - (Date.now() - messageTimestamps.minute[0])) / 1000)
+      };
+    }
+
+    if (messageTimestamps.hour.length >= RATE_LIMITS.HOUR.max) {
+      return {
+        allowed: false,
+        reason: 'hour',
+        remaining: Math.ceil((RATE_LIMITS.HOUR.window - (Date.now() - messageTimestamps.hour[0])) / 1000)
+      };
+    }
+
+    return { allowed: true };
+  }
+
+  // Calculate similarity
+  function calculateSimilarity(str1, str2) {
+    str1 = str1.toLowerCase().trim();
+    str2 = str2.toLowerCase().trim();
+
+    if (str1 === str2) return 1;
+
+    const len1 = str1.length;
+    const len2 = str2.length;
+    const matrix = Array(len1 + 1).fill(null).map(() => Array(len2 + 1).fill(0));
+
+    for (let i = 0; i <= len1; i++) matrix[i][0] = i;
+    for (let j = 0; j <= len2; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j - 1] + cost
+        );
+      }
+    }
+
+    const distance = matrix[len1][len2];
+    const maxLen = Math.max(len1, len2);
+    return 1 - (distance / maxLen);
+  }
+
+  // Detect spam
+  function detectSpam(message) {
+    if (message.length < SPAM_DETECTION.minMessageLength) {
+      return { isSpam: true, reason: 'Mesaj çok kısa' };
+    }
+
+    if (/(.)\1{7,}/.test(message)) {
+      return { isSpam: true, reason: 'Tekrarlayan karakterler tespit edildi' };
+    }
+
+    if (message === lastMessage) {
+      return { isSpam: true, reason: 'Aynı mesajı tekrar gönderemezsiniz' };
+    }
+
+    for (let recentMsg of SPAM_DETECTION.recentMessages) {
+      const similarity = calculateSimilarity(message, recentMsg);
+      if (similarity > SPAM_DETECTION.maxSimilarity) {
+        return { isSpam: true, reason: 'Çok benzer mesajlar gönderiyorsunuz' };
+      }
+    }
+
+    return { isSpam: false };
+  }
+
+  // Generate CAPTCHA
+  function generateCaptcha() {
+    const operations = [
+      { q: () => { const a = Math.floor(Math.random() * 10) + 1; const b = Math.floor(Math.random() * 10) + 1; return { text: `${a} + ${b}`, answer: a + b }; } },
+      { q: () => { const a = Math.floor(Math.random() * 15) + 5; const b = Math.floor(Math.random() * 5) + 1; return { text: `${a} - ${b}`, answer: a - b }; } },
+      { q: () => { const a = Math.floor(Math.random() * 10) + 1; const b = Math.floor(Math.random() * 10) + 1; return { text: `${a} × ${b}`, answer: a * b }; } }
+    ];
+
+    const operation = operations[Math.floor(Math.random() * operations.length)];
+    const result = operation.q();
+
+    document.getElementById('captcha-question').textContent = result.text + ' = ?';
+    captchaAnswer = result.answer;
+  }
+
+  // Show CAPTCHA
+  function showCaptcha(message) {
+    pendingMessage = message;
+    captchaSolved = false;
+    const captchaInput = document.getElementById('captcha-input');
+    const captchaError = document.getElementById('captcha-error');
+    captchaInput.value = '';
+    captchaError.style.display = 'none';
+    generateCaptcha();
+    document.getElementById('captcha-modal').style.display = 'flex';
+    captchaInput.focus();
+  }
+
+  // Verify CAPTCHA
+  function verifyCaptcha() {
+    const captchaInput = document.getElementById('captcha-input');
+    const captchaError = document.getElementById('captcha-error');
+    const userAnswer = parseInt(captchaInput.value);
+
+    if (userAnswer === captchaAnswer) {
+      captchaSolved = true;
+      captchaRequired = false;
+      document.getElementById('captcha-modal').style.display = 'none';
+
+      if (pendingMessage) {
+        sendMessageToServer(pendingMessage);
+        pendingMessage = null;
+      }
+    } else {
+      captchaError.style.display = 'block';
+      captchaInput.value = '';
+      generateCaptcha();
+      captchaInput.focus();
+    }
+  }
+
+  // Check ban
+  function checkBan() {
+    const now = Date.now();
+    if (now < banUntil) {
+      const remainingSeconds = Math.ceil((banUntil - now) / 1000);
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+      return {
+        banned: true,
+        remaining: `${minutes}:${seconds.toString().padStart(2, '0')}`
+      };
+    }
+    return { banned: false };
+  }
+
+  // Record message
+  function recordMessage(message) {
+    const now = Date.now();
+    messageTimestamps.minute.push(now);
+    messageTimestamps.hour.push(now);
+
+    lastMessage = message;
+    SPAM_DETECTION.recentMessages.push(message);
+
+    if (SPAM_DETECTION.recentMessages.length > SPAM_DETECTION.maxRecentMessages) {
+      SPAM_DETECTION.recentMessages.shift();
+    }
+
+    if (messageTimestamps.hour.length >= CAPTCHA_THRESHOLD && !captchaSolved) {
+      captchaRequired = true;
+    }
+
+    saveToStorage();
+  }
+
+  // Apply ban
+  function applyBan() {
+    banUntil = Date.now() + BAN_DURATION;
+    saveToStorage();
+
+    addMessage('⛔ Çok fazla spam girişimi tespit edildi. 5 dakika süreyle mesaj gönderemezsiniz.', 'warning');
+  }
+
+  // ============================================
+  // UI FUNCTIONS
+  // ============================================
+  const notificationSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjKJ0fPTgjMGHm7A7+OZTR8MTKXh8bllHAU7k9ryy3ksBSl+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU8ldvyy3YqBSh+zPLaisEGHm/A7+OZTR8MTKXh8bllHAU8ldvyy3ksBSh+zPLaizsIGWe57OibUBELTqvl8bBlGwU=');
+  notificationSound.volume = 0.3;
+
+  function addMessage(text, sender = 'bot') {
+    const chatMessages = document.getElementById('chat-messages');
+    if (!chatMessages) return;
+
+    const div = document.createElement('div');
+    let cleanText = (text || '').replace(/\\n/g, '\n').replace(/\\t/g, ' ').trim();
+
+    let htmlContent = cleanText
+      .replace(/^#### (.*$)/gm, '<strong>$1</strong>')
+      .replace(/^### (.*$)/gm, '<strong>$1</strong>')
+      .replace(/^## (.*$)/gm, '<strong>$1</strong>')
+      .replace(/^# (.*$)/gm, '<strong>$1</strong>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+      .replace(/^- (.*$)/gm, '• $1')
+      .replace(/\n/g, '<br>');
+
+    div.innerHTML = htmlContent;
+    div.className = sender;
+
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    if (sender === 'bot' && chatMessages.children.length > 2) {
+      notificationSound.play().catch(e => console.log('Ses çalınamadı:', e));
+    }
+  }
+
+  function autoResizeTextarea() {
+    const chatInput = document.getElementById('chat-input');
+    if (!chatInput) return;
+
+    chatInput.style.height = 'auto';
+    const newHeight = Math.min(chatInput.scrollHeight, 140);
+    chatInput.style.height = newHeight + 'px';
+    chatInput.style.overflowY = chatInput.scrollHeight > 140 ? 'auto' : 'hidden';
+  }
+
+  async function sendMessageToServer(message) {
+    addMessage(message, 'user');
+
+    const chatSubmit = document.getElementById('chat-submit');
+    const typingIndicator = document.getElementById('typing-indicator');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatSubmit) chatSubmit.disabled = true;
+    if (typingIndicator) typingIndicator.style.display = 'flex';
+    if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    try {
+      const res = await fetch(CONFIG.webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User-Fingerprint': fingerprint
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          message: message,
+          FOKUS_ID: CONFIG.FOKUS_ID,
+          fingerprint: fingerprint
+        }),
+      });
+
+      if (!res.ok) throw new Error('Sunucu hatası');
+
+      const data = await res.json();
+      if (typingIndicator) typingIndicator.style.display = 'none';
+      if (chatSubmit) chatSubmit.disabled = false;
+      addMessage(data.reply || 'Cevap alınamadı.', 'bot');
+    } catch (err) {
+      if (typingIndicator) typingIndicator.style.display = 'none';
+      if (chatSubmit) chatSubmit.disabled = false;
+      addMessage('Bağlantı hatası. Lütfen tekrar deneyin.', 'bot');
+    }
+  }
+
+  function addQuickQuestions() {
+    const chatMessages = document.getElementById('chat-messages');
+    if (!chatMessages) return;
+
+    const questions = [
+      'Veri bilimi hizmetleri hakkında bilgi',
+      'Fotoğraf atölyesi randevu',
+      'Kitaplar ve yayınlar'
+    ];
+
+    const container = document.createElement('div');
+    container.className = 'quick-questions';
+
+    questions.forEach(q => {
+      const btn = document.createElement('button');
+      btn.className = 'quick-question-btn';
+      btn.textContent = q;
+      btn.onclick = () => {
+        container.remove();
+        const chatInput = document.getElementById('chat-input');
+        if (chatInput) chatInput.value = q;
+        const chatForm = document.getElementById('chat-form');
+        if (chatForm) chatForm.dispatchEvent(new Event('submit'));
+      };
+      container.appendChild(btn);
+    });
+
+    chatMessages.appendChild(container);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // ============================================
+  // INITIALIZATION
+  // ============================================
+  function initChatbot() {
+    loadFromStorage();
+
+    const widget = document.getElementById('fokus216-widget');
+    if (!widget) return;
+
+    // Character counter
+    const chatInput = document.getElementById('chat-input');
+    const charCounter = document.getElementById('char-counter');
+    if (chatInput && charCounter) {
+      chatInput.addEventListener('input', () => {
+        const length = chatInput.value.length;
+        charCounter.textContent = `${length} / 1000`;
+
+        charCounter.className = '';
+        if (length > 900) charCounter.className = 'error';
+        else if (length > 700) charCounter.className = 'warning';
+
+        autoResizeTextarea();
+      });
+
+      chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          const chatForm = document.getElementById('chat-form');
+          if (chatForm) chatForm.dispatchEvent(new Event('submit'));
+        }
+      });
+    }
+
+    // CAPTCHA
+    const captchaSubmitBtn = document.getElementById('captcha-submit');
+    const captchaInput = document.getElementById('captcha-input');
+    if (captchaSubmitBtn) {
+      captchaSubmitBtn.addEventListener('click', verifyCaptcha);
+    }
+    if (captchaInput) {
+      captchaInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyCaptcha();
+      });
+    }
+
+    // Form submit
+    const chatForm = document.getElementById('chat-form');
+    if (chatForm) {
+      chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const msg = chatInput ? chatInput.value.trim() : '';
+        if (!msg) return;
+
+        // Ban check
+        const banCheck = checkBan();
+        if (banCheck.banned) {
+          addMessage(`⛔ Geçici olarak engellendiniz. Kalan süre: ${banCheck.remaining}`, 'warning');
+          return;
+        }
+
+        // Rate limit check
+        const rateCheck = checkRateLimit();
+        if (!rateCheck.allowed) {
+          if (rateCheck.reason === 'minute') {
+            addMessage(`⏱️ Dakikada en fazla ${RATE_LIMITS.MINUTE.max} mesaj gönderebilirsiniz. Lütfen ${rateCheck.remaining} saniye bekleyin.`, 'warning');
+          } else {
+            addMessage(`⏱️ Saatte en fazla ${RATE_LIMITS.HOUR.max} mesaj gönderebilirsiniz. Lütfen ${Math.floor(rateCheck.remaining / 60)} dakika bekleyin.`, 'warning');
+
+            if (messageTimestamps.hour.length >= RATE_LIMITS.HOUR.max + 3) {
+              applyBan();
+            }
+          }
+          return;
+        }
+
+        // Spam detection
+        const spamCheck = detectSpam(msg);
+        if (spamCheck.isSpam) {
+          addMessage(`⚠️ ${spamCheck.reason}`, 'warning');
+
+          const spamAttempts = parseInt(sessionStorage.getItem('spam_attempts') || '0') + 1;
+          sessionStorage.setItem('spam_attempts', spamAttempts.toString());
+
+          if (spamAttempts >= 3) {
+            applyBan();
+          }
+          return;
+        }
+
+        // CAPTCHA check
+        if (captchaRequired && !captchaSolved) {
+          showCaptcha(msg);
+          if (chatInput) {
+            chatInput.value = '';
+            chatInput.style.height = '44px';
+          }
+          if (charCounter) {
+            charCounter.textContent = '0 / 1000';
+            charCounter.className = '';
+          }
+          return;
+        }
+
+        // Record and send
+        recordMessage(msg);
+
+        if (chatInput) {
+          chatInput.value = '';
+          chatInput.style.height = '44px';
+        }
+        if (charCounter) {
+          charCounter.textContent = '0 / 1000';
+          charCounter.className = '';
+        }
+
+        sendMessageToServer(msg);
+        captchaSolved = false;
+      });
+    }
+
+    // Initial message
+    addMessage(`Merhaba! Ben ${CONFIG.botName}, size nasıl yardımcı olabilirim?`, 'bot');
+    addQuickQuestions();
+  }
+
+  // Auto-initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbot);
+  } else {
+    initChatbot();
+  }
+
+})();
