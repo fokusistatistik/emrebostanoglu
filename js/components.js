@@ -71,41 +71,12 @@ function getNavbarHTML(activePage) {
     // Add Contact Button
     desktopLinksHTML += `<a href="contact.html" class="bg-white text-dark-bg hover:bg-data-blue hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all" data-i18n="nav.contact"></a>`;
 
-    // Add Language Switcher
-    const otherLang = currentLang === 'tr' ? 'en' : 'tr';
-    const langFlag = currentLang === 'tr' ? '🇬🇧' : '🇹🇷';
-    const langText = currentLang === 'tr' ? 'EN' : 'TR';
-    desktopLinksHTML += `
-        <button onclick="switchLanguage('${otherLang}')"
-                class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition-colors border border-gray-700 hover:border-gray-500"
-                title="Switch to ${otherLang.toUpperCase()}">
-            <span>${langFlag}</span>
-            <span>${langText}</span>
-        </button>
-    `;
-
     let mobileLinksHTML = links.map(link => {
         const isActive = link.id === activePage;
         const activeClass = isActive ? 'text-white border-b border-gray-800' : 'text-gray-300';
         return `<a href="${link.href}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium" data-i18n="${link.i18nKey}"></a>`;
     }).join('');
     mobileLinksHTML += `<a href="contact.html" class="text-data-blue block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav.contact"></a>`;
-
-    // Add Language Switcher for Mobile
-    mobileLinksHTML += `
-        <div class="flex justify-center gap-4 mt-4 pt-4 border-t border-gray-800">
-            <button onclick="switchLanguage('tr')"
-                    class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium ${currentLang === 'tr' ? 'bg-data-blue text-white' : 'text-gray-300 border border-gray-700'} transition-all">
-                <span>🇹🇷</span>
-                <span>TR</span>
-            </button>
-            <button onclick="switchLanguage('en')"
-                    class="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium ${currentLang === 'en' ? 'bg-data-blue text-white' : 'text-gray-300 border border-gray-700'} transition-all">
-                <span>🇬🇧</span>
-                <span>EN</span>
-            </button>
-        </div>
-    `;
 
     return `
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">

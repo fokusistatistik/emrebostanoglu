@@ -24,216 +24,206 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Components JS -->
     <!-- i18n System (must load before components) -->
     <script src="js/i18n.js"></script>
-
     <script src="js/components.js"></script>
 
     <style>
-        /* Main Photo Showcase */
-        .photo-showcase {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .main-photo-container {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            min-height: 500px;
-            max-height: 800px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #2c3335;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .main-photo {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.8),
-                0 10px 30px rgba(0, 0, 0, 0.6),
-                0 5px 15px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-        }
-
-        .main-photo:hover {
-            transform: scale(1.02);
-        }
-
-        /* Navigation Arrows */
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(212, 175, 55, 0.9);
-            border: none;
-            border-radius: 50%;
-            color: #000;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-arrow:hover {
-            background: rgba(212, 175, 55, 1);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
-        }
-
-        .nav-arrow.prev {
-            left: 20px;
-        }
-
-        .nav-arrow.next {
-            right: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .nav-arrow.prev {
-                left: 10px;
-            }
-
-            .nav-arrow.next {
-                right: 10px;
-            }
-        }
-
-        /* Photo Info */
-        .photo-info {
-            text-align: center;
-            margin-top: 1.5rem;
+        /* Grid Layout Styles */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Film Strip */
-        .film-strip-container {
+        .photo-card {
             position: relative;
-            margin-top: 3rem;
-            padding: 1.5rem 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
-            border-top: 2px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .film-strip {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 0 2rem;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 #2c3335;
-        }
-
-        .film-strip::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .film-strip::-webkit-scrollbar-track {
-            background: #2c3335;
-            border-radius: 4px;
-        }
-
-        .film-strip::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 4px;
-        }
-
-        .film-strip::-webkit-scrollbar-thumb:hover {
-            background: #e5c158;
-        }
-
-        .film-thumbnail {
-            flex: 0 0 120px;
-            height: 80px;
-            cursor: pointer;
-            border-radius: 4px;
             overflow: hidden;
-            border: 3px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .film-thumbnail img {
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+        }
+
+        .photo-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .film-thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        .film-thumbnail:hover img {
+        .photo-card:hover img {
             transform: scale(1.1);
         }
 
-        .film-thumbnail.active {
-            border-color: #d4af37;
-            box-shadow:
-                0 0 20px rgba(212, 175, 55, 0.6),
-                0 8px 16px rgba(0, 0, 0, 0.5);
-            transform: scale(1.1);
-        }
-
-        .film-thumbnail.active::after {
-            content: '';
+        .photo-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.2) 100%);
-            pointer-events: none;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .film-thumbnail {
-                flex: 0 0 100px;
-                height: 65px;
-            }
-
-            .main-photo-container {
-                height: 50vh;
-                min-height: 400px;
-            }
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
         }
 
-        /* Loading Animation */
-        .loading {
-            opacity: 0.5;
-            pointer-events: none;
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
         }
 
-        /* Fade Animation */
+        .lightbox.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 175, 55, 0.9);
+            border: none;
+            color: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .lightbox-nav:hover {
+            background: #d4af37;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-nav.prev {
+            left: -80px;
+        }
+
+        .lightbox-nav.next {
+            right: -80px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(212, 175, 55, 0.9);
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .view-toggle button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-toggle button.active {
+            background: linear-gradient(135deg, #d4af37 0%, #f0c84b 100%);
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
             }
             to {
                 opacity: 1;
@@ -241,30 +231,66 @@
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.4s ease;
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
         }
 
-        /* Photo Counter */
-        .photo-counter {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: #d4af37;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            z-index: 10;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(212, 175, 55, 0.2);
+            border-top-color: #d4af37;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .photo-counter {
-                top: 10px;
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .lightbox-nav.prev {
+                left: 10px;
+            }
+
+            .lightbox-nav.next {
                 right: 10px;
-                padding: 0.3rem 0.7rem;
-                font-size: 0.8rem;
+            }
+
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .lightbox-close {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
         }
     </style>
@@ -276,76 +302,67 @@
 
     <!-- Hero Section -->
     <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-art-gold font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Portfolyo</span>
-            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Işık ve Gölge</h1>
-            <p class="text-gray-400 max-w-2xl mx-auto mb-2">
-                Anı dondurmak, zamanı mühürlemektir. Her kare, anlatılmayı bekleyen sessiz bir hikayedir.
-            </p>
-            <p class="text-art-gold text-sm font-semibold">
-                300+ Ödül • EFIAP • CR2 • FIAP Dünya Kupası Bronz Madalya
-            </p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <span class="text-art-gold font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Portfolyo</span>
+                <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Işık ve Gölge</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-2">
+                    Anı dondurmak, zamanı mühürlemektir. Her kare, anlatılmayı bekleyen sessiz bir hikayedir.
+                </p>
+                <p class="text-art-gold text-sm font-semibold mb-8">
+                    300+ Ödül • EFIAP • CR2 • FIAP Dünya Kupası Bronz Madalya
+                </p>
+
+                <!-- View Toggle -->
+                <div class="flex justify-center mb-4">
+                    <div class="view-toggle">
+                        <button id="grid-view-btn" class="active">
+                            <i class="fas fa-th"></i>
+                            <span>Grid</span>
+                        </button>
+                        <button id="list-view-btn">
+                            <i class="fas fa-list"></i>
+                            <span>Liste</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
     <section class="py-20 bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <!-- Photo Showcase -->
-            <div class="photo-showcase">
-                <div class="main-photo-container">
-                    <!-- Photo Counter -->
-                    <div class="photo-counter">
-                        <span id="current-index">1</span> / <span id="total-photos">50</span>
-                    </div>
-
-                    <!-- Previous Arrow -->
-                    <button class="nav-arrow prev" id="prev-btn" aria-label="Önceki Fotoğraf">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-
-                    <!-- Main Photo -->
-                    <img id="main-photo" class="main-photo fade-in" src="" alt="Portfolio Photo">
-
-                    <!-- Next Arrow -->
-                    <button class="nav-arrow next" id="next-btn" aria-label="Sonraki Fotoğraf">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
-                <!-- Photo Info -->
-                <div class="photo-info">
-                    <p class="text-white font-semibold text-lg mb-4">
-                        <i class="fas fa-map-marker-alt text-art-gold mr-2"></i>
-                        <span id="photo-location">Türkiye</span>
-                        <span class="text-gray-500 mx-3">•</span>
-                        <i class="fas fa-calendar text-art-gold mr-2"></i>
-                        <span id="photo-year">2025</span>
-                    </p>
-
-                    <!-- Share Buttons -->
-                    <div class="border-t border-gray-700 pt-4 mt-4">
-                        <div id="photo-share-buttons"></div>
-                    </div>
-                </div>
+            <!-- Loading Indicator -->
+            <div id="loading" class="flex justify-center py-20">
+                <div class="loading-spinner"></div>
             </div>
 
-            <!-- Film Strip -->
-            <div class="film-strip-container">
-                <div class="text-center mb-4">
-                    <span class="text-gray-500 text-sm uppercase tracking-widest">
-                        <i class="fas fa-film text-art-gold mr-2"></i>
-                        Film Şeridi
-                    </span>
-                </div>
-                <div class="film-strip" id="film-strip">
-                    <!-- Thumbnails will be generated by JavaScript -->
-                </div>
+            <!-- Photo Grid -->
+            <div id="photo-gallery" class="photo-grid" style="display: none;">
+                <!-- Photos will be generated by JavaScript -->
             </div>
-
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" id="lightbox-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav prev" id="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Photo">
+            <button class="lightbox-nav next" id="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="lightbox-counter">
+            <span id="lightbox-current">1</span> / <span id="lightbox-total">50</span>
+        </div>
+    </div>
 
     <!-- Footer Container -->
     <div id="footer-container"></div>
@@ -366,150 +383,155 @@
             photos.push({
                 id: i,
                 url: `${BASE_URL}foto${i}.jpg`,
+                title: `Fotoğraf ${i}`,
                 location: 'Türkiye',
                 year: '2025'
             });
         }
 
         // State
-        let currentIndex = 0;
+        let currentView = 'grid';
+        let currentLightboxIndex = 0;
 
         // Elements
-        const mainPhoto = document.getElementById('main-photo');
-        const currentIndexEl = document.getElementById('current-index');
-        const totalPhotosEl = document.getElementById('total-photos');
-        const photoLocation = document.getElementById('photo-location');
-        const photoYear = document.getElementById('photo-year');
-        const filmStrip = document.getElementById('film-strip');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
+        const photoGallery = document.getElementById('photo-gallery');
+        const loading = document.getElementById('loading');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCurrent = document.getElementById('lightbox-current');
+        const lightboxTotal = document.getElementById('lightbox-total');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const gridViewBtn = document.getElementById('grid-view-btn');
+        const listViewBtn = document.getElementById('list-view-btn');
 
         // Set total photos
-        totalPhotosEl.textContent = photos.length;
+        lightboxTotal.textContent = photos.length;
 
-        // Generate film strip thumbnails
-        function generateFilmStrip() {
-            filmStrip.innerHTML = '';
+        // Generate photo grid
+        function generatePhotoGrid() {
+            photoGallery.innerHTML = '';
+
             photos.forEach((photo, index) => {
-                const thumbnail = document.createElement('div');
-                thumbnail.className = 'film-thumbnail';
-                thumbnail.setAttribute('data-index', index);
-                if (index === 0) thumbnail.classList.add('active');
+                const card = document.createElement('div');
+                card.className = 'photo-card fade-in-up';
+                card.style.animationDelay = `${(index % 12) * 0.05}s`;
+                card.setAttribute('data-index', index);
 
-                const img = document.createElement('img');
-                img.src = photo.url;
-                img.alt = `Photo ${index + 1}`;
-                img.loading = 'lazy';
-
-                thumbnail.appendChild(img);
-                filmStrip.appendChild(thumbnail);
+                card.innerHTML = `
+                    <img src="${photo.url}" alt="${photo.title}" loading="lazy">
+                    <div class="photo-overlay">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-art-gold text-xs font-bold uppercase mb-1">
+                                    <i class="fas fa-camera mr-1"></i>
+                                    ${photo.location}
+                                </p>
+                                <h3 class="text-white text-lg font-serif">${photo.title}</h3>
+                            </div>
+                            <div class="text-white text-2xl">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
 
                 // Click handler
-                thumbnail.addEventListener('click', () => {
-                    goToPhoto(index);
+                card.addEventListener('click', () => {
+                    openLightbox(index);
                 });
+
+                photoGallery.appendChild(card);
             });
+
+            // Show gallery, hide loading
+            loading.style.display = 'none';
+            photoGallery.style.display = 'grid';
         }
 
-        // Update main photo
-        function updatePhoto(index) {
-            const photo = photos[index];
-
-            // Add fade effect
-            mainPhoto.classList.remove('fade-in');
-            mainPhoto.classList.add('loading');
-
-            setTimeout(() => {
-                mainPhoto.src = photo.url;
-                mainPhoto.alt = `${photo.location} - ${photo.year}`;
-                currentIndexEl.textContent = index + 1;
-                photoLocation.textContent = photo.location;
-                photoYear.textContent = photo.year;
-
-                mainPhoto.classList.remove('loading');
-                mainPhoto.classList.add('fade-in');
-
-                // Update active thumbnail
-                updateActiveThumbnail(index);
-
-                // Scroll thumbnail into view
-                scrollToThumbnail(index);
-
-                // Update share buttons
-                loadShareButtons('photo-share-buttons', {
-                    url: window.location.href,
-                    title: `${photo.location} Fotoğrafı - Emre Bostanoğlu`,
-                    description: `${photo.location} bölgesinden ${photo.year} yılında çekilmiş fotoğraf. Emre Bostanoğlu fotoğraf portfolyosu.`,
-                    layout: 'horizontal',
-                    showLabels: false
-                });
-            }, 150);
+        // Open lightbox
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Update active thumbnail
-        function updateActiveThumbnail(index) {
-            const thumbnails = document.querySelectorAll('.film-thumbnail');
-            thumbnails.forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
-        // Scroll to thumbnail
-        function scrollToThumbnail(index) {
-            const thumbnail = filmStrip.querySelector(`[data-index="${index}"]`);
-            if (thumbnail) {
-                thumbnail.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'center'
-                });
-            }
+        // Update lightbox content
+        function updateLightbox() {
+            const photo = photos[currentLightboxIndex];
+            lightboxImg.src = photo.url;
+            lightboxImg.alt = photo.title;
+            lightboxCurrent.textContent = currentLightboxIndex + 1;
         }
 
-        // Navigation functions
-        function goToPhoto(index) {
-            if (index >= 0 && index < photos.length) {
-                currentIndex = index;
-                updatePhoto(currentIndex);
-            }
-        }
-
+        // Navigate lightbox
         function nextPhoto() {
-            currentIndex = (currentIndex + 1) % photos.length;
-            updatePhoto(currentIndex);
+            currentLightboxIndex = (currentLightboxIndex + 1) % photos.length;
+            updateLightbox();
         }
 
         function prevPhoto() {
-            currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-            updatePhoto(currentIndex);
+            currentLightboxIndex = (currentLightboxIndex - 1 + photos.length) % photos.length;
+            updateLightbox();
         }
 
         // Event listeners
-        prevBtn.addEventListener('click', prevPhoto);
-        nextBtn.addEventListener('click', nextPhoto);
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextPhoto);
+        lightboxPrev.addEventListener('click', prevPhoto);
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevPhoto();
-            } else if (e.key === 'ArrowRight') {
-                nextPhoto();
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
             }
         });
 
-        // Touch swipe support
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'ArrowRight') {
+                nextPhoto();
+            } else if (e.key === 'ArrowLeft') {
+                prevPhoto();
+            } else if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // View toggle (Grid/List)
+        gridViewBtn.addEventListener('click', () => {
+            currentView = 'grid';
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+            photoGallery.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            currentView = 'list';
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+            photoGallery.style.gridTemplateColumns = '1fr';
+        });
+
+        // Touch swipe support for lightbox
         let touchStartX = 0;
         let touchEndX = 0;
 
-        mainPhoto.addEventListener('touchstart', (e) => {
+        lightboxImg.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         });
 
-        mainPhoto.addEventListener('touchend', (e) => {
+        lightboxImg.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
         });
@@ -520,28 +542,35 @@
 
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
-                    // Swipe left - next photo
                     nextPhoto();
                 } else {
-                    // Swipe right - prev photo
                     prevPhoto();
                 }
             }
         }
 
         // Initialize
-        generateFilmStrip();
-        updatePhoto(0);
+        window.addEventListener('DOMContentLoaded', () => {
+            // Simulate loading delay
+            setTimeout(() => {
+                generatePhotoGrid();
+            }, 500);
+        });
 
-        // Preload next few images
-        function preloadImages() {
-            for (let i = 1; i <= 5; i++) {
-                const img = new Image();
-                img.src = photos[i % photos.length].url;
-            }
+        // Preload next images when viewing in lightbox
+        function preloadAdjacentImages() {
+            const nextIndex = (currentLightboxIndex + 1) % photos.length;
+            const prevIndex = (currentLightboxIndex - 1 + photos.length) % photos.length;
+
+            const nextImg = new Image();
+            nextImg.src = photos[nextIndex].url;
+
+            const prevImg = new Image();
+            prevImg.src = photos[prevIndex].url;
         }
 
-        preloadImages();
+        // Call preload when lightbox changes
+        lightboxImg.addEventListener('load', preloadAdjacentImages);
     </script>
 
     <!-- Interactive Features -->
