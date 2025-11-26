@@ -134,6 +134,57 @@
         </div>
     </section>
 
+    <!-- Podcast/Video Section -->
+    <section class="py-20 bg-[#1a1a1a] border-y border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-writer-paper font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Podcast & Söyleşi</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">İbrahim'i Duyarken - Roman Tanıtımı</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Son romanım "İbrahim'i Duyarken" üzerine derinlemesine bir söyleşi. Kitabın yazılış süreci, karakterler ve felsefi alt metni hakkında...
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Video Container -->
+                <div class="video-container relative pb-[56.25%] h-0 overflow-hidden bg-black rounded-xl shadow-2xl">
+                    <iframe
+                        src="https://www.youtube.com/embed/gNmg-3h-nmQ?rel=0&modestbranding=1"
+                        title="İBRAHİMİ DUYARKEN Roman Tanıtımı - Emre Bostanoğlu"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"
+                        class="absolute top-0 left-0 w-full h-full border-none rounded-xl">
+                    </iframe>
+                </div>
+
+                <!-- Video Info -->
+                <div class="mt-8 p-6 bg-card-bg rounded-lg border-l-4 border-writer-paper">
+                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-podcast text-writer-paper"></i>
+                            <span>Podcast & Röportaj</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-calendar text-writer-paper"></i>
+                            <span>2022</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        "İbrahim'i Duyarken" romanının derinlemesine incelendiği bu söyleşide, kitabın yazılış sürecinden karakterlerin psikolojik arka planına,
+                        felsefi sorgulamalardan modern insanın ruhsal yolculuğuna kadar birçok konuya değiniyoruz.
+                        Romanın şiirsel dilinin nasıl şekillendiği ve okurda yaratmak istediğim duygu dünyası hakkında samimi bir paylaşım.
+                    </p>
+
+                    <!-- Share Buttons -->
+                    <div class="border-t border-gray-700 pt-4">
+                        <div id="share-podcast"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Initialize Share Buttons -->
     <script>
         // Wait for page load
@@ -161,6 +212,15 @@
                 url: 'https://www.kitapyurdu.com/kitap/ibrahimi-duyarken/609309.html',
                 title: 'İbrahim\'i Duyarken - Emre Bostanoğlu',
                 description: 'Şiirsel bir dille yazılmış, İbrahim karakteri üzerinden yeniden doğuşu anlatan edebi roman.',
+                layout: 'horizontal',
+                showLabels: false
+            });
+
+            // Podcast: İbrahim'i Duyarken Roman Tanıtımı
+            loadShareButtons('share-podcast', {
+                url: 'https://www.youtube.com/watch?v=gNmg-3h-nmQ',
+                title: 'İBRAHİMİ DUYARKEN Roman Tanıtımı - Emre Bostanoğlu',
+                description: 'İbrahim\'i Duyarken romanının yazılış süreci, karakterlerin psikolojik arka planı ve felsefi sorgulamalar üzerine derinlemesine söyleşi.',
                 layout: 'horizontal',
                 showLabels: false
             });

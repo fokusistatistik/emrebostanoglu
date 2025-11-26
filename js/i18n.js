@@ -21,8 +21,9 @@ const I18N = {
      * Initialize i18n system
      */
     async init() {
-        // Get saved language preference or detect browser language
-        this.currentLang = this.getSavedLanguage() || this.detectBrowserLanguage();
+        // Get saved language preference, default to Turkish (TR)
+        // Only change if user explicitly selected a different language
+        this.currentLang = this.getSavedLanguage() || 'tr';
 
         // Load translation files
         await this.loadTranslations();

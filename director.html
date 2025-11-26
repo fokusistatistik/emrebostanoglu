@@ -150,45 +150,80 @@
 
     <!-- Video Gallery Script -->
     <script>
-        // Video data structure - User will provide YouTube IDs and details
+        // Video Gallery - Film and Documentary Works
         const videos = [
             {
                 id: 1,
-                youtubeId: 'dQw4w9WgXcQ', // PLACEHOLDER - Replace with actual YouTube ID
-                title: 'Film Başlığı 1',
-                description: 'Film açıklaması buraya gelecek. Kullanıcı gerçek bilgileri sağlayacak.',
-                category: 'Kısa Film', // Options: Kısa Film, Belgesel, Video Art, Deneysel
-                year: '2024',
-                duration: '12:30'
+                youtubeId: '2IxArz7YizQ',
+                title: 'Sarp Yokuş',
+                description: '8 Mart Dünya Kadınlar Günü\'ne özel hazırlanmış kısa film. Kadınların hayattaki mücadelesini ve dayanışmasını anlatan duygusal bir hikaye.',
+                category: 'Kısa Film',
+                year: '2020',
+                duration: '8:45'
             },
             {
                 id: 2,
-                youtubeId: 'dQw4w9WgXcQ', // PLACEHOLDER
-                title: 'Film Başlığı 2',
-                description: 'Film açıklaması buraya gelecek. Kullanıcı gerçek bilgileri sağlayacak.',
+                youtubeId: '5drgbDmePow',
+                title: 'Kocaeli 112 Kuruluş Belgeseli',
+                description: 'Kocaeli Acil Sağlık Hizmetleri 112\'nin kuruluşunu ve gelişimini anlatan belgesel çalışma. Hayat kurtaran kahramanların hikayesi.',
                 category: 'Belgesel',
-                year: '2023',
-                duration: '25:45'
+                year: '2020',
+                duration: '18:30'
             },
             {
                 id: 3,
-                youtubeId: 'dQw4w9WgXcQ', // PLACEHOLDER
-                title: 'Film Başlığı 3',
-                description: 'Film açıklaması buraya gelecek. Kullanıcı gerçek bilgileri sağlayacak.',
-                category: 'Video Art',
-                year: '2023',
-                duration: '8:15'
+                youtubeId: 'tYErvpSm0ko',
+                title: 'Bilyalı',
+                description: 'Geleneksel çocuk oyunlarından bilyayı konu alan nostaljik bir kısa film. Geçmişe dönüş ve hatıralar...',
+                category: 'Kısa Film',
+                year: '2021',
+                duration: '6:15'
             },
             {
                 id: 4,
-                youtubeId: 'dQw4w9WgXcQ', // PLACEHOLDER
-                title: 'Film Başlığı 4',
-                description: 'Film açıklaması buraya gelecek. Kullanıcı gerçek bilgileri sağlayacak.',
+                youtubeId: 'FflaOk3dj4A',
+                title: 'Adaletin Bedeli',
+                description: 'Adalet arayışı ve ahlaki değerler üzerine düşündüren bir kısa film çalışması.',
                 category: 'Kısa Film',
-                year: '2022',
-                duration: '15:20'
+                year: '2020',
+                duration: '12:20'
+            },
+            {
+                id: 5,
+                youtubeId: 'bKpWpLc4Ank',
+                title: 'Minik 112 Görevde 2',
+                description: 'Çocuklara acil sağlık hizmetlerini ve ilk yardım bilincini öğreten eğitici belgesel serinin ikinci bölümü.',
+                category: 'Belgesel',
+                year: '2021',
+                duration: '15:45'
+            },
+            {
+                id: 6,
+                youtubeId: '_PN10WRHvG0',
+                title: 'Maun',
+                description: 'İnsan ilişkileri ve değerler üzerine düşündüren dokunaklı bir kısa film.',
+                category: 'Kısa Film',
+                year: '2021',
+                duration: '10:30'
+            },
+            {
+                id: 7,
+                youtubeId: 'Yrf4PSzN8EI',
+                title: 'Minik 112 Görev Başında',
+                description: 'Çocuklara 112 Acil Sağlık Hizmetleri\'ni tanıtan, ilk yardım bilincini geliştiren eğitici belgesel.',
+                category: 'Belgesel',
+                year: '2019',
+                duration: '14:20'
+            },
+            {
+                id: 8,
+                youtubeId: '8Oh2Lsok2M',
+                title: 'Ajans Gündem TV',
+                description: 'Ajans Gündem TV programında konuk olarak yer aldığım söyleşi. Veri bilimi, fotoğraf ve sanat üzerine sohbet.',
+                category: 'TV Program',
+                year: '2023',
+                duration: '28:15'
             }
-            // Add more videos (up to 6-8 total)
         ];
 
         // Generate video cards
