@@ -300,8 +300,19 @@
     if (!chatMessages) return;
 
     const div = document.createElement('div');
-    let cleanText = (text || '').replace(/\\n/g, '\n').replace(/\\t/g, ' ').trim();
 
+    // Clean text preprocessing
+    let cleanText = text || '';
+    cleanText = cleanText.replace(/\\n/g, '\n');
+    cleanText = cleanText.replace(/\\t/g, ' ');
+    cleanText = cleanText.replace(/\\\\/g, '\\');
+    cleanText = cleanText.trim();
+    cleanText = cleanText.replace(/^```[a-z]*\n?/gi, '').replace(/\n?```$/g, '');
+    cleanText = cleanText.trim();
+    cleanText = cleanText.replace(/\n\n+/g, '\n');
+    cleanText = cleanText.split('\n').map(line => line.trim()).join('\n');
+
+    // Convert markdown to HTML
     let htmlContent = cleanText
       .replace(/^#### (.*$)/gm, '<strong>$1</strong>')
       .replace(/^### (.*$)/gm, '<strong>$1</strong>')
@@ -310,10 +321,25 @@
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
       .replace(/^- (.*$)/gm, '• $1')
+      .replace(/^\* (.*$)/gm, '• $1')
       .replace(/\n/g, '<br>');
 
     div.innerHTML = htmlContent;
     div.className = sender;
+
+    // Set alignment
+    if (sender === 'user') {
+      div.style.marginLeft = 'auto';
+    } else {
+      div.style.marginRight = 'auto';
+    }
+
+    // Ensure all links have proper attributes
+    const links = div.querySelectorAll('a');
+    links.forEach(link => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
 
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;

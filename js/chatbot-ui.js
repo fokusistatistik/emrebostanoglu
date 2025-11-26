@@ -458,6 +458,67 @@
           transform: translateY(0);
         }
 
+        /* Code Blocks */
+        #chat-messages pre {
+          background: rgba(0, 0, 0, 0.05);
+          padding: 12px;
+          border-radius: 8px;
+          overflow-x: auto;
+          font-size: 12px;
+          margin: 8px 0;
+        }
+
+        #chat-messages code {
+          font-family: 'Monaco', 'Courier New', monospace;
+          font-size: 12px;
+        }
+
+        #chat-messages > div.user pre {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* List Spacing */
+        #chat-messages ul,
+        #chat-messages ol {
+          margin: 0 !important;
+          padding-left: 20px;
+        }
+
+        #chat-messages li {
+          margin: 0 !important;
+        }
+
+        /* Heading Spacing */
+        #chat-messages h1,
+        #chat-messages h2,
+        #chat-messages h3,
+        #chat-messages h4,
+        #chat-messages h5,
+        #chat-messages h6 {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        /* Paragraph Spacing */
+        #chat-messages p {
+          margin: 0 !important;
+          padding: 0 !important;
+          line-height: 1.5;
+        }
+
+        #chat-messages p + p {
+          margin-top: 0 !important;
+        }
+
+        /* First and last child margin removal */
+        #chat-messages > div.bot > *:first-child {
+          margin-top: 0;
+        }
+
+        #chat-messages > div.bot > *:last-child {
+          margin-bottom: 0;
+        }
+
         /* Warning Messages */
         #chat-messages > div.warning {
           background: #fff3cd;
