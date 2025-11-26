@@ -58,7 +58,8 @@ function getNavbarHTML(activePage) {
         { id: 'datascience', href: 'datascience.html', i18nKey: 'nav.datascience', colorClass: 'hover:text-data-blue' },
         { id: 'photography', href: 'photography.html', i18nKey: 'nav.photography', colorClass: 'hover:text-art-gold' },
         { id: 'writer', href: 'writer.html', i18nKey: 'nav.writer', colorClass: 'hover:text-writer-paper' },
-        { id: 'director', href: 'director.html', i18nKey: 'nav.director', colorClass: 'hover:text-director-red' }
+        { id: 'director', href: 'director.html', i18nKey: 'nav.director', colorClass: 'hover:text-director-red' },
+        { id: 'blog', href: 'blog.html', i18nKey: 'nav.blog', colorClass: 'hover:text-data-blue' }
     ];
 
     let desktopLinksHTML = links.map(link => {

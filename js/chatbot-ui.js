@@ -9,14 +9,36 @@
   // Inject chatbot HTML structure
   function injectChatbotHTML() {
     const chatbotHTML = `
+      <!-- Chatbot Toggle Icon (Sağ Alt) -->
+      <div id="chatbot-toggle-icon" style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #2c3335 0%, #1a1a1a 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(44, 51, 53, 0.4);
+        z-index: 9998;
+        transition: all 0.3s ease;
+      " title="Chatbot'u Aç">
+        <img src="https://static.fokusistatistik.com/resimler/fokus216k.png"
+             alt="FOKUS216"
+             style="width: 50px; height: 50px; border-radius: 50%;">
+      </div>
+
       <!-- FOKUS216 Chatbot Widget -->
-      <div id="fokus216-widget" aria-label="FOKUS216 Chatbot Widget">
+      <div id="fokus216-widget" aria-label="FOKUS216 Chatbot Widget" style="display: none;">
         <div id="fokus216-popup" role="dialog" aria-modal="true">
           <div id="fokus216-popup-header">
             <div id="fokus216-popup-header-icon"></div>
             <div id="fokus216-popup-header-title">
               <strong>FOKUS216</strong>
-              Size nasıl yardımcı olabilirim?
+              Emre Bostanoğlu'nun Kişisel Sanat Asistanı
             </div>
           </div>
 
@@ -49,6 +71,26 @@
     const container = document.createElement('div');
     container.innerHTML = chatbotHTML;
     document.body.appendChild(container);
+
+    // Toggle chatbot on icon click
+    const toggleIcon = document.getElementById('chatbot-toggle-icon');
+    const widget = document.getElementById('fokus216-widget');
+
+    if (toggleIcon && widget) {
+      toggleIcon.addEventListener('click', () => {
+        const isVisible = widget.style.display !== 'none';
+        widget.style.display = isVisible ? 'none' : 'block';
+        toggleIcon.style.display = isVisible ? 'flex' : 'none';
+      });
+
+      // Pulse animation
+      setInterval(() => {
+        toggleIcon.style.animation = 'pulse 1.5s ease-in-out';
+        setTimeout(() => {
+          toggleIcon.style.animation = '';
+        }, 1500);
+      }, 8000);
+    }
   }
 
   // Inject chatbot CSS styles
@@ -59,6 +101,21 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+        }
+
+        /* Chatbot Toggle Icon */
+        #chatbot-toggle-icon:hover {
+          transform: scale(1.1);
+          box-shadow: 0 12px 32px rgba(44, 51, 53, 0.6);
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.15);
+          }
         }
 
         #fokus216-widget {

@@ -377,9 +377,10 @@
     if (!chatMessages) return;
 
     const questions = [
-      'Veri bilimi hizmetleri hakkında bilgi',
-      'Fotoğraf atölyesi randevu',
-      'Kitaplar ve yayınlar'
+      'Fotoğraf atölyesi hakkında bilgi almak istiyorum',
+      'Veri bilimi ve yapay zeka danışmanlığı',
+      'Kitaplar ve edebi eserler',
+      'Film ve yönetmenlik çalışmaları'
     ];
 
     const container = document.createElement('div');
@@ -525,7 +526,7 @@
     }
 
     // Initial message
-    addMessage(`Merhaba! Ben ${CONFIG.botName}, size nasıl yardımcı olabilirim?`, 'bot');
+    addMessage(`Merhaba! Ben Emre Bostanoğlu'nun kişisel sanat asistanıyım. Size nasıl yardımcı olabilirim?`, 'bot');
     addQuickQuestions();
   }
 
