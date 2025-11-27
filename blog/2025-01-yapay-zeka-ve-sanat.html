@@ -394,6 +394,12 @@
                     <span class="blog-tag">Yaratıcılık</span>
                 </div>
 
+                <!-- Social Share Buttons -->
+                <div class="mt-8 pt-8 border-t border-gray-800">
+                    <h3 class="text-white font-cinzel font-bold text-xl mb-4">Bu Yazıyı Paylaş</h3>
+                    <div id="blog-share-buttons"></div>
+                </div>
+
             </div>
         </div>
     </article>
@@ -418,6 +424,19 @@
     <!-- Initialize Components -->
     <script>
         loadComponents('blog');
+
+        // Initialize Reading Progress Bar for blog posts
+        if (typeof initReadingProgress === 'function') {
+            initReadingProgress();
+        }
+
+        // Load Social Share Buttons
+        if (typeof loadShareButtons === 'function') {
+            loadShareButtons('blog-share-buttons', {
+                showLabels: true,
+                layout: 'horizontal'
+            });
+        }
     </script>
 
     <!-- Interactive Features -->

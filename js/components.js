@@ -628,3 +628,126 @@ function loadShareButtons(containerId, options = {}) {
 }
 
 // Sticky contact button removed
+
+/**
+ * Back to Top Button
+ * Appears when user scrolls down, smooth scroll to top on click
+ */
+function initBackToTop() {
+    // Inject back to top button HTML
+    const backToTopHTML = `
+        <button id="back-to-top"
+                aria-label="Yukarı Çık"
+                title="Yukarı Çık"
+                style="
+                    position: fixed;
+                    bottom: 100px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    background: linear-gradient(135deg, #d4af37 0%, #f0c84b 100%);
+                    color: #000;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                    z-index: 9997;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+                ">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    `;
+
+    // Add to body
+    document.body.insertAdjacentHTML('beforeend', backToTopHTML);
+
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    // Show/hide on scroll
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.visibility = 'visible';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.visibility = 'hidden';
+        }
+    });
+
+    // Scroll to top on click
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Hover effect
+    backToTopBtn.addEventListener('mouseenter', () => {
+        backToTopBtn.style.transform = 'scale(1.1) translateY(-5px)';
+        backToTopBtn.style.boxShadow = '0 8px 20px rgba(212, 175, 55, 0.6)';
+    });
+
+    backToTopBtn.addEventListener('mouseleave', () => {
+        backToTopBtn.style.transform = 'scale(1) translateY(0)';
+        backToTopBtn.style.boxShadow = '0 4px 12px rgba(212, 175, 55, 0.4)';
+    });
+
+    console.log('Back to Top button initialized');
+}
+
+// Initialize Back to Top on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBackToTop);
+} else {
+    initBackToTop();
+}
+
+/**
+ * Reading Progress Bar
+ * Shows reading progress at the top of the page
+ */
+function initReadingProgress() {
+    // Inject progress bar HTML
+    const progressHTML = `
+        <div id="reading-progress"
+             style="
+                 position: fixed;
+                 top: 0;
+                 left: 0;
+                 width: 0%;
+                 height: 3px;
+                 background: linear-gradient(90deg, #d4af37 0%, #f0c84b 100%);
+                 z-index: 10000;
+                 transition: width 0.1s ease-out;
+                 box-shadow: 0 2px 8px rgba(212, 175, 55, 0.6);
+             ">
+        </div>
+    `;
+
+    // Add to body
+    document.body.insertAdjacentHTML('afterbegin', progressHTML);
+
+    const progressBar = document.getElementById('reading-progress');
+
+    // Update progress on scroll
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.pageYOffset;
+        const progress = (scrolled / documentHeight) * 100;
+
+        progressBar.style.width = progress + '%';
+    });
+
+    console.log('Reading Progress Bar initialized');
+}
+
+// Export for manual initialization
+window.initReadingProgress = initReadingProgress;
