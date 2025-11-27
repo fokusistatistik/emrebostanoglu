@@ -33,11 +33,9 @@ const urlsToCache = [
     '/translations/tr.json',
     '/translations/en.json',
     '/content/articles.json',
-    '/icons/icon-192.png',
-    '/icons/icon-512.png',
-    '/icons/favicon.png'
-    // Note: External CDNs removed from cache for better reliability
-    // They will be fetched from network and cached dynamically
+    // PWA Icons - cached from external CDN for offline support
+    'https://static.fokusistatistik.com/resimler/ebfavicon.png',
+    'https://static.fokusistatistik.com/resimler/eblogonavbar.png'
 ];
 
 // Install event - cache resources
@@ -99,17 +97,21 @@ self.addEventListener('fetch', (event) => {
 
                 return fetch(fetchRequest).then((response) => {
                     // Check if valid response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
+                    // Allow both 'basic' (same-origin) and 'cors' (cross-origin) responses
+                    if (!response || response.status !== 200) {
                         return response;
                     }
 
-                    // Clone the response
-                    const responseToCache = response.clone();
+                    // Only cache basic and cors type responses (not opaque)
+                    if (response.type === 'basic' || response.type === 'cors') {
+                        // Clone the response
+                        const responseToCache = response.clone();
 
-                    caches.open(CACHE_NAME)
-                        .then((cache) => {
-                            cache.put(event.request, responseToCache);
-                        });
+                        caches.open(CACHE_NAME)
+                            .then((cache) => {
+                                cache.put(event.request, responseToCache);
+                            });
+                    }
 
                     return response;
                 }).catch(() => {
