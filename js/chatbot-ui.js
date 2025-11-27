@@ -152,9 +152,8 @@
 
         #fokus216-widget {
           position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          bottom: 90px;
+          right: 30px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
           z-index: 9999;
         }
@@ -169,10 +168,17 @@
           width: 400px;
           height: 600px;
           max-width: 95vw;
-          max-height: 95vh;
+          max-height: 85vh;
         }
 
         @media (max-width: 480px) {
+          #fokus216-widget {
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+          }
+
           #fokus216-popup {
             width: 100vw;
             height: 100vh;

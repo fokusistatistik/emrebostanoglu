@@ -641,8 +641,8 @@ function initBackToTop() {
                 title="Yukarı Çık"
                 style="
                     position: fixed;
-                    bottom: 100px;
-                    right: 30px;
+                    bottom: 30px;
+                    left: 30px;
                     width: 50px;
                     height: 50px;
                     background: linear-gradient(135deg, #d4af37 0%, #f0c84b 100%);
