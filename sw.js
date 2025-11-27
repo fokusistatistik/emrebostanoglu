@@ -3,7 +3,11 @@
  * Progressive Web App functionality for offline support
  */
 
-const CACHE_NAME = 'eb-portfolio-v1';
+// Cache versioning with timestamp for auto-updates
+const CACHE_VERSION = '1.0.0';
+const CACHE_TIMESTAMP = '20251127';
+const CACHE_NAME = `eb-portfolio-v${CACHE_VERSION}-${CACHE_TIMESTAMP}`;
+
 const urlsToCache = [
     '/',
     '/index.html',
@@ -20,13 +24,20 @@ const urlsToCache = [
     '/js/components.js',
     '/js/i18n.js',
     '/js/content-manager.js',
+    '/js/app.js',
+    '/js/chatbot-ui.js',
     '/js/chatbot.js',
     '/js/exit-intent.js',
+    '/js/theme-switcher.js',
+    '/js/lazy-load.js',
     '/translations/tr.json',
     '/translations/en.json',
     '/content/articles.json',
-    'https://cdn.tailwindcss.com',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+    '/icons/icon-192.png',
+    '/icons/icon-512.png',
+    '/icons/favicon.png'
+    // Note: External CDNs removed from cache for better reliability
+    // They will be fetched from network and cached dynamically
 ];
 
 // Install event - cache resources

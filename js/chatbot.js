@@ -74,10 +74,18 @@
     userId: `fokus216_user_id_${fingerprint}`
   };
 
-  let userId = localStorage.getItem(STORAGE_KEYS.userId);
-  if (!userId) {
+  // Initialize userId with localStorage fallback
+  let userId;
+  try {
+    userId = localStorage.getItem(STORAGE_KEYS.userId);
+    if (!userId) {
+      userId = 'user_216' + Math.random().toString(36).slice(2);
+      localStorage.setItem(STORAGE_KEYS.userId, userId);
+    }
+  } catch (e) {
+    // Fallback for private browsing or localStorage disabled
+    console.warn('localStorage unavailable, using session-only userId:', e);
     userId = 'user_216' + Math.random().toString(36).slice(2);
-    localStorage.setItem(STORAGE_KEYS.userId, userId);
   }
 
   // Load from storage
@@ -370,6 +378,10 @@
     if (typingIndicator) typingIndicator.style.display = 'flex';
     if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
 
+    // Timeout controller for fetch request
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
     try {
       const res = await fetch(CONFIG.webhookUrl, {
         method: 'POST',
@@ -383,18 +395,45 @@
           FOKUS_ID: CONFIG.FOKUS_ID,
           fingerprint: fingerprint
         }),
+        signal: controller.signal
       });
 
-      if (!res.ok) throw new Error('Sunucu hatası');
+      clearTimeout(timeoutId);
+
+      if (!res.ok) {
+        let errorMsg = 'Sunucu hatası oluştu.';
+        if (res.status === 429) {
+          errorMsg = 'Çok fazla istek gönderdiniz. Lütfen biraz bekleyip tekrar deneyin.';
+        } else if (res.status === 500) {
+          errorMsg = 'Sunucu hatası. Lütfen daha sonra tekrar deneyin.';
+        } else if (res.status === 503) {
+          errorMsg = 'Servis şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+        }
+        throw new Error(errorMsg);
+      }
 
       const data = await res.json();
       if (typingIndicator) typingIndicator.style.display = 'none';
       if (chatSubmit) chatSubmit.disabled = false;
       addMessage(data.reply || 'Cevap alınamadı.', 'bot');
     } catch (err) {
+      clearTimeout(timeoutId);
       if (typingIndicator) typingIndicator.style.display = 'none';
       if (chatSubmit) chatSubmit.disabled = false;
-      addMessage('Bağlantı hatası. Lütfen tekrar deneyin.', 'bot');
+
+      // Detailed error messages
+      let errorMessage = 'Bağlantı hatası. Lütfen tekrar deneyin.';
+
+      if (err.name === 'AbortError') {
+        errorMessage = '⏱️ İstek zaman aşımına uğradı. Lütfen tekrar deneyin.';
+      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+        errorMessage = '🌐 İnternet bağlantınızı kontrol edin ve tekrar deneyin.';
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+
+      addMessage(errorMessage, 'bot');
+      console.error('Chatbot error:', err);
     }
   }
 

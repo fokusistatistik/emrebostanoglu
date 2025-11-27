@@ -38,10 +38,14 @@
      * Get current theme from localStorage or system preference
      */
     function getCurrentTheme() {
-        const savedTheme = localStorage.getItem(THEME_KEY);
+        try {
+            const savedTheme = localStorage.getItem(THEME_KEY);
 
-        if (savedTheme) {
-            return savedTheme;
+            if (savedTheme) {
+                return savedTheme;
+            }
+        } catch (e) {
+            console.warn('localStorage unavailable for theme preference:', e);
         }
 
         // Check system preference
@@ -81,8 +85,12 @@
         document.body.style.backgroundColor = colors.bg;
         document.body.style.color = colors.text;
 
-        // Save to localStorage
-        localStorage.setItem(THEME_KEY, theme);
+        // Save to localStorage (with fallback for private browsing)
+        try {
+            localStorage.setItem(THEME_KEY, theme);
+        } catch (e) {
+            console.warn('Cannot save theme preference (localStorage unavailable):', e);
+        }
 
         // Update toggle button icon
         updateToggleButton(theme);
@@ -187,7 +195,13 @@
         // Listen for system theme changes
         if (window.matchMedia) {
             window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-                if (!localStorage.getItem(THEME_KEY)) {
+                try {
+                    if (!localStorage.getItem(THEME_KEY)) {
+                        const newTheme = e.matches ? THEMES.LIGHT : THEMES.DARK;
+                        applyTheme(newTheme);
+                    }
+                } catch (err) {
+                    // If localStorage unavailable, always apply system preference
                     const newTheme = e.matches ? THEMES.LIGHT : THEMES.DARK;
                     applyTheme(newTheme);
                 }

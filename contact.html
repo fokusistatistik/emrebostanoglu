@@ -273,6 +273,75 @@
         // Webhook URL
         const WEBHOOK_URL = 'https://n8n.fokusistatistik.com/webhook/emrebostanogluiletisimformu';
 
+        // Rate limiting: Track last submission
+        const RATE_LIMIT_KEY = 'contact_form_last_submit';
+        const RATE_LIMIT_MS = 60000; // 1 minute
+
+        // Email validation regex
+        const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // XSS protection: Sanitize input
+        function sanitizeInput(input) {
+            const temp = document.createElement('div');
+            temp.textContent = input;
+            return temp.innerHTML;
+        }
+
+        // Validate form data
+        function validateForm(data) {
+            const errors = [];
+
+            // Name validation
+            if (data.name.length < 2) {
+                errors.push('Ad Soyad en az 2 karakter olmalıdır.');
+            }
+            if (data.name.length > 100) {
+                errors.push('Ad Soyad en fazla 100 karakter olabilir.');
+            }
+
+            // Email validation
+            if (!EMAIL_REGEX.test(data.email)) {
+                errors.push('Geçerli bir e-posta adresi girin.');
+            }
+            if (data.email.length > 100) {
+                errors.push('E-posta adresi çok uzun.');
+            }
+
+            // Message validation
+            if (data.message.length < 10) {
+                errors.push('Mesaj en az 10 karakter olmalıdır.');
+            }
+            if (data.message.length > 5000) {
+                errors.push('Mesaj en fazla 5000 karakter olabilir.');
+            }
+
+            // Check for spam patterns
+            const spamPatterns = /viagra|casino|lottery|prize|winner|click here/i;
+            if (spamPatterns.test(data.message) || spamPatterns.test(data.name)) {
+                errors.push('Spam içerik tespit edildi.');
+            }
+
+            return errors;
+        }
+
+        // Check rate limit
+        function checkRateLimit() {
+            try {
+                const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+                if (lastSubmit) {
+                    const timeSince = Date.now() - parseInt(lastSubmit);
+                    if (timeSince < RATE_LIMIT_MS) {
+                        const secondsLeft = Math.ceil((RATE_LIMIT_MS - timeSince) / 1000);
+                        return { allowed: false, secondsLeft };
+                    }
+                }
+                return { allowed: true };
+            } catch (e) {
+                // If localStorage unavailable, allow submission
+                return { allowed: true };
+            }
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -280,19 +349,43 @@
             alertSuccess.classList.remove('show');
             alertError.classList.remove('show');
 
+            // Check rate limit
+            const rateLimitCheck = checkRateLimit();
+            if (!rateLimitCheck.allowed) {
+                errorMessage.textContent = `Çok hızlı gönderim yapıyorsunuz. Lütfen ${rateLimitCheck.secondsLeft} saniye bekleyin.`;
+                alertError.classList.add('show');
+                setTimeout(() => alertError.classList.remove('show'), 5000);
+                return;
+            }
+
             // Show loading state
             submitBtn.classList.add('btn-loading');
             submitBtn.textContent = '';
 
-            // Collect form data
+            // Collect and sanitize form data
             const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
+                name: sanitizeInput(document.getElementById('name').value.trim()),
+                email: sanitizeInput(document.getElementById('email').value.trim()),
                 subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value.trim(),
+                message: sanitizeInput(document.getElementById('message').value.trim()),
                 timestamp: new Date().toISOString(),
                 source: 'emrebostanoglu.com'
             };
+
+            // Validate form data
+            const validationErrors = validateForm(formData);
+            if (validationErrors.length > 0) {
+                errorMessage.textContent = validationErrors.join(' ');
+                alertError.classList.add('show');
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.textContent = 'Gönder';
+                setTimeout(() => alertError.classList.remove('show'), 7000);
+                return;
+            }
+
+            // Timeout controller
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
 
             try {
                 // Send to n8n webhook
@@ -301,11 +394,20 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(formData),
+                    signal: controller.signal
                 });
 
+                clearTimeout(timeoutId);
+
                 if (response.ok) {
-                    // Success
+                    // Success - save timestamp
+                    try {
+                        localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+                    } catch (e) {
+                        console.warn('Cannot save rate limit data');
+                    }
+
                     alertSuccess.classList.add('show');
                     form.reset();
 
@@ -313,13 +415,28 @@
                     setTimeout(() => {
                         alertSuccess.classList.remove('show');
                     }, 5000);
+                } else if (response.status === 429) {
+                    throw new Error('Çok fazla istek gönderdiniz. Lütfen daha sonra tekrar deneyin.');
+                } else if (response.status === 500) {
+                    throw new Error('Sunucu hatası oluştu. Lütfen daha sonra tekrar deneyin.');
                 } else {
-                    throw new Error('Network response was not ok');
+                    throw new Error('İstek başarısız oldu. Lütfen tekrar deneyin.');
                 }
             } catch (error) {
-                // Error
+                clearTimeout(timeoutId);
                 console.error('Error:', error);
-                errorMessage.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin veya doğrudan info@emrebostanoglu.com adresine e-posta gönderin.';
+
+                // Detailed error messages
+                let errMsg = 'Bir hata oluştu. ';
+                if (error.name === 'AbortError') {
+                    errMsg = '⏱️ İstek zaman aşımına uğradı. Lütfen tekrar deneyin.';
+                } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                    errMsg = '🌐 İnternet bağlantınızı kontrol edin ve tekrar deneyin.';
+                } else if (error.message) {
+                    errMsg = error.message;
+                }
+
+                errorMessage.textContent = errMsg + ' Alternatif olarak doğrudan emrebostanoglu@gmail.com adresine e-posta gönderebilirsiniz.';
                 alertError.classList.add('show');
 
                 // Hide error message after 7 seconds
@@ -330,6 +447,34 @@
                 // Remove loading state
                 submitBtn.classList.remove('btn-loading');
                 submitBtn.textContent = 'Gönder';
+            }
+        });
+
+        // Real-time email validation feedback
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('blur', function() {
+            if (this.value && !EMAIL_REGEX.test(this.value)) {
+                this.style.borderColor = '#ef4444';
+            } else {
+                this.style.borderColor = '#495057';
+            }
+        });
+
+        // Character counter for message
+        const messageInput = document.getElementById('message');
+        const charCountDiv = document.createElement('div');
+        charCountDiv.className = 'text-xs text-gray-400 mt-1 text-right';
+        messageInput.parentElement.appendChild(charCountDiv);
+
+        messageInput.addEventListener('input', function() {
+            const length = this.value.length;
+            charCountDiv.textContent = `${length} / 5000 karakter`;
+            if (length > 5000) {
+                charCountDiv.style.color = '#ef4444';
+            } else if (length > 4500) {
+                charCountDiv.style.color = '#f59e0b';
+            } else {
+                charCountDiv.style.color = '#9ca3af';
             }
         });
     </script>
