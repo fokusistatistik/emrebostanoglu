@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka ve Sanatın Geleceği | Emre Bostanoğlu</title>
+    <meta name="description" content="Yapay zeka teknolojilerinin sanat dünyasında yarattığı dönüşümü, fırsatları ve zorlukları inceliyoruz.">
+
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- i18n System -->
+    <script src="../js/i18n.js"></script>
+
+    <!-- Components JS -->
+    <script src="../js/components.js"></script>
+
+    <style>
+        /* Blog Post Styling */
+        .blog-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3335 100%);
+            border-bottom: 1px solid #333;
+        }
+
+        .blog-hero-image {
+            height: 500px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4 {
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-content h1 {
+            font-size: 3rem;
+            margin-top: 0;
+        }
+
+        .blog-content h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+        }
+
+        .blog-content h4 {
+            font-size: 1.25rem;
+        }
+
+        .blog-content p {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-content a {
+            color: #d4af37;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .blog-content a:hover {
+            text-decoration-color: #d4af37;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #d4af37;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+
+        .blog-content img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-content code {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .blog-content pre {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            border: 1px solid #333;
+        }
+
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+            color: #d1d5db;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #333;
+        }
+
+        .blog-tag {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-to-blog:hover {
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero-image {
+                height: 300px;
+            }
+
+            .blog-content h1 {
+                font-size: 2rem;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Blog Header -->
+    <header class="blog-header pt-32 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i> Blog'a Dön
+            </a>
+
+            <span class="inline-block bg-art-gold text-black px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                Veri Bilimi
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-cinzel text-white font-bold mb-6">
+                Yapay Zeka ve Sanatın Geleceği
+            </h1>
+
+            <div class="blog-meta">
+                <span class="blog-meta-item">
+                    <i class="far fa-calendar"></i>
+                    27 Ocak 2025
+                </span>
+                <span class="blog-meta-item">
+                    <i class="far fa-clock"></i>
+                    8 dk okuma
+                </span>
+                <span class="blog-meta-item">
+                    <i class="far fa-user"></i>
+                    Emre Bostanoğlu
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="w-full">
+        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg"
+             alt="Yapay Zeka ve Sanat"
+             class="blog-hero-image">
+    </div>
+
+    <!-- Blog Content -->
+    <article class="py-16 bg-dark-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="blog-content">
+
+                <h2>Giriş: Teknoloji ve Sanatın Kesişimi</h2>
+                <p>
+                    Yapay zeka, son yıllarda pek çok alanda olduğu gibi sanat dünyasında da köklü değişimlere yol açıyor.
+                    Makine öğrenmesi ve derin öğrenme algoritmaları, resimden müziğe, edebiyattan sinemaya kadar birçok
+                    sanat dalında yeni ifade biçimleri yaratıyor. Peki bu teknolojik devrim, sanatsal yaratıcılığın doğasını
+                    nasıl etkiliyor?
+                </p>
+
+                <p>
+                    Sanatçılar ve teknoloji uzmanları olarak, bu dönüşümü yakından gözlemlemek ve anlamak bizim sorumluluğumuz.
+                    Yapay zeka araçları, sanatsal süreçleri demokratikleştirirken aynı zamanda geleneksel yaratıcılık
+                    kavramlarını da sorgulatıyor.
+                </p>
+
+                <h2>Yapay Zeka Destekli Sanat Araçları</h2>
+                <p>
+                    Günümüzde sanatçıların kullanabileceği çok sayıda yapay zeka aracı mevcut. Bu araçlar, yaratıcı
+                    süreçlerde yeni olanaklar sunuyor:
+                </p>
+
+                <h3>Görsel Sanatlar</h3>
+                <ul>
+                    <li><strong>DALL-E, Midjourney, Stable Diffusion:</strong> Metin açıklamalarından görsel üreten AI sistemleri</li>
+                    <li><strong>Style Transfer:</strong> Bir görüntünün stilini başka bir görüntüye aktarma teknolojisi</li>
+                    <li><strong>GANs (Generative Adversarial Networks):</strong> Özgün sanat eserleri üreten sistemler</li>
+                </ul>
+
+                <h3>Müzik ve Ses</h3>
+                <ul>
+                    <li><strong>AIVA, MuseNet:</strong> Özgün müzik kompozisyonları oluşturan AI sistemleri</li>
+                    <li><strong>Ses sentezleme:</strong> İnsan sesini taklit eden ve yeni sesler yaratan teknolojiler</li>
+                </ul>
+
+                <blockquote>
+                    "Yapay zeka, sanatçının düşmanı değil, yeni bir araç. Tıpkı fotoğraf makinesinin resim sanatını
+                    öldürmediği gibi, AI de sanatı öldürmeyecek - dönüştürecek."
+                </blockquote>
+
+                <h2>Fırsatlar ve Yeni Olanaklar</h2>
+                <p>
+                    Yapay zeka teknolojileri, sanat dünyasına birçok yeni fırsat sunuyor:
+                </p>
+
+                <ol>
+                    <li><strong>Demokratikleşme:</strong> Teknik beceri gerektiren işlemler otomatikleşerek daha fazla insanın sanat üretmesine olanak tanıyor</li>
+                    <li><strong>Hızlı Prototipleme:</strong> Sanatçılar fikirlerini çok daha hızlı bir şekilde görselleştirebiliyor</li>
+                    <li><strong>Yeni Estetik Deneyimler:</strong> İnsan aklının kolayca düşünemeyeceği kombinasyonlar ve stiller ortaya çıkıyor</li>
+                    <li><strong>Kişiselleştirme:</strong> Her izleyici için özelleştirilmiş sanat deneyimleri mümkün hale geliyor</li>
+                </ol>
+
+                <h2>Zorluklar ve Etik Sorunlar</h2>
+                <p>
+                    Tabii ki, yapay zeka destekli sanat birçok önemli soruyu da beraberinde getiriyor:
+                </p>
+
+                <h3>Telif Hakları ve Sahiplik</h3>
+                <p>
+                    AI tarafından üretilen bir eserin sahibi kim? Algoritmayı yazan mı, promptu (komutu) veren mi,
+                    yoksa eğitim datasını sağlayan mı? Bu sorular henüz net cevaplara kavuşmadı ve hukuki düzenlemelere
+                    ihtiyaç duyuluyor.
+                </p>
+
+                <h3>Özgünlük ve Yaratıcılık</h3>
+                <p>
+                    Yapay zeka, mevcut verileri analiz ederek yeni eserler üretiyor. Bu durum, "gerçek yaratıcılık"
+                    nedir sorusunu gündeme getiriyor. Yaratıcılık sadece insana mı özgü, yoksa makineler de yaratıcı olabilir mi?
+                </p>
+
+                <h3>Sanatçıların İşsizliği</h3>
+                <p>
+                    Özellikle ticari illüstrasyon ve tasarım alanlarında, AI araçları insan sanatçıların yerini alabilir mi?
+                    Bu endişe gerçek, ancak tarih bize teknolojik gelişmelerin genellikle yeni iş alanları yarattığını gösteriyor.
+                </p>
+
+                <h2>Fotoğraf ve Yapay Zeka</h2>
+                <p>
+                    Bir fotoğrafçı olarak, yapay zekanın fotoğrafçılık alanındaki etkilerini özellikle yakından takip ediyorum.
+                    AI destekli fotoğraf düzenleme araçları, post-prodüksiyon süreçlerini inanılmaz derecede hızlandırıyor:
+                </p>
+
+                <ul>
+                    <li>Otomatik maske oluşturma ve seçim yapma</li>
+                    <li>Akıllı nesne kaldırma ve arka plan değiştirme</li>
+                    <li>Gelişmiş renk düzeltme ve ton eşleştirme</li>
+                    <li>Görüntü iyileştirme ve yüksek çözünürlük artırma</li>
+                </ul>
+
+                <p>
+                    Ancak bu araçlar, fotoğrafçının gözünün, kompozisyon anlayışının ve hikaye anlatma becerisinin yerini
+                    alamıyor. Teknoloji, yaratıcı vizyonu hayata geçirmeyi kolaylaştırıyor ama o vizyon yine insandan geliyor.
+                </p>
+
+                <h2>Gelecek: Hibrit Sanat Çağı</h2>
+                <p>
+                    Önümüzdeki yıllarda, yapay zeka ve insan yaratıcılığının birleştiği "hibrit sanat" çağına tanık olacağız.
+                    En başarılı sanat eserleri, teknolojinin gücünü insan duygularıyla, deneyimiyle ve estetiğiyle harmanlayanlarda
+                    ortaya çıkacak.
+                </p>
+
+                <p>
+                    Sanatçılar olarak yapay zekayı reddetmek yerine, onu kendi yaratıcı süreçlerimize nasıl entegre
+                    edebileceğimizi düşünmeliyiz. Tıpkı fotoğraf makinesinin zamanında ressam için yeni bir araç olması gibi,
+                    AI da bugünün sanatçısı için yeni bir palet.
+                </p>
+
+                <h2>Sonuç</h2>
+                <p>
+                    Yapay zeka ve sanat arasındaki ilişki karmaşık, çok katmanlı ve sürekli gelişiyor. Bu teknoloji,
+                    sanatsal yaratıcılığı demokratikleştiriyor, yeni ifade biçimleri sunuyor ve sınırları zorluyorken,
+                    aynı zamanda etik, hukuki ve felsefi sorular da ortaya koyuyor.
+                </p>
+
+                <p>
+                    Sonuç olarak, yapay zeka sanatın geleceğini şekillendiren önemli bir faktör ama tek faktör değil.
+                    Asıl belirleyici olan, bu teknolojiyi nasıl kullandığımız ve insan deneyimini, duygularını ve
+                    yaratıcılığını nasıl merkeze aldığımız olacak.
+                </p>
+
+                <p>
+                    Sanat, temelde insanın kendini ifade etme ve dünyayı yorumlama biçimi. Yapay zeka bu yolculukta
+                    güçlü bir araç olabilir, ancak yolculuğu yapan ve anlamı yaratan hep insan olacak.
+                </p>
+
+                <!-- Tags -->
+                <div class="blog-tags">
+                    <span class="blog-tag">Yapay Zeka</span>
+                    <span class="blog-tag">Sanat</span>
+                    <span class="blog-tag">Teknoloji</span>
+                    <span class="blog-tag">Fotoğraf</span>
+                    <span class="blog-tag">Yaratıcılık</span>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts Section -->
+    <section class="py-16 bg-gradient-to-b from-dark-bg to-black border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-cinzel text-white font-bold mb-8 text-center">
+                Diğer Yazılar
+            </h2>
+            <div class="text-center">
+                <a href="index.html" class="inline-block bg-art-gold text-black px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all transform hover:scale-105">
+                    Tüm Blog Yazılarını Gör
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('blog');
+    </script>
+
+    <!-- Interactive Features -->
+    <script src="../js/chatbot-ui.js"></script>
+    <script src="../js/chatbot.js"></script>
+    <script src="../js/exit-intent.js"></script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((reg) => console.log('SW registered', reg.scope)).catch((err) => console.log('SW failed', err));
+            });
+        }
+    </script>
+
+</body>
+</html>

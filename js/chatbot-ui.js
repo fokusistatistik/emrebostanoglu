@@ -40,6 +40,21 @@
               <strong>FOKUS216</strong>
               Emre Bostanoğlu'nun Kişisel Sanat Asistanı
             </div>
+            <button id="chatbot-close" aria-label="Kapat" style="
+              background: rgba(255, 255, 255, 0.1);
+              border: none;
+              color: white;
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 20px;
+              transition: all 0.2s ease;
+              flex-shrink: 0;
+            " title="Chatbot'u Kapat">×</button>
           </div>
 
           <div id="chat-messages" aria-live="polite"></div>
@@ -75,13 +90,30 @@
     // Toggle chatbot on icon click
     const toggleIcon = document.getElementById('chatbot-toggle-icon');
     const widget = document.getElementById('fokus216-widget');
+    const closeBtn = document.getElementById('chatbot-close');
+
+    function closeChatbot() {
+      if (widget && toggleIcon) {
+        widget.style.display = 'none';
+        toggleIcon.style.display = 'flex';
+      }
+    }
 
     if (toggleIcon && widget) {
       toggleIcon.addEventListener('click', () => {
         const isVisible = widget.style.display !== 'none';
-        widget.style.display = isVisible ? 'none' : 'block';
-        toggleIcon.style.display = isVisible ? 'flex' : 'none';
+        if (isVisible) {
+          closeChatbot();
+        } else {
+          widget.style.display = 'block';
+          toggleIcon.style.display = 'none';
+        }
       });
+
+      // Close button
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeChatbot);
+      }
 
       // Pulse animation
       setInterval(() => {
@@ -201,6 +233,16 @@
           font-weight: 600;
           display: block;
           margin-bottom: 2px;
+        }
+
+        /* Close Button */
+        #chatbot-close:hover {
+          background: rgba(255, 255, 255, 0.2) !important;
+          transform: scale(1.1);
+        }
+
+        #chatbot-close:active {
+          transform: scale(0.95);
         }
 
         /* Message Area */
