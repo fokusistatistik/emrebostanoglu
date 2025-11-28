@@ -29,10 +29,11 @@
     <script src="js/components.js"></script>
 
     <style>
-        /* Grid Layout Styles */
+        /* Modern Masonry Grid Layout */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 20px;
             gap: 1.5rem;
             padding: 1rem;
         }
@@ -40,27 +41,51 @@
         .photo-card {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            aspect-ratio: 4/5;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Different size variants for masonry effect */
+        .photo-card.tall {
+            grid-row-end: span 22;
+        }
+
+        .photo-card.medium {
+            grid-row-end: span 18;
+        }
+
+        .photo-card.short {
+            grid-row-end: span 14;
+        }
+
+        .photo-card.extra-tall {
+            grid-row-end: span 26;
+        }
+
+        .photo-card.wide {
+            grid-column-end: span 2;
+            grid-row-end: span 20;
         }
 
         .photo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 48px rgba(212, 175, 55, 0.4);
+            z-index: 10;
         }
 
         .photo-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.95);
         }
 
         .photo-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            filter: brightness(1.05);
         }
 
         .photo-overlay {
@@ -181,34 +206,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* View Toggle */
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .view-toggle button {
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: #9ca3af;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .view-toggle button.active {
-            background: linear-gradient(135deg, #d4af37 0%, #f0c84b 100%);
-            color: #000;
-            font-weight: 600;
-        }
 
         /* Animations */
         @keyframes fadeIn {
@@ -265,10 +262,39 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .photo-card.wide {
+                grid-column-end: span 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .photo-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                grid-auto-rows: 15px;
                 gap: 1rem;
+                padding: 0.5rem;
+            }
+
+            .photo-card.tall {
+                grid-row-end: span 20;
+            }
+
+            .photo-card.medium {
+                grid-row-end: span 16;
+            }
+
+            .photo-card.short {
+                grid-row-end: span 12;
+            }
+
+            .photo-card.extra-tall {
+                grid-row-end: span 24;
+            }
+
+            .photo-card.wide {
+                grid-column-end: span 1;
+                grid-row-end: span 18;
             }
 
             .lightbox-nav.prev {
@@ -312,20 +338,6 @@
                 <p class="text-art-gold text-sm font-semibold mb-8">
                     300+ Ödül • EFIAP • CR2 • FIAP Dünya Kupası Bronz Madalya
                 </p>
-
-                <!-- View Toggle -->
-                <div class="flex justify-center mb-4">
-                    <div class="view-toggle">
-                        <button id="grid-view-btn" class="active">
-                            <i class="fas fa-th"></i>
-                            <span>Grid</span>
-                        </button>
-                        <button id="list-view-btn">
-                            <i class="fas fa-list"></i>
-                            <span>Liste</span>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -390,7 +402,6 @@
         }
 
         // State
-        let currentView = 'grid';
         let currentLightboxIndex = 0;
 
         // Elements
@@ -403,19 +414,23 @@
         const lightboxClose = document.getElementById('lightbox-close');
         const lightboxPrev = document.getElementById('lightbox-prev');
         const lightboxNext = document.getElementById('lightbox-next');
-        const gridViewBtn = document.getElementById('grid-view-btn');
-        const listViewBtn = document.getElementById('list-view-btn');
 
         // Set total photos
         lightboxTotal.textContent = photos.length;
 
-        // Generate photo grid
+        // Generate photo grid with masonry layout
         function generatePhotoGrid() {
             photoGallery.innerHTML = '';
 
+            // Size variants for masonry effect
+            const sizeVariants = ['tall', 'medium', 'short', 'extra-tall', 'wide'];
+
             photos.forEach((photo, index) => {
                 const card = document.createElement('div');
-                card.className = 'photo-card fade-in-up';
+
+                // Randomly assign size variant for variety
+                const randomSize = sizeVariants[Math.floor(Math.random() * sizeVariants.length)];
+                card.className = `photo-card ${randomSize} fade-in-up`;
                 card.style.animationDelay = `${(index % 12) * 0.05}s`;
                 card.setAttribute('data-index', index);
 
@@ -506,21 +521,6 @@
             } else if (e.key === 'Escape') {
                 closeLightbox();
             }
-        });
-
-        // View toggle (Grid/List)
-        gridViewBtn.addEventListener('click', () => {
-            currentView = 'grid';
-            gridViewBtn.classList.add('active');
-            listViewBtn.classList.remove('active');
-            photoGallery.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
-        });
-
-        listViewBtn.addEventListener('click', () => {
-            currentView = 'list';
-            listViewBtn.classList.add('active');
-            gridViewBtn.classList.remove('active');
-            photoGallery.style.gridTemplateColumns = '1fr';
         });
 
         // Touch swipe support for lightbox

@@ -86,6 +86,7 @@ const I18N = {
                 photography: 'Fotoğraf',
                 writer: 'Yazar',
                 director: 'Yönetmen',
+                blog: 'Blog',
                 contact: 'İletişim'
             }
         };
@@ -98,6 +99,7 @@ const I18N = {
                 photography: 'Photography',
                 writer: 'Writer',
                 director: 'Director',
+                blog: 'Blog',
                 contact: 'Contact'
             }
         };
