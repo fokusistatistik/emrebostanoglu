@@ -54,13 +54,13 @@ function getNavbarHTML(activePage) {
     const currentLang = typeof I18N !== 'undefined' ? I18N.getCurrentLanguage() : 'tr';
 
     const links = [
-        { id: 'home', href: 'index.html', i18nKey: 'nav.home', colorClass: 'hover:text-data-blue' },
-        { id: 'about', href: 'about.html', i18nKey: 'nav.about', colorClass: 'hover:text-white' },
-        { id: 'datascience', href: 'datascience.html', i18nKey: 'nav.datascience', colorClass: 'hover:text-data-blue' },
-        { id: 'photography', href: 'photography.html', i18nKey: 'nav.photography', colorClass: 'hover:text-art-gold' },
-        { id: 'writer', href: 'writer.html', i18nKey: 'nav.writer', colorClass: 'hover:text-writer-paper' },
-        { id: 'director', href: 'director.html', i18nKey: 'nav.director', colorClass: 'hover:text-director-red' },
-        { id: 'blog', href: 'blog.html', i18nKey: 'nav.blog', colorClass: 'hover:text-data-blue' }
+        { id: 'home', href: '/index.html', i18nKey: 'nav.home', colorClass: 'hover:text-data-blue' },
+        { id: 'about', href: '/about.html', i18nKey: 'nav.about', colorClass: 'hover:text-white' },
+        { id: 'datascience', href: '/datascience.html', i18nKey: 'nav.datascience', colorClass: 'hover:text-data-blue' },
+        { id: 'photography', href: '/photography.html', i18nKey: 'nav.photography', colorClass: 'hover:text-art-gold' },
+        { id: 'writer', href: '/writer.html', i18nKey: 'nav.writer', colorClass: 'hover:text-writer-paper' },
+        { id: 'director', href: '/director.html', i18nKey: 'nav.director', colorClass: 'hover:text-director-red' },
+        { id: 'blog', href: '/blog.html', i18nKey: 'nav.blog', colorClass: 'hover:text-data-blue' }
     ];
 
     let desktopLinksHTML = links.map(link => {
@@ -70,21 +70,21 @@ function getNavbarHTML(activePage) {
     }).join('');
 
     // Add Contact Button
-    desktopLinksHTML += `<a href="contact.html" class="bg-white text-dark-bg hover:bg-data-blue hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all" data-i18n="nav.contact"></a>`;
+    desktopLinksHTML += `<a href="/contact.html" class="bg-white text-dark-bg hover:bg-data-blue hover:text-white px-4 py-2 rounded-full text-sm font-bold transition-all" data-i18n="nav.contact"></a>`;
 
     let mobileLinksHTML = links.map(link => {
         const isActive = link.id === activePage;
         const activeClass = isActive ? 'text-white border-b border-gray-800' : 'text-gray-300';
         return `<a href="${link.href}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium" data-i18n="${link.i18nKey}"></a>`;
     }).join('');
-    mobileLinksHTML += `<a href="contact.html" class="text-data-blue block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav.contact"></a>`;
+    mobileLinksHTML += `<a href="/contact.html" class="text-data-blue block px-3 py-2 rounded-md text-base font-medium" data-i18n="nav.contact"></a>`;
 
     return `
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center">
+                    <a href="/" class="flex items-center">
                         <img src="${SITE_CONFIG.logoUrl}" alt="Emre Bostanoğlu Logo" class="h-12 w-auto">
                     </a>
                 </div>
@@ -148,7 +148,7 @@ function getFooterHTML() {
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Main Footer Content -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-gray-800">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-16 border-b border-gray-800">
 
                 <!-- Column 1: About -->
                 <div class="space-y-4">
@@ -170,34 +170,34 @@ function getFooterHTML() {
                         Hızlı Erişim
                     </h3>
                     <nav class="flex flex-col space-y-3">
-                        <a href="index.html" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
+                        <a href="/" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Ana Sayfa
                         </a>
-                        <a href="photography.html" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
+                        <a href="/photography.html" class="text-gray-400 hover:text-art-gold transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Fotoğraf Portfolyosu
                         </a>
-                        <a href="datascience.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
+                        <a href="/datascience.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Veri Bilimi Projeleri
                         </a>
-                        <a href="writer.html" class="text-gray-400 hover:text-writer-paper transition-colors text-sm flex items-center group">
+                        <a href="/writer.html" class="text-gray-400 hover:text-writer-paper transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Yayınlar & Kitaplar
                         </a>
-                        <a href="director.html" class="text-gray-400 hover:text-director-red transition-colors text-sm flex items-center group">
+                        <a href="/director.html" class="text-gray-400 hover:text-director-red transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Filmografi
                         </a>
-                        <a href="blog.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
+                        <a href="/blog.html" class="text-gray-400 hover:text-data-blue transition-colors text-sm flex items-center group">
                             <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform"></i>
                             Blog
                         </a>
                     </nav>
                 </div>
 
-                <!-- Column 3: Contact Info -->
+                <!-- Column 3: Contact Info & Social Media -->
                 <div class="space-y-4">
                     <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
                         İletişim
@@ -217,19 +217,17 @@ function getFooterHTML() {
                                 <p class="text-sm">Türkiye</p>
                             </div>
                         </div>
-                        <a href="contact.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-art-gold to-[#f0c84b] text-black font-semibold text-sm rounded-full hover:shadow-lg hover:shadow-art-gold/50 transition-all transform hover:scale-105">
+                        <a href="/contact.html" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-art-gold to-[#f0c84b] text-black font-semibold text-sm rounded-full hover:shadow-lg hover:shadow-art-gold/50 transition-all transform hover:scale-105">
                             İletişime Geç
                         </a>
                     </div>
-                </div>
 
-                <!-- Column 4: Social Media -->
-                <div class="space-y-4">
-                    <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
-                        Sosyal Medya
-                    </h3>
-                    <div class="flex flex-wrap gap-4 items-center">
-                        ${socialLinks}
+                    <!-- Sosyal Medya İkonları -->
+                    <div class="mt-8 pt-6 border-t border-gray-800">
+                        <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
+                        <div class="flex flex-wrap gap-3 items-center justify-start">
+                            ${socialLinks}
+                        </div>
                     </div>
                 </div>
             </div>
