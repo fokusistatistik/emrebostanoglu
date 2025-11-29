@@ -15,16 +15,17 @@ const SITE_CONFIG = {
     },
     social: {
         email: 'emrebostanoglu@gmail.com',
-        instagram: 'http://instagram.com/emre.bostanoglu',
+        instagram: 'https://www.instagram.com/fokusistatistik/',
+        facebook: 'https://www.facebook.com/profile.php?id=61577855105088',
+        linkedin: 'https://www.linkedin.com/company/fokusistatistik',
+        twitter: 'https://twitter.com/fokusistatistik',
+        telegram: 'https://t.me/fokusistatistikbot',
+        whatsapp: 'https://wa.me/905354040712?text=merhaba%20fokusistatistik',
+        youtube: 'https://www.youtube.com/@fokusistatistik',
+        github: 'https://github.com/fokusistatistik',
+        asistan: 'https://asistan.fokusistatistik.com/',
         vimeo: 'https://vimeo.com/user10162793',
-        px500: 'https://500px.com/p/myth1453',
-        twitter: 'https://twitter.com/emrebostanoglu',
-        facebook: 'https://www.facebook.com/emrebostanoglufotografatolyesi',
-        spotify: null, // Will be provided by user
-        linkedin: null,
-        github: null,
-        telegram: null,
-        youtube: null
+        px500: 'https://500px.com/p/myth1453'
     }
 };
 
@@ -116,21 +117,27 @@ function getFooterHTML() {
     const year = new Date().getFullYear();
     const social = SITE_CONFIG.social;
 
-    // Create social links HTML
+    // Create social links HTML with image icons
     const socialLinks = [
-        { url: social.instagram, icon: 'fab fa-instagram', color: 'hover:text-pink-500', name: 'Instagram' },
-        { url: social.twitter, icon: 'fab fa-twitter', color: 'hover:text-blue-400', name: 'Twitter' },
-        { url: social.facebook, icon: 'fab fa-facebook', color: 'hover:text-blue-600', name: 'Facebook' },
-        { url: social.vimeo, icon: 'fab fa-vimeo', color: 'hover:text-blue-500', name: 'Vimeo' },
-        { url: social.px500, icon: 'fas fa-camera', color: 'hover:text-art-gold', name: '500px' }
+        { url: social.instagram, img: '/assets/img/instagram.png', name: 'Instagram' },
+        { url: social.email, img: '/assets/img/eposta.png', name: 'E-posta Gönder', isEmail: true },
+        { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook' },
+        { url: social.linkedin, img: '/assets/img/ln.png', name: 'LinkedIn' },
+        { url: social.twitter, img: '/assets/img/twitter.png', name: 'Twitter' },
+        { url: social.telegram, img: '/assets/img/telegram.png', name: 'Telegram' },
+        { url: social.asistan, img: '/assets/img/asistanfokus.png', name: 'Asistanlar' },
+        { url: social.whatsapp, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
+        { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
+        { url: social.github, img: '/assets/img/github.png', name: 'Github' }
     ].filter(link => link.url !== null)
      .map(link => `
-        <a href="${link.url}"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 ${link.color} transition-all transform hover:scale-110 hover:bg-gray-700"
-           aria-label="${link.name}">
-            <i class="${link.icon} text-xl"></i>
+        <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
+           ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
+           class="transition-all transform hover:scale-110 hover:opacity-80"
+           title="${link.name}">
+            <img src="${link.img}" alt="${link.name}" height="26" class="h-[26px] w-auto"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+            <i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i>
         </a>
      `).join('');
 
@@ -221,16 +228,8 @@ function getFooterHTML() {
                     <h3 class="text-white font-bold text-lg mb-6 border-b border-gray-800 pb-3">
                         Sosyal Medya
                     </h3>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap gap-4 items-center">
                         ${socialLinks}
-                    </div>
-                    <div class="mt-6 pt-6 border-t border-gray-800">
-                        <p class="text-gray-500 text-xs mb-3">Projelerimi Takip Edin</p>
-                        <div class="flex space-x-2">
-                            <a href="https://github.com/emrebostanoglu" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-all">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -503,6 +502,11 @@ function loadComponents(activePage) {
     const footerContainer = document.getElementById('footer-container');
     if (footerContainer) {
         footerContainer.innerHTML = getFooterHTML();
+    }
+
+    // Translate page content after components are loaded
+    if (typeof I18N !== 'undefined' && I18N.translatePage) {
+        I18N.translatePage();
     }
 
     // Listen for language changes and reload components

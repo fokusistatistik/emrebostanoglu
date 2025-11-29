@@ -172,35 +172,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // Stats counter animation (if stats section exists)
-function animateCounter(element, start, end, duration) {
-    let current = start;
-    const increment = (end - start) / (duration / 16);
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-            element.textContent = end;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-}
-
-// Initialize counters when they come into view
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = parseInt(counter.dataset.target);
-            animateCounter(counter, 0, target, 2000);
-            counterObserver.unobserve(counter);
-        }
-    });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat-number').forEach(counter => {
-    counterObserver.observe(counter);
-});
+// Counter animation disabled - using static values in HTML for better performance
 
 // Console Easter Egg
 console.log('%c👋 Merhaba!', 'font-size: 20px; font-weight: bold; color: #3b82f6;');
