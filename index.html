@@ -93,7 +93,7 @@
 
         <!-- Center Logo -->
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block pointer-events-none">
-            <div class="w-[125px] h-[125px] bg-dark-bg rounded-full flex items-center justify-center shadow-2xl border-2 border-gray-700 p-6">
+            <div class="w-[190px] h-[190px] bg-dark-bg rounded-full flex items-center justify-center shadow-2xl border-2 border-gray-700 p-3">
                 <img src="https://static.fokusistatistik.com/resimler/eblogoyenibeyaz.png" alt="EB Logo" class="w-full h-full object-contain">
             </div>
         </div>
@@ -246,7 +246,7 @@
                 <div id="photo-scroll" class="flex overflow-x-auto gap-6 scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
                     <!-- Foto 1 -->
                     <div class="min-w-[300px] md:min-w-[350px] snap-center group/item relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
+                        <img data-photo-id="1" alt="Fotoğraf 1" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-80"></div>
                         <div class="absolute bottom-6 left-6">
                             <span class="text-art-gold text-xs font-bold uppercase">Portfolyo</span>
@@ -255,7 +255,7 @@
                     </div>
                     <!-- Foto 2 -->
                     <div class="min-w-[300px] md:min-w-[350px] snap-center group/item relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto2.jpg" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
+                        <img data-photo-id="2" alt="Fotoğraf 2" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-80"></div>
                         <div class="absolute bottom-6 left-6">
                             <span class="text-art-gold text-xs font-bold uppercase">Portfolyo</span>
@@ -264,7 +264,7 @@
                     </div>
                     <!-- Foto 3 -->
                     <div class="min-w-[300px] md:min-w-[350px] snap-center group/item relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto3.jpg" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
+                        <img data-photo-id="3" alt="Fotoğraf 3" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-80"></div>
                         <div class="absolute bottom-6 left-6">
                             <span class="text-art-gold text-xs font-bold uppercase">Portfolyo</span>
@@ -273,7 +273,7 @@
                     </div>
                     <!-- Foto 4 (Ekstra) -->
                     <div class="min-w-[300px] md:min-w-[350px] snap-center group/item relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto4.jpg" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
+                        <img data-photo-id="4" alt="Fotoğraf 4" class="w-full h-full object-cover transition duration-700 group-hover/item:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-80"></div>
                         <div class="absolute bottom-6 left-6">
                             <span class="text-art-gold text-xs font-bold uppercase">Portfolyo</span>
@@ -427,6 +427,42 @@
         // Initialize homepage announcements
         ContentManager.init().then(() => {
             ContentManager.initHomepageAnnouncements();
+        });
+    </script>
+    <script>
+        // Flexible image extension loader for homepage photos
+        const BASE_URL = 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/';
+        const EXTENSIONS = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.PNG'];
+
+        function tryLoadPhoto(img, photoNum, extensionIndex = 0) {
+            if (extensionIndex >= EXTENSIONS.length) {
+                // All extensions failed, use placeholder
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="350" height="450"%3E%3Crect fill="%23333" width="350" height="450"/%3E%3Ctext fill="%23999" font-size="20" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EFotoğraf ' + photoNum + '%3C/text%3E%3C/svg%3E';
+                return;
+            }
+
+            const testUrl = BASE_URL + 'foto' + photoNum + EXTENSIONS[extensionIndex];
+
+            img.onerror = function() {
+                // Try next extension
+                tryLoadPhoto(img, photoNum, extensionIndex + 1);
+            };
+
+            img.onload = function() {
+                // Success
+                img.onerror = null;
+            };
+
+            img.src = testUrl;
+        }
+
+        // Load photos when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const photoImgs = document.querySelectorAll('[data-photo-id]');
+            photoImgs.forEach(img => {
+                const photoId = img.getAttribute('data-photo-id');
+                tryLoadPhoto(img, photoId);
+            });
         });
     </script>
     <script src="js/app.js"></script>

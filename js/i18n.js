@@ -88,6 +88,14 @@ const I18N = {
                 director: 'Yönetmen',
                 blog: 'Blog',
                 contact: 'İletişim'
+            },
+            cookie: {
+                title: 'Çerez Kullanımı',
+                description: 'Web sitemizde deneyiminizi geliştirmek için çerezler kullanıyoruz.',
+                kvkk_link: 'KVKK Politikası',
+                privacy_link: 'Gizlilik',
+                accept: 'Kabul Et',
+                reject: 'Reddet'
             }
         };
 
@@ -101,6 +109,14 @@ const I18N = {
                 director: 'Director',
                 blog: 'Blog',
                 contact: 'Contact'
+            },
+            cookie: {
+                title: 'Cookie Usage',
+                description: 'We use cookies to improve your experience on our website.',
+                kvkk_link: 'Privacy Policy',
+                privacy_link: 'Privacy',
+                accept: 'Accept',
+                reject: 'Decline'
             }
         };
     },
