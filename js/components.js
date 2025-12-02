@@ -130,16 +130,7 @@ function getFooterHTML() {
         { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
         { url: social.github, img: '/assets/img/github.png', name: 'Github' }
     ].filter(link => link.url !== null)
-     .map(link => `
-        <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
-           ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
-           class="transition-all transform hover:scale-110 hover:opacity-80"
-           title="${link.name}">
-            <img src="${link.img}" alt="${link.name}" height="26" class="h-[26px] w-auto"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
-            <i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i>
-        </a>
-     `).join('');
+     .map(link => `<a href="${link.isEmail ? 'mailto:' + link.url : link.url}" ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''} class="transition-all transform hover:scale-110 hover:opacity-80" title="${link.name}"><img src="${link.img}" alt="${link.name}" height="26" class="h-[26px] w-auto" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i></a>`).join('');
 
     return `
     <footer id="contact" class="relative bg-gradient-to-b from-black via-[#0a0a0a] to-[#0f0f0f] border-t border-gray-800">
@@ -238,7 +229,10 @@ function getFooterHTML() {
                     <!-- Copyright -->
                     <div class="text-center md:text-left">
                         <p class="text-gray-500 text-sm">
-                            © ${year} <span class="text-art-gold font-semibold">Emre Bostanoğlu</span>. Tüm hakları saklıdır.
+                            © ${year} <span class="text-art-gold font-semibold">Emre BOSTANOĞLU</span>. Tüm hakları saklıdır.
+                        </p>
+                        <p class="text-gray-600 text-xs mt-1">
+                            Emre BOSTANOĞLU'nun resmi kişisel sayfası
                         </p>
                         <p class="text-gray-600 text-xs mt-1">
                             Fotoğraf Sanatı • Veri Bilimi • Edebiyat • Sinema

@@ -37,8 +37,7 @@
           <div id="fokus216-popup-header">
             <div id="fokus216-popup-header-icon"></div>
             <div id="fokus216-popup-header-title">
-              <strong>FOKUS216</strong>
-              Emre Bostanoğlu'nun Kişisel Sanat Asistanı
+              Kişisel Sanal Asistanı
             </div>
             <button id="chatbot-close" aria-label="Kapat" style="
               background: rgba(255, 255, 255, 0.1);

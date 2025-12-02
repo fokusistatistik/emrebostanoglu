@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotoğraf | Emre Bostanoğlu</title>
+    <title>Emre BOSTANOĞLU | Fotoğraf</title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="manifest" href="/manifest.json">
@@ -487,12 +487,52 @@
         // Photo data (50 photos)
         const photos = [];
         const BASE_URL = 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/';
+        const EXTENSIONS = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.PNG'];
+
+        /**
+         * Get photo URL with extension fallback support
+         * @param {number} photoNum - Photo number
+         * @returns {string} Photo URL
+         */
+        function getPhotoUrl(photoNum) {
+            // Default to .jpg, will fallback via onerror
+            return `${BASE_URL}foto${photoNum}.jpg`;
+        }
+
+        /**
+         * Try loading image with different extensions
+         * @param {HTMLImageElement} img - Image element
+         * @param {number} photoNum - Photo number
+         * @param {number} extensionIndex - Current extension index to try
+         */
+        function tryLoadImage(img, photoNum, extensionIndex = 0) {
+            if (extensionIndex >= EXTENSIONS.length) {
+                // All extensions failed, use placeholder
+                img.onerror = null;
+                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="500" height="650"%3E%3Crect fill="%23333" width="500" height="650"/%3E%3Ctext fill="%23999" font-size="24" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EFoto %23' + photoNum + '%3C/text%3E%3C/svg%3E';
+                return;
+            }
+
+            const testUrl = `${BASE_URL}foto${photoNum}${EXTENSIONS[extensionIndex]}`;
+
+            img.onerror = function() {
+                // Try next extension
+                tryLoadImage(img, photoNum, extensionIndex + 1);
+            };
+
+            img.onload = function() {
+                // Success, clear error handler
+                img.onerror = null;
+            };
+
+            img.src = testUrl;
+        }
 
         // Generate 50 photo objects
         for (let i = 1; i <= 50; i++) {
             photos.push({
                 id: i,
-                url: `${BASE_URL}foto${i}.jpg`,
+                url: getPhotoUrl(i),
                 title: `Fotoğraf ${i}`,
                 location: 'Türkiye',
                 year: '2025'
@@ -534,16 +574,20 @@
             const nextIndex = (currentIndex + 1) % photos.length;
 
             // Update main image
-            carouselMain.querySelector('img').src = photos[currentIndex].url;
-            carouselMain.querySelector('img').alt = photos[currentIndex].title;
+            const mainImg = carouselMain.querySelector('img');
+            mainImg.alt = photos[currentIndex].title;
+            tryLoadImage(mainImg, photos[currentIndex].id);
             photoTitleEl.textContent = photos[currentIndex].title;
             photoLocationEl.textContent = photos[currentIndex].location;
 
             // Update side images
-            carouselLeft.querySelector('img').src = photos[prevIndex].url;
-            carouselLeft.querySelector('img').alt = photos[prevIndex].title;
-            carouselRight.querySelector('img').src = photos[nextIndex].url;
-            carouselRight.querySelector('img').alt = photos[nextIndex].title;
+            const leftImg = carouselLeft.querySelector('img');
+            leftImg.alt = photos[prevIndex].title;
+            tryLoadImage(leftImg, photos[prevIndex].id);
+
+            const rightImg = carouselRight.querySelector('img');
+            rightImg.alt = photos[nextIndex].title;
+            tryLoadImage(rightImg, photos[nextIndex].id);
 
             // Update counter
             currentPhotoEl.textContent = currentIndex + 1;
@@ -591,8 +635,8 @@
         // Update lightbox content
         function updateLightbox() {
             const photo = photos[currentLightboxIndex];
-            lightboxImg.src = photo.url;
             lightboxImg.alt = photo.title;
+            tryLoadImage(lightboxImg, photo.id);
             lightboxCurrent.textContent = currentLightboxIndex + 1;
         }
 
@@ -694,6 +738,7 @@
     <script src="js/chatbot-ui.js"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/exit-intent.js"></script>
+    <script src="js/cookie-consent.js"></script>
 
     <!-- PWA Service Worker -->
     <script>
