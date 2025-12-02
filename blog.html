@@ -244,8 +244,70 @@
     <!-- Content Grid -->
     <section class="py-20 bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Content will be inserted here by JavaScript -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Blog 01 -->
+                <a href="/blog/01.html" class="article-card">
+                    <div class="article-image-container">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg"
+                             alt="Blog 1"
+                             class="article-image">
+                        <div class="article-type-badge">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category" style="color: #d4af37">Blog</span>
+                            <span class="article-date">2025</span>
+                        </div>
+                        <h3 class="article-title">Blog Başlığı 1</h3>
+                        <p class="article-excerpt">Blog yazısı kısa açıklaması buraya gelecek...</p>
+                    </div>
+                </a>
+
+                <!-- Blog 02 -->
+                <a href="/blog/02.html" class="article-card">
+                    <div class="article-image-container">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto2.jpg"
+                             alt="Blog 2"
+                             class="article-image">
+                        <div class="article-type-badge">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category" style="color: #d4af37">Blog</span>
+                            <span class="article-date">2025</span>
+                        </div>
+                        <h3 class="article-title">Blog Başlığı 2</h3>
+                        <p class="article-excerpt">Blog yazısı kısa açıklaması buraya gelecek...</p>
+                    </div>
+                </a>
+
+                <!-- Blog 03 -->
+                <a href="/blog/03.html" class="article-card">
+                    <div class="article-image-container">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto3.jpg"
+                             alt="Blog 3"
+                             class="article-image">
+                        <div class="article-type-badge">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category" style="color: #d4af37">Blog</span>
+                            <span class="article-date">2025</span>
+                        </div>
+                        <h3 class="article-title">Blog Başlığı 3</h3>
+                        <p class="article-excerpt">Blog yazısı kısa açıklaması buraya gelecek...</p>
+                    </div>
+                </a>
+
+                <!-- Yeni blog eklemek için bu kartı kopyalayıp yapıştırın ve href, görseli, başlık ve açıklamayı değiştirin -->
+
             </div>
         </div>
     </section>
@@ -256,11 +318,6 @@
     <!-- Initialize Components -->
     <script>
         loadComponents('blog');
-
-        // Initialize blog page when content is loaded
-        ContentManager.init().then(() => {
-            ContentManager.initBlogPage();
-        });
     </script>
 
     <!-- Interactive Features -->
