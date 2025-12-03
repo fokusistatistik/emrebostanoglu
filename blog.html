@@ -10,10 +10,6 @@
     <meta name="theme-color" content="#2c3335">
     <meta name="description" content="Veri bilimi, fotoğraf, yazarlık ve yönetmenlik üzerine makaleler, videolar ve içerikler.">
 
-    <!-- Redirect to new blog system -->
-    <meta http-equiv="refresh" content="0;url=blog/index.html">
-    <script>window.location.href = 'blog/index.html';</script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,11 +27,13 @@
     <!-- i18n System -->
     <script src="js/i18n.js"></script>
 
-    <!-- Components JS -->
+    <!-- Site Configuration -->
     <script src="js/components.js"></script>
 
-    <!-- Content Manager -->
-    <script src="js/content-manager.js"></script>
+    <!-- Layout Modules -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/layout.js"></script>
 
     <style>
         .article-card {
@@ -244,85 +242,12 @@
     <!-- Content List -->
     <section class="py-20 bg-dark-bg">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="space-y-8">
-
-                <!-- Blog 01 -->
-                <a href="/blog01.html" class="flex flex-col md:flex-row gap-6 bg-gradient-to-br from-[#1a1a1a] to-[#2c3335] rounded-xl overflow-hidden border border-gray-800 hover:border-art-gold/50 transition-all duration-300 hover:shadow-xl hover:shadow-art-gold/10">
-                    <div class="md:w-80 h-56 md:h-auto relative flex-shrink-0 overflow-hidden">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg"
-                             alt="Blog 1"
-                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 bg-art-gold/90 text-black px-3 py-1 rounded-full text-xs font-bold">
-                            <i class="fas fa-file-alt mr-1"></i> Blog
-                        </div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                                <span><i class="fas fa-calendar mr-1"></i> 2025</span>
-                                <span><i class="fas fa-clock mr-1"></i> 5 dk okuma</span>
-                            </div>
-                            <h3 class="text-2xl font-cinzel text-white mb-3 hover:text-art-gold transition-colors">Blog Başlığı 1</h3>
-                            <p class="text-gray-400 leading-relaxed">Blog yazısı kısa açıklaması buraya gelecek. Bu alana blog özetinizi ekleyin...</p>
-                        </div>
-                        <div class="mt-4 flex items-center text-art-gold text-sm font-semibold">
-                            Devamını Oku <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Blog 02 -->
-                <a href="/blog02.html" class="flex flex-col md:flex-row gap-6 bg-gradient-to-br from-[#1a1a1a] to-[#2c3335] rounded-xl overflow-hidden border border-gray-800 hover:border-art-gold/50 transition-all duration-300 hover:shadow-xl hover:shadow-art-gold/10">
-                    <div class="md:w-80 h-56 md:h-auto relative flex-shrink-0 overflow-hidden">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto2.jpg"
-                             alt="Blog 2"
-                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 bg-art-gold/90 text-black px-3 py-1 rounded-full text-xs font-bold">
-                            <i class="fas fa-file-alt mr-1"></i> Blog
-                        </div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                                <span><i class="fas fa-calendar mr-1"></i> 2025</span>
-                                <span><i class="fas fa-clock mr-1"></i> 5 dk okuma</span>
-                            </div>
-                            <h3 class="text-2xl font-cinzel text-white mb-3 hover:text-art-gold transition-colors">Blog Başlığı 2</h3>
-                            <p class="text-gray-400 leading-relaxed">Blog yazısı kısa açıklaması buraya gelecek. Bu alana blog özetinizi ekleyin...</p>
-                        </div>
-                        <div class="mt-4 flex items-center text-art-gold text-sm font-semibold">
-                            Devamını Oku <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Blog 03 -->
-                <a href="/blog03.html" class="flex flex-col md:flex-row gap-6 bg-gradient-to-br from-[#1a1a1a] to-[#2c3335] rounded-xl overflow-hidden border border-gray-800 hover:border-art-gold/50 transition-all duration-300 hover:shadow-xl hover:shadow-art-gold/10">
-                    <div class="md:w-80 h-56 md:h-auto relative flex-shrink-0 overflow-hidden">
-                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto3.jpg"
-                             alt="Blog 3"
-                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 bg-art-gold/90 text-black px-3 py-1 rounded-full text-xs font-bold">
-                            <i class="fas fa-file-alt mr-1"></i> Blog
-                        </div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
-                                <span><i class="fas fa-calendar mr-1"></i> 2025</span>
-                                <span><i class="fas fa-clock mr-1"></i> 5 dk okuma</span>
-                            </div>
-                            <h3 class="text-2xl font-cinzel text-white mb-3 hover:text-art-gold transition-colors">Blog Başlığı 3</h3>
-                            <p class="text-gray-400 leading-relaxed">Blog yazısı kısa açıklaması buraya gelecek. Bu alana blog özetinizi ekleyin...</p>
-                        </div>
-                        <div class="mt-4 flex items-center text-art-gold text-sm font-semibold">
-                            Devamını Oku <i class="fas fa-arrow-right ml-2"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Yeni blog eklemek için yukarıdaki blog kartını kopyalayıp yapıştırın -->
-
+            <div id="blog-list" class="space-y-8">
+                <!-- Blog posts will be dynamically loaded here by blog-renderer.js -->
+                <div class="text-center py-16">
+                    <i class="fas fa-spinner fa-spin text-4xl text-gray-600 mb-4"></i>
+                    <p class="text-gray-400">Blog yazıları yükleniyor...</p>
+                </div>
             </div>
         </div>
     </section>
@@ -330,10 +255,9 @@
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
-    <!-- Initialize Components -->
-    <script>
-        loadComponents('blog');
-    </script>
+    <!-- Blog System Modules -->
+    <script src="js/blog-data.js"></script>
+    <script src="js/blog-renderer.js"></script>
 
     <!-- Interactive Features -->
     <script src="js/chatbot-ui.js"></script>
