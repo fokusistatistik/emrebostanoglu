@@ -146,7 +146,7 @@ function getFooterHTML() {
                     <div class="mb-6">
                         <img src="${SITE_CONFIG.logoUrl}" alt="Emre Bostanoğlu" class="h-14 w-auto mb-4">
                         <p class="text-gray-400 text-sm leading-relaxed">
-                            Fotoğraf sanatı, veri bilimi, edebiyat ve sinema alanlarında çalışmalar yürüten çok yönlü bir sanatçı ve danışman.
+                            Fotoğraf sanatı, veri bilimi, edebiyat ve sinema alanlarında çalışmalar yürüten çok yönlü bir sanatçı ve veri bilimci.
                         </p>
                     </div>
                     <div class="flex items-center space-x-2 text-art-gold">

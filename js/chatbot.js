@@ -591,7 +591,7 @@
     }
 
     // Initial message
-    addMessage(`Merhaba! Ben Emre Bostanoğlu'nun kişisel sanat asistanıyım. Size nasıl yardımcı olabilirim?`, 'bot');
+    addMessage(`Merhaba! Ben Emre Bostanoğlu'nun kişisel asistanıyım. Size nasıl yardımcı olabilirim?`, 'bot');
     addQuickQuestions();
   }
 
