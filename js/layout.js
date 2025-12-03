@@ -5,25 +5,36 @@
 
 class LayoutManager {
     /**
-     * Initialize all layout components
+     * Initialize all layout components with dependency checks
      */
     static init() {
-        // Initialize header
-        if (typeof HeaderManager !== 'undefined') {
-            HeaderManager.init();
-        }
+        try {
+            // Check dependencies
+            if (typeof SITE_CONFIG === 'undefined') {
+                console.warn('⚠ SITE_CONFIG not loaded, layout components may not work correctly');
+            }
 
-        // Initialize footer
-        if (typeof FooterManager !== 'undefined') {
-            FooterManager.init();
-        }
+            // Initialize header
+            if (typeof HeaderManager !== 'undefined') {
+                HeaderManager.init();
+            } else {
+                console.warn('⚠ HeaderManager not loaded');
+            }
 
-        // Initialize i18n if available
-        if (typeof I18N !== 'undefined') {
-            I18N.init();
-        }
+            // Initialize footer
+            if (typeof FooterManager !== 'undefined') {
+                FooterManager.init();
+            } else {
+                console.warn('⚠ FooterManager not loaded');
+            }
 
-        console.log('✓ Layout initialized');
+            // Initialize i18n if available
+            if (typeof I18N !== 'undefined') {
+                I18N.init();
+            }
+        } catch (error) {
+            console.error('❌ Layout initialization error:', error);
+        }
     }
 
     /**
