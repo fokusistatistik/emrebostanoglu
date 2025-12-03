@@ -218,7 +218,7 @@ function getFooterHTML() {
                     <!-- Sosyal Medya İkonları -->
                     <div class="mt-8 pt-6 border-t border-gray-800">
                         <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
-                        <div class="flex flex-wrap gap-2 items-center justify-start">
+                        <div class="flex flex-wrap gap-1.5 items-center justify-start">
                             ${socialLinks}
                         </div>
                     </div>
