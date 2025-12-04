@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emre BOSTANOĞLU | Veri Bilimi</title>
+    <title>Emre BOSTANOĞLU | Veri Bilimi Yetkinlikleri</title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2c3335">
-    <meta name="description" content="FOKUS İstatistik ve Veri Bilimi Danışmanlığı. Yapay Zeka, Büyük Veri ve İstatistiksel Analiz hizmetleri.">
+    <meta name="description" content="Emre Bostanoğlu - Veri Bilimi, İstatistik ve Yapay Zeka Yetkinlikleri. 22 yıllık deneyim, Python, R, Machine Learning.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +39,19 @@
             transform: translateY(-5px);
             color: #3b82f6;
         }
+
+        .skill-progress {
+            height: 8px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+            transition: width 1s ease;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
@@ -47,65 +60,127 @@
     <div id="navbar-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative py-32 bg-dark-bg border-b border-gray-800 pt-32">
+    <section class="relative py-16 bg-dark-bg border-b border-gray-800 pt-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-data-blue font-bold tracking-[0.3em] text-sm uppercase mb-4 block">Analitik Çözümler</span>
-            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-6">Veri Bilimi & Yapay Zeka</h1>
-            <p class="text-gray-400 max-w-2xl mx-auto">
-                Karmaşık verilerden anlamlı içgörüler elde etmek için istatistiksel modelleme ve yapay zeka teknolojilerini kullanıyoruz.
+            <span class="text-data-blue font-bold tracking-[0.3em] text-sm uppercase mb-3 block">Uzmanlık Alanlarım</span>
+            <h1 class="text-4xl md:text-6xl font-serif text-white font-bold mb-4">Veri Bilimi & İstatistik</h1>
+            <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                22 yıllık istatistik ve veri bilimi deneyimimle, karmaşık veri problemlerini çözüyorum.
+                Makine öğrenmesi, derin öğrenme ve istatistiksel modelleme alanlarında uzmanlaşmış bir
+                <span class="text-data-blue font-semibold">Data Scientist</span> ve
+                <span class="text-art-gold font-semibold">FOKUS İstatistik</span> kurucusuyum.
             </p>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="py-20 bg-dark-bg">
+    <!-- Core Competencies -->
+    <section class="py-16 bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Temel Yetkinliklerim</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Veri bilimi ve analitik alanında sahip olduğum uzmanlıklar</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- İstatistiksel Analiz -->
                 <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-data-blue transition group">
                     <div class="w-14 h-14 bg-blue-900/30 rounded-lg flex items-center justify-center text-data-blue mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-brain text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Yapay Zeka Çözümleri</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                        Derin öğrenme ve makine öğrenmesi algoritmaları ile iş süreçlerinizi optimize eden akıllı sistemler geliştiriyoruz.
-                    </p>
-                    <ul class="text-xs text-gray-500 font-mono space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Görüntü İşleme</li>
-                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Doğal Dil İşleme (NLP)</li>
-                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Tahminleyici Analitik</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-green-500 transition group">
-                    <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center text-green-500 mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-chart-pie text-2xl"></i>
+                        <i class="fas fa-chart-bar text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">İstatistiksel Analiz</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                        Akademik ve kurumsal araştırmalarınız için güvenilir istatistiksel testler, hipotez kontrolleri ve raporlama.
+                        22 yıllık deneyimimle parametrik ve non-parametrik testler, hipotez testleri, regresyon modelleri ve zaman serisi analizleri.
                     </p>
                     <ul class="text-xs text-gray-500 font-mono space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> SPSS / R Analizleri</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Pazar Araştırmaları</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> A/B Testleri</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> SPSS, R, Python</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Regresyon & ANOVA</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Zaman Serisi Analizi</li>
+                        <li class="flex items-center"><i class="fas fa-check text-data-blue mr-2"></i> Bayesian İstatistik</li>
                     </ul>
                 </div>
 
-                <!-- Service 3 -->
+                <!-- Machine Learning -->
                 <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-purple-500 transition group">
                     <div class="w-14 h-14 bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition">
-                        <i class="fas fa-database text-2xl"></i>
+                        <i class="fas fa-brain text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Big Data & BI</h3>
+                    <h3 class="text-xl font-bold text-white mb-4">Machine Learning & AI</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                        Büyük veri setlerinin yönetimi ve interaktif dashboardlar ile veriye dayalı karar alma süreçlerinin inşası.
+                        Supervised ve unsupervised learning algoritmaları, derin öğrenme modelleri ve doğal dil işleme uygulamaları.
                     </p>
                     <ul class="text-xs text-gray-500 font-mono space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> PowerBI / Tableau</li>
-                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> SQL Veritabanı Yönetimi</li>
-                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> ETL Süreçleri</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> Scikit-learn, TensorFlow</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> Neural Networks & Deep Learning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> NLP & LLM Applications</li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-500 mr-2"></i> Computer Vision</li>
+                    </ul>
+                </div>
+
+                <!-- Veri Mühendisliği -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-green-500 transition group">
+                    <div class="w-14 h-14 bg-green-900/30 rounded-lg flex items-center justify-center text-green-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-database text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Veri Mühendisliği</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Büyük veri setlerinin yönetimi, ETL süreçleri, veritabanı optimizasyonu ve veri pipeline tasarımı.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> SQL & NoSQL (MongoDB)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Pandas, NumPy, Dask</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Data Pipeline & ETL</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Apache Spark</li>
+                    </ul>
+                </div>
+
+                <!-- Veri Görselleştirme -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-orange-500 transition group">
+                    <div class="w-14 h-14 bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Veri Görselleştirme & BI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        İnteraktif dashboard'lar, business intelligence çözümleri ve veri hikayesi anlatımı.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2"></i> Power BI, Tableau</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2"></i> Matplotlib, Seaborn, Plotly</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2"></i> D3.js Interactive Charts</li>
+                        <li class="flex items-center"><i class="fas fa-check text-orange-500 mr-2"></i> Data Storytelling</li>
+                    </ul>
+                </div>
+
+                <!-- Otomasyon & Bot Geliştirme -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-cyan-500 transition group">
+                    <div class="w-14 h-14 bg-cyan-900/30 rounded-lg flex items-center justify-center text-cyan-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-robot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Otomasyon & Sanal Asistan</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        RPA (Robotic Process Automation), chatbot geliştirme ve iş süreçlerinin otomasyonu.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-2"></i> OpenAI GPT, Claude API</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-2"></i> Selenium, BeautifulSoup</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-2"></i> Chatbot Development</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-2"></i> Process Automation</li>
+                    </ul>
+                </div>
+
+                <!-- Web & Yazılım Geliştirme -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-yellow-500 transition group">
+                    <div class="w-14 h-14 bg-yellow-900/30 rounded-lg flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Web & Yazılım Geliştirme</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Full-stack web uygulamaları, API geliştirme ve cloud deployment deneyimi.
+                    </p>
+                    <ul class="text-xs text-gray-500 font-mono space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-2"></i> Python (Django, Flask, FastAPI)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-2"></i> JavaScript, HTML/CSS</li>
+                        <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-2"></i> RESTful API Design</li>
+                        <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-2"></i> Docker, Git, CI/CD</li>
                     </ul>
                 </div>
             </div>
@@ -113,541 +188,244 @@
     </section>
 
     <!-- Tech Stack -->
-    <section class="py-16 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-gray-500 uppercase tracking-widest text-sm font-bold mb-10">Kullandığımız Teknolojiler</h3>
-            <div class="flex justify-center flex-wrap gap-8 md:gap-16 text-4xl text-gray-600">
-                <i class="fab fa-python tech-icon" title="Python"></i>
-                <i class="fab fa-r-project tech-icon" title="R Project"></i>
-                <i class="fas fa-database tech-icon" title="SQL"></i>
-                <i class="fab fa-aws tech-icon" title="AWS"></i>
-                <i class="fab fa-docker tech-icon" title="Docker"></i>
-                <i class="fas fa-chart-bar tech-icon" title="Tableau"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dijital Çözümlerimiz -->
-    <section class="py-20 bg-[#0B1120] border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-16 bg-[#0B1120] border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-serif text-white font-bold mb-6">Dijital Çözümlerimiz ile İşinizi Geleceğe Taşıyın</h2>
-            </div>
-            <div class="space-y-6 text-gray-300 leading-relaxed text-justify">
-                <p>
-                    <span class="text-data-blue font-semibold">FOKUS İstatistik</span> olarak, işletmenizin dijital dönüşümünü hızlandırmak ve rekabet gücünüzü artırmak için yapay zeka, veri bilimi ve otomasyon teknolojilerinde öncü çözümler sunuyoruz. Ham verilerinizi anlamlı, stratejik bilgiye dönüştürerek iş süreçlerinizi optimize ediyor; karar alma mekanizmalarınızı güçlendiriyoruz.
-                </p>
-                <p>
-                    İster küçük işletme olun, ister büyük bir kurum; size özel, ölçeklenebilir ve yenilikçi dijital araçlarımızla yanınızdayız. Karmaşık veri yapıları, manuel iş akışları ve yetersiz analizler zamanınızı ve kaynaklarınızı tüketirken, doğru teknoloji ve yöntemlerle bunları avantaja dönüştürmek mümkündür. Bizimle tanışın, dijital çağda öne geçmenin yollarını birlikte keşfedelim.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kimlere Hizmet Veriyoruz -->
-    <section class="py-20 bg-dark-bg border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Kimlere Hizmet Veriyoruz?</h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">Her ölçekte ve sektörde dijital dönüşüm çözümleri sunuyoruz</p>
+                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Kullandığım Araçlar & Teknolojiler</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Günlük çalışmalarımda kullandığım programlama dilleri, framework'ler ve araçlar</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Kategori 1 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-data-blue transition group">
-                    <div class="text-4xl mb-4">🔧</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Hizmet ve Uzmanlık Tabanlı İşletmeler</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Berberlerden doktorlara, veterinerden psikologlara; müşteri odaklı hizmet sunan tüm işletmelerin ihtiyaçlarına özel, iş akışlarını hızlandıran ve müşteri deneyimini iyileştiren çözümler sunuyoruz.
-                    </p>
-                </div>
-
-                <!-- Kategori 2 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-green-500 transition group">
-                    <div class="text-4xl mb-4">🧠</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Danışmanlık ve Eğitim Kurumları</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Akademiler, bireysel eğitmenler ve koçluk hizmetleri için veri destekli performans takibi, eğitim içerik otomasyonu ve dijital danışmanlık çözümleri geliştiriyoruz.
-                    </p>
-                </div>
-
-                <!-- Kategori 3 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-purple-500 transition group">
-                    <div class="text-4xl mb-4">🏛️</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Sağlık ve Kamu Kurumları</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Özel hastanelerden belediyelere, eczanelerden sağlık merkezlerine kadar geniş yelpazede veri analizi, süreç optimizasyonu ve dijital iletişim sistemleri sağlıyoruz.
-                    </p>
-                </div>
-
-                <!-- Kategori 4 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-orange-500 transition group">
-                    <div class="text-4xl mb-4">🏢</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Ticaret ve Satış Organizasyonları</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Perakende zincirleri, e-ticaret platformları ve satış ekiplerine özel performans izleme, müşteri ilişkileri yönetimi ve satış otomasyonu çözümleri sunuyoruz.
-                    </p>
-                </div>
-
-                <!-- Kategori 5 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-yellow-500 transition group">
-                    <div class="text-4xl mb-4">🏘️</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Girişim ve Özel Sektör</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Startup'lardan hukuk bürolarına, yazılım firmalarından lojistik şirketlerine kadar tüm özel sektör paydaşları için dijitalleşme ve yapay zeka tabanlı çözümler geliştiriyoruz.
-                    </p>
-                </div>
-
-                <!-- Kategori 6 -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 hover:border-red-500 transition group">
-                    <div class="text-4xl mb-4">🏭</div>
-                    <h3 class="text-xl font-bold text-white mb-3">Üretim ve Teknoloji Şirketleri</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Üretim tesisleri, teknoloji firmaları ve inovasyon odaklı kuruluşlar için üretim süreçleri optimizasyonu, kalite kontrol sistemleri ve endüstri 4.0 çözümleri sunuyoruz.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Çözüm Paketlerimiz -->
-    <section class="py-20 bg-[#0B1120] border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Çözüm Paketlerimiz</h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">Size özel, ihtiyaçlarınıza göre ölçeklenebilir dijital çözümler</p>
-            </div>
-
-            <!-- Yapay Zeka Tabanlı Çözümler -->
+            <!-- Programming Languages -->
             <div class="mb-12">
-                <h3 class="text-2xl font-bold text-data-blue mb-6 flex items-center">
-                    <i class="fas fa-robot mr-3"></i>
-                    Yapay Zeka Tabanlı Çözümler
+                <h3 class="text-xl font-bold text-data-blue mb-6 flex items-center justify-center">
+                    <i class="fas fa-code mr-3"></i>
+                    Programlama Dilleri
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-comments text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Chatbot & Sanal Asistan</h4>
-                        <p class="text-gray-400 text-sm">7/24 müşteri desteği ve otomatik yanıt sistemleri</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-card-bg p-6 rounded-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-white font-semibold">Python</span>
+                            <span class="text-data-blue text-sm font-mono">Expert</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 95%"></div>
+                        </div>
                     </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-search text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Doküman İşleme</h4>
-                        <p class="text-gray-400 text-sm">Akıllı doküman analizi ve bilgi çıkarımı</p>
+                    <div class="bg-card-bg p-6 rounded-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-white font-semibold">R</span>
+                            <span class="text-data-blue text-sm font-mono">Advanced</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 85%"></div>
+                        </div>
                     </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-language text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Dil Çevirisi</h4>
-                        <p class="text-gray-400 text-sm">Çok dilli içerik üretimi ve çeviri hizmetleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-microphone text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Ses Tanıma</h4>
-                        <p class="text-gray-400 text-sm">Ses-metin dönüşümü ve akıllı komut sistemleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-image text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Görüntü İşleme</h4>
-                        <p class="text-gray-400 text-sm">Otomatik görsel analiz ve nesne tanıma</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-data-blue transition">
-                        <i class="fas fa-chart-line text-data-blue mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Tahminleme Modelleri</h4>
-                        <p class="text-gray-400 text-sm">Satış, talep ve risk tahmin sistemleri</p>
+                    <div class="bg-card-bg p-6 rounded-lg border border-gray-800">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-white font-semibold">SQL</span>
+                            <span class="text-data-blue text-sm font-mono">Expert</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 90%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Otomasyon ve Dijitalleşme -->
+            <!-- Frameworks & Libraries -->
             <div class="mb-12">
-                <h3 class="text-2xl font-bold text-green-500 mb-6 flex items-center">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Otomasyon ve Dijitalleşme
+                <h3 class="text-xl font-bold text-purple-500 mb-6 flex items-center justify-center">
+                    <i class="fas fa-cubes mr-3"></i>
+                    Framework & Kütüphaneler
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-calendar-check text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Akıllı Randevu Sistemi</h4>
-                        <p class="text-gray-400 text-sm">Otomatik randevu yönetimi ve hatırlatıcılar</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-users text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">CRM Sistemi</h4>
-                        <p class="text-gray-400 text-sm">Müşteri ilişkileri ve satış süreç yönetimi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-file-invoice text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Fatura & Finans Otomasyonu</h4>
-                        <p class="text-gray-400 text-sm">Otomatik faturalama ve mali raporlama</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-box text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Stok Takibi</h4>
-                        <p class="text-gray-400 text-sm">Gerçek zamanlı envanter yönetimi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-envelope text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">E-Posta ve SMS Kampanyaları</h4>
-                        <p class="text-gray-400 text-sm">Otomatik pazarlama ve müşteri iletişimi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-desktop text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Web Sitesi ve E-ticaret</h4>
-                        <p class="text-gray-400 text-sm">Modern web platformları ve online satış sistemleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-mobile-alt text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Mobil Uygulama</h4>
-                        <p class="text-gray-400 text-sm">iOS ve Android platformları için özel uygulamalar</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-green-500 transition">
-                        <i class="fas fa-bell text-green-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Bildirim Sistemleri</h4>
-                        <p class="text-gray-400 text-sm">Push notification ve SMS bildirimleri</p>
-                    </div>
+                <div class="flex justify-center flex-wrap gap-3 max-w-5xl mx-auto">
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Pandas</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">NumPy</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Scikit-learn</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">TensorFlow</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Keras</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">PyTorch</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Django</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Flask</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">FastAPI</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Selenium</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">BeautifulSoup</span>
+                    <span class="bg-card-bg px-4 py-2 rounded-full border border-gray-800 text-sm font-mono text-gray-300 hover:border-purple-500 transition">Streamlit</span>
                 </div>
             </div>
 
-            <!-- Veri Analizi ve Raporlama -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-purple-500 mb-6 flex items-center">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    Veri Analizi ve Raporlama
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-tachometer-alt text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">İnteraktif Dashboard</h4>
-                        <p class="text-gray-400 text-sm">Gerçek zamanlı veri görselleştirme panelleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-file-chart-line text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Otomatik Raporlama</h4>
-                        <p class="text-gray-400 text-sm">Periyodik performans ve analiz raporları</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-user-chart text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Müşteri Davranış Analizi</h4>
-                        <p class="text-gray-400 text-sm">Alışveriş ve kullanım pattern analizi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-bullseye text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Pazar Segmentasyonu</h4>
-                        <p class="text-gray-400 text-sm">Hedef kitle belirleme ve müşteri gruplandırma</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-sitemap text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Süreç Optimizasyonu</h4>
-                        <p class="text-gray-400 text-sm">İş akışı analizi ve verimlilik artırma</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-purple-500 transition">
-                        <i class="fas fa-shield-check text-purple-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Kalite Kontrol</h4>
-                        <p class="text-gray-400 text-sm">Otomatik kalite metrikleri ve izleme</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Özel Çözümler -->
+            <!-- Tools & Platforms -->
             <div>
-                <h3 class="text-2xl font-bold text-orange-500 mb-6 flex items-center">
-                    <i class="fas fa-star mr-3"></i>
-                    Özel ve Sektörel Çözümler
+                <h3 class="text-xl font-bold text-green-500 mb-6 flex items-center justify-center">
+                    <i class="fas fa-tools mr-3"></i>
+                    Araçlar & Platformlar
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-heartbeat text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Sağlık Sektörü Çözümleri</h4>
-                        <p class="text-gray-400 text-sm">Hasta takibi, randevu ve tıbbi raporlama sistemleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-graduation-cap text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Eğitim Platformları</h4>
-                        <p class="text-gray-400 text-sm">Online eğitim yönetimi ve öğrenci takip sistemleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-balance-scale text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Hukuk Büroları için Yazılım</h4>
-                        <p class="text-gray-400 text-sm">Dava takibi ve doküman yönetim sistemleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-store text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Perakende Yönetim Sistemi</h4>
-                        <p class="text-gray-400 text-sm">POS entegrasyonu ve mağaza yönetimi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-hotel text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Otel ve Rezervasyon Sistemleri</h4>
-                        <p class="text-gray-400 text-sm">Konaklama rezervasyon ve oda yönetimi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-globe text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Sosyal Medya Yönetimi</h4>
-                        <p class="text-gray-400 text-sm">Otomatik içerik üretimi ve sosyal medya analizi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-video text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Video ve İçerik Üretimi</h4>
-                        <p class="text-gray-400 text-sm">AI destekli içerik oluşturma ve editörleme</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-lock text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Güvenlik ve Siber Koruma</h4>
-                        <p class="text-gray-400 text-sm">Veri güvenliği ve siber tehdit analizi</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-database text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Veri Toplama ve Entegrasyon</h4>
-                        <p class="text-gray-400 text-sm">API entegrasyonları ve veri pipeline</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-handshake text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Danışmanlık ve Eğitim</h4>
-                        <p class="text-gray-400 text-sm">Veri bilimi, AI ve dijital dönüşüm eğitimleri</p>
-                    </div>
-                    <div class="bg-card-bg p-5 rounded-lg border border-gray-800 hover:border-orange-500 transition">
-                        <i class="fas fa-cog text-orange-500 mb-2"></i>
-                        <h4 class="text-white font-semibold mb-2">Özel Yazılım Geliştirme</h4>
-                        <p class="text-gray-400 text-sm">İhtiyaca özel tam çözüm yazılım projeleri</p>
-                    </div>
+                <div class="flex justify-center flex-wrap gap-8 text-4xl text-gray-600">
+                    <i class="fab fa-python tech-icon" title="Python"></i>
+                    <i class="fab fa-r-project tech-icon" title="R"></i>
+                    <i class="fas fa-database tech-icon" title="SQL"></i>
+                    <i class="fab fa-git-alt tech-icon" title="Git"></i>
+                    <i class="fab fa-docker tech-icon" title="Docker"></i>
+                    <i class="fab fa-aws tech-icon" title="AWS"></i>
+                    <i class="fas fa-chart-bar tech-icon" title="Data Viz"></i>
+                    <i class="fab fa-github tech-icon" title="GitHub"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Doğru Yerde misiniz? -->
-    <section class="py-20 bg-dark-bg border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Featured Projects -->
+    <section class="py-16 bg-dark-bg border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Doğru Yerde misiniz?</h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">Aşağıdaki sorulardan herhangi birine yanıtınız "Evet" ise, sizin için doğru çözümleri sunabiliriz</p>
+                <h2 class="text-3xl md:text-4xl font-serif text-white font-bold mb-4">Öne Çıkan Projelerim</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Veri bilimi alanında geliştirdiğim bazı projeler</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Müşteri verilerinizi manuel olarak takip ediyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Randevularınızı Excel ile mi yönetiyorsunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Satış ve stok takibi karmaşık mı?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Müşterilerinize hızlı ve otomatik yanıt vermek istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">E-posta ve SMS kampanyalarınızı otomatikleştirmek ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Verilerinizi anlamlı raporlara dönüştürmekte zorlanıyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Müşteri memnuniyetini artırmak için dijital araçlara ihtiyacınız var mı?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Web siteniz veya mobil uygulamanız yok mu?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Yapay zeka ile iş süreçlerinizi optimize etmek ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Online satış kanallarınızı güçlendirmek istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Fatura ve finans süreçlerinizi otomatikleştirmek ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Pazarlama stratejilerinizi veriye dayalı hale getirmek istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Rakiplerinizden daha teknolojik olmak ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Sosyal medya içerik üretiminizi hızlandırmak ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Operasyonel maliyetlerinizi azaltmak istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Ekip içi iş akışınızı kolaylaştırmak istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Müşteri sadakatini artıracak araçlara mı ihtiyacınız var?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">İş süreçlerinizde zaman kaybı mı yaşıyorsunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Performans metriklerinizi takip etmekte zorluk çekiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Daha fazla müşteriye ulaşmak için dijital varlığınızı güçlendirmek istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Teknolojik çözümler karmaşık ve pahalı geliyor mu size?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">İş verimliliğinizi ölçmek ve artırmak istiyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Sektörünüzde dijital dönüşümün gerisinde kalıyor musunuz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Veri güvenliği ve gizliliği konusunda endişeleriniz mi var?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">İşletmenizin dijital dönüşüm yol haritasını çıkarmak ister misiniz?</p>
-                </div>
-                <div class="bg-card-bg p-4 rounded-lg border border-gray-800 hover:border-data-blue transition flex items-start">
-                    <i class="fas fa-check-circle text-data-blue mt-1 mr-3 flex-shrink-0"></i>
-                    <p class="text-gray-300 text-sm">Profesyonel bir teknoloji danışmanına mı ihtiyacınız var?</p>
-                </div>
-            </div>
-
-            <div class="mt-12 text-center">
-                <a href="/contact.html" class="inline-block px-8 py-4 bg-gradient-to-r from-data-blue to-[#5da9ff] text-white font-bold text-lg rounded-full hover:shadow-lg hover:shadow-data-blue/50 transition-all transform hover:scale-105">
-                    <i class="fas fa-rocket mr-2"></i>
-                    Hemen Başlayalım
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ASİST Projesi -->
-    <section class="py-20 bg-[#0B1120] border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-br from-card-bg to-[#1a2332] rounded-2xl border border-gray-800 overflow-hidden">
-                <div class="p-8 md:p-12">
+            <!-- ASİST Project -->
+            <div class="bg-gradient-to-br from-card-bg to-[#1a2332] rounded-2xl border border-gray-800 overflow-hidden mb-8">
+                <div class="p-8 md:p-10">
                     <div class="flex items-center mb-6">
                         <div class="w-16 h-16 bg-red-900/30 rounded-xl flex items-center justify-center mr-4">
                             <i class="fas fa-ambulance text-3xl text-red-500"></i>
                         </div>
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-serif text-white font-bold">ASİST</h2>
+                            <h3 class="text-2xl md:text-3xl font-serif text-white font-bold">ASİST Projesi</h3>
                             <p class="text-gray-400">Akademik Sağlık Acil Yönetim Sistemi</p>
                         </div>
                     </div>
 
-                    <div class="space-y-6 text-gray-300 leading-relaxed text-justify">
-                        <p>
-                            <span class="text-red-500 font-semibold">ASİST</span> (Akademik Sağlık İhtisas Servisi Teşhis), acil sağlık hizmetlerinin akademik ve profesyonel düzeyde yönetilmesini sağlayan kapsamlı bir dijital platformdur. Bu sistem, acil durum yönetimi, hasta takibi, kaynak planlaması ve performans analizini tek bir çatı altında toplar.
-                        </p>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Acil sağlık hizmetlerinin yönetimini optimize eden, gerçek zamanlı hasta takibi,
+                        performans analizi ve tahminsel modelleme içeren kapsamlı bir veri bilimi projesi.
+                        Python, machine learning ve veri görselleştirme teknolojilerini birleştirerek sağlık
+                        kurumlarına karar destek sistemi sunmaktadır.
+                    </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                            <div class="bg-dark-bg p-6 rounded-xl border border-gray-800">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                    <i class="fas fa-heartbeat text-red-500 mr-3"></i>
-                                    Temel Özellikler
-                                </h3>
-                                <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-red-500 mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Gerçek zamanlı hasta takip sistemi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-red-500 mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Acil durum önceliklendirme (triage)</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-red-500 mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Kaynak ve yatak yönetimi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-red-500 mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Personel görev dağılımı</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-red-500 mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>İlaç ve malzeme stok takibi</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="bg-dark-bg p-6 rounded-xl border border-gray-800">
-                                <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                    <i class="fas fa-chart-line text-data-blue mr-3"></i>
-                                    Analitik Modüller
-                                </h3>
-                                <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-data-blue mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Performans göstergeleri (KPI) izleme</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-data-blue mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Bekleme süresi ve hasta akış analizi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-data-blue mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Maliyet ve verimlilik raporlaması</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-data-blue mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Tahminsel analitik ve trend takibi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check text-data-blue mt-1 mr-2 flex-shrink-0"></i>
-                                        <span>Akademik araştırma veri eksportu</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <p>
-                            ASİST, acil servis, yoğun bakım ve travma merkezlerinde kullanılmak üzere tasarlanmıştır. Sistem, hasta güvenliğini artırırken, personel verimliliğini maksimize eder ve kaynakların en etkin şekilde kullanılmasını sağlar. Mobil uygulaması sayesinde saha ekipleri ve ambulans personeli de sisteme entegre edilir.
-                        </p>
-
-                        <div class="bg-dark-bg p-6 rounded-xl border border-red-900/30 mt-8">
-                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-award text-art-gold mr-3"></i>
-                                Akademik Katkı
-                            </h3>
-                            <p class="text-sm">
-                                ASİST projesi, sağlık hizmetlerinin kalitesini artırmak için veri bilimi ve yapay zeka teknolojilerinin nasıl kullanılabileceğine dair akademik bir örnek teşkil eder. Sistem, yayınlanmış makalelerde referans gösterilmiş ve çeşitli sağlık kurumlarında pilot uygulamalara konu olmuştur.
-                            </p>
-                        </div>
-
-                        <div class="flex items-center justify-center gap-4 mt-8 flex-wrap">
-                            <div class="bg-dark-bg px-6 py-3 rounded-full border border-gray-800">
-                                <i class="fas fa-hospital text-red-500 mr-2"></i>
-                                <span class="text-sm font-semibold">Sağlık Kurumları</span>
-                            </div>
-                            <div class="bg-dark-bg px-6 py-3 rounded-full border border-gray-800">
-                                <i class="fas fa-university text-data-blue mr-2"></i>
-                                <span class="text-sm font-semibold">Araştırma Merkezleri</span>
-                            </div>
-                            <div class="bg-dark-bg px-6 py-3 rounded-full border border-gray-800">
-                                <i class="fas fa-user-md text-green-500 mr-2"></i>
-                                <span class="text-sm font-semibold">Klinik Uygulamalar</span>
-                            </div>
-                        </div>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-dark-bg px-3 py-1 rounded-full text-xs font-mono text-data-blue border border-data-blue/30">Python</span>
+                        <span class="bg-dark-bg px-3 py-1 rounded-full text-xs font-mono text-purple-500 border border-purple-500/30">Machine Learning</span>
+                        <span class="bg-dark-bg px-3 py-1 rounded-full text-xs font-mono text-green-500 border border-green-500/30">Data Analytics</span>
+                        <span class="bg-dark-bg px-3 py-1 rounded-full text-xs font-mono text-orange-500 border border-orange-500/30">Dashboard</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- Other Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-data-blue transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-comments text-data-blue text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">AI Chatbot Sistemleri</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        OpenAI ve Claude API'lerini kullanarak özel sektör için geliştirilmiş sanal asistan çözümleri. NLP ve LLM teknolojileri ile müşteri hizmetleri otomasyonu.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-gray-500">OpenAI GPT</span>
+                        <span class="text-xs font-mono text-gray-500">NLP</span>
+                        <span class="text-xs font-mono text-gray-500">FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-purple-500 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Tahminsel Analitik Modelleri</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Satış tahmini, müşteri churn analizi ve talep öngörüsü için machine learning modelleri. Time series forecasting ve regression teknikleri ile iş analitiği.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-gray-500">Scikit-learn</span>
+                        <span class="text-xs font-mono text-gray-500">Prophet</span>
+                        <span class="text-xs font-mono text-gray-500">XGBoost</span>
+                    </div>
+                </div>
+
+                <div class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-green-500 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-image text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Computer Vision Uygulamaları</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Görüntü işleme ve nesne tanıma projeleri. CNN mimarileri ve transfer learning ile görsel veri analizi ve sınıflandırma sistemleri.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-gray-500">TensorFlow</span>
+                        <span class="text-xs font-mono text-gray-500">OpenCV</span>
+                        <span class="text-xs font-mono text-gray-500">CNN</span>
+                    </div>
+                </div>
+
+                <div class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-orange-500 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-900/30 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-tachometer-alt text-orange-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Business Intelligence Dashboard'ları</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Power BI ve Plotly/Dash ile interaktif veri görselleştirme panelleri. Gerçek zamanlı KPI izleme ve veri hikayesi anlatımı.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-mono text-gray-500">Power BI</span>
+                        <span class="text-xs font-mono text-gray-500">Plotly Dash</span>
+                        <span class="text-xs font-mono text-gray-500">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Background -->
+    <section class="py-16 bg-[#0B1120] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-card-bg to-[#1a2332] rounded-2xl border border-gray-800 p-8 md:p-10">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-art-gold/20 rounded-xl flex items-center justify-center mr-4">
+                        <i class="fas fa-building text-3xl text-art-gold"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-serif text-white font-bold">FOKUS İstatistik</h2>
+                        <p class="text-gray-400">Founder & Data Science Consultant</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    <span class="text-art-gold font-semibold">FOKUS İstatistik</span>'in kurucusu olarak,
+                    işletmelere ve araştırma kurumlarına veri bilimi danışmanlığı hizmetleri sunuyorum.
+                    Şirket bünyesinde istatistiksel analiz, makine öğrenmesi, otomasyon ve yapay zeka çözümleri
+                    geliştirerek müşterilerin dijital dönüşüm süreçlerine katkıda bulunuyoruz.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-dark-bg p-6 rounded-xl border border-gray-800 text-center">
+                        <div class="text-3xl font-bold text-data-blue mb-2">22+</div>
+                        <div class="text-sm text-gray-400">Yıllık Deneyim</div>
+                    </div>
+                    <div class="bg-dark-bg p-6 rounded-xl border border-gray-800 text-center">
+                        <div class="text-3xl font-bold text-purple-500 mb-2">100+</div>
+                        <div class="text-sm text-gray-400">Tamamlanan Proje</div>
+                    </div>
+                    <div class="bg-dark-bg p-6 rounded-xl border border-gray-800 text-center">
+                        <div class="text-3xl font-bold text-green-500 mb-2">50+</div>
+                        <div class="text-sm text-gray-400">İş Ortağı</div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex items-center justify-center">
+                    <a href="https://fokusistatistik.com" target="_blank"
+                       class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-art-gold to-yellow-600 text-dark-bg font-bold rounded-full hover:shadow-lg hover:shadow-art-gold/50 transition-all transform hover:scale-105">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        fokusistatistik.com
+                    </a>
                 </div>
             </div>
         </div>
