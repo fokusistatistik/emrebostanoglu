@@ -27,7 +27,7 @@ class FooterManager {
             .map(link => `
                 <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
                    ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
-                   class="inline-flex items-center justify-center p-1 transition-all transform hover:scale-110 hover:opacity-80 ${link.customMargin ? 'mr-[-3px]' : ''}"
+                   class="inline-flex items-center justify-center p-1 transition-all transform hover:scale-110 hover:opacity-80 ${link.customMargin ? 'mr-[-8px]' : ''}"
                    title="${link.name}">
                     <img src="${link.img}"
                          alt="${link.name}"
