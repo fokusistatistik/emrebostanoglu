@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makine Öğrenmesi ile Sağlık Verilerinde Tahminleme: SAHA Projesi | Emre BOSTANOĞLU</title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
+    <meta name="description" content="Acil sağlık hizmetlerinde 9 modüllük SAHA projesi ile yıllık milyonlarca veriyi nasıl analiz edip karar destek sistemleri geliştirdiğimizi anlatıyorum. Python, Power BI ve makine öğrenmesi teknikleri.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- i18n System -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+</head>
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Article Header -->
+    <article class="pt-24">
+        <!-- Hero Section -->
+        <header class="relative py-16 bg-gradient-to-b from-dark-bg to-[#1a1a1a] border-b border-gray-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Breadcrumb -->
+                <nav class="mb-8 text-sm">
+                    <a href="/" class="text-gray-500 hover:text-data-blue transition">Ana Sayfa</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <a href="/blog.html" class="text-gray-500 hover:text-data-blue transition">Blog</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <span class="text-gray-400">Veri Bilimi</span>
+                </nav>
+
+                <!-- Category & Date -->
+                <div class="flex items-center gap-4 mb-6 text-sm flex-wrap">
+                    <span class="bg-data-blue/20 text-data-blue px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-brain mr-1"></i> Veri Bilimi
+                    </span>
+                    <span class="bg-purple-500/20 text-purple-400 px-4 py-1.5 rounded-full font-semibold">
+                        Machine Learning
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-calendar mr-2"></i>10 Ocak 2025
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-clock mr-2"></i>12 dk okuma
+                    </span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl font-cinzel text-white font-bold mb-6 leading-tight">
+                    Makine Öğrenmesi ile Sağlık Verilerinde Tahminleme: SAHA Projesi Deneyimleri
+                </h1>
+
+                <!-- Excerpt -->
+                <p class="text-xl text-gray-400 leading-relaxed mb-8">
+                    Acil sağlık hizmetlerinde yıllık milyonlarca veri noktasını nasıl analiz edip, karar destek sistemleriyle
+                    yönetim süreçlerini optimize ettiğimizi ve 9 modüllük SAHA platformunu geliştirme sürecini anlatıyorum.
+                </p>
+
+                <!-- Author -->
+                <div class="flex items-center gap-4 pt-6 border-t border-gray-800">
+                    <img src="https://static.fokusistatistik.com/resimler/eb.png" alt="Emre Bostanoğlu" class="w-14 h-14 rounded-full border-2 border-data-blue">
+                    <div>
+                        <p class="text-white font-semibold">Emre Bostanoğlu</p>
+                        <p class="text-sm text-gray-500">Data Scientist • FOKUS İstatistik Kurucusu • 22 Yıllık Deneyim</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="prose prose-invert prose-lg max-w-none">
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">SAHA Nedir ve Neden İhtiyaç Duyduk?</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    <strong class="text-data-blue">SAHA (Sağlık Hizmetleri Analitiği)</strong>, 2023 yılında başlattığımız
+                    ve 2024 yılında 9 modülü tamamlanan kapsamlı bir acil sağlık hizmetleri karar destek sistemidir. Kocaeli
+                    İl Sağlık Müdürlüğü Acil Sağlık Hizmetleri Departmanı'nda istatistikçi olarak çalıştığım 10 yıl boyunca,
+                    şu temel sorunları gözlemledim:
+                </p>
+
+                <ul class="list-none space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Veri Kaosu:</strong> Yıllık milyonlarca vaka kaydı, farklı sistemlerde dağınık halde
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Yavaş Analiz:</strong> Performans değerlendirmeleri manuel Excel işlemleriyle aylar sürüyor
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Tepkisel Yönetim:</strong> Öngörü yerine geçmişe dönük raporlama
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Kaynakların Verimsiz Kullanımı:</strong> İstasyon, ambulans ve personel dağılımında optimizasyon eksikliği
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="bg-gradient-to-r from-data-blue/10 to-transparent border-l-4 border-data-blue p-6 rounded-lg my-8">
+                    <h4 class="text-lg font-bold text-white mb-3">
+                        <i class="fas fa-target text-data-blue mr-2"></i>Proje Hedefi
+                    </h4>
+                    <p class="text-gray-300">
+                        Tüm acil sağlık hizmetleri verilerini tek bir platformda birleştirerek, gerçek zamanlı analiz, tahminsel
+                        modelleme ve otomatik raporlama ile karar süreçlerini hızlandırmak ve optimize etmek.
+                    </p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Teknik Mimari ve Teknoloji Yığını</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    SAHA platformu, modern veri bilimi araçlarının bir kombinasyonudur. İşte kullandığımız ana teknolojiler:
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4 my-8">
+                    <div class="bg-card-bg p-5 rounded-xl border border-gray-800">
+                        <div class="w-12 h-12 bg-data-blue/20 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fab fa-python text-data-blue text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Python</h4>
+                        <p class="text-gray-400 text-sm">Pandas, NumPy, Scikit-learn ile veri işleme ve ML modelleri</p>
+                    </div>
+
+                    <div class="bg-card-bg p-5 rounded-xl border border-gray-800">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-chart-bar text-orange-500 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Power BI</h4>
+                        <p class="text-gray-400 text-sm">İnteraktif dashboard'lar ve gerçek zamanlı görselleştirme</p>
+                    </div>
+
+                    <div class="bg-card-bg p-5 rounded-xl border border-gray-800">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-database text-green-500 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">SQL Server</h4>
+                        <p class="text-gray-400 text-sm">Merkezi veri ambarı ve optimize edilmiş sorgular</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">Veri Pipeline'ı</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Sistemin kalbi, otomatik ETL (Extract, Transform, Load) sürecidir:
+                </p>
+
+                <ol class="list-decimal list-inside space-y-4 mb-6 text-gray-300">
+                    <li>
+                        <strong class="text-white">Extract:</strong> 112 Acil Çağrı Merkezi, Hastane Bilgi Yönetim Sistemleri
+                        ve mobil ambulans uygulamalarından veri toplama
+                    </li>
+                    <li>
+                        <strong class="text-white">Transform:</strong> Python ile veri temizleme, normalizasyon, feature engineering
+                        ve anomali tespiti
+                    </li>
+                    <li>
+                        <strong class="text-white">Load:</strong> SQL Server veri ambarına yapılandırılmış veri yükleme
+                    </li>
+                    <li>
+                        <strong class="text-white">Analyze & Visualize:</strong> Power BI ve Python ile analiz ve dashboard güncellemesi
+                    </li>
+                </ol>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">9 SAHA Modülü ve Makine Öğrenmesi Uygulamaları</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Her modül, spesifik bir sorun alanını hedefler ve bazıları tahminsel analitik kullanır:
+                </p>
+
+                <div class="space-y-6 my-8">
+                    <!-- SİMA -->
+                    <div class="bg-card-bg p-6 rounded-xl border-l-4 border-data-blue">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-wave-square text-data-blue mr-3"></i>
+                            1. SİMA - Yapay Zeka Destekli Afet Simülasyonu
+                        </h4>
+                        <p class="text-gray-300 mb-3">
+                            <strong class="text-data-blue">ML Modeli:</strong> Random Forest Regressor ile deprem, sel gibi
+                            afet senaryolarında beklenen vaka sayısı, ambulans ihtiyacı ve kaynak dağılımı tahmini.
+                        </p>
+                        <div class="bg-dark-bg p-4 rounded-lg">
+                            <code class="text-sm text-gray-400">
+                                <span class="text-purple-400">from</span> sklearn.ensemble <span class="text-purple-400">import</span> RandomForestRegressor<br>
+                                <span class="text-green-400"># Geçmiş afet verilerinden öğrenme</span><br>
+                                model = RandomForestRegressor(n_estimators=<span class="text-yellow-400">200</span>)<br>
+                                model.fit(X_train, y_train)  <span class="text-green-400"># Tahmin: ambulans ihtiyacı</span>
+                            </code>
+                        </div>
+                    </div>
+
+                    <!-- ASHİDA -->
+                    <div class="bg-card-bg p-6 rounded-xl border-l-4 border-green-500">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-hospital text-green-500 mr-3"></i>
+                            2. ASHİDA - İstasyon Performans Analizi
+                        </h4>
+                        <p class="text-gray-300 mb-3">
+                            <strong class="text-green-500">İstatistiksel Analiz:</strong> Her 112 istasyonunun müdahale süresi,
+                            vaka yoğunluğu ve başarı oranlarını karşılaştırmalı analiz eder. K-Means clustering ile benzer
+                            performans profillerine sahip istasyonları gruplar.
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Ortalama müdahale süresini %18 azalttık
+                        </p>
+                    </div>
+
+                    <!-- PEDA -->
+                    <div class="bg-card-bg p-6 rounded-xl border-l-4 border-purple-500">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-user-md text-purple-500 mr-3"></i>
+                            3. PEDA - Personel Dinamik Analizleri
+                        </h4>
+                        <p class="text-gray-300 mb-3">
+                            <strong class="text-purple-500">Performans Metrikleri:</strong> Paramedik ve ATT'lerin vaka başarı
+                            oranı, hasta memnuniyeti, protokol uyumu gibi 20+ metriği otomatik hesaplar. Anomali tespiti
+                            için isolation forest algoritması kullanır.
+                        </p>
+                    </div>
+
+                    <!-- HASDA -->
+                    <div class="bg-card-bg p-6 rounded-xl border-l-4 border-orange-500">
+                        <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-ambulance text-orange-500 mr-3"></i>
+                            4. HASDA - Hastane Teslim Dinamik Analizleri
+                        </h4>
+                        <p class="text-gray-300 mb-3">
+                            <strong class="text-orange-500">Bekleme Süresi Optimizasyonu:</strong> Hastanelerin acil servis
+                            doluluk oranı ve ortalama teslim sürelerini analiz eder. Time series forecasting ile gelecek
+                            saatlerdeki yoğunluğu tahmin eder, ambulansları en uygun hastaneye yönlendirir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a2332] p-6 rounded-xl border border-gray-800 my-8">
+                    <h4 class="text-lg font-bold text-white mb-3">
+                        <i class="fas fa-chart-line text-data-blue mr-2"></i>Diğer 5 Modül
+                    </h4>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li><strong>HANDA:</strong> Hastaneler arası nakil süreç optimizasyonu</li>
+                        <li><strong>NR24:</strong> Nakil reddi ve ikincil çağrı analizi</li>
+                        <li><strong>HAN24:</strong> 24 saat içindeki yeniden nakil ihtiyacı tahmini</li>
+                        <li><strong>KOMUDA:</strong> Komuta kontrol merkezi vaka dağıtım verimliliği</li>
+                        <li><strong>AMBULANSDA:</strong> Tüm ambulansların performans karnesi ve denetim sistemi</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Pratik Uygulamada Makine Öğrenmesi Zorlukları</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Sağlık verilerinde ML uygulamaları, özel zorluklarla gelir:
+                </p>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">1. Eksik ve Tutarsız Veri</h3>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    Gerçek dünya verisi hiçbir zaman temiz değildir. %15-20 oranında eksik veri, farklı formatlar ve insan
+                    hataları. Çözümümüz:
+                </p>
+
+                <div class="bg-dark-bg p-4 rounded-lg mb-6 overflow-x-auto">
+                    <code class="text-sm text-gray-400">
+                        <span class="text-green-400"># Eksik veri stratejisi</span><br>
+                        <span class="text-purple-400">from</span> sklearn.impute <span class="text-purple-400">import</span> KNNImputer<br><br>
+                        imputer = KNNImputer(n_neighbors=<span class="text-yellow-400">5</span>)<br>
+                        df_filled = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)<br><br>
+                        <span class="text-green-400"># Anomali tespiti ve temizleme</span><br>
+                        <span class="text-purple-400">from</span> sklearn.ensemble <span class="text-purple-400">import</span> IsolationForest<br>
+                        outlier_detector = IsolationForest(contamination=<span class="text-yellow-400">0.1</span>)<br>
+                        outliers = outlier_detector.fit_predict(df_numerical)
+                    </code>
+                </div>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">2. Model Açıklanabilirliği</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Sağlık yöneticileri "siyah kutu" modellerine güvenmez. SHAP (SHapley Additive exPlanations) kullanarak
+                    her tahminin nedenini açıklıyoruz. "Bu istasyona neden 2 ek ambulans gerekiyor?" sorusuna, veriye dayalı
+                    görsel açıklamalar sunuyoruz.
+                </p>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">3. Gerçek Zamanlı Performans</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Bazı modüller (özellikle HASDA) gerçek zamanlı çalışmalı. Model inference süresini optimize etmek için
+                    model compression ve caching stratejileri uyguladık. Ortalama tahmin süresi: <strong class="text-data-blue">45ms</strong>.
+                </p>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Sonuçlar ve Etki</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    SAHA platformunun 2024 yılı sonuçları:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="bg-gradient-to-br from-green-900/20 to-transparent p-6 rounded-xl border border-green-800">
+                        <div class="text-4xl font-bold text-green-500 mb-2">%18</div>
+                        <p class="text-gray-300">Ortalama müdahale süresinde azalma</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-data-blue/20 to-transparent p-6 rounded-xl border border-data-blue">
+                        <div class="text-4xl font-bold text-data-blue mb-2">%92</div>
+                        <p class="text-gray-300">Kaynak kullanım verimliliğinde artış</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-900/20 to-transparent p-6 rounded-xl border border-purple-800">
+                        <div class="text-4xl font-bold text-purple-500 mb-2">2 saat</div>
+                        <p class="text-gray-300">Raporlama süresi (önceki: 3 gün)</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-900/20 to-transparent p-6 rounded-xl border border-orange-800">
+                        <div class="text-4xl font-bold text-orange-500 mb-2">2.8M+</div>
+                        <p class="text-gray-300">Yıllık işlenen vaka kaydı</p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Gelecek Planları</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    SAHA'nın bir sonraki evrimi için üzerinde çalıştığımız özellikler:
+                </p>
+
+                <ul class="list-none space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <i class="fas fa-rocket text-data-blue mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Deep Learning:</strong> LSTM ağları ile daha hassas zaman serisi tahminleri
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-rocket text-data-blue mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>NLP Entegrasyonu:</strong> Vaka notlarından otomatik insight çıkarma
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-rocket text-data-blue mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Reinforcement Learning:</strong> Ambulans rota optimizasyonu için RL ajanları
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-rocket text-data-blue mt-1 mr-3"></i>
+                        <span class="text-gray-300">
+                            <strong>Mobil Uygulama:</strong> Saha ekipleri için real-time dashboard erişimi
+                        </span>
+                    </li>
+                </ul>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Sonuç</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    SAHA projesi, sağlık hizmetlerinde veri biliminin gücünü gösteriyor. Teorik ML bilgisini gerçek dünya
+                    sorunlarına uygulamak, sabır, yineleme ve alan uzmanlığı gerektirir. En önemli dersim: En karmaşık
+                    model değil, en uygun ve sürdürülebilir çözüm kazanır.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed">
+                    Sağlık verilerinde çalışıyorsanız veya benzeri karar destek sistemleri geliştiriyorsanız, deneyim paylaşımı
+                    için benimle iletişime geçebilirsiniz.
+                </p>
+
+                <!-- Tech Tags -->
+                <div class="mt-8 flex flex-wrap gap-2">
+                    <span class="bg-data-blue/20 text-data-blue px-3 py-1 rounded-full text-sm">#Python</span>
+                    <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm">#MachineLearning</span>
+                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">#Healthcare</span>
+                    <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm">#PowerBI</span>
+                    <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm">#DataScience</span>
+                </div>
+
+                <!-- Social Share -->
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <h3 class="text-xl font-bold text-white mb-4">Bu yazıyı paylaşın</h3>
+                    <div class="flex gap-4">
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">
+                            <i class="fab fa-twitter mr-2"></i>Twitter
+                        </a>
+                        <a href="#" class="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg transition">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                        <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Author Bio -->
+                <div class="mt-12 p-8 bg-card-bg rounded-xl border border-gray-800">
+                    <div class="flex items-start gap-6">
+                        <img src="https://static.fokusistatistik.com/resimler/eb.png" alt="Emre Bostanoğlu" class="w-24 h-24 rounded-full border-2 border-data-blue">
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Emre Bostanoğlu Hakkında</h4>
+                            <p class="text-gray-400 mb-4">
+                                İstatistik Yüksek Lisans mezunu Data Scientist. Kocaeli İl Sağlık Müdürlüğü'nde İstatistikçi (2015-günümüz).
+                                FOKUS İstatistik kurucusu. SAHA, KİM-QR & ATOM gibi sağlık veri bilimi projelerinin mimarı.
+                                Python, R, Machine Learning ve Big Data Analytics uzmanı.
+                            </p>
+                            <div class="flex gap-3">
+                                <a href="/datascience.html" class="text-data-blue hover:underline">
+                                    <i class="fas fa-chart-line mr-1"></i>Veri Bilimi
+                                </a>
+                                <span class="text-gray-600">•</span>
+                                <a href="/about.html" class="text-data-blue hover:underline">
+                                    <i class="fas fa-user mr-1"></i>Hakkımda
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-white mb-6">İlgili Yazılar</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <a href="/blog03.html" class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-red-500 transition group">
+                            <span class="text-sm text-red-500 font-semibold mb-2 block">Yapay Zeka</span>
+                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-red-500 transition">
+                                Afet Yönetiminde Yapay Zeka: KİM-QR & ATOM
+                            </h4>
+                            <p class="text-gray-400 text-sm">Dünya'da bir ilk olan afet sağlık koordinasyon sistemi...</p>
+                        </a>
+                        <a href="/blog01.html" class="bg-card-bg p-6 rounded-xl border border-gray-800 hover:border-art-gold transition group">
+                            <span class="text-sm text-art-gold font-semibold mb-2 block">Fotoğraf</span>
+                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-art-gold transition">
+                                Kompozisyonun Gücü: Altın Oran ve Üçte Bir Kuralı
+                            </h4>
+                            <p class="text-gray-400 text-sm">Fotoğrafta kompozisyon teknikleri ve pratik uygulamalar...</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('blog');
+    </script>
+
+    <!-- Interactive Features -->
+    <script src="js/chatbot-ui.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/exit-intent.js"></script>
+    <script src="js/cookie-consent.js"></script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((reg) => console.log('SW registered', reg.scope)).catch((err) => console.log('SW failed', err));
+            });
+        }
+    </script>
+
+</body>
+</html>
