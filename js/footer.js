@@ -32,8 +32,8 @@ class FooterManager {
                    title="${link.name}">
                     <img src="${link.img}"
                          alt="${link.name}"
-                         class="w-[26px] h-[26px] object-contain flex-shrink-0"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+                         class="w-[27px] h-[27px] object-contain flex-shrink-0"
+                         onerror="this.style.display='none'" />
                     <i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i>
                 </a>
             `).join('');
@@ -66,10 +66,7 @@ class FooterManager {
                         </div>
                         <div class="text-gray-500 text-xs leading-relaxed space-y-1">
                             <p class="text-data-blue font-medium">Data Scientist | Statistician, MSc</p>
-                            <p>Founder of <a href="https://www.fokusistatistik.com/" target="_blank" class="text-art-gold hover:underline inline-flex items-center gap-1">
-                                <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="FOKUS İstatistik" class="w-4 h-4 inline-block">
-                                @fokusistatistik
-                            </a></p>
+                            <p>Founder of <a href="https://www.fokusistatistik.com/" target="_blank" class="text-art-gold hover:underline">@fokusistatistik</a></p>
                             <p>Novelist | <span class="text-director-red">🎥</span> Director</p>
                             <p class="text-art-gold font-medium">EFIAP Photographer</p>
                         </div>
@@ -136,7 +133,7 @@ class FooterManager {
                         <!-- Sosyal Medya İkonları -->
                         <div class="mt-8 pt-6 border-t border-gray-800">
                             <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
-                            <div class="flex flex-wrap items-center justify-start" style="gap: 7px; margin-top: 8px; margin-bottom: -12px; margin-left: 2px; margin-right: 2px;">
+                            <div class="flex flex-wrap items-center justify-start gap-[7px]">
                                 ${socialLinksHTML}
                             </div>
                         </div>

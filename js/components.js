@@ -131,7 +131,7 @@ function getFooterHTML() {
         { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
         { url: social.github, img: '/assets/img/github.png', name: 'Github' }
     ].filter(link => link.url !== null)
-     .map(link => `<a href="${link.isEmail ? 'mailto:' + link.url : link.url}" ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center justify-center p-1 transition-all transform hover:scale-110 hover:opacity-80" title="${link.name}"><img src="${link.img}" alt="${link.name}" class="w-[26px] h-[26px] object-contain flex-shrink-0" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i></a>`).join('');
+     .map(link => `<a href="${link.isEmail ? 'mailto:' + link.url : link.url}" ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center justify-center transition-all transform hover:scale-110 hover:opacity-80" title="${link.name}"><img src="${link.img}" alt="${link.name}" class="w-[27px] h-[27px] object-contain flex-shrink-0" onerror="this.style.display='none'" /><i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i></a>`).join('');
 
     return `
     <footer id="contact" class="relative bg-gradient-to-b from-black via-[#0a0a0a] to-[#0f0f0f] border-t border-gray-800">
@@ -152,10 +152,7 @@ function getFooterHTML() {
                     </div>
                     <div class="text-gray-500 text-xs leading-relaxed space-y-1">
                         <p class="text-data-blue font-medium">Data Scientist | Statistician, MSc</p>
-                        <p>Founder of <a href="https://www.fokusistatistik.com/" target="_blank" class="text-art-gold hover:underline inline-flex items-center gap-1">
-                            <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="FOKUS İstatistik" class="w-4 h-4 inline-block">
-                            @fokusistatistik
-                        </a></p>
+                        <p>Founder of <a href="https://www.fokusistatistik.com/" target="_blank" class="text-art-gold hover:underline">@fokusistatistik</a></p>
                         <p>Novelist | <span class="text-director-red">🎥</span> Director</p>
                         <p class="text-art-gold font-medium">EFIAP Photographer</p>
                     </div>
@@ -222,7 +219,7 @@ function getFooterHTML() {
                     <!-- Sosyal Medya İkonları -->
                     <div class="mt-8 pt-6 border-t border-gray-800">
                         <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
-                        <div class="flex flex-wrap items-center justify-start" style="gap: 7px; margin-top: 8px; margin-bottom: -12px; margin-left: 2px; margin-right: 2px;">
+                        <div class="flex flex-wrap items-center justify-start gap-[7px]">
                             ${socialLinks}
                         </div>
                     </div>
@@ -262,7 +259,10 @@ function getFooterHTML() {
                 <div class="text-center mt-6 pt-6 border-t border-gray-900">
                     <p class="text-gray-600 text-xs flex items-center justify-center space-x-2">
                         <span>Tasarım & Geliştirme:</span>
-                        <span class="text-art-gold font-semibold">FOKUS İstatistik</span>
+                        <a href="https://www.fokusistatistik.com/" target="_blank" class="inline-flex items-center gap-1.5 text-art-gold font-semibold hover:underline">
+                            <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="FOKUS İstatistik" class="w-4 h-4 inline-block">
+                            FOKUS İstatistik
+                        </a>
                         <i class="fas fa-heart text-red-500 animate-pulse"></i>
                     </p>
                 </div>
