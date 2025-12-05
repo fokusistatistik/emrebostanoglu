@@ -28,13 +28,13 @@ class FooterManager {
             .map(link => `
                 <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
                    ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
-                   class="inline-flex items-center justify-center transition-all transform hover:scale-110 hover:opacity-80"
+                   class="inline-flex items-center justify-center p-0.5 transition-all transform hover:scale-110 hover:opacity-80"
                    title="${link.name}">
                     <img src="${link.img}"
                          alt="${link.name}"
                          class="w-[27px] h-[27px] object-contain flex-shrink-0"
-                         onerror="this.style.display='none'" />
-                    <i class="fab fa-${link.name.toLowerCase()} text-xl" style="display:none"></i>
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" />
+                    <i class="fab fa-${link.name.toLowerCase()} text-xl text-gray-400" style="display:none"></i>
                 </a>
             `).join('');
     }
