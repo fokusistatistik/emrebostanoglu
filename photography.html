@@ -431,10 +431,6 @@
                 <div class="carousel-center" id="carousel-main">
                     <img src="" alt="Main Photo">
                     <div class="photo-info">
-                        <p class="text-art-gold text-sm font-bold uppercase mb-2">
-                            <i class="fas fa-camera mr-2"></i>
-                            <span id="photo-location">Türkiye</span>
-                        </p>
                         <h3 class="text-white text-2xl font-serif" id="photo-title">Fotoğraf</h3>
                     </div>
                 </div>
@@ -560,7 +556,6 @@
         const currentPhotoEl = document.getElementById('current-photo');
         const totalPhotosEl = document.getElementById('total-photos');
         const photoTitleEl = document.getElementById('photo-title');
-        const photoLocationEl = document.getElementById('photo-location');
 
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -584,7 +579,6 @@
             mainImg.alt = photos[currentIndex].title;
             tryLoadImage(mainImg, photos[currentIndex].id);
             photoTitleEl.textContent = photos[currentIndex].title;
-            photoLocationEl.textContent = photos[currentIndex].location;
 
             // Update side images
             const leftImg = carouselLeft.querySelector('img');

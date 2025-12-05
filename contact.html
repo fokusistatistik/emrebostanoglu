@@ -32,16 +32,21 @@
 
     <style>
         .form-input {
-            background-color: #343a40;
-            border: 1px solid #495057;
-            color: #fff;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #212529;
             transition: all 0.3s ease;
         }
 
         .form-input:focus {
-            border-color: #3b82f6;
+            border-color: #d4af37;
             outline: none;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+            background-color: #ffffff;
+        }
+
+        .form-input::placeholder {
+            color: #6c757d;
         }
 
         .alert {
@@ -152,7 +157,7 @@
                         </div>
                         <div>
                             <h4 class="text-white font-bold mb-1">Konum</h4>
-                            <p class="text-gray-400">İstanbul, Türkiye</p>
+                            <p class="text-gray-400">Kocaeli, Türkiye</p>
                         </div>
                     </div>
 
@@ -231,21 +236,27 @@
                             <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg form-input" placeholder="ornek@email.com">
                         </div>
                         <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-400 mb-2">Telefon Numaranız (Opsiyonel)</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg form-input" placeholder="+90 (5XX) XXX XX XX">
+                        </div>
+                        <div>
                             <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Konu *</label>
                             <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg form-input">
-                                <option value="Genel İletişim">Genel İletişim</option>
-                                <option value="Veri Bilimi Danışmanlığı">Veri Bilimi Danışmanlığı</option>
-                                <option value="Fotoğraf Çekimi">Fotoğraf Çekimi</option>
-                                <option value="Kitaplar Hakkında">Kitaplar Hakkında</option>
-                                <option value="Film Projeleri">Film Projeleri</option>
+                                <option value="Genel İletişim" selected>Genel İletişim</option>
+                                <option value="Veri Bilimi">Veri Bilimi</option>
+                                <option value="Sanat">Sanat</option>
+                                <option value="Diğer">Diğer</option>
                             </select>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Mesajınız *</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg form-input" placeholder="Mesajınızı buraya yazın..."></textarea>
+                            <textarea id="message" name="message" rows="4" required maxlength="1600" class="w-full px-4 py-3 rounded-lg form-input" placeholder="Mesajınızı buraya yazın..."></textarea>
                         </div>
-                        <button type="submit" id="submit-btn" class="w-full bg-data-blue hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition duration-300">
-                            Gönder
+                        <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-art-gold to-[#f0c84b] hover:from-[#f0c84b] hover:to-art-gold text-black font-bold py-4 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-art-gold/30 active:scale-[0.98]">
+                            <span class="flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i>
+                                Gönder
+                            </span>
                         </button>
                     </form>
                 </div>
@@ -311,8 +322,8 @@
             if (data.message.length < 10) {
                 errors.push('Mesaj en az 10 karakter olmalıdır.');
             }
-            if (data.message.length > 5000) {
-                errors.push('Mesaj en fazla 5000 karakter olabilir.');
+            if (data.message.length > 1600) {
+                errors.push('Mesaj en fazla 1600 karakter olabilir.');
             }
 
             // Check for spam patterns
@@ -366,6 +377,7 @@
             const formData = {
                 name: sanitizeInput(document.getElementById('name').value.trim()),
                 email: sanitizeInput(document.getElementById('email').value.trim()),
+                phone: sanitizeInput(document.getElementById('phone').value.trim()),
                 subject: document.getElementById('subject').value,
                 message: sanitizeInput(document.getElementById('message').value.trim()),
                 timestamp: new Date().toISOString(),
@@ -463,18 +475,18 @@
         // Character counter for message
         const messageInput = document.getElementById('message');
         const charCountDiv = document.createElement('div');
-        charCountDiv.className = 'text-xs text-gray-400 mt-1 text-right';
+        charCountDiv.className = 'text-xs text-gray-500 mt-1 text-right';
         messageInput.parentElement.appendChild(charCountDiv);
 
         messageInput.addEventListener('input', function() {
             const length = this.value.length;
-            charCountDiv.textContent = `${length} / 5000 karakter`;
-            if (length > 5000) {
+            charCountDiv.textContent = `${length} / 1600 karakter`;
+            if (length > 1600) {
                 charCountDiv.style.color = '#ef4444';
-            } else if (length > 4500) {
+            } else if (length > 1500) {
                 charCountDiv.style.color = '#f59e0b';
             } else {
-                charCountDiv.style.color = '#9ca3af';
+                charCountDiv.style.color = '#6c757d';
             }
         });
     </script>

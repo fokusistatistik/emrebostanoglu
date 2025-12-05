@@ -151,7 +151,7 @@ colors: {
 ## 📧 İletişim
 
 - **Email**: info@emrebostanoglu.com
-- **Konum**: İstanbul, Türkiye
+- **Konum**: Kocaeli, Türkiye
 
 ---
 

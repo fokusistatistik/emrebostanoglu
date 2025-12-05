@@ -9,9 +9,10 @@ class FooterManager {
      */
     static getSocialLinksHTML() {
         const social = SITE_CONFIG.social;
+        const whatsappMessage = encodeURIComponent('Merhaba Emre Bostanoğlu');
         const socialLinks = [
             { url: social.instagram, img: '/assets/img/instagram.png', name: 'Instagram' },
-            { url: social.whatsapp, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
+            { url: `${social.whatsapp}?text=${whatsappMessage}`, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
             { url: social.email, img: '/assets/img/eposta.png', name: 'E-posta Gönder', isEmail: true },
             { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook' },
             { url: social.linkedin, img: '/assets/img/ln.png', name: 'LinkedIn' },
@@ -65,7 +66,10 @@ class FooterManager {
                         </div>
                         <div class="text-gray-500 text-xs leading-relaxed space-y-1">
                             <p class="text-data-blue font-medium">Data Scientist | Statistician, MSc</p>
-                            <p>Founder of <a href="https://fokusistatistik.com" target="_blank" class="text-art-gold hover:underline">@fokusistatistik</a></p>
+                            <p>Founder of <a href="https://www.fokusistatistik.com/" target="_blank" class="text-art-gold hover:underline inline-flex items-center gap-1">
+                                <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="FOKUS İstatistik" class="w-4 h-4 inline-block">
+                                @fokusistatistik
+                            </a></p>
                             <p>Novelist | <span class="text-director-red">🎥</span> Director</p>
                             <p class="text-art-gold font-medium">EFIAP Photographer</p>
                         </div>
@@ -132,7 +136,7 @@ class FooterManager {
                         <!-- Sosyal Medya İkonları -->
                         <div class="mt-8 pt-6 border-t border-gray-800">
                             <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
-                            <div class="flex flex-wrap gap-1.5 items-center justify-start">
+                            <div class="flex flex-wrap items-center justify-start" style="gap: 7px; margin-top: 8px; margin-bottom: -12px; margin-left: 2px; margin-right: 2px;">
                                 ${socialLinksHTML}
                             </div>
                         </div>
