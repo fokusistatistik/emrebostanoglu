@@ -14,12 +14,12 @@ class FooterManager {
             { url: social.instagram, img: '/assets/img/instagram.png', name: 'Instagram' },
             { url: `${social.whatsapp}?text=${whatsappMessage}`, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
             { url: social.email, img: '/assets/img/eposta.png', name: 'E-posta Gönder', isEmail: true },
-            { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook' },
+            { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook', extraPadding: true },
             { url: social.linkedin, img: '/assets/img/ln.png', name: 'LinkedIn' },
             { url: social.twitter, img: '/assets/img/twitter.png', name: 'Twitter' },
             { url: social.telegram, img: '/assets/img/telegram.png', name: 'Telegram' },
             { url: social.asistan, img: '/assets/img/asistanfokus.png', name: 'Asistanlar' },
-            { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
+            { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube', extraPadding: true },
             { url: social.github, img: '/assets/img/github.png', name: 'Github' }
         ];
 
@@ -28,7 +28,7 @@ class FooterManager {
             .map(link => `
                 <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
                    ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
-                   class="inline-flex items-center justify-center p-0.5 transition-all transform hover:scale-110 hover:opacity-80"
+                   class="inline-flex items-center justify-center p-0.5 ${link.extraPadding ? 'pl-0' : ''} transition-all transform hover:scale-110 hover:opacity-80"
                    title="${link.name}">
                     <img src="${link.img}"
                          alt="${link.name}"
