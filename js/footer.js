@@ -160,16 +160,18 @@ class FooterManager {
 
                         <!-- Legal Links -->
                         <div class="flex flex-wrap items-center justify-center gap-4 text-xs">
-                            <button onclick="showCookieConsent()" class="text-gray-500 hover:text-art-gold transition-colors flex items-center">
+                            <button onclick="openLegalModal('cookie')" class="text-gray-500 hover:text-art-gold transition-colors flex items-center">
                                 <i class="fas fa-cookie-bite mr-1"></i>
-                                Çerez Ayarları
+                                Çerez Politikası
                             </button>
-                            <a href="/privacy.html" class="text-gray-500 hover:text-art-gold transition-colors">
-                                Gizlilik Politikası
-                            </a>
-                            <a href="/kvkk.html" class="text-gray-500 hover:text-art-gold transition-colors">
+                            <span class="text-gray-700">•</span>
+                            <button onclick="openLegalModal('kvkk')" class="text-gray-500 hover:text-art-gold transition-colors">
                                 KVKK
-                            </a>
+                            </button>
+                            <span class="text-gray-700">•</span>
+                            <button onclick="openLegalModal('privacy')" class="text-gray-500 hover:text-art-gold transition-colors">
+                                Gizlilik Politikası
+                            </button>
                         </div>
                     </div>
                 </div>
