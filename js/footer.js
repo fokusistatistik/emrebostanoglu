@@ -13,12 +13,12 @@ class FooterManager {
         const socialLinks = [
             { url: social.instagram, img: '/assets/img/instagram.png', name: 'Instagram' },
             { url: `${social.whatsapp}?text=${whatsappMessage}`, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
-            { url: social.email, img: '/assets/img/eposta.png', name: 'E-posta Gönder', isEmail: true },
+            { url: social.email, img: 'https://static.fokusistatistik.com/resimler/eposta.png', name: 'E-posta Gönder', isEmail: true },
             { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook' },
             { url: social.linkedin, img: '/assets/img/ln.png', name: 'LinkedIn' },
             { url: social.twitter, img: '/assets/img/twitter.png', name: 'Twitter' },
             { url: social.telegram, img: '/assets/img/telegram.png', name: 'Telegram' },
-            { url: social.asistan, img: '/assets/img/asistanfokus.png', name: 'Asistanlar' },
+            { url: social.asistan, img: 'https://static.fokusistatistik.com/resimler/asistanfokus.png', name: 'Asistanlar' },
             { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
             { url: social.github, img: '/assets/img/github.png', name: 'Github' }
         ];
@@ -28,7 +28,7 @@ class FooterManager {
             .map(link => `
                 <a href="${link.isEmail ? 'mailto:' + link.url : link.url}"
                    ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''}
-                   class="inline-flex items-center justify-center w-[32px] h-[32px] transition-all transform hover:scale-110 hover:opacity-80"
+                   class="inline-flex items-center justify-center w-[28px] h-[28px] transition-all transform hover:scale-110 hover:opacity-80"
                    title="${link.name}"
                    style="padding: 0; margin: 0;">
                     <img src="${link.img}"
@@ -135,7 +135,7 @@ class FooterManager {
                         <!-- Sosyal Medya İkonları -->
                         <div class="mt-8 pt-6 border-t border-gray-800">
                             <p class="text-gray-500 text-xs mb-4 font-semibold">Sosyal Medya</p>
-                            <div class="flex flex-wrap items-center justify-start gap-[7px]">
+                            <div class="flex flex-wrap items-center justify-start gap-[3px]">
                                 ${socialLinksHTML}
                             </div>
                         </div>
