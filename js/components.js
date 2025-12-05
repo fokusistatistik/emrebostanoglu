@@ -118,18 +118,18 @@ function getFooterHTML() {
     // Create social links HTML with image icons
     const whatsappMessage = encodeURIComponent('Merhaba Emre Bostanoğlu');
     const socialLinks = [
-        { url: social.instagram, img: '/assets/img/instagram.png', name: 'Instagram' },
-        { url: `${social.whatsapp}?text=${whatsappMessage}`, img: '/assets/img/whatsapp.png', name: 'WhatsApp' },
+        { url: social.instagram, img: 'https://static.fokusistatistik.com/resimler/instagram.png', name: 'Instagram' },
+        { url: `${social.whatsapp}?text=${whatsappMessage}`, img: 'https://static.fokusistatistik.com/resimler/whatsapp.png', name: 'WhatsApp' },
         { url: social.email, img: 'https://static.fokusistatistik.com/resimler/eposta.png', name: 'E-posta Gönder', isEmail: true },
-        { url: social.facebook, img: '/assets/img/facebook.png', name: 'Facebook' },
-        { url: social.linkedin, img: '/assets/img/ln.png', name: 'LinkedIn' },
-        { url: social.twitter, img: '/assets/img/twitter.png', name: 'Twitter' },
-        { url: social.telegram, img: '/assets/img/telegram.png', name: 'Telegram' },
+        { url: social.facebook, img: 'https://static.fokusistatistik.com/resimler/facebook.png', name: 'Facebook' },
+        { url: social.linkedin, img: 'https://static.fokusistatistik.com/resimler/ln.png', name: 'LinkedIn' },
+        { url: social.twitter, img: 'https://static.fokusistatistik.com/resimler/twitter.png', name: 'Twitter' },
+        { url: social.telegram, img: 'https://static.fokusistatistik.com/resimler/telegram.png', name: 'Telegram' },
         { url: social.asistan, img: 'https://static.fokusistatistik.com/resimler/asistanfokus.png', name: 'Asistanlar' },
-        { url: social.youtube, img: '/assets/img/youtube.png', name: 'YouTube' },
-        { url: social.github, img: '/assets/img/github.png', name: 'Github' }
+        { url: social.youtube, img: 'https://static.fokusistatistik.com/resimler/youtube.png', name: 'YouTube' },
+        { url: social.github, img: 'https://static.fokusistatistik.com/resimler/github.png', name: 'Github' }
     ].filter(link => link.url !== null)
-     .map(link => `<a href="${link.isEmail ? 'mailto:' + link.url : link.url}" ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center justify-center w-[28px] h-[28px] transition-all transform hover:scale-110 hover:opacity-80" title="${link.name}" style="padding: 0; margin: 0;"><img src="${link.img}" alt="${link.name}" class="w-[27px] h-[27px] object-contain" style="display: block;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><i class="fab fa-${link.name.toLowerCase()} text-xl text-gray-400" style="display:none;"></i></a>`).join('');
+     .map(link => `<a href="${link.isEmail ? 'mailto:' + link.url : link.url}" ${!link.isEmail ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center justify-center w-[28px] h-[28px] opacity-75 hover:opacity-100 transition-all transform hover:scale-110" title="${link.name}" style="padding: 0; margin: 0;"><img src="${link.img}" alt="${link.name}" class="w-[27px] h-[27px] object-contain" style="display: block;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" /><i class="fab fa-${link.name.toLowerCase()} text-xl text-gray-400" style="display:none;"></i></a>`).join('');
 
     return `
     <footer id="contact" class="relative bg-gradient-to-b from-black via-[#0a0a0a] to-[#0f0f0f] border-t border-gray-800">
