@@ -377,9 +377,9 @@
     if (typingIndicator) typingIndicator.style.display = 'flex';
     if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // Timeout controller for fetch request
+    // Timeout controller for fetch request (increased to 60 seconds)
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
 
     try {
       const res = await fetch(CONFIG.webhookUrl, {
@@ -409,10 +409,26 @@
         throw new Error(errorMsg);
       }
 
-      const data = await res.json();
+      // Parse response
+      const contentType = res.headers.get('content-type');
+      let replyText = 'Cevap alınamadı.';
+
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        replyText = data.reply || data.message || 'Cevap alınamadı.';
+      } else {
+        const textData = await res.text();
+        try {
+          const jsonData = JSON.parse(textData);
+          replyText = jsonData.reply || jsonData.message || textData;
+        } catch (e) {
+          replyText = textData || 'Cevap alınamadı.';
+        }
+      }
+
       if (typingIndicator) typingIndicator.style.display = 'none';
       if (chatSubmit) chatSubmit.disabled = false;
-      addMessage(data.reply || 'Cevap alınamadı.', 'bot');
+      addMessage(replyText, 'bot');
     } catch (err) {
       clearTimeout(timeoutId);
       if (typingIndicator) typingIndicator.style.display = 'none';
