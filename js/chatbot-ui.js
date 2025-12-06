@@ -403,6 +403,7 @@
           font-family: inherit;
           transition: all 0.2s ease;
           background: #f8f9fa;
+          color: #212529;
         }
 
         #chat-input:focus {
