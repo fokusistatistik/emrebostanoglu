@@ -10,10 +10,9 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/fokus216clasic250001',
+    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/form1',
     botName: 'FOKUS216',
     botLogo: 'https://static.fokusistatistik.com/resimler/fokus216k.png',
-    FOKUS_ID: 250001,
     colors: {
       primary: '#2c3335',      // Kurumsal renk
       primaryDark: '#1a1a1a',  // Koyu ton
@@ -79,13 +78,13 @@
   try {
     userId = localStorage.getItem(STORAGE_KEYS.userId);
     if (!userId) {
-      userId = 'user_216' + Math.random().toString(36).slice(2);
+      userId = 'web_' + Date.now() + '_' + Math.random().toString(36).slice(2, 13);
       localStorage.setItem(STORAGE_KEYS.userId, userId);
     }
   } catch (e) {
     // Fallback for private browsing or localStorage disabled
     console.warn('localStorage unavailable, using session-only userId:', e);
-    userId = 'user_216' + Math.random().toString(36).slice(2);
+    userId = 'web_' + Date.now() + '_' + Math.random().toString(36).slice(2, 13);
   }
 
   // Load from storage
@@ -386,14 +385,12 @@
       const res = await fetch(CONFIG.webhookUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'X-User-Fingerprint': fingerprint
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user_id: userId,
           message: message,
-          FOKUS_ID: CONFIG.FOKUS_ID,
-          fingerprint: fingerprint
+          kaynak: 'web',
+          user_id: userId
         }),
         signal: controller.signal
       });

@@ -301,8 +301,8 @@
         const alertError = document.getElementById('alert-error');
         const errorMessage = document.getElementById('error-message');
 
-        // Webhook URL
-        const WEBHOOK_URL = 'https://n8n.fokusistatistik.com/webhook/emrebostanogluiletisimformu';
+        // Webhook URL (Production)
+        const WEBHOOK_URL = 'https://n8n.fokusistatistik.com/webhook/form1';
 
         // Rate limiting: Track last submission
         const RATE_LIMIT_KEY = 'contact_form_last_submit';
@@ -396,12 +396,9 @@
             // Collect and sanitize form data
             const formData = {
                 name: sanitizeInput(document.getElementById('name').value.trim()),
-                email: sanitizeInput(document.getElementById('email').value.trim()),
                 phone: sanitizeInput(document.getElementById('phone').value.trim()),
-                subject: document.getElementById('subject').value,
-                message: sanitizeInput(document.getElementById('message').value.trim()),
-                timestamp: new Date().toISOString(),
-                source: 'emrebostanoglu.com'
+                email: sanitizeInput(document.getElementById('email').value.trim()),
+                message: sanitizeInput(document.getElementById('message').value.trim())
             };
 
             // Validate form data
