@@ -339,7 +339,8 @@
 
         #chat-messages > div.user {
           background: linear-gradient(135deg, #2c3335 0%, #1a1a1a 100%);
-          color: white;
+          color: #ffffff;
+          font-weight: 500;
           margin-left: auto;
           border-bottom-right-radius: 4px;
           box-shadow: 0 2px 8px rgba(44, 51, 53, 0.3);

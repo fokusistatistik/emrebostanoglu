@@ -32,10 +32,7 @@ const urlsToCache = [
     '/js/lazy-load.js',
     '/translations/tr.json',
     '/translations/en.json',
-    '/content/articles.json',
-    // PWA Icons - cached from external CDN for offline support
-    'https://static.fokusistatistik.com/resimler/ebfavicon.png',
-    'https://static.fokusistatistik.com/resimler/eblogonavbar.png'
+    '/content/articles.json'
 ];
 
 // Install event - cache resources
@@ -83,6 +80,9 @@ self.addEventListener('fetch', (event) => {
 
     // Skip webhook requests
     if (event.request.url.includes('n8n.fokusistatistik.com')) return;
+
+    // Skip external static resources to prevent CORS errors
+    if (event.request.url.includes('static.fokusistatistik.com')) return;
 
     event.respondWith(
         caches.match(event.request)

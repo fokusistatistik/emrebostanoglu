@@ -10,7 +10,7 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/form1',
+    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/fokus216clasic250001',
     botName: 'FOKUS216',
     botLogo: 'https://static.fokusistatistik.com/resimler/fokus216k.png',
     colors: {
@@ -377,9 +377,9 @@
     if (typingIndicator) typingIndicator.style.display = 'flex';
     if (chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // Timeout controller for fetch request (increased to 60 seconds)
+    // Timeout controller for fetch request (increased to 300 seconds)
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 300000); // 300 second timeout
 
     try {
       const res = await fetch(CONFIG.webhookUrl, {
