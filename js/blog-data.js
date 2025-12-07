@@ -59,6 +59,17 @@ const BLOG_DATA = {
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Fotomaraton'],
             url: '/blog05.html',
             published: true
+        },
+        {
+            id: 'blog06',
+            title: '"Bayramda Çevre Yolu" İsimli Fotoğrafımın Yapısal İncelemesi ve Çekim Süreci',
+            description: '2014 Kurban bayramında Samsun-Çankırı yolculuğu sırasında gün batımında çektiğim çevre yolu fotoğrafının 15 dakikalık çekim sürecini, grafik analizi ve ışık kullanımını detaylıca anlatıyorum.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/yol/yol6.jpg',
+            date: '9 Nisan 2015',
+            readTime: '8 dk okuma',
+            tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yol'],
+            url: '/blog06.html',
+            published: true
         }
     ],
 
