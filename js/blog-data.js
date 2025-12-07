@@ -42,11 +42,22 @@ const BLOG_DATA = {
             id: 'blog04',
             title: '"Dua" isimli Fotoğrafımın Yapısal İncelemesi ve Çekim Süreci',
             description: '2013 Ulusal Sille Çağrılı Fotoğraf Yarışması\'nda büyük ödül alan "Dua" fotoğrafımın tüm çekim sürecini, kompozisyon analizi ve teknik detaylarıyla anlatıyorum. Sille Mormi Camii\'nde çekilen bu fotoğrafın arka planındaki planlama ve uygulama süreci.',
-            image: 'https://static.fokusistatistik.com/resimler/blog_photo.png',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/dua/dua10.jpg',
             date: '28 Ağustos 2015',
             readTime: '12 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yarışma'],
             url: '/blog04.html',
+            published: true
+        },
+        {
+            id: 'blog05',
+            title: '"2 Teker" isimli Fotoğrafımın Çekim Süreci ve Yapısal İncelemesi',
+            description: 'Atakum Fotomaratonu için Samsun sahillerinde çektiğim "2 Teker" fotoğrafının 18 dakikalık çekim sürecini, kritik anı yakalama tekniklerini ve geometrik kompozisyon analizini detaylıca anlatıyorum.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/2teker/2teker6.jpg',
+            date: '15 Ağustos 2017',
+            readTime: '10 dk okuma',
+            tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Fotomaraton'],
+            url: '/blog05.html',
             published: true
         }
     ],
