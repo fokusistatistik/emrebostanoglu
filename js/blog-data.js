@@ -81,6 +81,17 @@ const BLOG_DATA = {
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Geometri'],
             url: '/blog07.html',
             published: true
+        },
+        {
+            id: 'blog08',
+            title: '"Sevgi" isimli Fotoğrafımın Yapısal İncelemesi ve Çekim Süreci',
+            description: 'Atakum\'da Yaşam fotomaratonu için 1 haftalık gözlem, kurgu ve planlama ile çektiğim "Sevgi" fotoğrafının altın oran ve siluet tekniğiyle çekim sürecini anlatıyorum.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/sevgi/sevgi6.jpg',
+            date: '17 Mart 2015',
+            readTime: '12 dk okuma',
+            tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Fotomaraton'],
+            url: '/blog08.html',
+            published: true
         }
     ],
 
