@@ -37,6 +37,17 @@ const BLOG_DATA = {
             tags: ['Veri Bilimi', 'Yapay Zeka', 'Afet Yönetimi', 'QR Teknoloji'],
             url: '/blog03.html',
             published: true
+        },
+        {
+            id: 'blog04',
+            title: '"Dua" isimli Fotoğrafımın Yapısal İncelemesi ve Çekim Süreci',
+            description: '2013 Ulusal Sille Çağrılı Fotoğraf Yarışması\'nda büyük ödül alan "Dua" fotoğrafımın tüm çekim sürecini, kompozisyon analizi ve teknik detaylarıyla anlatıyorum. Sille Mormi Camii\'nde çekilen bu fotoğrafın arka planındaki planlama ve uygulama süreci.',
+            image: 'https://static.fokusistatistik.com/resimler/blog_photo.png',
+            date: '28 Ağustos 2015',
+            readTime: '12 dk okuma',
+            tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yarışma'],
+            url: '/blog04.html',
+            published: true
         }
     ],
 
