@@ -70,6 +70,17 @@ const BLOG_DATA = {
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yol'],
             url: '/blog06.html',
             published: true
+        },
+        {
+            id: 'blog07',
+            title: '"Otopark" İsimli Fotoğrafımın Çekim Süreci ve Yapısal İncelemesi',
+            description: 'Tuzla Marina otoparkında sarı-siyah çizgilerin oluşturduğu geometrik desenleri, altın oran noktalarını kullanarak 1 saatlik sabırlı bekleyişle fotoğrafa dönüştürme sürecimi anlatıyorum.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/otopark/otopark7.jpg',
+            date: '11 Ocak 2016',
+            readTime: '10 dk okuma',
+            tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Geometri'],
+            url: '/blog07.html',
+            published: true
         }
     ],
 
