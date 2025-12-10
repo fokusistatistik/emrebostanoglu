@@ -42,9 +42,9 @@ const BLOG_DATA = {
             id: 'blog03',
             title: 'Dünyada Bir İlk! KİM-QR & ATOM Sistemi İlk Testini Başarıyla Geçti',
             description: 'Modern istatistik ve yapay zeka tabanlı afet sağlık koordinasyonu sistemimiz KİM-QR & ATOM, kısa sürede geliştirilerek ilk saha testinde %96 üzerinde başarı oranı sağladı. Test süreci olarak devam ediyor.',
-            image: 'https://static.fokusistatistik.com/resimler/blog_photo.png',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/kim/kapak.jpg',
             date: '5 Ocak 2025',
-            readTime: '8 dk okuma',
+            readTime: '15 dk okuma',
             tags: ['Afet Yönetimi', 'Yapay Zeka', 'KİM-QR', 'ATOM', 'Test Süreci'],
             url: '/blog03.html',
             published: true
