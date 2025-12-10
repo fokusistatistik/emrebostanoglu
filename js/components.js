@@ -23,7 +23,7 @@ const SITE_CONFIG = {
         whatsapp: 'https://wa.me/905354040712?text=merhaba%20fokusistatistik',
         youtube: 'https://www.youtube.com/@emre.bostanoglu',
         github: 'https://github.com/fokusistatistik',
-        asistan: 'https://asistan.fokusistatistik.com/',
+        asistan: 'https://www.fokusistatistik.com/',
         vimeo: 'https://vimeo.com/user10162793',
         px500: 'https://500px.com/p/myth1453'
     }
