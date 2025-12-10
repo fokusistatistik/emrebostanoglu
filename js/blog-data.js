@@ -8,10 +8,10 @@ const BLOG_DATA = {
         {
             id: 'blog09',
             title: 'Veri Bilimi: Yöneticilerin Görmezden Geldiği Stratejik Varlık',
-            description: 'Türkiye\'de veri bilimine bakış açısındaki temel hatalar, maliyetleri ve doğru yaklaşımın kurumlara kazandıracağı somut faydalar. Uçtan uca veri yönetimi stratejileri ve paradigma değişimi.',
+            description: 'Kamu, özel sektör ve akademide veri bilimine yeterli önem verilmiyor. Değişken seçimi, veri yapıları, ölçeklenebilirlik sorunları ve yatırımların sadece donanım/yazılım odaklı olması kritik hataları ortaya çıkarıyor.',
             image: 'https://static.fokusistatistik.com/resimler/veribilimi09.jpg',
             date: '9 Aralık 2025',
-            readTime: '15 dk okuma',
+            readTime: '18 dk okuma',
             tags: ['Veri Bilimi', 'Veri Yönetişimi', 'Dijital Dönüşüm', 'Kurumsal Strateji', 'Veri Mimarisi', 'Yönetim'],
             url: '/blog09.html',
             published: true
