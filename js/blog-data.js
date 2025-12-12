@@ -9,7 +9,7 @@ const BLOG_DATA = {
             id: 'blog10',
             title: 'Veri Biliminin Görünmeyen Maliyeti: Neden Uçtan Uca Profesyonel Yaklaşım Şarttır?',
             description: 'Veri toplama aşamasından karar desteğine kadar her adımda veri bilimcinin olmaması, kurumlara görünenden çok daha pahalıya mal olur. Patinaj döngüleri, istatistiksel yanılgılar ve görünmeyen maliyetler.',
-            image: 'https://static.fokusistatistik.com/resimler/veribilimi09.jpg',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/veribilimi/kapak.jpg',
             date: '12 Aralık 2025',
             readTime: '22 dk okuma',
             tags: ['Veri Bilimi', 'İstatistik', 'Veri Yönetişimi', 'Veri Mimarisi', 'Kurumsal Strateji'],
