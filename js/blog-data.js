@@ -7,11 +7,11 @@ const BLOG_DATA = {
     posts: [
         {
             id: 'blog10',
-            title: 'Veri Biliminin Görünmeyen Maliyeti: Neden Uçtan Uca Profesyonel Yaklaşım Şarttır?',
-            description: 'Veri toplama aşamasından karar desteğine kadar her adımda veri bilimcinin olmaması, kurumlara görünenden çok daha pahalıya mal olur. Patinaj döngüleri, istatistiksel yanılgılar ve görünmeyen maliyetler.',
+            title: 'Kurumlar Neden Veri Bilimi Olmadan Milyonlar Kaybediyor?',
+            description: 'İstatistik ve veri bilimi teknik bir süreçtir ve hafife alınamaz. Veri toplama aşamasından karar desteğine kadar her adımda profesyonel yaklaşım olmadan kurumlar görünmeyen maliyetlerle karşı karşıya kalır.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/veribilimi/kapak.jpg',
             date: '12 Aralık 2025',
-            readTime: '22 dk okuma',
+            readTime: '7 dk okuma',
             tags: ['Veri Bilimi', 'İstatistik', 'Veri Yönetişimi', 'Veri Mimarisi', 'Kurumsal Strateji'],
             url: '/blog10.html',
             published: true
@@ -22,7 +22,7 @@ const BLOG_DATA = {
             description: 'Kamu, özel sektör ve akademide veri bilimine yeterli önem verilmiyor. Değişken seçimi, veri yapıları, ölçeklenebilirlik sorunları ve yatırımların sadece donanım/yazılım odaklı olması kritik hataları ortaya çıkarıyor.',
             image: 'https://static.fokusistatistik.com/resimler/veribilimi09.jpg',
             date: '9 Aralık 2025',
-            readTime: '18 dk okuma',
+            readTime: '6 dk okuma',
             tags: ['Veri Bilimi', 'Veri Yönetişimi', 'Dijital Dönüşüm', 'Kurumsal Strateji', 'Veri Mimarisi', 'Yönetim'],
             url: '/blog09.html',
             published: true
@@ -33,7 +33,7 @@ const BLOG_DATA = {
             description: 'Fotoğraf sanatında kompozisyon, bir görüntüyü sıradan veya olağanüstü yapan temel unsurdur. Altın oran ve üçte bir kuralının pratikte nasıl kullanılacağını, 300+ ödüllü fotoğraf deneyimimle paylaşıyorum.',
             image: 'https://static.fokusistatistik.com/resimler/altinoranblog.jpg',
             date: '15 Ocak 2025',
-            readTime: '8 dk okuma',
+            readTime: '5 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Teknik'],
             url: '/blog01.html',
             published: true
@@ -44,7 +44,7 @@ const BLOG_DATA = {
             description: 'Modern veri bilimi araçlarının entegre kullanımı ile iş süreçlerinde verimlilik kazanmak. Power BI, n8n, Python gibi araçların birlikte kullanılması ve faydalı iş modelleri oluşturma prensipleri.',
             image: 'https://static.fokusistatistik.com/resimler/veribilimiblog.jpg',
             date: '10 Ocak 2025',
-            readTime: '10 dk okuma',
+            readTime: '7 dk okuma',
             tags: ['Veri Bilimi', 'Power BI', 'Otomasyon', 'Python', 'n8n'],
             url: '/blog02.html',
             published: true
@@ -55,7 +55,7 @@ const BLOG_DATA = {
             description: 'Modern istatistik ve yapay zeka tabanlı afet sağlık koordinasyonu sistemimiz KİM-QR & ATOM, kısa sürede geliştirilerek ilk saha testinde %96 üzerinde başarı oranı sağladı. Test süreci olarak devam ediyor.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/kim/kapak.jpg',
             date: '30 Mayıs 2025',
-            readTime: '15 dk okuma',
+            readTime: '10 dk okuma',
             tags: ['Afet Yönetimi', 'Yapay Zeka', 'KİM-QR', 'ATOM', 'Test Süreci'],
             url: '/blog03.html',
             published: true
@@ -66,7 +66,7 @@ const BLOG_DATA = {
             description: '2013 Ulusal Sille Çağrılı Fotoğraf Yarışması\'nda büyük ödül alan "Dua" fotoğrafımın tüm çekim sürecini, kompozisyon analizi ve teknik detaylarıyla anlatıyorum. Sille Mormi Camii\'nde çekilen bu fotoğrafın arka planındaki planlama ve uygulama süreci.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/dua/dua10.jpg',
             date: '28 Ağustos 2015',
-            readTime: '6 dk okuma',
+            readTime: '4 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yarışma', 'Grafik Analizi'],
             url: '/blog04.html',
             published: true
@@ -77,7 +77,7 @@ const BLOG_DATA = {
             description: 'Atakum Fotomaratonu için Samsun sahillerinde çektiğim "2 Teker" fotoğrafının 18 dakikalık çekim sürecini, kritik anı yakalama tekniklerini ve geometrik kompozisyon analizini detaylıca anlatıyorum.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/2teker/2teker6.jpg',
             date: '15 Ağustos 2017',
-            readTime: '5 dk okuma',
+            readTime: '3 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Fotomaraton', 'Kritik An'],
             url: '/blog05.html',
             published: true
@@ -88,7 +88,7 @@ const BLOG_DATA = {
             description: '2014 Kurban bayramında Samsun-Çankırı yolculuğu sırasında gün batımında çektiğim çevre yolu fotoğrafının 15 dakikalık çekim sürecini, grafik analizi ve ışık kullanımını detaylıca anlatıyorum.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/yol/yol6.jpg',
             date: '9 Nisan 2015',
-            readTime: '4 dk okuma',
+            readTime: '3 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Yol', 'Işık'],
             url: '/blog06.html',
             published: true
@@ -99,7 +99,7 @@ const BLOG_DATA = {
             description: 'Tuzla Marina otoparkında sarı-siyah çizgilerin oluşturduğu geometrik desenleri, altın oran noktalarını kullanarak 1 saatlik sabırlı bekleyişle fotoğrafa dönüştürme sürecimi anlatıyorum.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/otopark/otopark7.jpg',
             date: '11 Ocak 2016',
-            readTime: '5 dk okuma',
+            readTime: '3 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Geometri', 'Altın Oran'],
             url: '/blog07.html',
             published: true
@@ -110,7 +110,7 @@ const BLOG_DATA = {
             description: 'Atakum\'da Yaşam fotomaratonu için 1 haftalık gözlem, kurgu ve planlama ile çektiğim "Sevgi" fotoğrafının altın oran ve siluet tekniğiyle çekim sürecini anlatıyorum.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/sevgi/sevgi6.jpg',
             date: '17 Mart 2015',
-            readTime: '6 dk okuma',
+            readTime: '4 dk okuma',
             tags: ['Fotoğraf', 'Kompozisyon', 'Çekim Süreci', 'Fotomaraton', 'Siluet'],
             url: '/blog08.html',
             published: true
