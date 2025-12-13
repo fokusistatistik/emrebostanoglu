@@ -7,8 +7,8 @@ const BLOG_DATA = {
     posts: [
         {
             id: 'blog10',
-            title: 'Kurumlar Neden Veri Bilimi Olmadan Milyonlar Kaybediyor?',
-            description: 'İstatistik ve veri bilimi teknik bir süreçtir ve hafife alınamaz. Veri toplama aşamasından karar desteğine kadar her adımda profesyonel yaklaşım olmadan kurumlar görünmeyen maliyetlerle karşı karşıya kalır.',
+            title: 'Uçtan Uca Veri Bilimi: Kurumların Görmezden Geldiği Kritik Başarı Faktörü',
+            description: 'Veri toplamadan görselleştirmeye, analizden karara kadar tüm süreç profesyonel bir yaklaşım gerektirir. Sadece bir aşamada veri bilimci eksikliği bile kurumlara milyonlarca lira maliyete yol açar. Uçtan uca yaklaşımın neden hayati olduğunu keşfedin.',
             image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/veribilimi/kapak.jpg',
             date: '12 Aralık 2025',
             readTime: '7 dk okuma',
