@@ -203,28 +203,28 @@
                 <h3 class="text-2xl font-bold text-red-400 mb-4 mt-8">Halüsinasyon Etkisi: Var Olmayan Kalıpları Görmek</h3>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Veri biliminin en tehlikeli yanlarından biri: <em>Apophenia</em> - rastgele veride kalıp görme yanılgısı.
+                    İnsan beyni, rastgele verilerde bile bir anlamlı kalıp bulmaya çalışır. Buna "veri halüsinasyonu" diyebiliriz. Bu durum iş dünyasında çok pahalıya mal olur.
                 </p>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Bir hastane yöneticisi, "Pazartesi günleri acil başvuruları artıyor" der. Veriye bakar, gerçekten de son 4 Pazartesi yüksek. Ekstra personel planlaması yapar.
+                    Bir hastane yöneticisi, "Pazartesi günleri acil başvuruları artıyor" der. Veriye bakar, gerçekten de son 4 Pazartesi yüksek. Hemen ekstra personel planlaması yapar.
                 </p>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Veri bilimci devreye girer, 6 aylık veriyi analiz eder:
+                    Veri bilimci devreye girer, 6 aylık veriyi detaylı analiz eder:
                 </p>
 
                 <div class="bg-gradient-to-br from-[#1a2840] to-[#0f1824] p-8 rounded-2xl border border-gray-700 shadow-2xl my-8">
                     <ul class="space-y-3 text-gray-300">
                         <li><strong>Pazartesi ortalaması:</strong> 147 hasta</li>
                         <li><strong>Diğer günler ortalaması:</strong> 142 hasta</li>
-                        <li><strong>İstatistiksel test (t-test):</strong> p-value = 0.31</li>
-                        <li><strong class="text-red-500">Sonuç:</strong> Anlamlı fark yok, sadece rastgele dalgalanma.</li>
+                        <li><strong>İstatistiksel test sonucu:</strong> Bu fark anlamlı değil, sadece rastgele dalgalanma</li>
+                        <li><strong class="text-red-500">Sonuç:</strong> Pazartesi özel bir gün değil. Personel artırımı gereksiz maliyet.</li>
                     </ul>
                 </div>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Ama hikaye bitmez. Veri bilimci, zaman serisi analizi yapar ve <strong class="text-green-500">gerçek kalıbı bulur:</strong> Ayın ilk haftası (hangi gün olursa olsun) başvurular %22 artıyor. Çünkü kronik hastalarda maaş günü sonrası ilaç alım dönemi başlar.
+                    Ama hikaye bitmez. Veri bilimci, zaman içinde veriye bakarak <strong class="text-green-500">gerçek kalıbı bulur:</strong> Ayın ilk haftası (hangi gün olursa olsun) başvurular %22 artıyor. Çünkü kronik hastalarda maaş günü sonrası ilaç alım dönemi başlar.
                 </p>
 
                 <div class="bg-gradient-to-r from-data-blue/30 to-transparent border-l-4 border-data-blue p-6 rounded-lg my-8">
@@ -239,6 +239,82 @@
                          alt="Veri Bilimi - Görsel 2"
                          class="rounded-xl border border-gray-800 shadow-2xl"
                          style="max-width: 75%; height: auto;">
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Veri Analizi Türleri: Her Birinin Farklı Bir Amacı Var</h2>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Çoğu kurum "veri analizi" dediğinde aslında ne istediğini bilmez. Oysa veri analizi 4 farklı türde yapılır ve her birinin farklı bir amacı, farklı bir yöntemi vardır. Yanlış türde analiz yapmak, doğru soruya yanlış araçla cevap aramak gibidir.
+                </p>
+
+                <h3 class="text-2xl font-bold text-green-400 mb-4 mt-8">1. Tanımlayıcı (Descriptive) Analiz: Ne Oldu?</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-white">Amaç:</strong> Geçmiş verileri özetlemek, ne olduğunu anlamak.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-green-500">Örnek:</strong> "Geçen ay 1.500 ürün sattık, en çok satılan kategori elektronik ürünler, ortalama sipariş tutarı 450 TL."
+                </p>
+
+                <div class="bg-gradient-to-r from-green-900/30 to-transparent border-l-4 border-green-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-green-500">Fonksiyon:</strong> Raporlama, geçmiş performans izleme, genel durum kontrolü. <strong class="text-white">En temel seviye.</strong>
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">2. Keşifsel (Exploratory) Analiz: Neden Oldu?</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-white">Amaç:</strong> Verideki ilişkileri, kalıpları ve nedenleri keşfetmek.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-data-blue">Örnek:</strong> "Neden Ağustos ayında satışlar düştü? Hangi bölgede, hangi kategoride düştü? Fiyat mı, stok mu, kampanya eksikliği mi?"
+                </p>
+
+                <div class="bg-gradient-to-r from-data-blue/30 to-transparent border-l-4 border-data-blue p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-data-blue">Fonksiyon:</strong> Kök neden analizi, segmentasyon, anomali tespiti. <strong class="text-white">Strateji geliştirmeye temel oluşturur.</strong>
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-purple-400 mb-4 mt-8">3. Tahminsel (Predictive) Analiz: Ne Olacak?</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-white">Amaç:</strong> Geçmiş verilerden yola çıkarak geleceği tahmin etmek.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-purple-400">Örnek:</strong> "Önümüzdeki 3 ay hangi müşteriler satın alma yapacak? Yeni kampanya hangi ürün kategorisinde daha etkili olacak? Stok talebi ne olacak?"
+                </p>
+
+                <div class="bg-gradient-to-r from-purple-900/30 to-transparent border-l-4 border-purple-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-purple-400">Fonksiyon:</strong> Talep tahmini, risk değerlendirmesi, müşteri davranışı tahmini. <strong class="text-white">Proaktif karar alma.</strong>
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-orange-400 mb-4 mt-8">4. Öngörüsel (Prescriptive) Analiz: Ne Yapmalıyız?</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-white">Amaç:</strong> Sadece ne olacağını değil, ne yapılması gerektiğini önermek.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-orange-400">Örnek:</strong> "Stok seviyesini artırmalı mıyız? Hangi müşteri segmentine hangi kampanyayı gönderelim? Fiyatı ne kadar ayarlarsak kar maksimum olur?"
+                </p>
+
+                <div class="bg-gradient-to-r from-orange-900/30 to-transparent border-l-4 border-orange-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-orange-400">Fonksiyon:</strong> Optimizasyon, simülasyon, karar destek sistemleri. <strong class="text-white">En ileri seviye, en yüksek katma değer.</strong>
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-r from-red-900/30 to-transparent border-l-4 border-red-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300 text-lg">
+                        <strong class="text-red-500">Gerçek:</strong> Çoğu kurum tanımlayıcı analizde takılı kalır. "Geçen ay ne oldu" raporları yapar, ama "neden oldu" ve "ne yapmalıyız" sorularına cevap bulamaz. <strong class="text-white">Veri bilimci olmadan bu geçiş yapılamaz.</strong>
+                    </p>
                 </div>
 
                 <h2 class="text-3xl font-bold text-white mb-6 mt-12">Veri Türleri - Teoriden Uygulamaya</h2>
@@ -492,6 +568,110 @@
                          alt="Veri Bilimi - Görsel 6"
                          class="rounded-xl border border-gray-800 shadow-2xl"
                          style="max-width: 75%; height: auto;">
+                </div>
+
+                <h2 class="text-3xl font-bold text-white mb-6 mt-12">Veri Görselleştirme: Grafik Çizmek Yetmez, Teknik Bilgi Şarttır</h2>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Bir toplantıda PowerPoint açıyorsunuz. İçinde pasta grafikler, sütun grafikleri, çizgi grafikler var. Renkli, gösterişli. Ama yanlış.
+                </p>
+
+                <h3 class="text-2xl font-bold text-red-400 mb-4 mt-8">Veri Bilimci Olmadan Görselleştirme: Yanıltıcı ve Tehlikeli</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Bir firma, aylık satış verilerini grafik yapar. Excel'de güzel bir sütun grafiği çizer. Yönetim bakar: "Harika, satışlar artıyor!" Der ve stratejik yatırım kararı alır.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-red-500">Problem:</strong> Grafik, Y eksenini 0'dan başlatmamış, 50'den başlatmış. Böylece %5'lik küçük bir artış, devasa bir yükseliş gibi görünüyor. Ayrıca mevsimsellik göz ardı edilmiş. Aslında aynı ay geçen yıla göre %12 düşük.
+                </p>
+
+                <div class="bg-gradient-to-r from-red-900/30 to-transparent border-l-4 border-red-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-red-500">Sonuç:</strong> Firma, düşüş trendinde olmasına rağmen "büyüme var" diye yatırım yapar. 6 ay sonra mali sıkıntıya girer.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-data-blue mb-4 mt-8">Veri Bilimci ile Görselleştirme: Doğru, Anlamlı, Karşılaştırılabilir</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Veri bilimci aynı veriye bakar ve şunları yapar:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="bg-gradient-to-br from-green-900/20 to-transparent p-6 rounded-xl border border-green-800">
+                        <h4 class="font-bold text-white mb-3">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>Veri Bilimci Yaklaşımı
+                        </h4>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>✓ Y eksenini 0'dan başlatır (oranı bozulmasını önler)</li>
+                            <li>✓ Mevsimselliği normalize eder (geçen yıl aynı ay ile karşılaştırır)</li>
+                            <li>✓ Trend çizgisi ekler (genel yön net görülür)</li>
+                            <li>✓ Güven aralığı gösterir (belirsizlik şeffaf olur)</li>
+                            <li>✓ Outlier'ları işaretler (anormal değerler net)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-900/20 to-transparent p-6 rounded-xl border border-red-800">
+                        <h4 class="font-bold text-white mb-3">
+                            <i class="fas fa-times-circle text-red-500 mr-2"></i>Veri Bilimci Olmadan
+                        </h4>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>✗ Eksen manipülasyonu (küçük farklar abartılır)</li>
+                            <li>✗ Mevsimsellik göz ardı edilir</li>
+                            <li>✗ Grafik türü yanlış seçilir (pasta grafik sürekli veri için kullanılır)</li>
+                            <li>✗ Karşılaştırma referansı yok</li>
+                            <li>✗ İstatistiksel anlamlılık test edilmez</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-purple-400 mb-4 mt-8">Görselleştirme Teknikleri: Her Veri Türü İçin Farklı Grafik</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Veri bilimci, hangi grafik türünün ne zaman kullanılacağını bilir:
+                </p>
+
+                <div class="bg-gradient-to-br from-[#1a2840] to-[#0f1824] p-8 rounded-2xl border border-gray-700 shadow-2xl my-8">
+                    <ul class="space-y-4 text-gray-300">
+                        <li><strong class="text-green-500">Zaman serisi verileri:</strong> Çizgi grafik (trend net görünür)</li>
+                        <li><strong class="text-data-blue">Kategorik karşılaştırma:</strong> Sütun grafik (gruplar net ayrılır)</li>
+                        <li><strong class="text-purple-400">Dağılım analizi:</strong> Histogram, kutu grafik (veri dağılımı anlaşılır)</li>
+                        <li><strong class="text-orange-400">İlişki analizi:</strong> Scatter plot (korelasyon görülür)</li>
+                        <li><strong class="text-red-500">Oran gösterimi:</strong> Pasta grafik (SADECE toplam 100% ise ve kategori sayısı az ise)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-900/30 to-transparent border-l-4 border-yellow-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300 text-lg">
+                        <strong class="text-yellow-400">Gerçek Örnek:</strong> Bir hastane, hasta memnuniyet anketini pasta grafikle gösterir: %40 memnun, %35 kararsız, %25 memnun değil. <strong class="text-white">Ama bu veri zaman içinde nasıl değişti?</strong> Veri bilimci zaman serisi çizgi grafik yapar ve görür: Son 6 ayda memnuniyet sürekli düşüyor. Pasta grafik bu trendi göstermez. Statik bir anlık fotoğraftır, hikayeyi anlatmaz.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-green-400 mb-4 mt-8">Veri Bilimci Gözüyle Görselleştirmenin Avantajları</h3>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Veri bilimci, görselleştirmeyi sadece "güzel grafik" olarak görmez. <strong class="text-data-blue">Görselleştirme, veriyi anlamanın ve iletmenin bilimsel bir yöntemidir.</strong>
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4 my-8">
+                    <div class="bg-gradient-to-br from-data-blue/20 to-transparent p-4 rounded-xl border border-data-blue">
+                        <h5 class="text-white font-semibold mb-2">1. Doğruluk</h5>
+                        <p class="text-gray-400 text-sm">Eksen, ölçek, referans doğru. Yanıltıcı unsur yok.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-900/20 to-transparent p-4 rounded-xl border border-green-800">
+                        <h5 class="text-white font-semibold mb-2">2. Bağlam</h5>
+                        <p class="text-gray-400 text-sm">Geçmiş trend, karşılaştırma referansı, mevsimsellik dahil.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-900/20 to-transparent p-4 rounded-xl border border-purple-800">
+                        <h5 class="text-white font-semibold mb-2">3. Anlamlılık</h5>
+                        <p class="text-gray-400 text-sm">İstatistiksel test sonuçları gösterilir. Rastgele dalgalanma ayrılır.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-data-blue/30 to-transparent border-l-4 border-data-blue p-6 rounded-lg my-8">
+                    <p class="text-gray-300 text-lg">
+                        <strong class="text-data-blue">Özet:</strong> Grafik çizmek kolaydır. Ama doğru, anlamlı ve yanıltıcı olmayan görselleştirme yapmak <strong class="text-white">veri bilimi uzmanlığı</strong> gerektirir. Excel herkesin elinde, ama doğru kullanımı herkes bilmez.
+                    </p>
                 </div>
 
                 <h2 class="text-3xl font-bold text-white mb-6 mt-12">Uçtan Uca Veri Bilimi - Temelsiz Bina Olmaz</h2>
