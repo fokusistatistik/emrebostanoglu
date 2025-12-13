@@ -349,7 +349,7 @@
                 </div>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    <strong class="text-green-500">Doğru yaklaşım:</strong> Eksik veri mekanizmasını anla. Multiple imputation veya pattern-mixture modelleri. Ya da en azından eksik veri grubunu ayrı bir kategori olarak değerlendir.
+                    <strong class="text-green-500">Doğru yaklaşım:</strong> Önce eksik verilerin neden boş olduğunu anla. Gelir sorusunu neden boş bıraktılar? Düşük gelirli oldukları için mi utandılar? Bu 300 kişiyi direkt silmek yerine, ya eksik değerleri akıllıca doldur, ya da bu grubu ayrı bir kategori olarak değerlendir ve "gelir bilgisi paylaşmayanlar" diye raporla.
                 </p>
 
                 <h3 class="text-2xl font-bold text-orange-400 mb-4 mt-8">Küçük Bir Sağlık Hikayesi</h3>
@@ -433,7 +433,7 @@
 
                 <div class="bg-gradient-to-r from-data-blue/30 to-transparent border-l-4 border-data-blue p-6 rounded-lg my-8">
                     <p class="text-gray-300 text-lg">
-                        <strong class="text-data-blue">Öğreti:</strong> Agregatın altını kazmadan karar verilmez.
+                        <strong class="text-data-blue">Öğreti:</strong> Toplu rakamlara bakarak karar verme. Genel ortalamanın altında neler olduğunu mutlaka incele. Her alt grubun kendi hikayesi vardır; tümünü tek bir rakamla özetlemek yanıltıcıdır.
                     </p>
                 </div>
 
@@ -448,29 +448,36 @@
                 <h3 class="text-2xl font-bold text-red-400 mb-4 mt-8">Korelasyon vs Nedensellik: En Pahalı Hata</h3>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Bir e-ticaret firması gözlemler: "E-posta alan müşteriler, almayanlara göre 2.5 kat fazla alışveriş yapıyor."
+                    Bir ilkokulda gözlem: "Ayakkabı numarası büyük olan çocuklar, matematik testlerinde daha başarılı."
                 </p>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    <strong class="text-red-500">Hemen karar:</strong> "Herkese e-posta gönderelim!"
+                    <strong class="text-red-500">Yanlış yorum:</strong> "Büyük ayakkabı giymek matematik başarısını artırır!"
                 </p>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    <strong class="text-orange-500">Problem:</strong> Premium müşteriler zaten daha fazla alışveriş yapar. E-posta listesine de kendileri kaydolur. E-posta, sonuç değil, başka bir faktörün yan etkisidir.
+                    <strong class="text-data-blue">Gerçek neden:</strong> Ayakkabı numarası büyük olan çocuklar daha büyük yaşlardadır. Yaş ilerledikçe matematik seviyesi de artar. Ayakkabı numarası ile matematik başarısı arasında bir <strong class="text-yellow-400">ilişki (korelasyon)</strong> var ama biri diğerinin <strong class="text-red-500">nedeni değil.</strong> İkisi de yaşla ilgili.
                 </p>
 
-                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    Veri bilimci, <strong class="text-green-500">A/B testi</strong> yapar. Premium müşterileri ikiye ayırır, birine e-posta gönderir, diğerine göndermez.
-                </p>
-
-                <div class="bg-gradient-to-r from-green-900/30 to-transparent border-l-4 border-green-500 p-6 rounded-lg my-8">
-                    <p class="text-gray-300">
-                        <strong class="text-green-500">Gerçek etki:</strong> E-posta, sadece %8 artış sağlar. 2.5 kat fark, zaten var olan müşteri profilinden kaynaklanır.
+                <div class="bg-gradient-to-br from-[#1a2840] to-[#0f1824] p-8 rounded-2xl border border-gray-700 shadow-2xl my-8">
+                    <h4 class="font-bold text-white mb-4">Gerçek Hayattan Bir Örnek</h4>
+                    <p class="text-gray-300 mb-4">
+                        Bir hastane, <strong class="text-green-500">yoğun bakımda yatan hastaların</strong> düzenli doktor viziti sayısını inceler. Şu sonuca varır: "Doktor viziti sayısı arttıkça, hasta ölüm riski artıyor!"
+                    </p>
+                    <p class="text-orange-400">
+                        <strong>Hatalı karar:</strong> "Doktor vizitlerini azaltalım."
+                    </p>
+                    <p class="text-gray-300 mt-4">
+                        <strong class="text-red-500">Problem:</strong> Ağır hasta olanlar daha sık doktor viziti alır. Ölüm riski yüksekliği doktor vizitinden değil, zaten kritik durumda olmalarından kaynaklanır. İlişki var ama nedensellik ters yönde: Hasta ağır olduğu için doktora gidiyor, doktora gittiği için hasta olmuyor.
                     </p>
                 </div>
 
                 <p class="text-gray-300 leading-relaxed mb-6 text-justify">
-                    <strong class="text-yellow-400">Mali sonuç:</strong> E-posta maliyeti hesaplandığında, tüm müşterilere göndermek ROI negatif yapar. Sadece belirli segmente göndermek karlıdır.
+                    <strong class="text-green-500">Veri bilimci ne yapar:</strong> Aynı ağırlıktaki hastaları karşılaştırır. Böylece hastalık şiddetini sabit tutup, gerçek etkiyi izole eder. Sonuç: Doktor vizitleri aslında <strong class="text-green-500">hayat kurtarır,</strong> sadece ağır hastalarda yeterli gelmiyor.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-yellow-400">Özet:</strong> İki şey birlikte hareket ediyorsa (korelasyon var), bu biri diğerini tetikliyor demek değildir. Üçüncü bir faktör her ikisini de etkileyebilir, ya da ilişki tamamen tesadüfi olabilir.
                 </p>
 
                 <!-- Image 6 -->
@@ -673,9 +680,104 @@
                             <li>✗ Grafikler çizilir ama yanıltıcıdır</li>
                             <li>✗ Kararlar alınır ama yanlıştır</li>
                             <li>✗ Emek harcanır ama israf edilir</li>
+                            <li>✗ Kirli veriler karar vericileri yanıltır</li>
+                            <li>✗ Analitik değerlendirme eksik kalır</li>
+                            <li>✗ Şeffaf veri bilimi kaosa dönüşür</li>
+                            <li>✗ Uzun vadeli karşılaştırma imkansız olur</li>
                         </ul>
                     </div>
                 </div>
+
+                <h3 class="text-2xl font-bold text-red-400 mb-4 mt-8">Veri Bilimci Olmadan Yaşanan Diğer Sorunlar</h3>
+
+                <h4 class="text-xl font-bold text-orange-400 mb-3 mt-6">Veri Temizliği İhmal Edilir, Kirli Veriler Yönetimi Yanıltır</h4>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Bir firma, müşteri yaş verilerini toplar. Veri setinde "150 yaş", "-5 yaş", "999 yaş" gibi saçma değerler var. Veri bilimci olmadığı için kimse bunları görmez. Excel ortalamayı hesaplar: 42.7 yaş.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-red-500">Gerçek:</strong> Kirli veriler ortalamayı bozmuş, aslında gerçek ortalama 34 yaş. Firma 40'lı yaşlara göre ürün tasarlıyor, ama asıl müşteri kitlesi 30'lu yaşlarda. Sonuç: Yanlış pazarlama, kayıp satışlar.
+                </p>
+
+                <h4 class="text-xl font-bold text-orange-400 mb-3 mt-6">Az Örneklemde Uç Değer Manipülasyonu</h4>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Bir belediye, 10 kişilik vatandaş memnuniyet anketi yapar. 9 kişi "memnun değilim" (1 puan), 1 kişi "çok memnunum" (10 puan). Ortalama: 1.9 puan.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-red-500">Manipülasyon:</strong> Biri "10 puan veren 1 kişiyi yok sayarsak, ortalama 1 olur, çok kötü görünür. Ama 1 puan verenlerin 3'ünü çıkarırsak ortalama 2.8'e yükselir" der. Hangi rakamı raporlayacaklarına göre insanları seçerek çıkarırlar.
+                </p>
+
+                <div class="bg-gradient-to-r from-red-900/30 to-transparent border-l-4 border-red-500 p-6 rounded-lg my-8">
+                    <p class="text-gray-300">
+                        <strong class="text-red-500">Gerçek:</strong> 10 kişilik örneklem zaten istatistiksel olarak anlamsız. 1 kişinin etkisi aşırı büyük. Veri bilimci der: "Önce yeterli örneklem toplayın. Az örneklemde tek bir uç değer tüm sonucu değiştirir, bu yüzden nominal (kategori bazlı) verilerde özellikle tehlikelidir."
+                    </p>
+                </div>
+
+                <h4 class="text-xl font-bold text-orange-400 mb-3 mt-6">Veri Sistemleri Sürekli Değişir, Karşılaştırma Olanağı Bozulur</h4>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Bir kurum, her yıl personel performans verisi toplar. Ama her sene farklı bir yönetici farklı bir Excel şablonu kullanır. 2023'te "Mükemmel/İyi/Orta/Kötü" ölçeği var. 2024'te "1-10 puan sistemi" var. 2025'te "A-B-C-D-F harf notu" var.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-yellow-400">Sonuç:</strong> "Son 3 yılda performans artış var mı?" sorusuna cevap verilemez. Veriler karşılaştırılamaz. Eğilimler görülmez. Stratejik kararlar havada kalır.
+                </p>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-green-500">Veri bilimci olsaydı:</strong> İlk günden standart bir yapı kurardı. Veri şeması sabitlenirdi. Yıllar içinde tutarlı ölçümler alınırdı. Trendler net görülür, karşılaştırmalar anlamlı olurdu.
+                </p>
+
+                <h4 class="text-xl font-bold text-orange-400 mb-3 mt-6">Gayet Şeffaf Olan Veri Bilimi Bir Kaos ve Gizeme Dönüşür</h4>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    Veri bilimi doğru yapıldığında son derece şeffaftır. Her adım açıklanabilir, her analiz tekrar edilebilir, her karar gerekçelidir. Ama veri bilimci olmadığında:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="bg-gradient-to-br from-red-900/20 to-transparent p-6 rounded-xl border border-red-800">
+                        <h5 class="font-bold text-white mb-3">Veri Bilimci Olmadan</h5>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• "Bu rakamlar nereden geldi?" → Kimse bilmez</li>
+                            <li>• "Neden bu karar alındı?" → "Excel öyle dedi"</li>
+                            <li>• "Analizi tekrar edebilir miyiz?" → Hayır, Excel dosyası kayıp</li>
+                            <li>• "Hangi varsayımlar yapıldı?" → Hiçbir dokümantasyon yok</li>
+                        </ul>
+                        <p class="text-red-400 text-sm mt-4">Veri bilimi bir sihir ve gizem haline gelir. Şeffaflık kaybolur.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-900/20 to-transparent p-6 rounded-xl border border-green-800">
+                        <h5 class="font-bold text-white mb-3">Veri Bilimci ile</h5>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>✓ Her analiz adımı kod olarak saklanır</li>
+                            <li>✓ Varsayımlar açıkça yazılır</li>
+                            <li>✓ Sonuçlar tekrar edilebilir</li>
+                            <li>✓ Kararların gerekçesi net</li>
+                        </ul>
+                        <p class="text-green-400 text-sm mt-4">Şeffaflık ve güven sağlanır. Herkes neyin nasıl yapıldığını anlar.</p>
+                    </div>
+                </div>
+
+                <h4 class="text-xl font-bold text-orange-400 mb-3 mt-6">Analitik Değerlendirme Yapılamaz</h4>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    İstatistikçi ya da veri bilimci olmadan kurumlarda genellikle <strong class="text-red-500">sadece betimsel (descriptive) raporlar</strong> yapılır: "Geçen ay satışlar %12 arttı." Bu bir tespit. Ama analitik değerlendirme şunu sorar:
+                </p>
+
+                <div class="bg-gradient-to-br from-data-blue/20 to-transparent p-6 rounded-xl border border-data-blue my-8">
+                    <ul class="space-y-2 text-gray-300">
+                        <li><strong class="text-data-blue">•</strong> %12 artış anlamlı mı, yoksa rastgele dalgalanma mı?</li>
+                        <li><strong class="text-data-blue">•</strong> Hangi ürün kategorileri artışı sağladı?</li>
+                        <li><strong class="text-data-blue">•</strong> Hangi müşteri segmentleri büyüdü?</li>
+                        <li><strong class="text-data-blue">•</strong> Mevsimsel bir etki mi var?</li>
+                        <li><strong class="text-data-blue">•</strong> Gelecek ay ne beklemeliyiz?</li>
+                    </ul>
+                </div>
+
+                <p class="text-gray-300 leading-relaxed mb-6 text-justify">
+                    <strong class="text-yellow-400">Özet:</strong> Veri bilimci olmadan kurumlar sürekli "ne oldu" sorusuna cevap verir ama asıl önemlisi olan "neden oldu" ve "ne olacak" sorularına cevap veremez. Reaktif kalır, proaktif olamaz.
+                </p>
 
                 <h3 class="text-2xl font-bold text-purple-400 mb-4 mt-8">Son Bir Hikaye</h3>
 
