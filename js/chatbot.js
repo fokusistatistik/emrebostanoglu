@@ -10,7 +10,7 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/fokus216clasic250001',
+    webhookUrl: 'https://n8n.fokusistatistik.com/webhook/emrebostanoglubot',
     botName: 'FOKUS216',
     botLogo: 'https://static.fokusistatistik.com/resimler/fokus216k.png',
     colors: {
