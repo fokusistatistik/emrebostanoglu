@@ -14,7 +14,12 @@ const BLOG_DATA = {
             readTime: '7 dk okuma',
             tags: ['Veri Bilimi', 'İstatistik', 'Veri Yönetişimi', 'Veri Mimarisi', 'Kurumsal Strateji'],
             url: '/blog10.html',
-            published: true
+            published: true,
+            podcast: {
+                available: true,
+                platform: 'spotify',
+                url: 'https://open.spotify.com/episode/3H0cyTLroaFWktwsavxDwn'
+            }
         },
         {
             id: 'blog09',

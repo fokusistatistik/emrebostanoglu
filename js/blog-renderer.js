@@ -36,6 +36,11 @@ class BlogRenderer {
             `<span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">${this.escapeHtml(tag)}</span>`
         ).join('');
 
+        const podcastBadge = (post.podcast && post.podcast.available) ?
+            `<div class="absolute top-4 right-4 bg-gradient-to-br from-green-500 to-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
+                <i class="fas fa-podcast mr-1"></i> Podcast
+            </div>` : '';
+
         return `
             <a href="${safeUrl}" class="flex flex-col md:flex-row gap-6 bg-gradient-to-br from-[#1a1a1a] to-[#2c3335] rounded-xl overflow-hidden border border-gray-800 hover:border-art-gold/50 transition-all duration-300 hover:shadow-xl hover:shadow-art-gold/10 group">
                 <div class="md:w-80 h-56 md:h-auto relative flex-shrink-0 overflow-hidden">
@@ -47,6 +52,7 @@ class BlogRenderer {
                     <div class="absolute top-4 left-4 bg-art-gold/90 text-black px-3 py-1 rounded-full text-xs font-bold">
                         <i class="fas fa-file-alt mr-1"></i> Blog
                     </div>
+                    ${podcastBadge}
                 </div>
                 <div class="flex-1 p-6 flex flex-col justify-between">
                     <div>
