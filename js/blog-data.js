@@ -6,6 +6,17 @@
 const BLOG_DATA = {
     posts: [
         {
+            id: 'blog11',
+            title: 'Yapay Zeka ve Sanatın Geleceği',
+            description: 'Yapay zeka teknolojilerinin sanat dünyasında yarattığı dönüşümü, fırsatları ve zorlukları inceliyoruz. Hibrit sanat çağında yaratıcılığın nasıl evrileceğini keşfedin.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg',
+            date: '27 Ocak 2025',
+            readTime: '8 dk okuma',
+            tags: ['Yapay Zeka', 'Sanat', 'Teknoloji', 'Fotoğraf', 'Yaratıcılık'],
+            url: '/blog11.html',
+            published: true
+        },
+        {
             id: 'blog10',
             title: 'Uçtan Uca Veri Bilimi: Kurumların Görmezden Geldiği Kritik Başarı Faktörü',
             description: 'Veri toplamadan görselleştirmeye, analizden karara kadar tüm süreç profesyonel bir yaklaşım gerektirir. Sadece bir aşamada veri bilimci eksikliği bile kurumlara milyonlarca lira maliyete yol açar. Uçtan uca yaklaşımın neden hayati olduğunu keşfedin.',
