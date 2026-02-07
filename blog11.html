@@ -4,14 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emre BOSTANOĞLU | Yapay Zeka ve Sanatın Geleceği</title>
-    <meta name="description"
-        content="Yapay zeka teknolojilerinin sanat dünyasında yarattığı dönüşümü, fırsatları ve zorlukları inceliyoruz.">
-
+    <title>Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik: İlk 72 Saatten Uzun Vadeli Planlamaya | Emre BOSTANOĞLU
+    </title>
     <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2c3335">
+    <meta name="description"
+        content="Sağlık afet yönetiminde istatistik ve veri biliminin kritik rolü: Triyaj optimizasyonu, kaynak tahsisi, epidemiyolojik öngörü ve karar destek sistemleri.">
+    <meta name="keywords"
+        content="sağlık afet yönetimi, triyaj, veri bilimi, istatistik, bayesyen analiz, power bi, python, epidemiyoloji, kriz yönetimi">
+    <meta name="author" content="Emre Bostanoğlu">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://emrebostanoglu.com/blog11.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik">
+    <meta property="og:description"
+        content="Triyaj kararlarından epidemiyolojik öngörüye, sağlık afet yönetiminde istatistiğin ve veri biliminin vazgeçilmez rolü.">
+    <meta property="og:url" content="https://emrebostanoglu.com/blog11.html">
+    <meta property="og:site_name" content="Emre Bostanoğlu">
+    <meta property="og:image" content="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/kapak.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:article:published_time" content="2026-02-06T09:00:00+03:00">
+    <meta property="og:article:author" content="Emre Bostanoğlu">
+    <meta property="og:article:section" content="Sağlık Yönetimi">
+    <meta property="og:article:tag" content="Veri Bilimi">
+    <meta property="og:article:tag" content="İstatistik">
+    <meta property="og:article:tag" content="Sağlık Afet Yönetimi">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sağlık Afet Yönetiminde Veri Bilimi">
+    <meta name="twitter:description" content="İstatistikçiler sağlık afet yönetiminde nasıl kritik rol oynar?">
+    <meta name="twitter:image" content="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/kapak.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,12 +69,6 @@
         .blog-header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2c3335 100%);
             border-bottom: 1px solid #333;
-        }
-
-        .blog-hero-image {
-            height: 500px;
-            object-fit: cover;
-            width: 100%;
         }
 
         .blog-content {
@@ -78,6 +101,7 @@
 
         .blog-content h3 {
             font-size: 1.5rem;
+            color: #3b82f6;
         }
 
         .blog-content h4 {
@@ -138,21 +162,6 @@
             font-size: 0.9em;
         }
 
-        .blog-content pre {
-            background: #1a1a1a;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 2rem 0;
-            border: 1px solid #333;
-        }
-
-        .blog-content pre code {
-            background: none;
-            padding: 0;
-            color: #d1d5db;
-        }
-
         .blog-meta {
             display: flex;
             flex-wrap: wrap;
@@ -202,11 +211,35 @@
             gap: 1rem;
         }
 
-        @media (max-width: 768px) {
-            .blog-hero-image {
-                height: 300px;
-            }
+        .tech-badge {
+            font-weight: 700;
+            font-style: italic;
+            color: #60a5fa;
+        }
 
+        .health-section {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(220, 38, 38, 0.05) 100%);
+            border-left: 4px solid #ef4444;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid #374151;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(212, 175, 55, 0.15);
+        }
+
+        @media (max-width: 768px) {
             .blog-content h1 {
                 font-size: 2rem;
             }
@@ -223,207 +256,847 @@
     <!-- Navbar Container -->
     <div id="navbar-container"></div>
 
-    <!-- Blog Header -->
-    <header class="blog-header pt-32 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href="blog.html" class="back-to-blog">
-                <i class="fas fa-arrow-left"></i> Blog'a Dön
-            </a>
+    <!-- Article Header -->
+    <article class="pt-24">
+        <!-- Hero Section -->
+        <header class="relative py-16 bg-gradient-to-b from-dark-bg to-[#1a1a1a] border-b border-gray-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Breadcrumb -->
+                <nav class="mb-8 text-sm">
+                    <a href="/" class="text-gray-500 hover:text-data-blue transition">Ana Sayfa</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <a href="/blog.html" class="text-gray-500 hover:text-data-blue transition">Blog</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <span class="text-gray-400">Sağlık Yönetimi</span>
+                </nav>
 
-            <span
-                class="inline-block bg-art-gold text-black px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                Veri Bilimi
-            </span>
+                <!-- Category & Date -->
+                <div class="flex items-center gap-4 mb-6 text-sm flex-wrap">
+                    <span class="bg-red-500/20 text-red-500 px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-heartbeat mr-1"></i> Sağlık Afet Yönetimi
+                    </span>
+                    <span class="bg-data-blue/20 text-data-blue px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-chart-line mr-1"></i> Veri Bilimi
+                    </span>
+                    <span class="bg-purple-500/20 text-purple-400 px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-calculator mr-1"></i> İstatistik
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-calendar mr-2"></i>6 Şubat 2026
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-clock mr-2"></i>14 dk okuma
+                    </span>
+                </div>
 
-            <h1 class="text-4xl md:text-6xl font-cinzel text-white font-bold mb-6">
-                Yapay Zeka ve Sanatın Geleceği
-            </h1>
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl font-cinzel text-white font-bold mb-6 leading-tight">
+                    Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik: İlk 72 Saatten Uzun Vadeli Planlamaya
+                </h1>
 
-            <div class="blog-meta">
-                <span class="blog-meta-item">
-                    <i class="far fa-calendar"></i>
-                    27 Ocak 2025
-                </span>
-                <span class="blog-meta-item">
-                    <i class="far fa-clock"></i>
-                    8 dk okuma
-                </span>
-                <span class="blog-meta-item">
-                    <i class="far fa-user"></i>
-                    Emre Bostanoğlu
-                </span>
+                <!-- Subtitle -->
+                <p class="text-xl text-gray-400 leading-relaxed mb-8">
+                    Sağlık afet yönetiminde istatistik ve veri biliminin kritik rolü: Triyaj optimizasyonu, kaynak
+                    tahsisi, epidemiyolojik öngörü ve karar destek sistemleri.
+                </p>
+
+                <!-- Author -->
+                <div class="flex items-center gap-4 pt-6 border-t border-gray-800">
+                    <img src="https://static.fokusistatistik.com/resimler/eb.png" alt="Emre Bostanoğlu"
+                        class="w-14 h-14 rounded-full border-2 border-data-blue">
+                    <div>
+                        <p class="text-white font-semibold">Emre Bostanoğlu</p>
+                        <p class="text-sm text-gray-500">Veri Bilimci • Uzman İstatistikçi</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Image -->
-    <div class="w-full">
-        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg" alt="Yapay Zeka ve Sanat"
-            class="blog-hero-image">
-    </div>
+        <!-- Article Content -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="prose prose-invert prose-lg max-w-none">
 
-    <!-- Blog Content -->
-    <article class="py-16 bg-dark-bg">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="blog-content">
 
-                <h2>Giriş: Teknoloji ve Sanatın Kesişimi</h2>
+
+                <!-- Technical Summary Box -->
+                <div
+                    class="bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-black/50 border border-gray-700 rounded-2xl p-6 mb-12 shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-red-900/30 p-3 rounded-full">
+                            <i class="fas fa-stethoscope text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Özet</h3>
+                            <p class="text-gray-400 text-sm">Sağlık afet yönetimi, sadece tıbbi müdahale değil; aynı
+                                zamanda karmaşık bir <strong>veri analizi ve karar optimizasyonu</strong> sürecidir. Bu
+                                yazıda, afet öncesi hazırlıktan ilk 72 saate, uzun vadeli iyileşmeye kadar her aşamada
+                                <strong>istatistik ve veri biliminin</strong> sağlık profesyonellerine nasıl kritik
+                                katkılar sunduğunu inceleyeceğiz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Sağlık Afet Yönetimi: Belirsizlik Altında Karar Alma Bilimi</h2>
+
                 <p>
-                    Yapay zeka, son yıllarda pek çok alanda olduğu gibi sanat dünyasında da köklü değişimlere yol
-                    açıyor.
-                    Makine öğrenmesi ve derin öğrenme algoritmaları, resimden müziğe, edebiyattan sinemaya kadar birçok
-                    sanat dalında yeni ifade biçimleri yaratıyor. Peki bu teknolojik devrim, sanatsal yaratıcılığın
-                    doğasını
-                    nasıl etkiliyor?
+                    Afet anında sağlık sistemi, olağan kapasitesinin çok üzerinde bir talep ile karşı karşıya kalır. Bu
+                    durum, sadece fiziksel kaynakların (yatak, ilaç, personel) yetersizliği değil; aynı zamanda
+                    <strong>bilgi eksikliği ve zaman baskısı</strong> altında hayati kararlar almak zorunda kalmak
+                    anlamına gelir.
                 </p>
 
                 <p>
-                    Sanatçılar ve teknoloji uzmanları olarak, bu dönüşümü yakından gözlemlemek ve anlamak bizim
-                    sorumluluğumuz.
-                    Yapay zeka araçları, sanatsal süreçleri demokratikleştirirken aynı zamanda geleneksel yaratıcılık
-                    kavramlarını da sorgulatıyor.
+                    Klasik yaklaşımda, triyaj kararları deneyimli sağlık personelinin sezgilerine dayanır. Ancak modern
+                    sağlık afet yönetimi, bu sezgileri <strong>veri destekli modeller</strong> ile güçlendirmeyi
+                    gerektirir. İstatistik ve veri bilimi, belirsizliği ölçülebilir hale getirir ve en iyi kararı almak
+                    için matematiksel bir çerçeve sunar.
                 </p>
 
-                <h2>Yapay Zeka Destekli Sanat Araçları</h2>
+                <div
+                    class="bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-lg my-8">
+                    <p class="text-white font-semibold text-lg mb-2">
+                        <i class="fas fa-lightbulb mr-2 text-yellow-400"></i>Temel Soru
+                    </p>
+                    <p class="text-gray-300 italic">
+                        "Elimizdeki sınırlı kaynakları (ambulans, yoğun bakım yatağı, kan ürünleri) hangi hastalara,
+                        hangi sırayla tahsis etmeliyiz ki en fazla hayat kurtaralım?"
+                    </p>
+                    <p class="text-gray-400 text-sm mt-3">
+                        Bu soru, bir <strong>optimizasyon problemi</strong>dir ve cevabı istatistiksel modelleme ile
+                        bulunur.
+                    </p>
+                </div>
+
+                <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/afet1.jpg"
+                    alt="Afet Yönetiminde Veri Akışı" loading="lazy">
+
+                <h2>Sağlık Afet Yönetiminin Üç Kritik Evresi ve İstatistiğin Rolü</h2>
+
                 <p>
-                    Günümüzde sanatçıların kullanabileceği çok sayıda yapay zeka aracı mevcut. Bu araçlar, yaratıcı
-                    süreçlerde yeni olanaklar sunuyor:
+                    Sağlık afet yönetimi, zamansal olarak üç ana evreye ayrılır. Her evrede istatistik ve veri biliminin
+                    farklı araçları devreye girer:
                 </p>
 
-                <h3>Görsel Sanatlar</h3>
-                <ul>
-                    <li><strong>DALL-E, Midjourney, Stable Diffusion:</strong> Metin açıklamalarından görsel üreten AI
-                        sistemleri</li>
-                    <li><strong>Style Transfer:</strong> Bir görüntünün stilini başka bir görüntüye aktarma teknolojisi
-                    </li>
-                    <li><strong>GANs (Generative Adversarial Networks):</strong> Özgün sanat eserleri üreten sistemler
-                    </li>
-                </ul>
+                <!-- Phase 1: Pre-Disaster -->
+                <div class="health-section">
+                    <h3 class="text-2xl font-bold text-red-500 mb-6 flex items-center gap-2">
+                        <i class="fas fa-shield-alt"></i> Evre 1: Afet Öncesi Hazırlık (Metodolojik Direnç Tasarımı)
+                    </h3>
 
-                <h3>Müzik ve Ses</h3>
-                <ul>
-                    <li><strong>AIVA, MuseNet:</strong> Özgün müzik kompozisyonları oluşturan AI sistemleri</li>
-                    <li><strong>Ses sentezleme:</strong> İnsan sesini taklit eden ve yeni sesler yaratan teknolojiler
-                    </li>
-                </ul>
+                    <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                        Afet yönetimi, afet anında değil, aylar hatta yıllar öncesindeki <strong><em>"Veriye Dayalı
+                                Öngörü"</em></strong> çalışmalarıyla kazanılır. İstatistiksel hazırlık, belirsizliğin
+                        olduğu her noktada yöneticiye <strong>objektif bir pusula</strong> sağlar:
+                    </p>
 
-                <blockquote>
-                    "Yapay zeka, sanatçının düşmanı değil, yeni bir araç. Tıpkı fotoğraf makinesinin resim sanatını
-                    öldürmediği gibi, AI de sanatı öldürmeyecek - dönüştürecek."
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <!-- Risk Mapping -->
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                <i class="fas fa-map-marked-alt text-red-400"></i>
+                                Risk Dağılım Modellemesi
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Sadece "nerede deprem olur?" değil, "hangi bölgede sağlık sistemi ne olasılıkla çöker?"
+                                sorusuna yanıt aranır. <strong><em>Uzamsal (Spatial) İstatistik</em></strong> ile risk
+                                odakları metrekare bazında haritalandırılır, personel buraya proaktif konuşlandırılır.
+                            </p>
+                        </div>
+
+                        <!-- Vulnerability -->
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                <i class="fas fa-users-cog text-green-400"></i>
+                                Mikro-Kırılganlık Analizi
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Bölgedeki diyaliz hastaları, engelli bireyler ve 65+ nüfusun lokasyonları
+                                <strong><em>Karma Modeller</em></strong> ile analiz edilerek; afet anında ilk
+                                kurtarılması gereken "stratejik noktalar" önceden bilinir.
+                            </p>
+                        </div>
+
+                        <!-- Capacity Stress Testing -->
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                <i class="fas fa-vial text-blue-400"></i>
+                                Sağlık Sistemi Stres Testleri
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Mevcut yatak, cerrah ve yoğun bakım kapasitesi üzerinden <strong><em>Simülasyon
+                                        Modelleri</em></strong> çalıştırılır. Sistemin nerede kırılacağı (bottleneck)
+                                önceden tespit edilerek "kapasite artırıcı önlemler" afetten önce hayata geçirilir.
+                            </p>
+                        </div>
+
+                        <!-- Supply Chain -->
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                <i class="fas fa-warehouse text-purple-400"></i>
+                                Dinamik Stok Optimizasyonu
+                            </h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                İlaç ve kan bankası stokları <strong><em>Emniyet Stoku (Safety Stock)</em></strong>
+                                modelleriyle yönetilir. "Her şeyden çok fazla stoklamak" yerine, "kritik malzemeyi,
+                                tüketim hızına göre en doğru yerde tutmak" sağlanır.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Advantages Box -->
+                    <div
+                        class="bg-gradient-to-r from-blue-900/10 to-transparent border border-blue-500/20 p-6 rounded-2xl mb-8">
+                        <h4
+                            class="text-blue-400 font-bold mb-4 flex items-center gap-2 uppercase text-xs tracking-widest">
+                            <i class="fas fa-chart-line"></i> İstatistiksel Hazırlığın Stratejik Avantajları
+                        </h4>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            <li class="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-gray-800">
+                                <i class="fas fa-check text-blue-500 mt-1"></i>
+                                <span class="text-gray-300 text-sm"><strong>Ölçülebilir Risk:</strong> "Büyük bir afet"
+                                    gibi belirsiz kavramlar, yerini "hastanenin %80 olasılıkla dolması" gibi
+                                    <strong>rakamlara</strong> bırakır.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-gray-800">
+                                <i class="fas fa-check text-blue-500 mt-1"></i>
+                                <span class="text-gray-300 text-sm"><strong>Ekonomik Verimlilik:</strong> Sınırlı bütçe
+                                    ve insan kaynağı, en fazla faydayı sağlayacak <strong>stratejik noktalara</strong>
+                                    kanalize edilir.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-gray-800">
+                                <i class="fas fa-check text-blue-500 mt-1"></i>
+                                <span class="text-gray-300 text-sm"><strong>Psikolojik Hazırlık:</strong> Tüm senaryolar
+                                    önceden simüle edildiği için, afet anındaki "karar paralizi" (karar verememe) durumu
+                                    aşılır.</span>
+                            </li>
+                            <li class="flex items-start gap-3 bg-black/20 p-3 rounded-lg border border-gray-800">
+                                <i class="fas fa-check text-blue-500 mt-1"></i>
+                                <span class="text-gray-300 text-sm"><strong>Hızlı Esneklik (Agility):</strong>
+                                    Alternatif planlar hazır olduğu için, değişen koşullara (yol kapanması vb.)
+                                    <strong>dinamik adaptasyon</strong> sağlanır.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-black/30 p-6 rounded-xl border border-blue-900/40">
+                        <p class="text-gray-300 leading-relaxed m-0">
+                            <strong>Geleceği Modellemek:</strong> İstanbul için deprem senaryosu oluşturulurken,
+                            <strong><em>Monte Carlo Simülasyonu</em></strong> ile sadece 1 değil, 10.000 farklı gelecek
+                            olasılığı üretilir. Hangi hastanenin hangi saatte tıkanacağı, ne kadar kan ihtiyacı olacağı
+                            ve hangi yolların açık kalacağı milimetrik hesaplanır. Bu, afeti yönetilebilir kılan en
+                            güçlü silahtır.
+                        </p>
+                    </div>
+                </div>
+
+                <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/afet2.jpg"
+                    alt="Veri Analizi ve Modelleme" loading="lazy">
+
+                <!-- Phase 2: First 72 Hours -->
+                <div class="health-section">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">
+                        <i class="fas fa-clock mr-2"></i>Evre 2: İlk 72 Saat (Kritik Müdahale Dönemi)
+                    </h3>
+
+                    <p class="mb-4">
+                        Afet sonrası ilk 72 saat, <strong>"altın zaman"</strong> olarak adlandırılır. Bu sürede alınan
+                        kararlar, hayat kurtarma oranını doğrudan etkiler. İstatistikçilerin bu evredeki katkıları:
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 text-lg flex items-center gap-2">
+                                <i class="fas fa-network-wired text-red-500"></i>
+                                Bölgesel Sağlık Kapasitesi ve Proaktif Yük Dengeleme
+                            </h4>
+                            <p class="text-gray-300 mb-3 text-base">
+                                Afet anında en büyük risk, belirli hastanelerin kapasite aşımı nedeniyle
+                                kilitlenmesidir. Statik yönetim bu durumu ancak kriz çıktıktan sonra fark eder.
+                                <strong><em>Yönetimsel Veri Bilimi</em></strong> ile:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4 mb-4">
+                                <li><strong>Tahminli Doluluk:</strong> Mevcut yaralı akış hızı ve vaka ciddiyeti analiz
+                                    edilerek, hangi hastanenin 3-6-12 saat içinde kilitleneceği <strong><em>Zaman Serisi
+                                            Tahminleri</em></strong> ile önceden belirlenir.</li>
+                                <li><strong>Hassas Yük Dağıtımı:</strong> Sadece "boş yatağa" değil; o hastanenin o anki
+                                    uzman personel yorgunluğu, kan stoku ve operasyonel hızı dikkate alınarak hastalar
+                                    tüm bölgeye optimize edilmiş şekilde dağıtılır.</li>
+                                <li><strong>Stratejik Karar:</strong> Yöneticiye sadece ham veri değil; "X hastanesine
+                                    sevki durdurun, Y hastanesine cerrahi ekip takviyesi yapın" gibi
+                                    <strong><em>Prescriptive (Yol Gösterici) Analiz</em></strong> sunulur.
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-blue-900/20 rounded border border-blue-700">
+                                <p class="text-sm text-blue-300">
+                                    <i class="fas fa-microchip mr-2"></i><strong>Yönetimsel Katkı:</strong> Sistemik
+                                    çöküş önlenir, sağlık personelinin tükenmişlik riski yönetilir ve tüm bölge tek bir
+                                    "akıllı hastane" gibi çalıştırılır.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 text-lg flex items-center gap-2">
+                                <i class="fas fa-truck-loading text-yellow-500"></i>
+                                Bütünleşik Lojistik Ağı ve Tahliye Koridoru Yönetimi
+                            </h4>
+                            <p class="text-gray-300 mb-3 text-base">
+                                Onlarca enkaz noktası ile yüzlerce tıbbi merkezin arasındaki ilişkiyi yönetmek, basit
+                                bir "rotalama" işinden çok daha büyüktür. Bu bir <strong><em>Stratejik Tedarik
+                                        Zinciri</em></strong> problemidir:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
+                                <li><strong>Dinamik Tahliye Koridoru:</strong> Yol durumu, yıkılan köprüler ve artçılar
+                                    saniyeler içinde haritaya işlenerek alternatif tahliye güzergahları otonom olarak
+                                    belirlenir.</li>
+                                <li><strong>Tersine Lojistik:</strong> Ambulanslar sadece yaralı taşımaz; geri dönüş
+                                    yolunda enkaz noktasına kan, serum veya cerrahi ekipman götürmesi için
+                                    <strong><em>Lojistik Optimizasyon</em></strong> ile planlanır. Hiçbir araç boş yol
+                                    kat etmez.
+                                </li>
+                                <li><strong>Kaynak Tahsisi:</strong> Kan, ilaç ve yakıtın hangi noktada ne kadar sürede
+                                    tükeneceği <strong><em>Simülasyon Modelleri</em></strong> ile öngörülür ve kriz
+                                    çıkmadan ikmal başlatılır.</li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-yellow-900/20 rounded border border-yellow-700">
+                                <p class="text-sm text-yellow-300">
+                                    <i class="fas fa-chess mr-2"></i><strong>Yönetimsel Katkı:</strong> Kısıtlı
+                                    kaynakların (yakıt, araç, zaman) israfı önlenir, müdahale zinciri "kesintisiz" hale
+                                    gelir ve yönetici lojistik krizlerle değil stratejik kararlarla ilgilenir.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 text-lg flex items-center gap-2">
+                                <i class="fas fa-tint text-red-600"></i>
+                                Kan ve İlaç Stok Tahmini
+                            </h4>
+                            <p class="text-gray-300 mb-3">
+                                İlk saatlerde kan bankası hızla tükenir. Yarın kaç ünite kana ihtiyaç olacak? <span
+                                    class="tech-badge">Zaman Serisi Analizi</span> ile:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
+                                <li>Geçmiş afetlerdeki kan tüketim hızı modellenir</li>
+                                <li>Mevcut yaralı profili (kanama, cerrahi müdahale oranı) ile gelecek talep tahmin
+                                    edilir</li>
+                                <li>Komşu şehirlerden kan transferi zamanında planlanır</li>
+                            </ul>
+                            <div class="mt-4 flex items-center gap-3">
+                                <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/python.png"
+                                    alt="Python"
+                                    class="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity m-0 shadow-none">
+                                <span class="text-xs text-gray-500">Python ile ARIMA/Prophet modelleri kullanılarak
+                                    24-48 saat sonraki ihtiyaç öngörülür</span>
+                            </div>
+                        </div>
+
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-3 text-lg flex items-center gap-2">
+                                <i class="fas fa-virus text-purple-500"></i>
+                                Epidemiyolojik Sürveyans
+                            </h4>
+                            <p class="text-gray-300 mb-3">
+                                Afet sonrası hijyen koşulları bozulur, bulaşıcı hastalık riski artar. <span
+                                    class="tech-badge">Epidemiyolojik Modelleme</span> ile:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
+                                <li>Çadır kentlerde kolera, dizanteri gibi hastalıkların yayılma hızı (R0 değeri)
+                                    hesaplanır</li>
+                                <li>Hangi bölgelere aşı kampanyası yapılmalı? <span class="tech-badge">SIR/SEIR
+                                        Modelleri</span> ile simüle edilir</li>
+                                <li>Erken uyarı sistemi: Günlük vaka sayıları <span class="tech-badge">Kontrol
+                                        Grafikleri</span> ile izlenir, anormal artış tespit edilir</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div
+                        class="mt-6 p-4 bg-gradient-to-r from-orange-900/20 to-transparent border-l-4 border-orange-500 rounded">
+                        <p class="text-white font-semibold mb-2">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>Kritik Not
+                        </p>
+                        <p class="text-gray-300 text-sm">
+                            İlk 72 saatte <strong>veri kalitesi düşüktür</strong> (eksik kayıtlar, iletişim kopukluğu).
+                            Bu nedenle <span class="tech-badge">Robust İstatistik</span> yöntemleri kullanılmalı; aykırı
+                            değerlere karşı dayanıklı modeller tercih edilmelidir.
+                        </p>
+                    </div>
+                </div>
+
+                <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/afet3.jpg"
+                    alt="Sağlık Sistemleri ve Teknoloji" loading="lazy">
+
+                <!-- Phase 3: Long-term Recovery -->
+                <div class="health-section">
+                    <h3 class="text-2xl font-bold text-green-400 mb-4">
+                        <i class="fas fa-heartbeat mr-2"></i>Evre 3: Uzun Vadeli İyileşme ve Sistem Güçlendirme
+                    </h3>
+
+                    <p class="mb-4">
+                        Akut kriz atlatıldıktan sonra, sağlık sisteminin <strong>yeniden yapılandırılması ve gelecek
+                            afetlere hazırlanması</strong> gerekir. Bu evrede istatistikçiler:
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fas fa-brain text-indigo-400"></i>
+                                Travma Sonrası Ruh Sağlığı İzlemi
+                            </h4>
+                            <p class="text-gray-400 text-sm">
+                                PTSD, depresyon prevalansı <span class="tech-badge">Kohort Çalışmaları</span> ile takip
+                                edilir. Risk faktörleri (yaş, kayıp türü) <span class="tech-badge">Lojistik
+                                    Regresyon</span> ile belirlenir.
+                            </p>
+                        </div>
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fas fa-chart-bar text-cyan-400"></i>
+                                Performans Değerlendirmesi
+                            </h4>
+                            <p class="text-gray-400 text-sm">
+                                Müdahale sürecinin etkinliği <span class="tech-badge">KPI (Anahtar Performans
+                                    Göstergeleri)</span> ile ölçülür: Ortalama müdahale süresi, mortalite oranı, kaynak
+                                kullanım verimliliği.
+                            </p>
+                        </div>
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fas fa-database text-yellow-400"></i>
+                                Veri Arşivleme ve Öğrenme
+                            </h4>
+                            <p class="text-gray-400 text-sm">
+                                Tüm süreç verileri (triyaj kararları, kaynak kullanımı) <span class="tech-badge">Veri
+                                    Ambarı</span>'nda saklanır. Gelecek afetler için <span class="tech-badge">Makine
+                                    Öğrenmesi</span> modelleri eğitilir.
+                            </p>
+                        </div>
+                        <div class="phase-card">
+                            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fas fa-graduation-cap text-pink-400"></i>
+                                Eğitim ve Simülasyon
+                            </h4>
+                            <p class="text-gray-400 text-sm">
+                                Sağlık personeli için <span class="tech-badge">Monte Carlo Simülasyonları</span> ile
+                                gerçekçi afet senaryoları oluşturulur. Tatbikatlar veri destekli planlanır.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Teknolojik Araçlar: Canlı Veri ve Otonom Karar Destek Sistemleri</h2>
+
+                <p>
+                    İstatistiksel yöntemler, ancak doğru teknolojik altyapı ile hayata geçirilebilir. Modern sağlık afet
+                    yönetiminde kullanılan temel araçlar:
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 my-8">
+                    <div
+                        class="bg-[#1e1e1e] p-6 rounded-xl border border-gray-700 text-center hover:border-yellow-500 transition-all">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/powerBI.png"
+                            alt="Power BI"
+                            class="h-16 w-auto mx-auto mb-4 opacity-80 hover:opacity-100 transition-opacity m-0 shadow-none">
+                        <h4 class="font-bold text-yellow-400 mb-3 text-lg">
+                            Power BI
+                        </h4>
+                        <p class="text-gray-400 text-sm text-left">
+                            Hastane doluluk oranları, ambulans konumları, ilaç stokları <strong>gerçek zamanlı</strong>
+                            dashboard'larda görselleştirilir. Karar vericiler, durumu "sorduktan sonra" değil, "ekrana
+                            baktığı an" görür.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-[#1e1e1e] p-6 rounded-xl border border-gray-700 text-center hover:border-blue-500 transition-all">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/python.png"
+                            alt="Python"
+                            class="h-16 w-auto mx-auto mb-4 opacity-80 hover:opacity-100 transition-opacity m-0 shadow-none">
+                        <h4 class="font-bold text-blue-400 mb-3 text-lg">
+                            Python
+                        </h4>
+                        <p class="text-gray-400 text-sm text-left">
+                            İstatistiksel modellerin (Bayesyen analiz, optimizasyon, makine öğrenmesi) kodlandığı ana
+                            dildir. <code>pandas</code>, <code>scikit-learn</code>, <code>scipy</code> kütüphaneleri ile
+                            karmaşık hesaplamalar saniyeler içinde yapılır.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-[#1e1e1e] p-6 rounded-xl border border-gray-700 text-center hover:border-purple-500 transition-all">
+                        <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/n8n.png" alt="n8n"
+                            class="h-16 w-auto mx-auto mb-4 opacity-80 hover:opacity-100 transition-opacity m-0 shadow-none">
+                        <h4 class="font-bold text-purple-400 mb-3 text-lg">
+                            n8n (Otomasyon)
+                        </h4>
+                        <p class="text-gray-400 text-sm text-left">
+                            Kritik eşikler aşıldığında (örn: yoğun bakım doluluk oranı %90) sistem
+                            <strong>otomatik</strong> olarak ilgili birimlere alarm gönderir, ek personel çağırır,
+                            transfer protokollerini başlatır. İnsan hatası minimize edilir.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Geleneksel Yaklaşım vs. Veri Destekli Sağlık Afet Yönetimi</h2>
+
+                <p class="mb-6">
+                    Sağlık afet yönetiminde "deneyim" ve "sezgi" önemlidir, ancak tek başına yeterli değildir. Veri
+                    bilimi, bu deneyimi <strong>ölçülebilir, tekrarlanabilir ve optimize edilebilir</strong> hale
+                    getirir.
+                </p>
+
+                <div class="overflow-x-auto my-8">
+                    <table
+                        class="w-full text-left border-collapse bg-gradient-to-br from-gray-900 to-black rounded-2xl overflow-hidden shadow-2xl">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-gray-800 to-gray-900 border-b-2 border-gray-700">
+                                <th class="p-5 text-red-400 font-bold uppercase text-sm tracking-wider w-1/2">
+                                    <i class="fas fa-clipboard-list mr-2"></i>Geleneksel Sağlık Afet Yönetimi
+                                </th>
+                                <th class="p-5 text-green-400 font-bold uppercase text-sm tracking-wider w-1/2">
+                                    <i class="fas fa-chart-line mr-2"></i>Veri Destekli Sağlık Afet Yönetimi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800 text-sm">
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-user-md text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Triyaj Kararları:</strong>
+                                            Deneyimli hekimin anlık değerlendirmesi. Subjektif, kişiye bağlı.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-robot text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Triyaj Kararları:</strong>
+                                            Vital bulgular + geçmiş veri → <span class="tech-badge">Bayesyen
+                                                Model</span> → Hayatta kalma olasılığı hesaplanır. Objektif, tutarlı.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-ambulance text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Ambulans Sevkiyatı:</strong>
+                                            "En yakın ambulansı gönder" mantığı. Bazı bölgeler geç kalabilir.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-route text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Ambulans Sevkiyatı:</strong>
+                                            Tüm enkazlar + ambulans konumları → <span class="tech-badge">Optimizasyon
+                                                Algoritması</span> → Toplam müdahale süresi minimize edilir.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-boxes text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Kaynak Planlaması:</strong>
+                                            "Elimizde ne varsa kullanalım" yaklaşımı. Stoklar tükenir veya israf edilir.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-chart-area text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Kaynak Planlaması:</strong>
+                                            Geçmiş tüketim + mevcut yaralı profili → <span class="tech-badge">Zaman
+                                                Serisi Tahmini</span> → 24-48 saat sonraki ihtiyaç öngörülür, zamanında
+                                            tedarik sağlanır.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-virus text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Salgın Kontrolü:</strong>
+                                            Vaka görüldükten sonra reaktif müdahale. Yayılma hızlı olabilir.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-shield-virus text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Salgın Kontrolü:</strong>
+                                            Günlük vaka sayıları → <span class="tech-badge">SIR/SEIR Modeli</span> →
+                                            Yayılma hızı (R0) hesaplanır, riskli bölgelere proaktif aşılama yapılır.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-phone text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">İletişim ve Koordinasyon:</strong>
+                                            Telefon, radyo. Bilgi kaybı, gecikme, unutulan talimatlar.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-network-wired text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">İletişim ve Koordinasyon:</strong>
+                                            <span class="tech-badge">n8n Otomasyon</span> → Kritik eşik aşıldığında
+                                            sistem otomatik alarm verir, görev atar, raporlar. İnsan hatası minimize.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-800/50 transition-all">
+                                <td class="p-5 border-r border-gray-800 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-file-excel text-red-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Raporlama:</strong>
+                                            Excel tabloları, manuel veri girişi. Saatler sonra hazır olur, güncel değil.
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-5 text-gray-300">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-chart-pie text-green-400 mt-1"></i>
+                                        <div>
+                                            <strong class="text-white block mb-1">Raporlama:</strong>
+                                            <span class="tech-badge">Power BI Dashboard</span> → Veriler gerçek zamanlı
+                                            akar. Yönetici ekrana baktığı an güncel durumu görür.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-gradient-to-r from-red-900/20 to-transparent">
+                                <td class="p-5 border-r border-gray-800 font-semibold text-red-300">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                                    SONUÇ: Yüksek belirsizlik, gecikmeler, kaynakların verimsiz kullanımı, önlenebilir
+                                    kayıplar.
+                                </td>
+                                <td class="p-5 font-semibold text-green-300 bg-green-900/10">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    SONUÇ: Hızlı, veri destekli kararlar, optimal kaynak kullanımı, maksimum hayat
+                                    kurtarma.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Practical Process Example Card -->
+                <div
+                    class="my-12 p-8 bg-gradient-to-br from-red-900/10 via-dark-bg to-dark-bg border border-red-500/20 rounded-2xl">
+                    <h3 class="text-white font-bold text-2xl mb-6 flex items-center gap-3">
+                        <i class="fas fa-project-diagram text-red-500"></i>
+                        Uygulamalı Örnek: Sahada Neden Sadece "Tıbbi Karar" Yeterli Değildir?
+                    </h3>
+
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg">
+                        Bir afet anında onlarca enkaz noktasından gelen yaralıların hastanelere dağıtıldığını düşünelim.
+                        Bu süreç <strong><em>"Akış Optimizasyonu"</em></strong> desteği almazsa oluşacak tablo şudur:
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Clinical Only -->
+                        <div class="space-y-4">
+                            <h4
+                                class="text-red-400 font-bold flex items-center gap-2 uppercase text-xs tracking-widest">
+                                <i class="fas fa-user-md"></i> Sadece Klinik Odaklı Karar
+                            </h4>
+                            <div class="p-6 bg-red-500/5 rounded-xl border border-red-500/10 h-full">
+                                <p class="text-gray-400 text-sm leading-relaxed mb-0">
+                                    Kararlar <strong>"en yakın hastane"</strong> veya <strong>"o anki boş
+                                        yatak"</strong> bilgisine göre sezgisel alınır. Sonuçta bazı hastaneler hızla
+                                    kapasite aşımına uğrayıp kilitlenirken, bazıları verimsiz şekilde boş kalır.
+                                    Koordinasyon, kriz anındaki kaosa yenik düşer.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Data Integrated -->
+                        <div class="space-y-4">
+                            <h4
+                                class="text-green-400 font-bold flex items-center gap-2 uppercase text-xs tracking-widest">
+                                <i class="fas fa-network-wired"></i> Veri Bilimi Destekli Yönetim
+                            </h4>
+                            <div class="p-6 bg-green-500/5 rounded-xl border border-green-500/10 h-full">
+                                <p class="text-gray-400 text-sm leading-relaxed mb-0">
+                                    Vaka ciddiyeti + yol durumu + hastane spesifik kapasiteleri (cerrah sayısı, kan
+                                    stoku) <strong><em>Optimizasyon Algoritmaları</em></strong> ile anlık eşleştirilir.
+                                    En doğru yaralı, en doğru imkana sahip merkeze saniyeler içinde yönlendirilir.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Impact -->
+                        <div class="md:col-span-2 p-5 bg-blue-500/10 rounded-xl border border-blue-500/20 text-center">
+                            <p class="text-blue-300 font-bold mb-0 text-lg">
+                                <i class="fas fa-check-circle mr-2"></i> Somut Etki: Sistemik tıkanıklık önlenir,
+                                hayatta kalma olasılığı %30-%40 artar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <img src="https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/afet4.jpg"
+                    alt="Gelecek Nesil Sağlık Afet Yönetimi" loading="lazy">
+
+                <div class="my-16"></div>
+
+                <h2>İstatistikçiler ve Sağlık Profesyonelleri: Birlikte Daha Güçlü</h2>
+
+                <p class="text-xl leading-relaxed text-gray-300">
+                    Sağlık afet yönetimi, yalnızca tıbbi bilgi gerektirmez. Bu alan, aynı zamanda <strong><em>karmaşık
+                            veri analizi, matematiksel optimizasyon ve belirsizlik yönetimi</em></strong> gerektirir.
+                    İstatistikçiler ve veri bilimciler, sağlık profesyonellerine şu kritik katkıları sunar:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-10">
+                    <div
+                        class="bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-800/30 rounded-xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-blue-500/20 p-3 rounded-lg">
+                                <i class="fas fa-heartbeat text-blue-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg m-0">Triyaj Optimizasyonu</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm m-0">
+                            Subjektif sezgiyi, <strong><em>Bayesyen olasılık hesaplamaları</em></strong> ile objektif
+                            kararlara dönüştürür. Her hasta için hayatta kalma olasılığı dinamik olarak güncellenir.
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-gradient-to-br from-green-900/20 to-transparent border border-green-800/30 rounded-xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-green-500/20 p-3 rounded-lg">
+                                <i class="fas fa-boxes text-green-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg m-0">Kaynak Tahsisi</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm m-0">
+                            "Herkese eşit" mantığından "en fazla hayat kurtarma" optimizasyonuna geçiş.
+                            <strong><em>Matematiksel modeller</em></strong> ile sınırlı kaynaklar maksimum etki için
+                            dağıtılır.
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-gradient-to-br from-purple-900/20 to-transparent border border-purple-800/30 rounded-xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-purple-500/20 p-3 rounded-lg">
+                                <i class="fas fa-virus text-purple-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg m-0">Epidemiyolojik Öngörü</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm m-0">
+                            Salgın risklerini erken tespit eder. <strong><em>SIR/SEIR modelleri</em></strong> ile
+                            yayılma hızı hesaplanır, proaktif aşılama planlanır.
+                        </p>
+                    </div>
+
+                    <div
+                        class="bg-gradient-to-br from-orange-900/20 to-transparent border border-orange-800/30 rounded-xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-orange-500/20 p-3 rounded-lg">
+                                <i class="fas fa-chart-line text-orange-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-white font-bold text-lg m-0">Gerçek Zamanlı Karar Desteği</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm m-0">
+                            Anlık veri akışı ile dinamik durum raporları. <strong><em>Power BI
+                                    dashboardları</em></strong> sayesinde yöneticiler güncel bilgiye anında erişir.
+                        </p>
+                    </div>
+                </div>
+
+                <blockquote class="border-l-4 border-blue-500 pl-6 my-10 italic text-gray-300 text-lg">
+                    "Afet anında, doğru veri doğru zamanda doğru kişiye ulaşırsa, hayat kurtarma oranı katlanarak artar.
+                    İstatistik, bu veri akışının mimarıdır."
                 </blockquote>
 
-                <h2>Fırsatlar ve Yeni Olanaklar</h2>
-                <p>
-                    Yapay zeka teknolojileri, sanat dünyasına birçok yeni fırsat sunuyor:
-                </p>
+                <div
+                    class="bg-gradient-to-r from-blue-900/30 via-purple-900/20 to-transparent border-l-4 border-blue-500 p-8 rounded-lg my-10">
+                    <h3 class="text-white font-bold text-2xl mb-4 flex items-center gap-3">
+                        <i class="fas fa-handshake text-blue-400"></i>
+                        Temel Gereksinim: Disiplinler Arası İşbirliği
+                    </h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Sağlık afet yönetimi, <strong>hekimler, hemşireler, paramedikler, istatistikçiler ve veri
+                            bilimcilerin</strong> birlikte çalıştığı bir alandır. Tıbbi uzmanlık tek başına yeterli
+                        değildir; <em>veri ile güçlendirildiğinde</em> belirsizlik yönetilebilir risklere dönüşür ve
+                        <strong>daha fazla hayat kurtarılır</strong>.
+                    </p>
+                </div>
 
-                <ol>
-                    <li><strong>Demokratikleşme:</strong> Teknik beceri gerektiren işlemler otomatikleşerek daha fazla
-                        insanın sanat üretmesine olanak tanıyor</li>
-                    <li><strong>Hızlı Prototipleme:</strong> Sanatçılar fikirlerini çok daha hızlı bir şekilde
-                        görselleştirebiliyor</li>
-                    <li><strong>Yeni Estetik Deneyimler:</strong> İnsan aklının kolayca düşünemeyeceği kombinasyonlar ve
-                        stiller ortaya çıkıyor</li>
-                    <li><strong>Kişiselleştirme:</strong> Her izleyici için özelleştirilmiş sanat deneyimleri mümkün
-                        hale geliyor</li>
-                </ol>
-
-                <h2>Zorluklar ve Etik Sorunlar</h2>
-                <p>
-                    Tabii ki, yapay zeka destekli sanat birçok önemli soruyu da beraberinde getiriyor:
-                </p>
-
-                <h3>Telif Hakları ve Sahiplik</h3>
-                <p>
-                    AI tarafından üretilen bir eserin sahibi kim? Algoritmayı yazan mı, promptu (komutu) veren mi,
-                    yoksa eğitim datasını sağlayan mı? Bu sorular henüz net cevaplara kavuşmadı ve hukuki düzenlemelere
-                    ihtiyaç duyuluyor.
-                </p>
-
-                <h3>Özgünlük ve Yaratıcılık</h3>
-                <p>
-                    Yapay zeka, mevcut verileri analiz ederek yeni eserler üretiyor. Bu durum, "gerçek yaratıcılık"
-                    nedir sorusunu gündeme getiriyor. Yaratıcılık sadece insana mı özgü, yoksa makineler de yaratıcı
-                    olabilir mi?
-                </p>
-
-                <h3>Sanatçıların İşsizliği</h3>
-                <p>
-                    Özellikle ticari illüstrasyon ve tasarım alanlarında, AI araçları insan sanatçıların yerini alabilir
-                    mi?
-                    Bu endişe gerçek, ancak tarih bize teknolojik gelişmelerin genellikle yeni iş alanları yarattığını
-                    gösteriyor.
-                </p>
-
-                <h2>Fotoğraf ve Yapay Zeka</h2>
-                <p>
-                    Bir fotoğrafçı olarak, yapay zekanın fotoğrafçılık alanındaki etkilerini özellikle yakından takip
-                    ediyorum.
-                    AI destekli fotoğraf düzenleme araçları, post-prodüksiyon süreçlerini inanılmaz derecede
-                    hızlandırıyor:
-                </p>
-
-                <ul>
-                    <li>Otomatik maske oluşturma ve seçim yapma</li>
-                    <li>Akıllı nesne kaldırma ve arka plan değiştirme</li>
-                    <li>Gelişmiş renk düzeltme ve ton eşleştirme</li>
-                    <li>Görüntü iyileştirme ve yüksek çözünürlük artırma</li>
-                </ul>
-
-                <p>
-                    Ancak bu araçlar, fotoğrafçının gözünün, kompozisyon anlayışının ve hikaye anlatma becerisinin
-                    yerini
-                    alamıyor. Teknoloji, yaratıcı vizyonu hayata geçirmeyi kolaylaştırıyor ama o vizyon yine insandan
-                    geliyor.
-                </p>
-
-                <h2>Gelecek: Hibrit Sanat Çağı</h2>
-                <p>
-                    Önümüzdeki yıllarda, yapay zeka ve insan yaratıcılığının birleştiği "hibrit sanat" çağına tanık
-                    olacağız.
-                    En başarılı sanat eserleri, teknolojinin gücünü insan duygularıyla, deneyimiyle ve estetiğiyle
-                    harmanlayanlarda
-                    ortaya çıkacak.
-                </p>
-
-                <p>
-                    Sanatçılar olarak yapay zekayı reddetmek yerine, onu kendi yaratıcı süreçlerimize nasıl entegre
-                    edebileceğimizi düşünmeliyiz. Tıpkı fotoğraf makinesinin zamanında ressam için yeni bir araç olması
-                    gibi,
-                    AI da bugünün sanatçısı için yeni bir palet.
-                </p>
-
-                <h2>Sonuç</h2>
-                <p>
-                    Yapay zeka ve sanat arasındaki ilişki karmaşık, çok katmanlı ve sürekli gelişiyor. Bu teknoloji,
-                    sanatsal yaratıcılığı demokratikleştiriyor, yeni ifade biçimleri sunuyor ve sınırları zorluyorken,
-                    aynı zamanda etik, hukuki ve felsefi sorular da ortaya koyuyor.
-                </p>
-
-                <p>
-                    Sonuç olarak, yapay zeka sanatın geleceğini şekillendiren önemli bir faktör ama tek faktör değil.
-                    Asıl belirleyici olan, bu teknolojiyi nasıl kullandığımız ve insan deneyimini, duygularını ve
-                    yaratıcılığını nasıl merkeze aldığımız olacak.
-                </p>
-
-                <p>
-                    Sanat, temelde insanın kendini ifade etme ve dünyayı yorumlama biçimi. Yapay zeka bu yolculukta
-                    güçlü bir araç olabilir, ancak yolculuğu yapan ve anlamı yaratan hep insan olacak.
-                </p>
+                <div
+                    class="text-center my-12 p-10 bg-gradient-to-b from-green-900/10 to-transparent rounded-2xl border border-green-700/30">
+                    <p class="text-2xl md:text-3xl text-green-400 font-bold mb-4">
+                        "Bilimin ışığında, belirsizliği yönetilebilir risklere dönüştürmek mümkündür."
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        — Modern Sağlık Afet Yönetiminin Temel İlkesi
+                    </p>
+                </div>
 
                 <!-- Tags -->
                 <div class="blog-tags">
-                    <span class="blog-tag">Yapay Zeka</span>
-                    <span class="blog-tag">Sanat</span>
-                    <span class="blog-tag">Teknoloji</span>
-                    <span class="blog-tag">Fotoğraf</span>
-                    <span class="blog-tag">Yaratıcılık</span>
+                    <span class="blog-tag">Sağlık Afet Yönetimi</span>
+                    <span class="blog-tag">Veri Bilimi</span>
+                    <span class="blog-tag">İstatistik</span>
+                    <span class="blog-tag">Triyaj</span>
+                    <span class="blog-tag">Bayesyen Analiz</span>
+                    <span class="blog-tag">Optimizasyon</span>
+                    <span class="blog-tag">Epidemiyoloji</span>
+                    <span class="blog-tag">Power BI</span>
+                    <span class="blog-tag">Python</span>
+                    <span class="blog-tag">Karar Destek Sistemleri</span>
                 </div>
 
-                <!-- Social Share Buttons -->
-                <div class="mt-8 pt-8 border-t border-gray-800">
-                    <h3 class="text-white font-cinzel font-bold text-xl mb-4">Bu Yazıyı Paylaş</h3>
-                    <div id="blog-share-buttons"></div>
+                <!-- Social Share -->
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <h3 class="text-xl font-bold text-white mb-4">Bu yazıyı paylaşın</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://emrebostanoglu.com/blog11.html"
+                            target="_blank" rel="noopener noreferrer"
+                            class="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=https://emrebostanoglu.com/blog11.html&text=Sağlık Afet Yönetiminde Veri Bilimi"
+                            target="_blank" rel="noopener noreferrer"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-twitter mr-2"></i>Twitter
+                        </a>
+                        <a href="https://wa.me/?text=Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik - https://emrebostanoglu.com/blog11.html"
+                            target="_blank" rel="noopener noreferrer"
+                            class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                            class="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-instagram mr-2"></i>Instagram
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -437,7 +1110,7 @@
                 Diğer Yazılar
             </h2>
             <div class="text-center">
-                <a href="index.html"
+                <a href="blog.html"
                     class="inline-block bg-art-gold text-black px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all transform hover:scale-105">
                     Tüm Blog Yazılarını Gör
                 </a>

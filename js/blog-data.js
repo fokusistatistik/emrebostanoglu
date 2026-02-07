@@ -7,12 +7,12 @@ const BLOG_DATA = {
     posts: [
         {
             id: 'blog11',
-            title: 'Yapay Zeka ve Sanatın Geleceği',
-            description: 'Yapay zeka teknolojilerinin sanat dünyasında yarattığı dönüşümü, fırsatları ve zorlukları inceliyoruz. Hibrit sanat çağında yaratıcılığın nasıl evrileceğini keşfedin.',
-            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/foto1.jpg',
-            date: '27 Ocak 2025',
-            readTime: '8 dk okuma',
-            tags: ['Yapay Zeka', 'Sanat', 'Teknoloji', 'Fotoğraf', 'Yaratıcılık'],
+            title: 'Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik: İlk 72 Saatten Uzun Vadeli Planlamaya',
+            description: 'Sağlık afet yönetiminde istatistik ve veri biliminin kritik rolü: Triyaj optimizasyonu, kaynak tahsisi, epidemiyolojik öngörü ve karar destek sistemleri.',
+            image: 'https://static.fokusistatistik.com/resimler/emrebostanogluweb/afet/kapak.jpg',
+            date: '6 Şubat 2026',
+            readTime: '14 dk okuma',
+            tags: ['Sağlık Afet Yönetimi', 'Veri Bilimi', 'İstatistik', 'Triyaj', 'Epidemiyoloji', 'Power BI', 'Python'],
             url: '/blog11.html',
             published: true
         },
