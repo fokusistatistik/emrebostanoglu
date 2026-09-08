@@ -6,6 +6,17 @@
 const BLOG_DATA = {
     posts: [
         {
+            id: 'blog12',
+            title: 'Bir Kişi Aynı Anda İki Yerde Olamaz',
+            description: 'Afet yönetiminde görüş alanı, veri yorumlama tuzakları, payda problemi ve sistem mimarisi üzerine: Neden veri toplamak bir angarya değil, bir tasarım işidir?',
+            image: '/assets/img/blog12-kapak.jpg',
+            date: '8 Eylül 2026',
+            readTime: '15 dk okuma',
+            tags: ['Afet Yönetimi', 'Veri Bilimi', 'İstatistik', 'Sistem Mimarisi', 'Karar Destek'],
+            url: '/blog12.html',
+            published: true
+        },
+        {
             id: 'blog11',
             title: 'Sağlık Afet Yönetiminde Veri Bilimi ve İstatistik: İlk 72 Saatten Uzun Vadeli Planlamaya',
             description: 'Sağlık afet yönetiminde istatistik ve veri biliminin kritik rolü: Triyaj optimizasyonu, kaynak tahsisi, epidemiyolojik öngörü ve karar destek sistemleri.',

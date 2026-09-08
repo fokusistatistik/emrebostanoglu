@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bir Kişi Aynı Anda İki Yerde Olamaz | Emre BOSTANOĞLU
+    </title>
+    <link rel="icon" type="image/png" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="apple-touch-icon" href="https://static.fokusistatistik.com/resimler/ebfavicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2c3335">
+    <meta name="description"
+        content="Afet yönetiminde görüş alanı, veri yorumlama tuzakları, payda problemi ve sistem mimarisi üzerine: Neden veri toplamak bir angarya değil, bir tasarım işidir?">
+    <meta name="keywords"
+        content="afet yönetimi, veri mimarisi, karar destek sistemleri, istatistik, veri yorumlama, sistem mimarisi, ahlaki yaralanma, veri borcu, yerel optimum, etkinlik verimlilik">
+    <meta name="author" content="Emre Bostanoğlu">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://emrebostanoglu.com/blog12.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bir Kişi Aynı Anda İki Yerde Olamaz">
+    <meta property="og:description"
+        content="Afet yönetiminde görüş alanı, yorum ve sistem mimarisi üzerine: Veri toplamak bir angarya değil, bir tasarım işidir.">
+    <meta property="og:url" content="https://emrebostanoglu.com/blog12.html">
+    <meta property="og:site_name" content="Emre Bostanoğlu">
+    <meta property="og:image" content="https://emrebostanoglu.com/assets/img/blog12-kapak.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:article:published_time" content="2026-09-08T09:00:00+03:00">
+    <meta property="og:article:author" content="Emre Bostanoğlu">
+    <meta property="og:article:section" content="Afet Yönetimi">
+    <meta property="og:article:tag" content="Afet Yönetimi">
+    <meta property="og:article:tag" content="Veri Bilimi">
+    <meta property="og:article:tag" content="İstatistik">
+    <meta property="og:article:tag" content="Sistem Mimarisi">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bir Kişi Aynı Anda İki Yerde Olamaz">
+    <meta name="twitter:description" content="Afet yönetiminde görüş alanı, yorum ve sistem mimarisi üzerine.">
+    <meta name="twitter:image" content="https://emrebostanoglu.com/assets/img/blog12-kapak.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- i18n System -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Components JS -->
+    <script src="js/components.js"></script>
+
+    <style>
+        /* Blog Post Styling */
+        .blog-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3335 100%);
+            border-bottom: 1px solid #333;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4 {
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-content h1 {
+            font-size: 3rem;
+            margin-top: 0;
+        }
+
+        .blog-content h2 {
+            font-size: 2rem;
+            margin-top: 4.5rem;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: #3b82f6;
+        }
+
+        .blog-content h4 {
+            font-size: 1.25rem;
+        }
+
+        .blog-content p {
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            line-height: 1.8;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-content a {
+            color: #d4af37;
+            text-decoration: underline;
+            text-decoration-color: rgba(212, 175, 55, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .blog-content a:hover {
+            text-decoration-color: #d4af37;
+        }
+
+        /* Button-style links (social share) aren't inline article links —
+           don't let the gold underlined link style leak into them. */
+        .blog-content a.share-btn,
+        .blog-content a.share-btn:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        .blog-content blockquote {
+            border-left: 3px solid #d4af37;
+            padding-left: 1.5rem;
+            margin: 1.75rem 0;
+            font-family: 'Playfair Display', serif;
+            font-style: normal;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+        }
+
+        .blog-content img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Inline illustration images — smaller than the opening/closing photos */
+        .blog-content img.img-inline {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            .blog-content img.img-inline {
+                width: 75%;
+            }
+        }
+
+        /* Same as .img-inline but 33% larger — used for a few images that
+           need more visual weight than the rest of the inline set. */
+        .blog-content img.img-inline-lg {
+            width: 66.5%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            .blog-content img.img-inline-lg {
+                width: 90%;
+            }
+        }
+
+        .blog-content code {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .blog-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            color: #9ca3af;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #333;
+        }
+
+        .blog-tag {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-to-blog:hover {
+            gap: 1rem;
+        }
+
+        .tech-badge {
+            font-weight: 700;
+            font-style: italic;
+            color: #60a5fa;
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid #374151;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Cards/boxes (.ui-box) control their own spacing via padding.
+           The long-form-article heading/paragraph margins (h1-h4, p) would
+           otherwise leak into them (large margin-top on headings, margin-
+           bottom on paragraphs), making boxes look padded far beyond their
+           actual padding: value. Reset to 0 and re-add a small, deliberate
+           gap between stacked elements instead. */
+        .blog-content .ui-box h1,
+        .blog-content .ui-box h2,
+        .blog-content .ui-box h3,
+        .blog-content .ui-box h4,
+        .blog-content .ui-box p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .blog-content .ui-box h3,
+        .blog-content .ui-box h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-content .ui-box p+p {
+            margin-top: 0.75rem;
+        }
+
+        /* Image placeholder — swap for <img> once real photos arrive */
+        .img-placeholder {
+            border: 2px dashed #4b5563;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .img-placeholder .ph-icon {
+            font-size: 2rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .img-placeholder .ph-label {
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .img-placeholder .ph-desc {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .img-placeholder .ph-caption {
+            color: #6b7280;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        /* Standalone pull-quote for the article's aphoristic one-liners */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: normal;
+            font-size: 1.75rem;
+            color: white;
+            text-align: center;
+            line-height: 1.45;
+            margin: 3rem auto;
+            max-width: 700px;
+            padding: 0 1rem;
+        }
+
+        .final-quote {
+            text-align: center;
+            margin: 3.5rem 0 1rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .final-quote p {
+            font-family: 'Cinzel', serif;
+            font-size: 2.25rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Cyclical flow diagram for the moral-injury loop */
+        .flow-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .flow-arrow {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            padding: 0.6rem 1.1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-content h1 {
+                font-size: 2rem;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .pull-quote {
+                font-size: 1.35rem;
+            }
+
+            .final-quote p {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark-bg text-gray-300 font-sans antialiased selection:bg-data-blue selection:text-white">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- Article Header -->
+    <article class="pt-24">
+        <!-- Hero Section -->
+        <header class="relative py-16 bg-gradient-to-b from-dark-bg to-[#1a1a1a] border-b border-gray-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Breadcrumb -->
+                <nav class="mb-8 text-sm">
+                    <a href="/" class="text-gray-500 hover:text-data-blue transition">Ana Sayfa</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <a href="/blog.html" class="text-gray-500 hover:text-data-blue transition">Blog</a>
+                    <span class="text-gray-600 mx-2">/</span>
+                    <span class="text-gray-400">Afet Yönetimi</span>
+                </nav>
+
+                <!-- Category & Date -->
+                <div class="flex items-center gap-4 mb-6 text-sm flex-wrap">
+                    <span class="bg-red-500/20 text-red-500 px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-triangle-exclamation mr-1"></i> Afet Yönetimi
+                    </span>
+                    <span class="bg-data-blue/20 text-data-blue px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-chart-line mr-1"></i> Veri Bilimi
+                    </span>
+                    <span class="bg-purple-500/20 text-purple-400 px-4 py-1.5 rounded-full font-semibold">
+                        <i class="fas fa-calculator mr-1"></i> İstatistik
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-calendar mr-2"></i>8 Eylül 2026
+                    </span>
+                    <span class="text-gray-500">
+                        <i class="far fa-clock mr-2"></i>15 dk okuma
+                    </span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="text-4xl md:text-5xl font-cinzel text-white font-bold mb-6 leading-tight">
+                    Bir Kişi Aynı Anda İki Yerde Olamaz
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-xl text-gray-400 leading-relaxed mb-8">
+                    Afet yönetiminde görüş alanı, yorum ve sistem mimarisi üzerine
+                </p>
+
+                <!-- Author -->
+                <div class="flex items-center gap-4 pt-6 border-t border-gray-800">
+                    <img src="https://static.fokusistatistik.com/resimler/eb.png" alt="Emre Bostanoğlu"
+                        class="w-14 h-14 rounded-full border-2 border-data-blue">
+                    <div>
+                        <p class="text-white font-semibold">Emre Bostanoğlu</p>
+                        <p class="text-sm text-gray-500">Veri Bilimci • Uzman İstatistikçi</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="blog-content prose prose-invert prose-lg max-w-none">
+
+                <!-- Technical Summary Box -->
+                <div
+                    class="ui-box bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-black/50 border border-gray-700 rounded-2xl p-6 mb-12 shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-red-900/30 p-3 rounded-full">
+                            <i class="fas fa-eye text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Özet</h3>
+                            <p class="text-gray-400 text-sm">
+                                Afet planlarında sıkça geçen "veriyi zaten sahadaki ekip toplar" cümlesi masum
+                                görünür; oysa planın en pahalı satırıdır. Bu yazı; görüş alanı kısıtlarını, verinin
+                                yorumlanmasındaki dört tuzağı, payda problemini, yerel optimum tuzağını, veri borcunu
+                                ve afetten önce kurulması gereken veri mimarisini ele alarak, afet yönetiminde neden
+                                <strong>ayrı roller ve ayrı bakış açıları</strong> gerektiğini inceliyor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    Afet planlarının çoğunda sessiz bir varsayım vardır.
+                </p>
+
+                <p>
+                    Yazılmaz. Tartışılmaz. Ama her satırın altında durur:
+                </p>
+
+                <blockquote>
+                    "Veriyi zaten sahadaki ekip toplar."
+                </blockquote>
+
+                <p>
+                    Bu cümle masumdur. Ve bu cümle, planın en pahalı satırıdır.
+                </p>
+
+                <p>
+                    Çünkü veri toplamak bir angarya değildir. Bir tasarım işidir. Ve tasarlanmadan başlayan hiçbir
+                    veri akışı, sonradan düzeltilemez.
+                </p>
+
+                <img src="assets/img/blog12-acilis.jpg"
+                    alt="Karanlık bir odada tek bir insan silueti. Ondan iki yöne uzanan soluk parçacıklar: biri bir enkaz yığınına, diğeri bir ekrana doğru dağılıyor"
+                    loading="lazy">
+
+                <h2>I. İki Kısıt</h2>
+
+                <p>
+                    <strong>Zaman kısıtı.</strong> Bir kişi aynı anda hem hasta başında hem ekran başında olamaz.
+                    Kritik saatlerde harcanan her dakika, iki işten birinden alınmıştır.
+                </p>
+
+                <p>
+                    <strong>Konum kısıtı.</strong> Bir kişi aynı anda hem bir noktada hem sistemin tamamında olamaz.
+                    Enkaz başındaki gözlemci kırk noktadan birini görür. Diğer otuz dokuzu görmez.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-clock text-red-400"></i>
+                            Zaman Kısıtı
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Bir kişi aynı anda hem hasta başında hem ekran başında olamaz. Kritik saatlerde harcanan
+                            her dakika, iki işten birinden alınmıştır.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-location-dot text-data-blue"></i>
+                            Konum Kısıtı
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Bir kişi aynı anda hem bir noktada hem sistemin tamamında olamaz. Enkaz başındaki
+                            gözlemci kırk noktadan birini görür. Diğer otuz dokuzu görmez.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Aynı kişiyi merkeze oturtun, bütünü görür. Ama o zaman da sahada olmaz.
+                </p>
+
+                <p class="pull-quote">
+                    "Kısıt kişide değil. Kısıt uzayda ve zamanda."
+                </p>
+
+                <p>
+                    Bu yüzden afet yönetimi bir gayret sorunu değildir. Bir gözlem birimi sorunudur. Kimin neyi
+                    görebildiği, kimin ne kadar çabaladığından önce gelir.
+                </p>
+
+                <img src="assets/img/blog12-ikikisit-diyagram.jpg" class="img-inline"
+                    alt="Solda zaman ekseni üzerinde çakışan iki blok, sağda bir harita üzerinde tek bir aydınlık nokta ve otuz dokuz karanlık nokta"
+                    loading="lazy">
+                <p class="text-center text-gray-500 text-sm italic -mt-4 mb-8">"Görüş alanı, gayretten önce gelir."
+                </p>
+
+                <h2>II. Verinin Söyleyemedikleri</h2>
+
+                <p>
+                    Veri konuşmaz. Yorumlanır.
+                </p>
+
+                <p>
+                    Ve yorumun ilk kuralı şudur:
+                </p>
+
+                <p class="pull-quote">
+                    "Bir sayıya bakmadan önce, o sayının nasıl var olduğuna bakılır."
+                </p>
+
+                <p>
+                    Her veri noktasının arkasında bir üretim süreci vardır. Kim ölçtü. Hangi koşulda ölçtü. Hangi
+                    tanımı kullandı. Ölçemediğinde ne yaptı.
+                </p>
+
+                <p>
+                    Bu sorular sorulmadığında, veri bir bilgi kaynağı olmaktan çıkar. Kendinden emin bir yanılsamaya
+                    dönüşür.
+                </p>
+
+                <p>
+                    Kriz koşullarında dört tuzak birden devreye girer:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-ruler-combined text-red-400"></i>
+                            Ölçüm Geçerliliği
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Aynı kavram farklı noktalarda farklı tanımlanır. Bir yerde "ağır yaralı" olan, başka bir
+                            yerde "orta" kaydedilir. Toplandığında ortaya çıkan sayı, hiçbir yerde karşılığı olmayan
+                            bir sayıdır. Ölçüm biliminde buna <em>gözlemciler arası güvenirlik</em>
+                            (inter-rater reliability) sorunu denir.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-eye-slash text-purple-400"></i>
+                            Bilgilendirici Eksiklik
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Eksik veri her zaman rastgele değildir (istatistikte <em>rastgele olmayan kayıp veri</em>
+                            — MNAR). Bazen eksikliğin kendisi bilgidir. Bir bölgeden kayıt gelmiyorsa, bu "sorun yok"
+                            demek olabileceği gibi "kayıt tutacak kimse kalmadı" da demek olabilir. İstatistiksel
+                            olarak bu iki durum aynı boşluk gibi görünür. Operasyonel olarak birbirinin tam
+                            zıddıdır.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-layer-group text-green-400"></i>
+                            Ekolojik Yanılgı
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Bölge düzeyindeki bir ortalama, o bölgedeki bireyler hakkında konuşmaz (istatistikte
+                            <em>ecological fallacy</em>). "İlçe kapasitesi yeterli" cümlesi, o ilçedeki üç
+                            mahallenin çökmediği anlamına gelmez.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-random text-orange-400"></i>
+                            Toplulaştırma Paradoksu
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Alt gruplarda görülen eğilim, veriler birleştirildiğinde tersine dönebilir — istatistikte
+                            <em>Simpson Paradoksu</em> olarak bilinen bu durumda, toplam tabloya bakan yönetici, her
+                            alt bölgede yanlış olan bir kararı doğru sanarak verebilir.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Bu tuzakların ortak özelliği şudur: hiçbiri veriye bakınca görünmez. Verinin nasıl doğduğunu
+                    bilerek bakınca görünür.
+                </p>
+
+                <p>
+                    Analitik bakış açısının işlevi burada başlar. Sayıyı hesaplamak değil — sayının neyi temsil
+                    ettiğini, neyi temsil edemeyeceğini ayırt etmek.
+                </p>
+
+                <div
+                    class="emphasis-box ui-box bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-lg my-8">
+                    <p class="text-white font-semibold text-lg mb-2">
+                        <i class="fas fa-lightbulb mr-2 text-yellow-400"></i>Kritik Ayrım
+                    </p>
+                    <p class="text-gray-300 italic">
+                        "Yanlış tanımlanmış bir büyüklük, kusursuz bir yöntemle hesaplanabilir. Hesap doğrudur. Sonuç
+                        yanlıştır."
+                    </p>
+                </div>
+
+                <img src="assets/img/blog12-olcum-tablo.jpg" class="img-inline"
+                    alt="Bir tabloda büyütülmüş tek bir hücre: 128. Altında dört soru: Kim ölçtü? Hangi tanımla? Hangi koşulda? Ölçemediğinde ne oldu?"
+                    loading="lazy">
+
+                <h2>III. Payda Problemi</h2>
+
+                <p>
+                    Bu, alanın en az konuşulan ve en tehlikeli sorunudur.
+                </p>
+
+                <p>
+                    Sahadan gelen veri payı gösterir: kayda giren vakaları, ulaşılabilen yaralıları, sayılabilen
+                    herkesi.
+                </p>
+
+                <p>
+                    Paydayı göstermez.
+                </p>
+
+                <p>
+                    Risk altındaki nüfusu göstermez. Yolda kaybedilenleri göstermez. Hiç ulaşılamayanları göstermez.
+                </p>
+
+                <p>
+                    Ve buradan şu çıkar:
+                </p>
+
+                <p class="pull-quote">
+                    "En çok kaybın yaşandığı bölge, veride en sakin bölge gibi görünür."
+                </p>
+
+                <p>
+                    Vaka gelmiyorsa iki ihtimal vardır. Ya orada kimse yaralanmamıştır. Ya da oradan kimse
+                    çıkamamıştır.
+                </p>
+
+                <p>
+                    Yalnızca paya bakan bir sistem bu ikisini ayırt edemez. Kaynağı sesi en çok çıkan yere gönderir.
+                    Sessizliğin ne anlama geldiğini sormaz.
+                </p>
+
+                <p>
+                    Bu bir seçilim yanlılığıdır (<em>selection bias</em>). Barışta bir yöntem hatasıdır. Afette bir
+                    sonuç hatasıdır.
+                </p>
+
+                <p>
+                    Paydayı görmek sahada mümkün değildir. Nüfus verisine, yapı stoğuna, coğrafyaya, kırılgan grup
+                    dağılımına aynı anda bakmayı gerektirir. Yani afetten önce hazırlanmış bir referans çerçevesi
+                    gerektirir.
+                </p>
+
+                <img src="assets/img/blog12-payda.jpg" class="img-inline-lg"
+                    alt="Karanlıkta belli belirsiz seçilen devasa bir kalabalık — risk altındaki, sayılamayan nüfusu temsil ediyor"
+                    loading="lazy">
+
+                <h2>IV. Herkesin Haklı Olduğu An</h2>
+
+                <p>
+                    Bir kriz düşünün. Hiç kimse hata yapmıyor.
+                </p>
+
+                <p>
+                    Her merkez kendi kapasitesini korumak için kabulü kısıyor. Tek tek bakıldığında hepsi doğru
+                    karar. Kendi hastasına karşı görev.
+                </p>
+
+                <p>
+                    Otuz merkez aynı anda bunu yaptığında sistem kilitlenir.
+                </p>
+
+                <p>
+                    Kimse yanlış yapmamıştır. Sonuç yine de felakettir.
+                </p>
+
+                <div class="info-section ui-box">
+                    <h3 class="text-2xl font-bold text-data-blue mb-4 flex items-center gap-2">
+                        <i class="fas fa-diagram-project"></i> Yerel Optimum Tuzağı
+                    </h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Her düğüm kendi çıkarını en iyileyen bir kural izler; toplamda ağ çöker. Açgözlü bir
+                        algoritmanın küresel en iyiyi ıskalaması gibi. Bunu görebilecek tek konum, hiçbir düğümün
+                        içinde olmayan konumdur.
+                    </p>
+                </div>
+
+                <p>
+                    Sistemi kurtaran karar, hiçbir birimin kendi başına veremeyeceği karardır.
+                </p>
+
+                <p>
+                    Ve dikkat edilmesi gereken şudur: burada her birim verimlidir. Verimsiz tek bir hareket yoktur.
+                    Etkisiz olan yalnızca bütündür.
+                </p>
+
+                <img src="assets/img/blog12-agdiyagrami.jpg" class="img-inline"
+                    alt="Otuz düğümden oluşan bir ağ grafiği, her düğüm kendi etrafında parlayan bir halka ile korunuyor, aralarındaki bağlantılar ince ışık çizgileriyle görünüyor"
+                    loading="lazy">
+                <p class="text-center text-gray-500 text-sm italic -mt-4 mb-8">"Otuz doğru karar, bir yanlış sonuç."
+                </p>
+
+                <h2>V. Çakışan Saatler</h2>
+
+                <p>
+                    Klinik karar "şimdi"ye kilitlidir. Kilitli olması gerekir.
+                </p>
+
+                <p>
+                    Sistem kararı ise tam olarak sonrası içindir. Hangi düğüm on ikinci saatte doyuma ulaşır? Hangi
+                    koridor kapanırsa hangi güzergâh devre dışı kalır?
+                </p>
+
+                <p>
+                    Biri anı yönetir. Diğeri gecikmeyi.
+                </p>
+
+                <p class="pull-quote">
+                    "Aynı kafada, aynı anda, iki zaman ufku çalışmaz."
+                </p>
+
+                <h2>VI. Veri Borcu</h2>
+
+                <p>
+                    Kriz biter. Veri bitmez.
+                </p>
+
+                <p>
+                    Aceleyle, eksik ve tutarsız toplanan kayıt bir yere gitmez. Arşive girer.
+                </p>
+
+                <p>
+                    Sonra o arşiv bir sonraki planlamanın dayanağı olur. Bir modelin eğitim kümesi olur. Bir
+                    kapasite kararının gerekçesi olur. Bir tezin kaynağı olur.
+                </p>
+
+                <p>
+                    Birkaç günlük bir kayıt kaosu, yıllarca sürecek bir çıkarım hatasına dönüşür.
+                </p>
+
+                <div
+                    class="emphasis-box ui-box bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-lg my-8">
+                    <p class="text-white font-semibold text-lg mb-2">
+                        <i class="fas fa-hourglass-half mr-2 text-yellow-400"></i>Veri Borcu
+                    </p>
+                    <p class="text-gray-300 italic">
+                        "Bugün ödenmeyen özen, yarın faiziyle geri gelir. Ve en kötüsü: borcun ne zaman alındığını
+                        kimse hatırlamaz."
+                    </p>
+                </div>
+
+                <p>
+                    Hatalı veriyle kurulmuş bir model, hatalı olduğunu söylemez. Yalnızca kendinden emin biçimde
+                    yanlış cevap verir.
+                </p>
+
+                <h2>VII. Mimari, Afetten Önce Kurulur</h2>
+
+                <p>
+                    Buraya kadar anlatılan sorunların ortak kaynağı tektir.
+                </p>
+
+                <p>
+                    Hiçbiri kriz anında ortaya çıkmaz. Hepsi kriz anında görünür hale gelir.
+                </p>
+
+                <p>
+                    Doğdukları yer tasarım masasıdır.
+                </p>
+
+                <p>
+                    Afet anında bir veri modeli tasarlanamaz. Bir ortak tanım kümesi üzerinde uzlaşılamaz. İki
+                    sistem arasındaki uyumsuzluk çözülemez. Bunların hepsi sakin zamanın işidir.
+                </p>
+
+                <p>
+                    İyi bir afet veri mimarisinin taşıması gereken birkaç nitelik vardır:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-8">
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-compress text-data-blue"></i>
+                            Asgari Veri Seti
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Kriz anında toplanacak alan sayısı, toplanabilecek en az sayıya indirilir. Her fazladan
+                            alan, sahada bir gecikmedir. Neyin toplanmayacağına karar vermek, neyin toplanacağına
+                            karar vermekten zordur.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-book text-green-400"></i>
+                            Ortak Tanım
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Aynı kavramın her noktada aynı şeyi ifade etmesi, kriz anında müzakere edilemez. Önceden
+                            sabitlenir.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-network-wired text-purple-400"></i>
+                            Birlikte Çalışabilirlik
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Sistemler birbirini konuşamıyorsa, her biri kendi doğrusunu üretir. Ortada tek bir durum
+                            resmi kalmaz; birbiriyle çelişen birkaç resim olur.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-puzzle-piece text-orange-400"></i>
+                            Zarif Bozulma
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            İyi mimari, parçaları koptuğunda çökmez; küçülerek çalışmaya devam eder. Bağlantı
+                            kesildiğinde çevrimdışı kayıt alabilmeli, bağlantı geldiğinde çakışmadan
+                            birleşebilmelidir.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-location-crosshairs text-red-400"></i>
+                            Kaynağa Yakınlık
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Veri, olayın gerçekleştiği yerde ve anda kaydedilmelidir. Sonradan hatırlanarak
+                            doldurulan her alan, ölçüm değil tahmindir.
+                        </p>
+                    </div>
+
+                    <div class="phase-card ui-box">
+                        <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-route text-cyan-400"></i>
+                            İzlenebilirlik
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Her kaydın kim tarafından, ne zaman, hangi koşulda üretildiği görülebilmelidir. Yorumun
+                            mümkün olması için önce kökenin bilinmesi gerekir.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Bu maddelerin hiçbiri teknoloji seçimiyle ilgili değildir. Hepsi karar mimarisiyle ilgilidir.
+                </p>
+
+                <p>
+                    Ve mimari, binanın içine girildikten sonra değiştirilemez.
+                </p>
+
+                <p class="pull-quote">
+                    "Mimari hızı artıran katman değildir. Yönü mümkün kılan katmandır."
+                </p>
+
+                <img src="assets/img/blog12-mimari-zamanci.jpg" class="img-inline-lg"
+                    alt="Solda sakin mavi tonlarda bir tasarım/inşa sahnesi, sağda kırmızı tonlarda bir afet sahnesi; tasarımdan krize doğru tek yönlü oklar"
+                    loading="lazy">
+                <p class="text-center text-gray-500 text-sm italic -mt-4 mb-8">"Tek yönlü."</p>
+
+                <h2>VIII. Ölçülemeyen Maliyet</h2>
+
+                <p>
+                    Buraya kadar olanlar hesaplanabilir.
+                </p>
+
+                <p>
+                    Bundan sonrası hesaplanamaz.
+                </p>
+
+                <p>
+                    Klinik etik, hekimi karşısındaki hastaya azami özeni göstermekle yükümlü kılar. Bu, mesleğin
+                    çekirdeğidir.
+                </p>
+
+                <p>
+                    Afet triyajı bunun tersini ister. Bir hastadan vazgeçip kaynağı beşine aktarmayı ister.
+                </p>
+
+                <p>
+                    İki mantık aynı kişide çakıştığında ortaya çıkan şey yorgunluk değildir. Yorgunluk uykuyla
+                    geçer.
+                </p>
+
+                <p>
+                    Ortaya çıkan şey, kişinin kendi değerleriyle çelişen bir eylemi yapmak zorunda kalmasının
+                    bıraktığı izdir. Alan yazında <strong>ahlaki yaralanma</strong> olarak tanımlanır. Tükenmişlikten
+                    daha derin, daha kalıcı, daha sessizdir.
+                </p>
+
+                <p>
+                    Döngü şöyle kapanır: rol çatışması yıpratır. Yıpranma ayrılığı getirir. Ayrılık kurumsal hafızayı
+                    götürür. Hafızası eksilen bir yapı, bir sonraki olayda daha kırılgandır.
+                </p>
+
+                <img src="assets/img/blog12-dongu.jpg" class="img-inline-lg"
+                    alt="Kapalı döngü diyagramı: Rol Çatışması, Yıpranma, Ayrılış, Hafıza Kaybı, Daha Kırılgan Yapı ve tekrar başa dönüş"
+                    loading="lazy">
+
+                <p>
+                    Her afet, kendinden sonrakini hazırlar.
+                </p>
+
+                <h2>IX. Rolün Netliği</h2>
+
+                <p>
+                    Hatalı bir veriye dayanan karar sonuçlandığında, sorumluluk kararı imzalayanda kalır.
+                </p>
+
+                <p>
+                    Oysa arıza kararda değildir. Arıza, o kararın dayandığı verinin nasıl doğduğundadır. Yani
+                    mimaridedir.
+                </p>
+
+                <p>
+                    Rol tanımı yapılmamış bir sistemde herkes her işten sorumludur.
+                </p>
+
+                <p class="pull-quote">
+                    "Herkesin sorumlu olduğu yerde ise kimse sorumlu değildir."
+                </p>
+
+                <p>
+                    Bu bir hiyerarşi meselesi değildir. Bir tasarım meselesidir.
+                </p>
+
+                <div class="flex flex-wrap gap-3 my-8">
+                    <span class="role-badge"><i class="fas fa-magnifying-glass"></i> Kim ölçer</span>
+                    <span class="role-badge"><i class="fas fa-comments"></i> Kim yorumlar</span>
+                    <span class="role-badge"><i class="fas fa-gavel"></i> Kim karar verir</span>
+                    <span class="role-badge"><i class="fas fa-person-running"></i> Kim uygular</span>
+                </div>
+
+                <p>
+                    Bu dört sorunun cevabı afetten önce yazılmamışsa, afet anında yazılmaz. Doğaçlanır.
+                </p>
+
+                <p>
+                    Ve doğaçlanan her rol, kriz bittikten sonra kalıcı hale gelir. Geçici çözüm, sessizce kurumsal
+                    standarda dönüşür.
+                </p>
+
+                <h2>X. Verimlilik ve Etkinlik</h2>
+
+                <p>
+                    Kamu kaynağının kullanımında üç ölçüt birlikte anılır: ekonomiklik, verimlilik, etkinlik —
+                    denetim literatüründe <em>3E çerçevesi</em> (Economy, Efficiency, Effectiveness).
+                </p>
+
+                <p>
+                    İlk ikisi ölçülmesi kolay olandır. Ne kadar kaynakla ne kadar iş çıktı.
+                </p>
+
+                <p>
+                    Üçüncüsü asıl sorudur: çıkan iş amaca hizmet etti mi?
+                </p>
+
+                <p>
+                    <strong>Verimlilik</strong>, işi doğru yapmaktır. <strong>Etkinlik</strong>, doğru işi yapmaktır.
+                </p>
+
+                <p>
+                    Aradaki fark kriz koşullarında keskinleşir. Çünkü kriz, verimliliği ödüllendiren bir ortamdır.
+                    Hızlı hareket eden görünür. Çok kayıt tutan görünür. Çok sevk yapan görünür.
+                </p>
+
+                <p>
+                    Etkinlik görünmez. Çünkü etkinliğin ölçüsü yapılanlar değil, yapılmayanların bedelidir.
+                </p>
+
+                <p>
+                    Ve burada yazının başındaki iki kavrama geri dönülür:
+                </p>
+
+                <p class="pull-quote">
+                    "Verimlilik payla ölçülür. Etkinlik paydayla."
+                </p>
+
+                <p>
+                    Kaç vakaya ne kadar sürede ulaşıldığı verimliliktir. Ulaşılması gerekenlerin ne kadarına
+                    ulaşıldığı etkinliktir.
+                </p>
+
+                <p>
+                    Birincisi sahadan görülür. İkincisi yalnızca bütüne bakan bir yerden.
+                </p>
+
+                <p>
+                    Bir yapı kendi verimliliğini kendi ölçebilir. Kendi etkinliğini ölçemez.
+                </p>
+
+                <img src="assets/img/blog12-gostergeler.jpg"
+                    alt="İki gösterge kadranı yan yana: soldaki dolu ve yeşil (verimlilik — ölçülen), sağdaki boş ve gri, ibresiz (etkinlik — ölçülmeyen)"
+                    loading="lazy">
+                <p class="text-center text-gray-500 text-sm italic -mt-4 mb-8">"Aynı sistem, iki farklı soru."</p>
+
+                <h2>Son Söz</h2>
+
+                <p>
+                    Afet yönetiminde en tehlikeli durum yavaşlık değildir.
+                </p>
+
+                <p>
+                    Hızlı çalışan ve yanlış yöne koşan bir sistemdir.
+                </p>
+
+                <p>
+                    Verimlilik hızı artırır. Etkinlik yönü belirler. Yönü olmayan hız, yanlışa daha erken varmaktan
+                    başka bir şey değildir.
+                </p>
+
+                <p>
+                    Bölünen dikkat verimliliği düşürür. Ama asıl kayıp orada değildir. Asıl kayıp, hız artarken
+                    yöne bakan kimsenin kalmamasıdır.
+                </p>
+
+                <p>
+                    Rolleri ayırmak, ikisini aynı anda mümkün kılan tek düzenlemedir. Sahadaki el hızlanır. Bütüne
+                    bakan yer yönü tutar.
+                </p>
+
+                <p>
+                    Ve bu ayrımın tek bir ölçüsü vardır:
+                </p>
+
+                <div class="final-quote">
+                    <p>Bir hayat daha.</p>
+                </div>
+
+                <!-- Tags -->
+                <div class="blog-tags">
+                    <span class="blog-tag">Afet Yönetimi</span>
+                    <span class="blog-tag">Veri Bilimi</span>
+                    <span class="blog-tag">İstatistik</span>
+                    <span class="blog-tag">Sistem Mimarisi</span>
+                    <span class="blog-tag">Karar Destek</span>
+                </div>
+
+                <!-- Social Share -->
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <h3 class="text-lg font-semibold text-white mb-4">Bu Yazıyı Paylaş</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://emrebostanoglu.com/blog12.html"
+                            target="_blank" rel="noopener noreferrer"
+                            class="share-btn bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=https://emrebostanoglu.com/blog12.html&text=Bir Kişi Aynı Anda İki Yerde Olamaz"
+                            target="_blank" rel="noopener noreferrer"
+                            class="share-btn bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-twitter mr-2"></i>Twitter
+                        </a>
+                        <a href="https://wa.me/?text=Bir Kişi Aynı Anda İki Yerde Olamaz - https://emrebostanoglu.com/blog12.html"
+                            target="_blank" rel="noopener noreferrer"
+                            class="share-btn bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                            class="share-btn bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-6 py-3 rounded-lg transition transform hover:scale-105">
+                            <i class="fab fa-instagram mr-2"></i>Instagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts Section -->
+    <section class="py-16 bg-gradient-to-b from-dark-bg to-black border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-cinzel text-white font-bold mb-8 text-center">
+                Diğer Yazılar
+            </h2>
+            <div class="text-center">
+                <a href="blog.html"
+                    class="inline-block bg-art-gold text-black px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all transform hover:scale-105">
+                    Tüm Blog Yazılarını Gör
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Initialize Components -->
+    <script>
+        loadComponents('blog');
+
+        // Initialize Reading Progress Bar for blog posts
+        if (typeof initReadingProgress === 'function') {
+            initReadingProgress();
+        }
+
+        // Load Social Share Buttons
+        if (typeof loadShareButtons === 'function') {
+            loadShareButtons('blog-share-buttons', {
+                showLabels: true,
+                layout: 'horizontal'
+            });
+        }
+    </script>
+
+    <!-- Interactive Features -->
+    <script src="js/chatbot-ui.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/exit-intent.js"></script>
+    <script src="js/cookie-consent.js"></script>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((reg) => console.log('SW registered', reg.scope)).catch((err) => console.log('SW failed', err));
+            });
+        }
+    </script>
+
+</body>
+</html>
