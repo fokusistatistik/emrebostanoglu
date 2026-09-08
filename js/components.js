@@ -265,7 +265,6 @@ function getFooterHTML() {
                             <img src="https://static.fokusistatistik.com/resimler/favicon.png" alt="FOKUS İstatistik" class="w-4 h-4 inline-block">
                             FOKUS İstatistik
                         </a>
-                        <i class="fas fa-heart text-red-500 animate-pulse"></i>
                     </p>
                 </div>
             </div>
