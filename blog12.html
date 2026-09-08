@@ -11,7 +11,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2c3335">
     <meta name="description"
-        content="Afet yönetiminde görüş alanı, veri yorumlama tuzakları, payda problemi ve sistem mimarisi üzerine: Neden veri toplamak bir angarya değil, bir tasarım işidir?">
+        content="Afet yönetiminde görüş alanı, veri yorumlama tuzakları, payda problemi ve sistem mimarisi üzerine: Veri toplamak bir angarya değil, bir tasarım işidir.">
     <meta name="keywords"
         content="afet yönetimi, veri mimarisi, karar destek sistemleri, istatistik, veri yorumlama, sistem mimarisi, ahlaki yaralanma, veri borcu, yerel optimum, etkinlik verimlilik">
     <meta name="author" content="Emre Bostanoğlu">
@@ -42,6 +42,49 @@
     <meta name="twitter:title" content="Bir Kişi Aynı Anda İki Yerde Olamaz">
     <meta name="twitter:description" content="Afet yönetiminde görüş alanı, yorum ve sistem mimarisi üzerine.">
     <meta name="twitter:image" content="https://emrebostanoglu.com/assets/img/blog12-kapak.jpg">
+
+    <!-- Structured Data (BlogPosting) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Bir Kişi Aynı Anda İki Yerde Olamaz",
+        "alternativeHeadline": "Afet yönetiminde görüş alanı, yorum ve sistem mimarisi üzerine",
+        "description": "Afet yönetiminde görüş alanı, veri yorumlama tuzakları, payda problemi ve sistem mimarisi üzerine: Veri toplamak bir angarya değil, bir tasarım işidir.",
+        "image": "https://emrebostanoglu.com/assets/img/blog12-kapak.jpg",
+        "datePublished": "2026-09-08T09:00:00+03:00",
+        "dateModified": "2026-09-08T09:00:00+03:00",
+        "inLanguage": "tr-TR",
+        "url": "https://emrebostanoglu.com/blog12.html",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://emrebostanoglu.com/blog12.html"
+        },
+        "articleSection": "Afet Yönetimi",
+        "keywords": ["Afet Yönetimi", "Veri Bilimi", "İstatistik", "Sistem Mimarisi", "Karar Destek"],
+        "author": {
+            "@type": "Person",
+            "name": "Emre Bostanoğlu",
+            "url": "https://emrebostanoglu.com",
+            "sameAs": [
+                "https://www.instagram.com/emrebostanoglu/",
+                "https://www.linkedin.com/in/emrebostanoglu/",
+                "https://twitter.com/emrebostanoglu",
+                "https://www.youtube.com/@emrebostanoglu",
+                "https://github.com/emrebostanoglu"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "FOKUS İstatistik",
+            "url": "https://www.fokusistatistik.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://static.fokusistatistik.com/resimler/ebfavicon.png"
+            }
+        }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -506,7 +549,7 @@
                             <i class="fas fa-eye text-red-500 text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-2">Özet</h3>
+                            <p class="text-xl font-bold text-white mb-2">Özet</p>
                             <p class="text-gray-400 text-sm">
                                 Afet planlarında sıkça geçen "veriyi zaten sahadaki ekip toplar" cümlesi masum
                                 görünür; oysa planın en pahalı satırıdır. Bu yazı; görüş alanı kısıtlarını, verinin
@@ -630,7 +673,7 @@
                     <div class="phase-card ui-box">
                         <h4 class="font-bold text-white mb-3 flex items-center gap-2">
                             <i class="fas fa-ruler-combined text-red-400"></i>
-                            Ölçüm Geçerliliği
+                            Ölçüm Güvenirliği
                         </h4>
                         <p class="text-gray-400 text-sm leading-relaxed">
                             Aynı kavram farklı noktalarda farklı tanımlanır. Bir yerde "ağır yaralı" olan, başka bir
@@ -673,8 +716,9 @@
                         </h4>
                         <p class="text-gray-400 text-sm leading-relaxed">
                             Alt gruplarda görülen eğilim, veriler birleştirildiğinde tersine dönebilir — istatistikte
-                            <em>Simpson Paradoksu</em> olarak bilinen bu durumda, toplam tabloya bakan yönetici, her
-                            alt bölgede yanlış olan bir kararı doğru sanarak verebilir.
+                            <em>Simpson Paradoksu</em> olarak bilinen bu durumda, sebep genellikle alt grupların
+                            büyüklüğündeki farktır (bir karıştırıcı değişken). Toplam tabloya bakan yönetici, her alt
+                            bölgede yanlış olan bir kararı doğru sanarak verebilir.
                         </p>
                     </div>
                 </div>
@@ -781,8 +825,9 @@
                     </h3>
                     <p class="text-lg text-gray-300 leading-relaxed">
                         Her düğüm kendi çıkarını en iyileyen bir kural izler; toplamda ağ çöker. Açgözlü bir
-                        algoritmanın küresel en iyiyi ıskalaması gibi. Bunu görebilecek tek konum, hiçbir düğümün
-                        içinde olmayan konumdur.
+                        algoritmanın küresel en iyiyi ıskalaması gibi — oyun teorisinde <em>Nash dengesizliği</em>,
+                        ağ kapasitesi bağlamında ise <em>Braess Paradoksu</em> olarak bilinen fenomenin bir örneği.
+                        Bunu görebilecek tek konum, hiçbir düğümün içinde olmayan konumdur.
                     </p>
                 </div>
 
@@ -946,6 +991,25 @@
                             mümkün olması için önce kökenin bilinmesi gerekir.
                         </p>
                     </div>
+                </div>
+
+                <div class="info-section ui-box">
+                    <h3 class="text-2xl font-bold text-data-blue mb-4 flex items-center gap-2">
+                        <i class="fas fa-diagram-project"></i> Data Mesh: Dağıtık Sahiplik, Ortak Dil
+                    </h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Bu altı nitelik, aslında tek bir mimari paradigmanın parçalarıdır: <strong>Data Mesh</strong>
+                        (Veri Ağı). Klasik yaklaşım veriyi merkezi bir ambara toplar — tek ekip, tek darboğaz. Data
+                        Mesh bunun tersini önerir: her alan (her hastane, her bölge, her birim) kendi verisinin
+                        sahibidir ve onu bir <em>ürün</em> gibi sunar. Merkez veri toplamaz; ortak tanımı ve arayüz
+                        standardını belirler.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed mt-4">
+                        Bu, IV. bölümdeki yerel optimum tuzağının mimari cevabıdır. Otuz hastane kendi kararını
+                        verir — ama ortak tanım, ortak arayüz ve federatif yönetişim sayesinde otuz ayrı karar, tek
+                        bir tutarlı resme dönüşür. Gücü merkezileşmede değil, <strong>özerklik ile uyumun aynı anda
+                            var olabilmesindedir.</strong>
+                    </p>
                 </div>
 
                 <p>
